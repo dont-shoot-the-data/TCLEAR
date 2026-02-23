@@ -380,6 +380,12 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
 .dispro-cards>div [style*="font-size:26px"]{font-size:18px !important}
 .dispro-cards>div [style*="font-size:14px"]{font-size:12px !important}
 }
+
+@media(max-width:600px){
+.suspects-2020-row{gap:12px !important;flex-wrap:wrap !important}
+.suspects-2020-row>div{min-width:70px !important;padding:8px 12px !important}
+.suspects-2020-row>div>div:first-child{font-size:36px !important}
+}
 </style>
 </head>
 <body>
@@ -1959,7 +1965,7 @@ new Chart(document.getElementById('chartI'), {
     },
     scales: {
       x: { beginAtZero: true, max: 35, ticks: { stepSize: 5 }, title: { display: true, text: 'Number of Cases (known motive only)', font: { size: 11 } } },
-      y: { ticks: { font: { size: 12, weight: '600' } } }
+      y: { ticks: { callback: function(v,i,t){ var labels=['IPV / Domestic / Family','Sex Encounter / Sex Work','Dispute / Argument','Robbery / Property','Trans Discovery / Panic']; return window.innerWidth<600?labels[i]:this.getLabelForValue(v); }, font: { size: 12, weight: '600' } } }
     }
   }
 });

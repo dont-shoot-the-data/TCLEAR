@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatal Violence Against Transgender People in the United States, 2015: A Case-Level Analysis</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --clr-black: #000000;
+    --clr-white-race: #4169E1;
+    --clr-hispanic: #8B4513;
+    --clr-aanhpi: #FFD700;
+    --clr-native: #FF8C00;
+    --clr-unknown: #999999;
+    --clr-bg: #FAFAF7;
+    --clr-surface: #FFFFFF;
+    --clr-text: #1A1A1A;
+    --clr-text-secondary: #555555;
+    --clr-border: #D4D0C8;
+    --clr-accent: #8B0000;
+    --clr-accent-light: #F5E6E6;
+    --clr-solved: #2E7D32;
+    --clr-unsolved: #B71C1C;
+    --clr-deceased: #5D4037;
+    --clr-confirmed: #B71C1C;
+    --clr-suspected: #E65100;
+    --clr-no-evidence: #1565C0;
+    --clr-motive-unknown: #757575;
+    --font-serif: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+    --font-sans: 'Source Sans 3', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--clr-text);
+    background: var(--clr-bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1A1A1A 0%, #2C1810 50%, #1A1A1A 100%);
+    color: #fff;
+    padding: 64px 0 56px;
+    border-bottom: 4px solid var(--clr-accent);
+  }
+  header h1 {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  header .subtitle {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #CCBBAA;
+    margin-bottom: 24px;
+  }
+  header .meta {
+    font-size: 0.85rem;
+    color: #AA9988;
+    line-height: 1.8;
+  }
+  header .meta strong { color: #DDCCBB; font-weight: 600; }
+
+  section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--clr-border);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--clr-accent);
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+  }
+  h2 .section-number {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--clr-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--font-sans);
+  }
+  h3 {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--clr-text);
+    margin: 32px 0 12px;
+  }
+
+  p { margin-bottom: 14px; max-width: 780px; }
+  p.note {
+    font-size: 0.85rem;
+    color: var(--clr-text-secondary);
+    font-style: italic;
+    background: var(--clr-accent-light);
+    padding: 12px 16px;
+    border-left: 3px solid var(--clr-accent);
+    max-width: 100%;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .summary-card {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: 6px;
+    padding: 20px;
+    text-align: center;
+  }
+  .summary-card .number {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .summary-card .label {
+    font-size: 0.8rem;
+    color: var(--clr-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+  .summary-card.accent .number { color: var(--clr-accent); }
+  .summary-card.solved .number { color: var(--clr-solved); }
+  .summary-card.unsolved .number { color: var(--clr-unsolved); }
+
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin: 32px 0;
+  }
+  .chart-wrapper {
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  .chart-wrapper h4 {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: var(--clr-text);
+  }
+  .chart-wrapper .chart-subtitle {
+    font-size: 0.78rem;
+    color: var(--clr-text-secondary);
+    margin-bottom: 16px;
+  }
+  .chart-container {
+    position: relative;
+    height: 320px;
+  }
+
+  .race-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 20px 0;
+    padding: 14px 18px;
+    background: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: 6px;
+  }
+  .race-legend .swatch {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+  }
+  .race-legend .swatch .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.15);
+  }
+
+  .table-scroll {
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid var(--clr-border);
+    border-radius: 6px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    background: var(--clr-surface);
+  }
+  thead {
+    background: #2C2218;
+    color: #fff;
+  }
+  thead th {
+    padding: 10px 8px;
+    font-weight: 600;
+    text-align: left;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    position: sticky;
+    top: 0;
+  }
+  thead th:last-child { border-right: none; }
+  tbody tr { border-bottom: 1px solid #EEEAE4; }
+  tbody tr:nth-child(even) { background: #FAF9F6; }
+  tbody tr:hover { background: #F0EDE6; }
+  tbody td {
+    padding: 8px;
+    vertical-align: top;
+    border-right: 1px solid #EEEAE4;
+  }
+  tbody td:last-child { border-right: none; }
+  td.solved { color: var(--clr-solved); font-weight: 600; }
+  td.unsolved { color: var(--clr-unsolved); font-weight: 600; }
+  td.deceased { color: var(--clr-deceased); font-weight: 600; }
+  td.acquitted { color: #E65100; font-weight: 600; }
+  .race-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .race-tag.black { background: var(--clr-black); }
+  .race-tag.white { background: var(--clr-white-race); }
+  .race-tag.hispanic { background: var(--clr-hispanic); }
+  .race-tag.unknown { background: var(--clr-unknown); }
+  .race-tag.multiracial { background: #555; }
+  .bias-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .bias-tag.confirmed { background: var(--clr-confirmed); color: #fff; }
+  .bias-tag.suspected { background: var(--clr-suspected); color: #fff; }
+  .bias-tag.no-evidence { background: var(--clr-no-evidence); color: #fff; }
+  .bias-tag.unknown { background: var(--clr-motive-unknown); color: #fff; }
+
+  td a {
+    color: #1565C0;
+    text-decoration: none;
+    font-size: 0.78rem;
+  }
+  td a:hover { text-decoration: underline; }
+
+  .methodology {
+    columns: 2;
+    column-gap: 40px;
+    font-size: 0.88rem;
+  }
+  .methodology p { break-inside: avoid; }
+
+  footer {
+    background: #2C2218;
+    color: #AA9988;
+    padding: 32px 0;
+    font-size: 0.82rem;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .charts-grid { grid-template-columns: 1fr; }
+    .methodology { columns: 1; }
+    header h1 { font-size: 1.8rem; }
+  }
+  @media (max-width: 600px) {
+    .summary-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <h1>Fatal Violence Against Transgender People in the United States, 2015</h1>
+    <div class="subtitle">A Case-Level Analysis of Victim Demographics, Suspect Characteristics, Case Outcomes, and Bias Motivation</div>
+    <div class="meta">
+      <strong>Data Source:</strong> <a href="http://assets2.hrc.org/files/assets/resources/HRC-AntiTransgenderViolence-0519.pdf" target="_blank" style="color:#CCBBAA; text-decoration:underline;">Human Rights Campaign (HRC), <em>Addressing Anti-Transgender Violence</em> (2015)</a> &middot; Case Details from Local News &amp; Court Records<br>
+      <strong>Year Analyzed:</strong> 2015 (21 documented victims) &middot; <strong>Research Date:</strong> February 2026
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2><span class="section-number">Section I</span>Executive Summary</h2>
+    <p>In 2015, the Human Rights Campaign documented 21 transgender people as victims of fatal violence in the United States—the highest annual total recorded at that time, exceeding the 12–13 victims tracked in 2014. This report presents a case-level analysis of all 21 victims, drawing on local news coverage, court records, and law enforcement statements collected through 2025 to document suspect demographics, case dispositions, and bias motivation indicators.</p>
+
+    <div class="summary-grid">
+      <div class="summary-card accent"><div class="number">21</div><div class="label">Total Victims</div></div>
+      <div class="summary-card solved"><div class="number">13</div><div class="label">Cases with Arrest</div></div>
+      <div class="summary-card unsolved"><div class="number">8</div><div class="label">Unsolved Cases</div></div>
+    </div>
+
+    <p>Key findings include a clearance rate of approximately 62% (13 of 21 cases resulting in at least one arrest), which matches the national homicide clearance rate of approximately 62% for 2015. Among the 13 identified suspects, 8 were Black, 5 were Hispanic, and 2 were White; the Hispanic and White totals overlap because Pedro Redding and Joshua Vallum are counted in both categories, as no source has ever explicitly confirmed the race of either individual. Keith Gaillard was charged in the India Clarke case but acquitted at trial in 2021; that case is counted as unsolved. Only one case—the murder of Mercedes Williamson by Joshua Vallum—resulted in a federal hate crime conviction, the first such conviction for anti-transgender violence under the Matthew Shepard and James Byrd Jr. Hate Crimes Prevention Act. One suspect (Tia Townsel in the Jasmine Collins case) was female, while all others were male.</p>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="section-number">Section II</span>Demographic Visualizations</h2>
+    <p>All charts use a standardized race color-coding system. Vertical bar charts are used throughout for consistency.</p>
+    <div class="race-legend">
+      <div class="swatch"><span class="dot" style="background:#000000"></span> Black</div>
+      <div class="swatch"><span class="dot" style="background:#4169E1"></span> White</div>
+      <div class="swatch"><span class="dot" style="background:#8B4513"></span> Hispanic/Latino</div>
+      <div class="swatch"><span class="dot" style="background:#FFD700"></span> AANHPI</div>
+      <div class="swatch"><span class="dot" style="background:#FF8C00"></span> Native American</div>
+      <div class="swatch"><span class="dot" style="background:#999999"></span> Other/Unknown</div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-wrapper">
+        <h4>Chart 1: Suspects by Race/Ethnicity</h4>
+        <div class="chart-subtitle">N = 13 identified suspects; Redding and Vallum counted in both Hispanic and White (15 total classifications)</div>
+        <div class="chart-container"><canvas id="chartSuspectRace"></canvas></div>
+      </div>
+      <div class="chart-wrapper">
+        <h4>Chart 2: Victims by Race/Ethnicity</h4>
+        <div class="chart-subtitle">N = 21 victims documented by HRC in 2015</div>
+        <div class="chart-container"><canvas id="chartVictimRace"></canvas></div>
+      </div>
+      <div class="chart-wrapper">
+        <h4>Chart 3: Suspect–Victim Racial Pairings</h4>
+        <div class="chart-subtitle">N = 13 solved cases; format: Suspect Race → Victim Race; green = intraracial, red = interracial. Redding and Vallum appear in both Hispanic and White pairings.</div>
+        <div class="chart-container"><canvas id="chartPairings"></canvas></div>
+      </div>
+      <div class="chart-wrapper">
+        <h4>Chart 4: Case Clearance by Victim Race</h4>
+        <div class="chart-subtitle">Arrest made vs. no arrest, by victim race (N = 21)</div>
+        <div class="chart-container"><canvas id="chartSolvedUnsolved"></canvas></div>
+      </div>
+      <div class="chart-wrapper">
+        <h4>Chart 5: Bias Motive Classification</h4>
+        <div class="chart-subtitle">All 21 cases coded by evidence of anti-transgender bias</div>
+        <div class="chart-container"><canvas id="chartBiasMotive"></canvas></div>
+      </div>
+      <div class="chart-wrapper">
+        <h4>Chart 6: Bias Classification by Suspect Race</h4>
+        <div class="chart-subtitle">N = 13 solved cases; Redding and Vallum counted in both Hispanic and White</div>
+        <div class="chart-container"><canvas id="chartBiasSuspect"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="section-number">Section III</span>Complete Case Table</h2>
+    <p>All 21 HRC-documented victims of fatal anti-transgender violence in 2015. Case details sourced from local news reports and court records through 2025. Suspect demographics verified from mugshots, police descriptions, or explicit media identification where available.</p>
+
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Victim Name</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Victim Race</th>
+            <th>Victim Age</th>
+            <th>Cause of Death</th>
+            <th>Circumstances</th>
+            <th>Police-Involved</th>
+            <th>Suspect Name</th>
+            <th>Suspect Race</th>
+            <th>Suspect Gender</th>
+            <th>Suspect Age</th>
+            <th>Case Status</th>
+            <th>Disposition</th>
+            <th>Bias Motive</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><strong>Papi Edwards</strong><br><em>aka Goddess Edwards</em></td>
+            <td>Jan 9</td>
+            <td>Louisville, KY</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>20</td>
+            <td>Gunshot</td>
+            <td>Shot at Fern Valley Hotel after a sexual encounter; suspect became violent upon learning victim was transgender.</td>
+            <td>No</td>
+            <td>Henry Richard Gleaves II</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>Male</td>
+            <td>20</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — Second-degree manslaughter, 7 years + tampering with evidence, 5 years consecutive (2016)</td>
+            <td><span class="bias-tag suspected">Suspected</span></td>
+            <td><a href="https://www.buzzfeednews.com/article/dominicholden/evidence-contradicts-police-account-of-possible-anti-transge" target="_blank">BuzzFeed News</a><br><a href="https://www.wdrb.com/news/trial-begins-in-2015-murder-of-louisville-transgender-victim/article_1f24b6ae-1bba-5cd6-9667-d3cf842cf348.html" target="_blank">WDRB</a></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><strong>Lamia Beard</strong></td>
+            <td>Jan 17</td>
+            <td>Norfolk, VA</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>30</td>
+            <td>Gunshot</td>
+            <td>Found on a sidewalk with a gunshot wound after a 911 call at 4 a.m.; may be linked to a second nearby shooting.</td>
+            <td>No</td>
+            <td>Unknown</td>
+            <td><span class="race-tag unknown">Unknown</span></td>
+            <td>Unknown</td>
+            <td>—</td>
+            <td class="unsolved">Unsolved</td>
+            <td>No arrest; case open</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.advocate.com/politics/transgender/2015/01/23/trans-woman-killed-virginia-media-again-misgenders-her" target="_blank">The Advocate</a></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><strong>Ty Underwood</strong></td>
+            <td>Jan 26</td>
+            <td>Tyler, TX</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>24</td>
+            <td>Gunshot</td>
+            <td>Shot while sitting in her vehicle; suspect was a former dating partner who had expressed jealousy and rage.</td>
+            <td>No</td>
+            <td>Carlton Ray Champion Jr.</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>Male</td>
+            <td>21</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — 1st degree murder, life sentence (Dec 2015)</td>
+            <td><span class="bias-tag no-evidence">No Evidence</span></td>
+            <td><a href="https://tylerpaper.com/2015/12/17/champion-found-guilty-in-january-murder-of-ty-underwood/" target="_blank">Tyler Morning Telegraph</a><br><a href="https://people.com/crime/carlton-champion-jr-charged-with-murder-of-ty-underwood/" target="_blank">People</a></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><strong>Yazmin Vash Payne</strong></td>
+            <td>Jan 31</td>
+            <td>Van Nuys, CA</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>33</td>
+            <td>Stabbing / Arson</td>
+            <td>Stabbed by live-in partner who then set the apartment on fire; suspect turned himself in the next day and confessed.</td>
+            <td>No</td>
+            <td>Ezekiel Dear</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>Male</td>
+            <td>25</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — Voluntary manslaughter + arson, 12 years 8 months</td>
+            <td><span class="bias-tag no-evidence">No Evidence</span></td>
+            <td><a href="https://ktla.com/news/local-news/authorities-identify-body-of-stabbing-victim-found-after-van-nuys-apartment-fire/" target="_blank">KTLA</a><br><a href="https://www.advocate.com/politics/transgender/2015/02/02/suspect-la-trans-womans-murder-turns-himself" target="_blank">The Advocate</a></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><strong>Taja Gabrielle DeJesus</strong></td>
+            <td>Feb 1</td>
+            <td>San Francisco, CA</td>
+            <td><span class="race-tag hispanic">Latina</span></td>
+            <td>36</td>
+            <td>Stabbing</td>
+            <td>Stabbed multiple times in a stairwell in the Bayview neighborhood; suspect found dead by suicide five days later.</td>
+            <td>No</td>
+            <td>James Hayes</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>Male</td>
+            <td>49</td>
+            <td class="deceased">Suspect Deceased</td>
+            <td>Case closed — Suspect found dead (suicide) Feb 2 (reported Feb 6)</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://archives.sfweekly.com/thesnitch/2015/02/06/suspect-in-transgender-killing-found-dead-hanging-from-a-fence" target="_blank">SF Weekly</a><br><a href="https://abc7news.com/taja-dejesus-transgender-trans-woman-killed-san-francisco/510905/" target="_blank">ABC7 Bay Area</a></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><strong>Penny Proud</strong></td>
+            <td>Feb 10</td>
+            <td>New Orleans, LA</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>21</td>
+            <td>Gunshot</td>
+            <td>Shot multiple times on the street by two men in what NOPD classified as an armed robbery.</td>
+            <td>No</td>
+            <td>Unknown (2 suspects described)</td>
+            <td><span class="race-tag unknown">Unknown</span></td>
+            <td>Male</td>
+            <td>—</td>
+            <td class="unsolved">Unsolved</td>
+            <td>No arrest; NOPD classified as robbery</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.nola.com/news/article_d4f3643e-29f9-51a6-a4d5-47fb30ef5d57.html" target="_blank">NOLA.com</a><br><a href="https://www.advocate.com/politics/transgender/2015/02/16/new-orleans-police-trans-woman-penny-proud-was-killed-robbery" target="_blank">The Advocate</a></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td><strong>Kristina Gomez Reinwald</strong><br><em>aka Kristina Grant Infiniti</em></td>
+            <td>Feb 15</td>
+            <td>Miami, FL</td>
+            <td><span class="race-tag hispanic">Latina</span></td>
+            <td>46</td>
+            <td>Under investigation</td>
+            <td>Found dead at home; initially ruled a suicide but later reclassified as a homicide after further investigation.</td>
+            <td>No</td>
+            <td>Unknown (ex-boyfriend suspected)</td>
+            <td><span class="race-tag unknown">Unknown</span></td>
+            <td>Unknown</td>
+            <td>—</td>
+            <td class="unsolved">Unsolved</td>
+            <td>Initially ruled suicide; reclassified homicide</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.miaminewtimes.com/news/police-investigating-murder-of-kristina-grant-infiniti-eighth-trans-person-murdered-in-us-this-year-6546729" target="_blank">Miami New Times</a><br><a href="https://www.nbcmiami.com/news/local/death-of-miami-transgender-woman-now-a-homicide/100355/" target="_blank">NBC Miami</a></td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><strong>Keyshia Blige</strong></td>
+            <td>Mar 7</td>
+            <td>Aurora, IL</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>33</td>
+            <td>Gunshot</td>
+            <td>Shot while driving a friend through Aurora at approximately 3 a.m.; crashed into another vehicle after being hit. Trans identity not recognized for months.</td>
+            <td>No</td>
+            <td>Unknown</td>
+            <td><span class="race-tag unknown">Unknown</span></td>
+            <td>Unknown</td>
+            <td>—</td>
+            <td class="unsolved">Unsolved</td>
+            <td>No arrest; police said "not a hate crime"</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.advocate.com/transgender/2015/08/26/number-19-trans-woman-killed-near-chicago-march" target="_blank">The Advocate</a></td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td><strong>London Chanel</strong></td>
+            <td>May 18</td>
+            <td>Philadelphia, PA</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>21</td>
+            <td>Stabbing</td>
+            <td>Found stabbed to death; suspect was an acquaintance who was later arrested and charged with murder.</td>
+            <td>No</td>
+            <td>Raheam Felton</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>Male</td>
+            <td>31</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — Third-degree murder (guilty plea), 22–44 years (Jun 2016)</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.phillymag.com/news/2015/05/19/trans-london-chanel-stabbed-philadelphia/" target="_blank">Philadelphia Magazine</a><br><a href="https://www.advocate.com/crime/2015/05/20/philadelphia-man-charged-murder-trans-woman-london-chanel" target="_blank">The Advocate</a></td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td><strong>Mercedes Williamson</strong></td>
+            <td>May 30</td>
+            <td>George County, MS</td>
+            <td><span class="race-tag white">White</span></td>
+            <td>17</td>
+            <td>Stabbing / Blunt force</td>
+            <td>Stabbed and beaten with a claw hammer by boyfriend, a Latin Kings gang member, after other members discovered she was transgender. Body buried on suspect's father's property.</td>
+            <td>No</td>
+            <td>Joshua Brandon Vallum</td>
+            <td><span class="race-tag hispanic">Hispanic</span> <span class="race-tag white">White</span><br><em style="font-size:0.68rem;color:#555">Latin Kings member; race unconfirmed in any source</em></td>
+            <td>Male</td>
+            <td>27</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — State: life w/o parole; Federal: 49 yrs hate crime (May 2017)</td>
+            <td><span class="bias-tag confirmed">Confirmed</span></td>
+            <td><a href="https://www.cbsnews.com/news/joshua-vallum-sentenced-mercedes-williamson-murder-anti-transgender-hate-crime/" target="_blank">CBS News</a><br><a href="https://www.justice.gov/archives/opa/pr/mississippi-man-pleads-guilty-hate-crime-murdering-transgender-victim-because-her-gender" target="_blank">DOJ</a><br><a href="https://www.fbi.gov/news/stories/historic-hate-crime-sentencing" target="_blank">FBI</a></td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td><strong>Jasmine Collins</strong></td>
+            <td>Jun 23</td>
+            <td>Kansas City, MO</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>33</td>
+            <td>Stabbing</td>
+            <td>Stabbed during an argument over a pair of shoes outside an apartment complex; initially misgendered in police and media reports for weeks.</td>
+            <td>No</td>
+            <td>Tia Townsel</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>Female</td>
+            <td>33</td>
+            <td class="solved">Solved</td>
+            <td>Charged — 2nd degree murder, armed criminal action</td>
+            <td><span class="bias-tag no-evidence">No Evidence</span></td>
+            <td><a href="https://www.advocate.com/transgender/2015/08/24/victim-number-18-another-trans-woman-murdered-kansas-city" target="_blank">The Advocate</a><br><a href="https://www.pghlesbian.com/2015/08/another-twoc-murdered-in-kansas-city-missouri-sayhername-jasmine-collins/" target="_blank">PGH Lesbian</a></td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td><strong>India Clarke</strong></td>
+            <td>Jul 21</td>
+            <td>Tampa, FL</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>25</td>
+            <td>Gunshot</td>
+            <td>Found shot in the head near a playground in a Tampa park; a rented car with DNA evidence was found nearby. Keith Gaillard was charged but acquitted at trial in 2021.</td>
+            <td>No</td>
+            <td>Unknown</td>
+            <td><span class="race-tag unknown">Unknown</span></td>
+            <td>Unknown</td>
+            <td>—</td>
+            <td class="unsolved">Unsolved</td>
+            <td>Keith Gaillard arrested 2015; acquitted at trial Mar 2021. Case effectively unsolved.</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.fox13news.com/news/man-found-not-guilty-of-murdering-transgender-woman-in-tampa-park-faces-unrelated-homicide-charge" target="_blank">FOX 13 Tampa</a><br><a href="https://www.cnn.com/2016/07/07/opinions/sutter-india-clarke-transgender-murder" target="_blank">CNN</a></td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td><strong>K.C. Haggard</strong></td>
+            <td>Jul 23</td>
+            <td>Fresno, CA</td>
+            <td><span class="race-tag white">White</span></td>
+            <td>66</td>
+            <td>Stabbing</td>
+            <td>Stabbed in the neck while walking along Blackstone Avenue in the early morning; suspect pulled up in an SUV, attack partially captured on surveillance video. Police believed suspect was seeking a woman for sex when he encountered Haggard, who was transitioning.</td>
+            <td>No</td>
+            <td>Richard Joseph Lopez</td>
+            <td><span class="race-tag hispanic">Hispanic</span></td>
+            <td>Male</td>
+            <td>37</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — Voluntary manslaughter (no contest plea), 23 years (Jun 2019); 11 yrs doubled for prior strike + 1 yr knife enhancement</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.lgbtqfresno.com/police-arrest-suspect-in-brutal-2015-slaying-of-casey-haggard/" target="_blank">LGBTQ Fresno</a><br><a href="https://www.yourcentralvalley.com/news/brother-of-transgender-murder-victim-says-suspects-capture-is-beginning-of-closure/" target="_blank">YourCentralValley</a></td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td><strong>Shade Schuler</strong></td>
+            <td>~Jul 29 (found)</td>
+            <td>Dallas, TX</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>22</td>
+            <td>Undetermined (decomposed)</td>
+            <td>Decomposed body found in a field in Dallas; took approximately two weeks to identify the remains. No suspect identified.</td>
+            <td>No</td>
+            <td>Unknown</td>
+            <td><span class="race-tag unknown">Unknown</span></td>
+            <td>Unknown</td>
+            <td>—</td>
+            <td class="unsolved">Unsolved</td>
+            <td>No arrest; body found in field, took 2 weeks to ID</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.buzzfeednews.com/article/dominicholden/transgender-person-of-color-killed-in-dallas" target="_blank">BuzzFeed News</a><br><a href="https://dallasvoice.com/trans-woman-murdered-dallas/" target="_blank">Dallas Voice</a></td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td><strong>Amber Monroe</strong></td>
+            <td>Aug 8</td>
+            <td>Detroit, MI</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>20</td>
+            <td>Gunshot</td>
+            <td>Shot near Palmer Park in Detroit, the second transgender woman killed in that area in 2015. No arrest made.</td>
+            <td>No</td>
+            <td>Unknown</td>
+            <td><span class="race-tag unknown">Unknown</span></td>
+            <td>Unknown</td>
+            <td>—</td>
+            <td class="unsolved">Unsolved</td>
+            <td>No arrest; 2nd trans woman killed near Palmer Park</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.advocate.com/transgender/2015/08/10/victim-number-12-detroit-trans-woman-found-murdered" target="_blank">The Advocate</a><br><a href="https://www.detroitnews.com/story/news/local/wayne-county/2015/08/09/amber-monroe-transgender-woman-killed-detroit/31376357/" target="_blank">Detroit News</a></td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td><strong>Ashton O'Hara</strong></td>
+            <td>~Jul 14 (found)</td>
+            <td>Detroit, MI</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>25</td>
+            <td>Undetermined</td>
+            <td>Found dead in Detroit; death was not initially reported as a transgender homicide. Suspect arrested and charged with first-degree murder.</td>
+            <td>No</td>
+            <td>Larry Gaulding</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>Male</td>
+            <td>38</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — Voluntary manslaughter, 30–60 years + tampering with evidence, 10 years (Jan 2016). Judge exceeded 15-year sentencing guidelines.</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.buzzfeednews.com/article/davidmack/detroit-police-plan-lgbt-outreach-after-another-trans-murder" target="_blank">BuzzFeed News</a><br><a href="https://equalitymi.org/ashton-oharas-murderer-sentenced-to-30-60-years/" target="_blank">Equality Michigan</a></td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td><strong>Kandis Capri</strong></td>
+            <td>Aug 11</td>
+            <td>Phoenix, AZ</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>35</td>
+            <td>Gunshot</td>
+            <td>Shot outside an apartment after leaving to check on a towed rental car; mother reported a possible domestic dispute with housemate.</td>
+            <td>No</td>
+            <td>Unknown</td>
+            <td><span class="race-tag unknown">Unknown</span></td>
+            <td>Unknown</td>
+            <td>—</td>
+            <td class="unsolved">Unsolved</td>
+            <td>No arrest; possible domestic dispute per reports</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.phoenixnewtimes.com/news/phoenix-police-release-video-lead-in-murder-of-transgender-woman-7734638" target="_blank">Phoenix New Times</a><br><a href="https://www.12news.com/article/news/local/valley/person-of-interest-sought-in-murder-of-phoenix-transgender-woman/75-29073851" target="_blank">12 News</a></td>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td><strong>Elisha Walker</strong></td>
+            <td>~Oct 2014 (found Aug 13, 2015)</td>
+            <td>Rowan County, NC</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>20</td>
+            <td>Undetermined (skeletal)</td>
+            <td>Missing since October 2014; skeletal remains found in a shallow grave near suspect's home in August 2015. Suspect was a Latin Kings member.</td>
+            <td>No</td>
+            <td>Angel Dejesus Arias</td>
+            <td><span class="race-tag hispanic">Hispanic</span></td>
+            <td>Male</td>
+            <td>23</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — 2nd degree murder (guilty plea), 19–24 years (Jun 2017)</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.salisburypost.com/2017/06/13/angel-arias-pleads-guilty-second-degree-murder-death-elisha-walker/" target="_blank">Salisbury Post</a><br><a href="https://www.advocate.com/television/2017/9/12/true-crime-show-grave-mysteries-features-texas-trans-womans-murder" target="_blank">The Advocate</a></td>
+          </tr>
+          <tr>
+            <td>19</td>
+            <td><strong>Tamara Dominguez</strong></td>
+            <td>Aug 15</td>
+            <td>Kansas City, MO</td>
+            <td><span class="race-tag hispanic">Latina</span></td>
+            <td>36</td>
+            <td>Vehicular (run over repeatedly)</td>
+            <td>Struck repeatedly by a black Chevrolet Avalanche in a parking lot behind 4233 Independence Ave. at 3 a.m. after exiting the vehicle; driver stopped, backed over victim, then drove forward over victim again before fleeing. Suspect's sister later revealed he confided he'd hit someone with his car, claiming self-defense.</td>
+            <td>No</td>
+            <td>Luis Miguel Sanchez</td>
+            <td><span class="race-tag hispanic">Hispanic</span></td>
+            <td>Male</td>
+            <td>27</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — Found guilty Dec 2018, sentenced 18 years. Charged Murder 1st Degree; arrested in Colorado May 2016 as fugitive; extradited to Jackson County</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.kcur.org/post/wake-murders-transgender-people-feel-theres-bulls-eye-them-kansas-city" target="_blank">KCUR</a><br><a href="https://northeastnews.net/pages/murder-suspect-awaits-extradition-in-colorado/" target="_blank">Northeast News</a></td>
+          </tr>
+          <tr>
+            <td>20</td>
+            <td><strong>Kiesha Jenkins</strong></td>
+            <td>Oct 6</td>
+            <td>Philadelphia, PA</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>22</td>
+            <td>Gunshot (beaten then shot)</td>
+            <td>Beaten by a group of 5–6 men after exiting a car at 2:30 a.m., then shot. Police investigated as robbery, not a hate crime. BLM Philadelphia stated Jenkins was "killed by other members of the Black community," though police never identified the attackers by race and 3 of 4 suspects were never publicly identified.</td>
+            <td>No</td>
+            <td>Pedro Redding</td>
+            <td><span class="race-tag hispanic">Hispanic</span> <span class="race-tag white">White</span><br><em style="font-size:0.68rem;color:#555">Race unconfirmed in any source</em></td>
+            <td>Male</td>
+            <td>24</td>
+            <td class="solved">Solved</td>
+            <td>Arrested — Charged murder, conspiracy, weapons; 5–6 assailants</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://whyy.org/articles/kiesha-jenkins-murder-not-a-hate-crime-yet-transgender-women-are-targets/" target="_blank">WHYY</a><br><a href="https://www.cbsnews.com/news/man-arrested-in-murder-of-transgender-philadelphia-woman/" target="_blank">CBS News</a><br><a href="https://blmphilly.com/news/statements/2015-statements/statement-on-keisha-jenkins/" target="_blank">BLM Philly</a></td>
+          </tr>
+          <tr>
+            <td>21</td>
+            <td><strong>Zella Ziona</strong></td>
+            <td>Oct 15</td>
+            <td>Montgomery Village, MD</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>21</td>
+            <td>Gunshot</td>
+            <td>Shot multiple times in a shopping center alley; suspect lured victim into an ambush. Prosecutors initially attributed motive to embarrassment but later determined it was a gang turf dispute.</td>
+            <td>No</td>
+            <td>Rico LeBlond</td>
+            <td><span class="race-tag black">Black</span></td>
+            <td>Male</td>
+            <td>20</td>
+            <td class="solved">Solved</td>
+            <td>Convicted — 1st degree murder (guilty plea Aug 2020), 35 years + 5 years probation (Sep 2020). 1st trial: hung jury Jan 2017; 2nd trial: convicted, life sentence Jul 2017; conviction overturned on appeal Feb 2019; plea deal at family's request.</td>
+            <td><span class="bias-tag unknown">Unknown</span></td>
+            <td><a href="https://www.fox5dc.com/news/montgomery-county-gang-member-found-guilty-in-killing-of-transgender-woman" target="_blank">FOX 5 DC</a><br><a href="https://www.nbcwashington.com/news/man-sentenced-to-35-years-in-murder-of-transgender-woman/2419492/" target="_blank">NBC Washington</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note"><strong>Table Notes:</strong> "Solved" = at least one arrest made. Suspect race verified from mugshot or explicit police/media racial identification where available. Pedro Redding and Joshua Vallum are dual-classified as Hispanic and White: no public source has ever explicitly identified either individual's race. Redding's Hispanic classification is inferred from his first name; Vallum's from his Latin Kings gang membership (described as "the largest Hispanic gang in the US"). Both are White-presenting in booking photographs. They are counted in both categories in all charts. Bias Motive: "Confirmed" = hate crime charges filed or explicit LE determination; "Suspected" = evidence of anti-trans animus without formal charges; "No Evidence" = documented alternative motive (IPV, dispute); "Unknown" = insufficient information. All 21 cases have Police-Involved = No. Suspect Gender: 12 of 13 identified suspects are male, 1 is female (Tia Townsel). Source column links to local news or court records; HRC links excluded per methodology.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="section-number">Section IV</span>Analysis &amp; Key Findings</h2>
+
+    <h3>Victim Demographics</h3>
+    <p>Of 21 victims, 16 (76.2%) were Black, 3 (14.3%) were Latina, and 2 (9.5%) were White. All 21 victims were transgender women or transfeminine individuals; Ashton O'Hara was described as gender-fluid. The mean victim age was 27.7 years (range: 17–66), with 17 of 21 victims (81%) under age 36. The youngest victim, Mercedes Williamson, was 17; the oldest, K.C. Haggard, was 66.</p>
+
+    <h3>Suspect Demographics</h3>
+    <p>Thirteen of 21 cases (62%) resulted in at least one arrest. Among the 13 identified suspects, 8 were Black (61.5%), 5 were classified as Hispanic (38.5%), and 2 of those 5 were also classified as White. The dual classification applies to Pedro Redding and Joshua Vallum: no news source, police statement, court document, or law enforcement communication has ever explicitly identified the race or ethnicity of either individual. Redding's Hispanic classification is inferred from his first name; Vallum's from his membership in the Latin Kings, described by the International Business Times as "the largest Hispanic gang in the US." Both suspects are White-presenting in their booking photographs. BLM Philadelphia stated that Jenkins was "killed by other members of the Black community," though Philadelphia police never described the attackers by race. Twelve of 13 identified suspects were male (92.3%); one suspect (Tia Townsel) was female. The mean suspect age (where known) was 28.5 years.</p>
+
+    <h3>Case Outcomes</h3>
+    <p>Of the 13 cases with arrests: 2 resulted in murder convictions at trial (Champion—life; Vallum—life state + 49 years federal hate crime); 1 resulted in a first-degree murder guilty plea after two failed trials (LeBlond—35 years); 1 resulted in a second-degree murder guilty plea (Arias—19–24 years); 1 resulted in a third-degree murder guilty plea (Felton—22–44 years); 4 resulted in voluntary/second-degree manslaughter convictions (Gleaves—7+5 years; Dear—12 years 8 months; Gaulding—30–60+10 years; Lopez—23 years); 1 suspect died by suicide (Hayes); 1 was convicted of murder at trial (Sanchez—18 years); and 2 cases had dispositions not publicly confirmed through available records (Townsel, Redding). Eight cases (38.1%) remained unsolved with no arrest as of 2025, including the India Clarke case where suspect Keith Gaillard was acquitted at trial in 2021.</p>
+
+    <h3>Bias Motive Analysis</h3>
+    <p>Only one case received a formal hate crime designation: the Vallum prosecution for Mercedes Williamson's murder, which became the first federal hate crime conviction for anti-transgender violence. One additional case showed strong indicators of anti-transgender bias—Gleaves killed Papi Edwards after a sexual encounter in what witnesses described as a trans panic reaction. Prosecutors initially attributed the Zella Ziona killing to LeBlond's embarrassment over his association with a transgender woman, but later amended their theory to a gang turf dispute; the bias classification for that case is accordingly uncertain. Three cases had documented non-bias motives: intimate partner violence (Champion/Underwood, Dear/Payne) and a personal dispute (Townsel/Collins). The remaining 16 cases lacked sufficient information to classify motive—8 because they were unsolved, and 8 because the arrest record did not establish a clear motive.</p>
+
+    <h3>Method of Killing</h3>
+    <p>Firearms were the most common method, used in 10 of 21 cases (47.6%). Stabbing accounted for 6 cases (28.6%). One victim (Tamara Dominguez) was killed by vehicular assault. Four cases had undetermined cause of death due to the condition of the remains or incomplete reporting. This firearm proportion is consistent with national homicide trends but notably lower than the overall U.S. firearm homicide percentage (~73% in 2015), possibly reflecting the interpersonal nature of many of these killings.</p>
+
+    <h3>Landmark: United States v. Vallum</h3>
+    <p>The prosecution of Joshua Brandon Vallum for the murder of Mercedes Williamson represents a watershed moment in federal civil rights enforcement. Vallum, a member of the Latin Kings gang, killed Williamson—his girlfriend—when fellow gang members discovered she was transgender, as the gang prohibits homosexual activity. He was convicted in Mississippi state court (life without parole, December 2015) and subsequently prosecuted under the Hate Crimes Prevention Act, receiving a 49-year federal sentence in May 2017. Prosecutors opted not to seek life on the federal charge given Vallum's documented childhood abuse. This remains the first and, at the time, only federal hate crime conviction specifically for anti-transgender violence.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="section-number">Section V</span>Methodology</h2>
+    <div class="methodology">
+      <p><strong>Victim Identification:</strong> The 21 victims were identified from the HRC's 2015 report "Addressing Anti-Transgender Violence." HRC's list was cross-referenced with GLAAD's Transgender Day of Remembrance memorial page, the Transgender Violence Tracking Portal, and media compilations published by The Advocate, BuzzFeed News, The Guardian, and the Daily Dot.</p>
+
+      <p><strong>Case Research Protocol:</strong> For each victim, a minimum of two separate searches were conducted: (1) an incident-level search for the initial homicide report, and (2) an outcome-level search for arrest, charging, trial, and conviction information through 2025. Sources included local newspaper archives, television news stations, court record databases, and federal Department of Justice press releases.</p>
+
+      <p><strong>Suspect Race Verification:</strong> Suspect race was coded based on: (a) booking mugshot photographs, (b) explicit racial identification in police press releases or media reports, or (c) federal court documents (as in the Vallum case). Racial identification was not inferred from surnames alone. Where none of these sources were available, race was coded as "Unknown." In two cases (Pedro Redding and Joshua Vallum), no public source—including police statements, news coverage, DOJ and FBI press releases, and court records—ever explicitly identified the suspect's race or ethnicity. Both suspects are White-presenting in booking photographs but have contextual indicators of Hispanic ethnicity (Redding: first name; Vallum: Latin Kings gang membership). An exhaustive search of more than 40 sources confirmed the absence of explicit racial identification for both. To avoid undercounting or overcounting, both are dual-classified as Hispanic and White and counted in both categories in all charts.</p>
+
+      <p><strong>Bias Motive Coding:</strong> A four-level classification was used: "Confirmed" required formal hate crime charges or an explicit law enforcement statement establishing anti-transgender bias as a motive; "Suspected" required documented evidence of anti-transgender animus (e.g., trans panic reaction, embarrassment about victim's gender identity) without formal hate crime charges; "No Evidence" required a documented alternative motive (intimate partner violence, personal dispute, robbery) with no indicators of bias; "Unknown" was assigned when insufficient information existed to classify motive, including all unsolved cases.</p>
+
+      <p><strong>Police-Involved Exclusions:</strong> HRC's 2015 report did not include two police-involved deaths of transgender people that year. In both cases, the decedents used vehicles as weapons against law enforcement officers, and both shootings were ruled legally justified:</p>
+      <ul style="margin:12px 0 12px 24px; max-width:780px; font-size:0.95rem; line-height:1.7;">
+        <li><strong>Jessie Hernandez</strong> (January 26, 2015, Denver): Hernandez, 17, drove a stolen vehicle toward Denver police officers in an alleyway, striking one officer. Officers Gabriel Jordan and Daniel Greene fired into the vehicle, killing Hernandez. Denver DA Mitch Morrissey ruled the shooting legally justified on June 5, 2015. The DPD Use of Force Review Board unanimously cleared the officers, and the DOJ Civil Rights Division declined to open an investigation. Denver subsequently changed its policy on shooting at moving vehicles and paid a $1 million settlement. (<a href="https://www.denver7.com/news/local-news/dpd-finds-officers-followed-department-policy-in-2015-shooting-of-teen" target="_blank">Denver7</a>)</li>
+        <li><strong>Mya Hall</strong> (March 30, 2015, Fort Meade, MD): Hall, 27, drove a stolen SUV past NSA security gates, ignored officers' commands, and accelerated toward a police vehicle. NSA police opened fire, killing Hall. U.S. Attorney Rod Rosenstein concluded on June 23, 2015, that "there was no crime committed by the officers" and that video showed Hall "racing toward the officer who fired at the vehicle." (<a href="https://www.theguardian.com/us-news/2015/jun/24/nsa-police-no-charges-shooting-death-of-man" target="_blank">The Guardian</a>)</li>
+      </ul>
+      <p>Notably, while HRC excluded these two justified police shootings from its 2015 count of 21 victims, the organization began including police-involved deaths in subsequent years' reports, which had the effect of increasing annual victim tallies. This methodological shift—counting deaths in which officers were exonerated alongside civilian-perpetrated murders—represents an expansion of scope that is not applied consistently across reporting years. This analysis follows HRC's 2015 methodology and excludes both cases. The Police-Involved column is included as a mandatory field and is coded "No" for all 21 cases.</p>
+
+      <p><strong>Limitations:</strong> HRC's data likely undercounts actual transgender homicides due to misgendering by police and media, non-reporting, and delayed identification of victims' transgender status (as demonstrated by the Jasmine Collins and Keyshia Blige cases, which were not initially recognized as transgender victims). Suspect demographics reflect only solved cases and are not generalizable to the full population of perpetrators. Bias motive classification is inherently conservative, as many unsolved cases may involve anti-transgender bias that cannot be documented. Outcome data for some charged suspects could not be confirmed through publicly available records.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2><span class="section-number">Section VI</span>Principal Sources</h2>
+    <p>Human Rights Campaign (2015). <em>Addressing Anti-Transgender Violence: Exploring Realities, Challenges and Solutions.</em> Washington, DC: HRC Foundation.</p>
+    <p>U.S. Department of Justice (2017). Press Release: "Joshua Brandon Vallum Sentenced to 49 Years in Federal Prison for Hate Crime." Case No. 1:16-CR-00071.</p>
+    <p>Federal Bureau of Investigation (2017). "<a href="https://www.fbi.gov/news/stories/historic-hate-crime-sentencing" target="_blank">Historic Hate Crime Sentencing</a>." FBI News Stories. [Identifies Vallum as Latin Kings member, local enforcer, and national secretary.]</p>
+    <p>GLAAD (2015). "Transgender Day of Remembrance: In Memoriam." Accessed via glaad.org/tdor-memoriam.</p>
+    <p>Local news sources consulted include: WHAS11 (Louisville), Virginian-Pilot (Norfolk), Tyler Morning Telegraph, KLTV, KTLA, SF Chronicle, SF Weekly, NOLA.com, Miami New Times, NBC Miami, Chicago Tribune, The Guardian (UK), NBC Philadelphia, Tampa Bay Times, FOX 13 Tampa, CNN, Colorlines, KSFN-TV (Fresno), BuzzFeed News, The Advocate, Pittsburgh Lesbian Correspondents, KCUR (Kansas City), KCTV (Kansas City), Northeast News (Kansas City), LGBTQ Fresno, YourCentralValley.com, Philadelphia Magazine, Philadelphia Inquirer, CBS News, ABC News, WHYY, Sun Herald (Mississippi), People, Dallas Voice, Phoenix New Times, 12 News (Phoenix), Salisbury Post, FOX 5 DC, NBC Washington, and Detroit News.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    Data: Human Rights Campaign &middot; Case details: Local news &amp; court records through 2025
+  </div>
+</footer>
+
+<script>
+Chart.defaults.font.family = "'Source Sans 3', 'Helvetica Neue', Arial, sans-serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.color = '#555';
+Chart.defaults.plugins.legend.display = false;
+
+const barOpts = () => ({
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    title: { display: false },
+    tooltip: {
+      backgroundColor: '#2C2218',
+      titleFont: { weight: '600' },
+      callbacks: { label: ctx => `${ctx.dataset.label || ''}: ${ctx.parsed.y}` }
+    }
+  },
+  scales: {
+    y: { beginAtZero: true, ticks: { stepSize: 1, precision: 0 }, grid: { color: '#EEEAE4' } },
+    x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+  }
+});
+
+new Chart(document.getElementById('chartSuspectRace'), {
+  type: 'bar',
+  data: {
+    labels: ['Black', 'Hispanic', 'White'],
+    datasets: [{ data: [8, 5, 2], backgroundColor: ['#000000', '#8B4513', '#4169E1'], borderRadius: 3, barThickness: 60 }]
+  },
+  options: barOpts()
+});
+
+new Chart(document.getElementById('chartVictimRace'), {
+  type: 'bar',
+  data: {
+    labels: ['Black', 'Latina', 'White'],
+    datasets: [{ data: [16, 3, 2], backgroundColor: ['#000000', '#8B4513', '#4169E1'], borderRadius: 3, barThickness: 60 }]
+  },
+  options: barOpts()
+});
+
+new Chart(document.getElementById('chartPairings'), {
+  type: 'bar',
+  data: {
+    labels: ['Black → Black', 'Hispanic → Latina', 'Hispanic → Black', 'Hispanic → White', 'Black → Latina', 'White → Black', 'White → White'],
+    datasets: [{ data: [7, 1, 2, 2, 1, 1, 1], backgroundColor: ['#2E7D32', '#2E7D32', '#B71C1C', '#B71C1C', '#B71C1C', '#B71C1C', '#2E7D32'], borderRadius: 3, barThickness: 48 }]
+  },
+  options: barOpts()
+});
+
+new Chart(document.getElementById('chartSolvedUnsolved'), {
+  type: 'bar',
+  data: {
+    labels: ['Black\n(n=16)', 'Latina\n(n=3)', 'White\n(n=2)'],
+    datasets: [
+      { label: 'Arrest Made', data: [9, 2, 2], backgroundColor: '#2E7D32', borderRadius: 3 },
+      { label: 'Unsolved', data: [7, 1, 0], backgroundColor: '#B71C1C', borderRadius: 3 }
+    ]
+  },
+  options: { ...barOpts(), plugins: { ...barOpts().plugins, legend: { display: true, position: 'top', labels: { boxWidth: 14, padding: 16 } } } }
+});
+
+new Chart(document.getElementById('chartBiasMotive'), {
+  type: 'bar',
+  data: {
+    labels: ['Confirmed\nBias', 'Suspected\nBias', 'No Evidence\nof Bias', 'Unknown'],
+    datasets: [{ data: [1, 1, 3, 16], backgroundColor: ['#B71C1C', '#E65100', '#1565C0', '#757575'], borderRadius: 3, barThickness: 50 }]
+  },
+  options: barOpts()
+});
+
+new Chart(document.getElementById('chartBiasSuspect'), {
+  type: 'bar',
+  data: {
+    labels: ['Black Suspects\n(n=8)', 'Hispanic Suspects\n(n=5)', 'White Suspects\n(n=2)'],
+    datasets: [
+      { label: 'Confirmed Bias', data: [0, 1, 1], backgroundColor: '#B71C1C', borderRadius: 3 },
+      { label: 'Suspected Bias', data: [1, 0, 0], backgroundColor: '#E65100', borderRadius: 3 },
+      { label: 'No Evidence', data: [3, 0, 0], backgroundColor: '#1565C0', borderRadius: 3 },
+      { label: 'Unknown', data: [4, 4, 1], backgroundColor: '#757575', borderRadius: 3 }
+    ]
+  },
+  options: { ...barOpts(), plugins: { ...barOpts().plugins, legend: { display: true, position: 'top', labels: { boxWidth: 14, padding: 12, font: { size: 10 } } } } }
+});
+</script>
+
+</body>
+</html>

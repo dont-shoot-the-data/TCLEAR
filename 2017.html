@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2017 Fatal Violence Against Transgender People — Case-Level Analysis</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f7f7f5;
+  --surface2: #eeeee9;
+  --border: #d4d4cd;
+  --text: #2c2c2c;
+  --text-muted: #666;
+  --accent: #8b6914;
+  --accent2: #c0392b;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+header {
+  padding: 80px 0 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+header .subtitle {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 720px;
+  font-weight: 300;
+}
+header .source-note {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  border-left: 3px solid var(--accent);
+  padding-left: 12px;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 56px;
+}
+.stat-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px 24px;
+  text-align: center;
+}
+.stat-box .number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #1a1a1a;
+}
+.stat-box .label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+.stat-box.highlight { border-color: var(--accent); }
+.stat-box.highlight .number { color: var(--accent); }
+.stat-box.alert { border-color: var(--accent2); }
+.stat-box.alert .number { color: var(--accent2); }
+
+section { margin-bottom: 64px; }
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #1a1a1a;
+}
+section .section-desc {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  max-width: 700px;
+}
+
+.chart-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 32px;
+  margin-bottom: 32px;
+}
+.chart-wrap canvas { max-height: 380px; height: 380px; }
+
+.methodology {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 32px;
+  margin-bottom: 56px;
+}
+.methodology h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+}
+.methodology p, .methodology li {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+.methodology ul { padding-left: 20px; }
+
+.table-container {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 32px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  min-width: 1600px;
+}
+thead {
+  background: var(--surface2);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+th {
+  padding: 12px 10px;
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.7rem;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  white-space: nowrap;
+}
+td {
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  vertical-align: top;
+}
+tr:hover td { background: rgba(139,105,20,0.06); }
+td a { color: var(--accent); text-decoration: none; }
+td a:hover { text-decoration: underline; }
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.badge-solved { background: rgba(76,175,80,0.15); color: #66bb6a; }
+.badge-unsolved { background: rgba(244,67,54,0.15); color: #ef5350; }
+.badge-police { background: rgba(33,150,243,0.15); color: #42a5f5; }
+.badge-dismissed { background: rgba(255,152,0,0.15); color: #ffa726; }
+.badge-nobilled { background: rgba(156,39,176,0.15); color: #ab47bc; }
+.badge-acquitted { background: rgba(255,152,0,0.15); color: #e65100; }
+.summary-cell { font-size: 0.8rem; min-width: 220px; max-width: 320px; line-height: 1.4; color: var(--text-muted); }
+
+footer {
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Fatal Violence Against Transgender People, 2017</h1>
+  <p class="subtitle">A case-level analysis of 28 documented homicides and police killings of transgender and gender non-conforming people in the United States, 2017.</p>
+  <p class="source-note"><strong>Primary reference:</strong> <a href="https://assets2.hrc.org/files/assets/resources/A_Time_To_Act_2017_REV3.pdf" target="_blank" rel="noopener" style="color: var(--accent);">Human Rights Campaign — <em>A Time to Act: Fatal Violence Against Transgender People in America, 2017</em> (PDF) ↗</a><br>
+  Victim list follows the 25 cases documented in the HRC report, plus 3 additional victims identified after publication (cases #26–28). All case details, suspect information, and dispositions independently verified through local news sources cited per case.</p>
+</header>
+
+<div class="stat-grid">
+  <div class="stat-box highlight">
+    <div class="number">28</div>
+    <div class="label">Total Victims Documented</div>
+  </div>
+  <div class="stat-box">
+    <div class="number">17</div>
+    <div class="label">Suspects Identified</div>
+  </div>
+  <div class="stat-box alert">
+    <div class="number">8</div>
+    <div class="label">Cases Unsolved</div>
+  </div>
+  <div class="stat-box">
+    <div class="number">75%</div>
+    <div class="label">Killed by Firearm</div>
+  </div>
+</div>
+
+<div class="methodology">
+  <h3>Methodology &amp; Coding Notes</h3>
+  <ul>
+    <li><strong>Victim list:</strong> Cases #1–25 follow the order documented in the HRC report <em>A Time to Act</em> (November 2017). Cases #26–28 (Brooklyn BreYanna Stevenson, Brandi Seals, Jaylow McGlory) were identified after the report's publication. Total: 28 verified cases.</li>
+    <li><strong>Solve rate:</strong> Of 25 non-police cases, 16 have identified suspects (64% clearance rate). Three suspects were acquitted: Tyrone Kemp (TeeTee Dangerfield case), Doris Carrasquillo (Kashmire Redd case, self-defense), and Desmond Harris (Jaylow McGlory case, self-defense). Two cases had charges dismissed: Kenne McFadden — Mark Daniel Lewis (double jeopardy) and Ava Le'Ray Barrin — Jalen Breon Brown (self-defense immunity, May 2018). One suspect was no-billed by grand jury (Gwynevere River Song — Robert Wayne Mosher, self-defense). An arrest warrant was issued for Leonard Ward in the Ciara McElveen case (July 2018), but it is unclear whether Ward was taken into custody.</li>
+    <li><strong>Suspect race verification:</strong> All race codings verified from mugshot photos, explicit news descriptions, or court records — never inferred from surnames alone.</li>
+    <li><strong>Bias motive coding:</strong> "Confirmed" = hate crime charges filed OR explicit anti-trans motive stated by police/prosecutors. "Suspected" = evidence of possible anti-trans animus but no formal hate-crime charge. "No Evidence" = documented IPV, robbery, family dispute, or other non-bias motive. "Unknown" = insufficient information or unsolved case with no known motive.</li>
+    <li><strong>Weapon categories:</strong> "Firearm" includes all shootings including by police. "Stabbing" includes knife/sharp instrument. "Other" includes blunt force trauma, drowning, and burns.</li>
+    <li><strong>Note on Gwynevere River Song:</strong> Shot by father Robert Wayne Mosher during a family dispute at their home. Grand jury declined to indict (no-billed), reportedly based on self-defense claim. Counted as identified suspect but excluded from solve-rate statistics.</li>
+    <li><strong>Note on Kenne McFadden:</strong> Mark Daniel Lewis was indicted for manslaughter after admitting he pushed McFadden into the San Antonio River. Prosecutors presented all evidence at a probation revocation hearing; the judge ruled the conduct was not criminal, and due to double jeopardy the case could not proceed to a criminal trial. Counted as "Charges Dismissed."</li>
+    <li><strong>Note on TeeTee Dangerfield:</strong> Tyrone Kemp was charged with malice murder but acquitted by a jury in November 2021. Because Kemp was cleared, the case is counted as unsolved — the actual killer has not been identified.</li>
+    <li><strong>Note on Ava Le'Ray Barrin:</strong> Jalen Breon Brown was charged with murder and aggravated assault. In May 2018, Judge Eric Norris granted a self-defense immunity motion and dismissed all charges. Counted as "Charges Dismissed."</li>
+    <li><strong>Note on Kashmire Nazier Redd:</strong> Doris Carrasquillo was charged with first-degree manslaughter but cleared by a jury that found she acted in self-defense.</li>
+  </ul>
+</div>
+
+<section>
+  <h2>Chart 1: Identified Suspects by Race</h2>
+  <p class="section-desc">Race of identified suspects in solved cases. Includes Kenne McFadden (dismissed), Ava Le'Ray Barrin (dismissed, self-defense), Kashmire Redd (acquitted, self-defense), Jaylow McGlory (acquitted, self-defense), and Gwynevere River Song (no-billed) suspects. Police officers excluded.</p>
+  <div class="chart-wrap"><canvas id="chart1"></canvas></div>
+</section>
+
+<section>
+  <h2>Chart 2: Victims by Race</h2>
+  <p class="section-desc">Racial demographics of all 28 documented victims.</p>
+  <div class="chart-wrap"><canvas id="chart2"></canvas></div>
+</section>
+
+<section>
+  <h2>Chart 3: Suspect → Victim Race Pairings</h2>
+  <p class="section-desc">Specific suspect-to-victim race pairings in cases with identified suspects. Green = intraracial; Red = interracial.</p>
+  <div class="chart-wrap"><canvas id="chart3"></canvas></div>
+</section>
+
+<section>
+  <h2>Chart 4: Solved vs. Unsolved by Victim Race</h2>
+  <p class="section-desc">Case clearance status by victim's race. Police killings excluded.</p>
+  <div class="chart-wrap"><canvas id="chart4"></canvas></div>
+</section>
+
+<section>
+  <h2>Chart 5: Bias Motive Coding</h2>
+  <p class="section-desc">Distribution of bias motive assessments across all 28 cases.</p>
+  <div class="chart-wrap"><canvas id="chart5"></canvas></div>
+</section>
+
+<section>
+  <h2>Chart 6: Bias Motive by Suspect Race (Solved Cases Only)</h2>
+  <p class="section-desc">Bias motive coding for cases with identified suspects, by suspect's race. No "unknown race" category.</p>
+  <div class="chart-wrap"><canvas id="chart6"></canvas></div>
+</section>
+
+<section>
+  <h2>Complete Case Table — 2017</h2>
+  <p class="section-desc">All 28 documented cases with 15 columns. Scroll horizontally for all data. Source links open in new tabs.</p>
+  <div class="table-container">
+    <table id="caseTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Victim Name</th>
+          <th>Age</th>
+          <th>Victim Race</th>
+          <th>Victim Gender Identity</th>
+          <th>Date of Death</th>
+          <th>City, State</th>
+          <th>Cause of Death</th>
+          <th>Case Summary</th>
+          <th>Suspect Name</th>
+          <th>Suspect Race</th>
+          <th>Suspect Gender</th>
+          <th>Case Status</th>
+          <th>Police-Involved</th>
+          <th>Bias Motive</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  <div class="container">
+    Research compiled February 2026. Primary reference: HRC, <em>A Time to Act</em> (2017).<br>
+    Case details independently verified from local news sources cited per case.<br>
+    All suspect race codings verified from mugshot photos or explicit news descriptions.
+  </div>
+</footer>
+
+<script>
+const cases = [
+  {
+    num: 1, name: "Mesha Caldwell", age: 41, vRace: "Black", gender: "Trans woman",
+    date: "Jan 4, 2017", location: "Canton, MS", cause: "Firearm",
+    summary: "Found shot to death on a rural road near Canton. A hairstylist and makeup artist beloved in the community. Case remains unsolved; FBI assisted investigation.",
+    suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
+    status: "Unsolved", police: "No", bias: "Unknown",
+    source: "https://www.wlbt.com/story/34186326/transgender-woman-shot-to-death-in-mississippi/",
+    sourceLabel: "WLBT"
+  },
+  {
+    num: 2, name: "Sean Ryan Hake", age: 23, vRace: "White", gender: "Trans man",
+    date: "Jan 6, 2017", location: "Sharon, PA", cause: "Firearm (police)",
+    summary: "Shot and killed by police officers responding to a domestic disturbance call. Officers said Hake was armed with a knife.",
+    suspect: "Police officer(s)", sRace: "N/A", sGender: "N/A",
+    status: "Police killing", police: "Yes", bias: "No Evidence",
+    source: "https://www.cbsnews.com/pittsburgh/news/sean-hake-da-news-conference-details/",
+    sourceLabel: "CBS News Pittsburgh"
+  },
+  {
+    num: 3, name: "Jamie Lee Wounded Arrow", age: 28, vRace: "Native American", gender: "Two-Spirit / Trans woman",
+    date: "Jan 6, 2017", location: "Sioux Falls, SD", cause: "Stabbing",
+    summary: "Found dead in her apartment with multiple stab wounds. Oglala Lakota tribal member. Joshua LeClaire was caught via security footage entering her apartment; he later pleaded guilty and was sentenced to 65 years.",
+    suspect: "Joshua Rayvon LeClaire", sRace: "Native American", sGender: "Male",
+    status: "Convicted (65 years)", police: "No", bias: "Unknown",
+    source: "https://www.dakotanewsnow.com/content/news/Homicide-suspect-to-face-murder-charges-410125665.html",
+    sourceLabel: "Dakota News Now"
+  },
+  {
+    num: 4, name: "JoJo Striker", age: 23, vRace: "Black", gender: "Trans woman",
+    date: "Feb 8, 2017", location: "Toledo, OH", cause: "Firearm",
+    summary: "Found fatally shot in a vacant garage on Austin Street. DNA evidence led to Antonio Scott Jr., who was 15 at the time of the killing. Arrested in 2022 by U.S. Marshals; convicted of murder and sentenced to life with parole eligibility after 15 years.",
+    suspect: "Antonio Scott Jr.", sRace: "Black", sGender: "Male",
+    status: "Convicted (life, parole after 15 yrs)", police: "No", bias: "Suspected",
+    source: "https://www.wtol.com/article/news/crime/man-arrested-charged-in-2017-slaying-of-transgender-woman/512-9b5e50e6-e93c-40fb-a862-d7c9fe5ee2e0",
+    sourceLabel: "WTOL"
+  },
+  {
+    num: 5, name: "Jaquarrius Holland", age: 18, vRace: "Black", gender: "Trans woman",
+    date: "Feb 19, 2017", location: "Monroe, LA", cause: "Firearm",
+    summary: "Shot in the head during a verbal altercation on Grammont Street. Malcom Harvey fled the scene; a warrant was issued and he was later arrested and charged with second-degree murder.",
+    suspect: "Malcom Derricktavios Harvey", sRace: "Black", sGender: "Male",
+    status: "Charged (2nd-degree murder)", police: "No", bias: "Suspected",
+    source: "https://www.knoe.com/content/news/Man-killed-in-Monroe-homicide-414243083.html",
+    sourceLabel: "KNOE"
+  },
+  {
+    num: 6, name: "Tiara Richmond (Keke Collier)", age: 24, vRace: "Black", gender: "Trans woman",
+    date: "Feb 21, 2017", location: "Chicago, IL", cause: "Firearm",
+    summary: "Fatally shot on the South Side of Chicago. Had survived a previous shooting in January 2017. No arrests have been made.",
+    suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
+    status: "Unsolved", police: "No", bias: "Unknown",
+    source: "https://www.chicagotribune.com/2017/02/23/transgender-woman-fatally-shot-on-south-side/",
+    sourceLabel: "Chicago Tribune"
+  },
+  {
+    num: 7, name: "Chyna Gibson", age: 31, vRace: "Black", gender: "Trans woman",
+    date: "Feb 25, 2017", location: "New Orleans, LA", cause: "Firearm",
+    summary: "Shot to death outside a shopping center in New Orleans East. A performer known as Chyna Doll Dupree. No arrests have been made.",
+    suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
+    status: "Unsolved", police: "No", bias: "Unknown",
+    source: "https://www.nola.com/news/crime_police/transgender-woman-gunned-down-in-new-orleans-east/article_68cb32a9-ddd8-5ef0-8a07-aab5b3d2ee6a.html",
+    sourceLabel: "NOLA.com"
+  },
+  {
+    num: 8, name: "Ciara McElveen", age: 26, vRace: "Black", gender: "Trans woman",
+    date: "Feb 27, 2017", location: "New Orleans, LA", cause: "Stabbing",
+    summary: "Fatally stabbed and dragged from a vehicle in the 7th Ward of New Orleans, just two days after Chyna Gibson's murder in the same city. Leonard Ward, 55, was named a person of interest in April 2017. In July 2018, NOPD obtained a murder warrant for Ward, but it is unclear whether he was ever taken into custody.",
+    suspect: "Leonard Ward (warrant issued)", sRace: "Unknown", sGender: "Male",
+    status: "Warrant issued (2nd-degree murder)", police: "No", bias: "Unknown",
+    source: "https://www.nola.com/news/crime_police/murder-warrant-issued-in-2017-death-of-ciara-mcelveen-nopd/article_cd83618a-9501-56c8-b785-1c32ef024928.html",
+    sourceLabel: "NOLA.com"
+  },
+  {
+    num: 9, name: "Alphonza Watson", age: 38, vRace: "Black", gender: "Trans woman",
+    date: "Mar 22, 2017", location: "Baltimore, MD", cause: "Firearm",
+    summary: "Shot and killed in northeast Baltimore. Her mother said Watson had recently talked about threats. No arrests have been made.",
+    suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
+    status: "Unsolved", police: "No", bias: "Unknown",
+    source: "https://www.baltimoresun.com/2017/03/23/transgender-woman-identified-as-homicide-victim-killed-in-northeast-baltimore/",
+    sourceLabel: "Baltimore Sun"
+  },
+  {
+    num: 10, name: "Kenne McFadden", age: 27, vRace: "Black", gender: "Trans woman",
+    date: "Apr 9, 2017", location: "San Antonio, TX", cause: "Drowning (pushed into river)",
+    summary: "Found dead in the San Antonio River near the Riverwalk. Mark Daniel Lewis told police that McFadden, who was heavily intoxicated, kissed him and he pushed McFadden away into the water. McFadden, who could not swim, drowned. Lewis was indicted for manslaughter, but prosecutors presented evidence at a probation revocation hearing; the judge found the conduct was not criminal, and due to double jeopardy the case could not proceed to trial.",
+    suspect: "Mark Daniel Lewis", sRace: "White", sGender: "Male",
+    status: "Charges dismissed", police: "No", bias: "Suspected",
+    source: "https://news4sanantonio.com/news/local/suspect-accused-of-pushing-drunk-man-into-river-walk-indicted-on-manslaughter-charge",
+    sourceLabel: "News 4 San Antonio"
+  },
+  {
+    num: 11, name: "Chay Reed", age: 28, vRace: "Black", gender: "Trans woman",
+    date: "Apr 21, 2017", location: "Miami, FL", cause: "Firearm",
+    summary: "Shot and killed in the Liberty City neighborhood of Miami. No arrests have been made.",
+    suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
+    status: "Unsolved", police: "No", bias: "Unknown",
+    source: "https://www.edgemedianetwork.com/story/214268",
+    sourceLabel: "Edge Media Network"
+  },
+  {
+    num: 12, name: "Kenneth Bostick", age: 59, vRace: "Black", gender: "Trans man",
+    date: "May 7, 2017", location: "New York, NY", cause: "Blunt force (assault)",
+    summary: "Struck in the head with a metal pipe on a Chelsea sidewalk near a Five Guys restaurant on April 25. Died 12 days later at Bellevue Hospital on May 7. Joseph Griffin, a homeless man who once lived in the same shelter, was identified via surveillance and charged with manslaughter. Griffin pleaded guilty to first-degree manslaughter in April 2019 and was sentenced to 12 years plus 5 years post-release supervision. On appeal in May 2024, the sentence was reduced to 10 years.",
+    suspect: "Joseph Griffin", sRace: "Black", sGender: "Male",
+    status: "Convicted (10 years, reduced on appeal)", police: "No", bias: "Suspected",
+    source: "https://www.nydailynews.com/2017/05/19/homeless-man-charged-with-manslaughter-in-transgender-victims-chelsea-beating-death/",
+    sourceLabel: "NY Daily News"
+  },
+  {
+    num: 13, name: "Sherrell Faulkner", age: 46, vRace: "Black", gender: "Trans woman",
+    date: "May 16, 2017", location: "Charlotte, NC", cause: "Blunt force (Nov 2016 attack)",
+    summary: "Died from injuries sustained in a November 2016 beating. Had been in declining health for months after the attack. No arrests have been made.",
+    suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
+    status: "Unsolved", police: "No", bias: "Unknown",
+    source: "https://www.yahoo.com/news/somebody-knows-something-leads-dry-025200187.html",
+    sourceLabel: "Yahoo News / WSOC"
+  },
+  {
+    num: 14, name: "Kendra Marie Adams", age: 28, vRace: "Hispanic", gender: "Trans woman",
+    date: "Jun 13, 2017", location: "Ithaca, NY", cause: "Stabbing / burns",
+    summary: "Found dead with burns in a building under construction near Cornell University, next to a can of gasoline. Michael Davis, who had a personal relationship with Adams, was identified via surveillance video and arrested the same day. He pleaded guilty and received 25 years.",
+    suspect: "Michael A. Davis", sRace: "Black", sGender: "Male",
+    status: "Convicted (25 years)", police: "No", bias: "No Evidence",
+    source: "https://www.ithacajournal.com/in-depth/news/local/2019/06/12/josie-berrios-ithaca-murder-arson-domestic-violence-michael-davis/2568393002/",
+    sourceLabel: "Ithaca Journal"
+  },
+  {
+    num: 15, name: "Ava Le'Ray Barrin", age: 17, vRace: "Black", gender: "Trans woman",
+    date: "Jun 25, 2017", location: "Athens, GA", cause: "Firearm",
+    summary: "Shot in the chest during an altercation in an apartment parking lot. The youngest trans murder victim of 2017. Jalen Brown, an acquaintance who also identified as transgender, claimed self-defense. In May 2018, Judge Eric Norris dismissed the murder charge after granting a self-defense immunity motion, ruling a reasonable person in Brown's situation would have believed the shooting was necessary to prevent death or great bodily harm.",
+    suspect: "Jalen Breon Brown", sRace: "Black", sGender: "Trans",
+    status: "Dismissed (self-defense immunity)", police: "No", bias: "No Evidence",
+    source: "https://flagpole.com/news/news-features/2017/07/12/athens-ava-barrin-was-the-latest-victim-of-violence-against-transgender-women-2/",
+    sourceLabel: "Flagpole Athens"
+  },
+  {
+    num: 16, name: "Ebony Morgan", age: 28, vRace: "Black", gender: "Trans woman",
+    date: "Jul 2, 2017", location: "Lynchburg, VA", cause: "Firearm",
+    summary: "Shot multiple times in the early morning hours on Rivermont Avenue. Kenneth Allen Kelley Jr. was named a person of interest, then charged with second-degree murder after being arrested in October 2017. He pleaded guilty in February 2018 and was sentenced to 20 years effective imprisonment (40 years with 23 suspended, plus 3 years mandatory for the firearm).",
+    suspect: "Kenneth Allen Kelley Jr.", sRace: "Black", sGender: "Male",
+    status: "Convicted (20 years)", police: "No", bias: "Suspected",
+    source: "https://www.wdbj7.com/content/news/UPDATE-Man-charged-in-death-of-transgender-Lynchburg-woman-449796303.html",
+    sourceLabel: "WDBJ7"
+  },
+  {
+    num: 17, name: "TeeTee Dangerfield", age: 32, vRace: "Black", gender: "Trans woman",
+    date: "Jul 31, 2017", location: "College Park, GA", cause: "Firearm",
+    summary: "Found shot multiple times in her car at the South Hampton Estates apartments. Tyrone Kemp was arrested and charged with malice murder, but was acquitted by a jury in November 2021. The case remains unsolved; the actual killer has not been identified.",
+    suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
+    status: "Unsolved (Kemp acquitted)", police: "No", bias: "Suspected",
+    source: "https://www.11alive.com/article/news/local/arrest-made-in-murder-of-trans-woman-in-college-park/466593940",
+    sourceLabel: "11Alive"
+  },
+  {
+    num: 18, name: "Gwynevere River Song", age: 26, vRace: "White", gender: "Transfeminine non-binary",
+    date: "Aug 12, 2017", location: "Waxahachie, TX", cause: "Firearm",
+    summary: "Shot and killed during a family dispute at home. Her father, Robert Wayne Mosher, was initially arrested but a grand jury no-billed the case, accepting a self-defense claim.",
+    suspect: "Robert Wayne Mosher (father)", sRace: "White", sGender: "Male",
+    status: "No-billed (grand jury, self-defense)", police: "No", bias: "No Evidence (family dispute)",
+    source: "https://dallasvoice.com/2018-top-stories-transgender-community-in-the-crosshairs/",
+    sourceLabel: "Dallas Voice"
+  },
+  {
+    num: 19, name: "Kiwi Herring", age: 30, vRace: "Black", gender: "Trans woman",
+    date: "Aug 22, 2017", location: "St. Louis, MO", cause: "Firearm (police)",
+    summary: "Shot and killed by St. Louis police after officers responded to a disturbance call and said Herring attacked them with a knife. Community members disputed the police account.",
+    suspect: "Police officer(s)", sRace: "N/A", sGender: "N/A",
+    status: "Police killing", police: "Yes", bias: "No Evidence",
+    source: "https://www.stltoday.com/news/local/crime-and-courts/officers-fatally-shoot-transgender-woman-after-she-attacks-them-with-a-knife-police-say/article_1f735c42-de3f-5a98-8e6e-0b67867dfe5c.html",
+    sourceLabel: "St. Louis Post-Dispatch"
+  },
+  {
+    num: 20, name: "Kashmire Nazier Redd", age: 28, vRace: "Black", gender: "Trans man",
+    date: "Sep 5, 2017", location: "Gates, NY", cause: "Stabbing",
+    summary: "Fatally stabbed during a domestic dispute. His partner, Doris Carrasquillo, was initially charged with first-degree manslaughter. At trial, the jury found she acted in self-defense and cleared her of all charges.",
+    suspect: "Doris Carrasquillo", sRace: "Hispanic", sGender: "Female",
+    status: "Acquitted (self-defense)", police: "No", bias: "No Evidence (domestic violence)",
+    source: "https://www.democratandchronicle.com/story/news/2018/05/16/gates-woman-cleared-stabbing-death-partner/617594002/",
+    sourceLabel: "Democrat & Chronicle"
+  },
+  {
+    num: 21, name: "Derricka Banner", age: 26, vRace: "Black", gender: "Trans woman",
+    date: "Sep 12, 2017", location: "Charlotte, NC", cause: "Firearm",
+    summary: "Found shot to death in a vehicle on Rosetta Street. A friend hiding in the trunk heard the gunshots. Montavious Berry, 18, had met Banner via text message for a sexual encounter; Berry was arrested the same day and charged with murder and armed robbery.",
+    suspect: "Montavious Sanchez Berry", sRace: "Black", sGender: "Male",
+    status: "Charged (murder, armed robbery)", police: "No", bias: "No Evidence (robbery)",
+    source: "https://www.lgbtqnation.com/2017/09/charlotte-police-release-shocking-details-murder-transgender-woman/",
+    sourceLabel: "LGBTQ Nation"
+  },
+  {
+    num: 22, name: "Ally Steinfeld", age: 17, vRace: "White", gender: "Trans woman",
+    date: "Sep 3, 2017", location: "Cabool, MO", cause: "Stabbing",
+    summary: "Killed and mutilated by acquaintances at a home in rural Missouri. Andrew Vrba was convicted and sentenced to life without parole. Co-defendants Isis Schauer (20 yrs), Briana Calderas (8 yrs), and James Grigsby (4 yrs) also pleaded guilty.",
+    suspect: "Andrew Vrba (+ 3 co-defendants)", sRace: "White", sGender: "Male",
+    status: "Convicted (life without parole)", police: "No", bias: "Suspected",
+    source: "https://www.cnn.com/2017/09/30/us/transgender-teen-murdered-not-hate-crime-trnd",
+    sourceLabel: "CNN"
+  },
+  {
+    num: 23, name: "Scout Schultz", age: 21, vRace: "White", gender: "Non-binary / intersex",
+    date: "Sep 16, 2017", location: "Atlanta, GA", cause: "Firearm (police)",
+    summary: "Shot and killed by Georgia Tech campus police after Schultz approached officers while holding a multi-tool and refused to drop it. Suicide notes were found. Schultz was president of the campus Pride Alliance.",
+    suspect: "Georgia Tech Police officer", sRace: "N/A", sGender: "N/A",
+    status: "Police killing", police: "Yes", bias: "No Evidence",
+    source: "https://www.cnn.com/2017/09/18/us/georgia-tech-student-killed/index.html",
+    sourceLabel: "CNN"
+  },
+  {
+    num: 24, name: "Stephanie Montez", age: 47, vRace: "Hispanic", gender: "Trans woman",
+    date: "Oct 21, 2017", location: "Robstown, TX", cause: "Firearm",
+    summary: "Found shot to death on County Road 61 outside Robstown. Cedric Green was one of four people charged in her murder. Green was convicted and sentenced to 55 years for murder and 65 years for organized criminal activity, to run consecutively.",
+    suspect: "Cedric Green (+ 3 co-defendants)", sRace: "Black", sGender: "Male",
+    status: "Convicted (55 + 65 years)", police: "No", bias: "Unknown",
+    source: "https://www.kztv10.com/news/local-news/2018/12/11/cedric-green-sentenced-in-murder-of-transgender-woman/",
+    sourceLabel: "KZTV"
+  },
+  {
+    num: 25, name: "Candace Towns", age: 30, vRace: "Black", gender: "Trans woman",
+    date: "Oct 31, 2017", location: "Macon, GA", cause: "Firearm",
+    summary: "Found shot to death between two abandoned houses on Rosecrest Avenue on Halloween. In 2020, investigators identified Horace Jamal Marsh through a handgun recovered from a separate 2018 crime scene. Marsh was arrested at his workplace and charged with murder. Note: Marsh's widely reported 25-year sentence is for a separate aggravated assault case; the disposition of the Towns murder charge has not been confirmed.",
+    suspect: "Horace Jamal Marsh", sRace: "Black", sGender: "Male",
+    status: "Charged (murder)", police: "No", bias: "Unknown",
+    source: "https://www.13wmaz.com/article/news/local/macon-man-charged-with-2017-murder-of-trans-woman/93-622bf14c-4da4-4303-9095-b3f56aafd7d7",
+    sourceLabel: "13WMAZ"
+  },
+  {
+    num: 26, name: "Brooklyn BreYanna Stevenson", age: 31, vRace: "Black", gender: "Trans woman",
+    date: "Nov 27, 2017", location: "Oklahoma City, OK", cause: "Firearm",
+    summary: "Shot and killed at a motel in Oklahoma City. Brandon Michael Tyson, a documented Aryan Brotherhood member, was arrested and charged with first-degree murder. He pleaded guilty in April 2019 and was sentenced to life in prison without parole. The judge told Tyson to 'pray for your salvation.' Prosecutors said the two had sex before the shooting; Tyson's claim of being attacked was unsupported.",
+    suspect: "Brandon Michael Tyson", sRace: "White", sGender: "Male",
+    status: "Convicted (life without parole)", police: "No", bias: "Confirmed (white supremacist)",
+    source: "https://okcfox.com/news/local/oklahoma-man-convicted-of-killing-transgender-woman",
+    sourceLabel: "OKC Fox"
+  },
+  {
+    num: 27, name: "Brandi Seals", age: 26, vRace: "Black", gender: "Trans woman",
+    date: "Dec 13, 2017", location: "Houston, TX", cause: "Firearm",
+    summary: "Shot and killed in Houston's Sunnyside neighborhood. She was at least the 28th trans person murdered in the U.S. in 2017. Police repeatedly misgendered her in initial reports. No arrests have been made.",
+    suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
+    status: "Unsolved", police: "No", bias: "Unknown",
+    source: "https://www.outsmartmagazine.com/2017/12/trans-woman-murdered-in-houston/",
+    sourceLabel: "OutSmart Magazine"
+  },
+  {
+    num: 28, name: "Jaylow McGlory", age: 29, vRace: "Black", gender: "Trans woman",
+    date: "Aug 4, 2017", location: "Alexandria, LA", cause: "Firearm",
+    summary: "Shot twice during a domestic dispute at their shared duplex on Monroe Street. Her partner Desmond Harris, 20, was charged with second-degree murder. At trial, Harris testified McGlory threatened to rape him and had a gun; Harris grabbed the weapon and it discharged. A neighbor testified she heard the couple arguing before hearing two gunshots, and McGlory came to her door bleeding. The jury found Harris not guilty.",
+    suspect: "Desmond Donte Harris", sRace: "Black", sGender: "Male",
+    status: "Acquitted (self-defense)", police: "No", bias: "No Evidence (domestic violence)",
+    source: "https://www.kalb.com/content/news/Desmond-Harris-takes-the-stand-said-victim-tried-to-rape-him-day-of-shooting-560149641.html",
+    sourceLabel: "KALB"
+  }
+];
+
+// ==================== TABLE ====================
+const tbody = document.querySelector('#caseTable tbody');
+cases.forEach(c => {
+  const statusClass = c.police === 'Yes' ? 'badge-police' :
+    c.status.includes('Unsolved') ? 'badge-unsolved' :
+    c.status.includes('ismissed') ? 'badge-dismissed' :
+    c.status.includes('Warrant') ? 'badge-unsolved' :
+    c.status.includes('No-billed') ? 'badge-nobilled' :
+    c.status.includes('Acquitted') ? 'badge-acquitted' : 'badge-solved';
+  const row = document.createElement('tr');
+  row.innerHTML = `
+    <td>${c.num}</td>
+    <td><strong>${c.name}</strong></td>
+    <td>${c.age}</td>
+    <td>${c.vRace}</td>
+    <td>${c.gender}</td>
+    <td>${c.date}</td>
+    <td>${c.location}</td>
+    <td>${c.cause}</td>
+    <td class="summary-cell">${c.summary}</td>
+    <td>${c.suspect}</td>
+    <td>${c.sRace}</td>
+    <td>${c.sGender}</td>
+    <td><span class="badge ${statusClass}">${c.status}</span></td>
+    <td>${c.police}</td>
+    <td>${c.bias}</td>
+    <td><a href="${c.source}" target="_blank" rel="noopener">${c.sourceLabel} ↗</a></td>`;
+  tbody.appendChild(row);
+});
+
+// ==================== CHART SETUP ====================
+const RACE_COLORS = {
+  'Black': '#222', 'White': '#4169E1', 'Hispanic': '#8B4513',
+  'Native American': '#FF8C00', 'Multiracial': '#999', 'AANHPI': '#FFD700'
+};
+Chart.defaults.color = '#555';
+Chart.defaults.font.family = "'Source Sans 3', sans-serif";
+Chart.defaults.maintainAspectRatio = false;
+Chart.defaults.responsive = true;
+function rc(race) { return RACE_COLORS[race] || '#666'; }
+
+// Solved = suspect identified, not police
+const solvedCiv = cases.filter(c => c.police === 'No' && c.sRace !== 'Unknown' && c.sRace !== 'N/A');
+const civCases = cases.filter(c => c.police === 'No');
+
+// ==================== CHART 1: SUSPECTS BY RACE ====================
+const sRC = {};
+solvedCiv.forEach(c => { sRC[c.sRace] = (sRC[c.sRace] || 0) + 1; });
+const sLabels = Object.keys(sRC).sort((a,b) => sRC[b] - sRC[a]);
+new Chart(document.getElementById('chart1'), {
+  type: 'bar',
+  data: {
+    labels: sLabels,
+    datasets: [{ data: sLabels.map(l => sRC[l]), backgroundColor: sLabels.map(l => rc(l)), borderWidth: 0, borderRadius: 3 }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: `Identified Suspects by Race (n=${solvedCiv.length})`, color: '#1a1a1a', font: { size: 14 } } },
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#e5e5e0' } }, x: { grid: { display: false }, ticks: { color: '#333' } } }
+  }
+});
+
+// ==================== CHART 2: VICTIMS BY RACE ====================
+const vRC = {};
+cases.forEach(c => { vRC[c.vRace] = (vRC[c.vRace] || 0) + 1; });
+const vLabels = Object.keys(vRC).sort((a,b) => vRC[b] - vRC[a]);
+new Chart(document.getElementById('chart2'), {
+  type: 'bar',
+  data: {
+    labels: vLabels,
+    datasets: [{ data: vLabels.map(l => vRC[l]), backgroundColor: vLabels.map(l => rc(l)), borderWidth: 0, borderRadius: 3 }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: `Victims by Race (n=${cases.length})`, color: '#1a1a1a', font: { size: 14 } } },
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 2 }, grid: { color: '#e5e5e0' } }, x: { grid: { display: false }, ticks: { color: '#333' } } }
+  }
+});
+
+// ==================== CHART 3: RACE PAIRINGS ====================
+const pC = {};
+solvedCiv.forEach(c => { const k = c.sRace + ' → ' + c.vRace; pC[k] = (pC[k] || 0) + 1; });
+const pL = Object.keys(pC).sort((a,b) => pC[b] - pC[a]);
+const pColors = pL.map(l => { const p = l.split(' → '); return p[0] === p[1] ? '#66bb6a' : '#ef5350'; });
+new Chart(document.getElementById('chart3'), {
+  type: 'bar',
+  data: {
+    labels: pL,
+    datasets: [{ data: pL.map(l => pC[l]), backgroundColor: pColors, borderWidth: 0, borderRadius: 3 }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: 'Suspect → Victim Race Pairings (Green = Intraracial, Red = Interracial)', color: '#1a1a1a', font: { size: 13 } } },
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#e5e5e0' } }, x: { grid: { display: false }, ticks: { color: '#555', font: { size: 11 } } } }
+  }
+});
+
+// ==================== CHART 4: SOLVED VS UNSOLVED BY RACE ====================
+const rKeys4 = [...new Set(civCases.map(c => c.vRace))].sort((a,b) => civCases.filter(c => c.vRace === b).length - civCases.filter(c => c.vRace === a).length);
+new Chart(document.getElementById('chart4'), {
+  type: 'bar',
+  data: {
+    labels: rKeys4,
+    datasets: [
+      { label: 'Solved', data: rKeys4.map(r => civCases.filter(c => c.vRace === r && c.sRace !== 'Unknown').length), backgroundColor: '#66bb6a', borderRadius: 3 },
+      { label: 'Unsolved', data: rKeys4.map(r => civCases.filter(c => c.vRace === r && c.sRace === 'Unknown').length), backgroundColor: '#ef5350', borderRadius: 3 }
+    ]
+  },
+  options: {
+    responsive: true,
+    plugins: { title: { display: true, text: `Solved vs. Unsolved by Victim Race (n=${civCases.length})`, color: '#1a1a1a', font: { size: 13 } }, legend: { labels: { color: '#333' } } },
+    scales: { x: { stacked: true, grid: { display: false }, ticks: { color: '#333' } }, y: { stacked: true, beginAtZero: true, ticks: { stepSize: 2 }, grid: { color: '#e5e5e0' } } }
+  }
+});
+
+// ==================== CHART 5: BIAS MOTIVE CODING ====================
+const bC = {};
+cases.forEach(c => {
+  let key = c.bias;
+  if (key.startsWith('Confirmed')) key = 'Confirmed';
+  if (key.startsWith('No Evidence')) key = 'No Evidence';
+  bC[key] = (bC[key] || 0) + 1;
+});
+const bLabels = ['Unknown', 'Suspected', 'No Evidence', 'Confirmed'];
+const bColors = ['#666', '#ffa726', '#42a5f5', '#ef5350'];
+new Chart(document.getElementById('chart5'), {
+  type: 'bar',
+  data: {
+    labels: bLabels,
+    datasets: [{ data: bLabels.map(l => bC[l] || 0), backgroundColor: bColors, borderWidth: 0, borderRadius: 3 }]
+  },
+  options: {
+    responsive: true,
+    plugins: { legend: { display: false }, title: { display: true, text: `Bias Motive Coding — All Cases (n=${cases.length})`, color: '#1a1a1a', font: { size: 14 } } },
+    scales: { y: { beginAtZero: true, ticks: { stepSize: 2 }, grid: { color: '#e5e5e0' } }, x: { grid: { display: false }, ticks: { color: '#333' } } }
+  }
+});
+
+// ==================== CHART 6: BIAS BY SUSPECT RACE ====================
+const c6 = solvedCiv;
+const c6Races = [...new Set(c6.map(c => c.sRace))].sort((a,b) => c6.filter(c => c.sRace === b).length - c6.filter(c => c.sRace === a).length);
+const biasCats = ['Suspected', 'No Evidence', 'Confirmed', 'Unknown'];
+const biasC6 = ['#ffa726', '#42a5f5', '#ef5350', '#666'];
+const datasets6 = biasCats.map((cat, i) => ({
+  label: cat,
+  data: c6Races.map(r => c6.filter(c => c.sRace === r && (c.bias.startsWith(cat) || (cat === 'No Evidence' && c.bias.startsWith('No Evidence')))).length),
+  backgroundColor: biasC6[i],
+  borderRadius: 3
+})).filter(ds => ds.data.some(d => d > 0));
+
+new Chart(document.getElementById('chart6'), {
+  type: 'bar',
+  data: { labels: c6Races, datasets: datasets6 },
+  options: {
+    responsive: true,
+    plugins: { title: { display: true, text: `Bias Motive by Suspect Race — Solved Cases (n=${c6.length})`, color: '#1a1a1a', font: { size: 13 } }, legend: { labels: { color: '#333' } } },
+    scales: { x: { stacked: true, grid: { display: false }, ticks: { color: '#333' } }, y: { stacked: true, beginAtZero: true, ticks: { stepSize: 1 }, grid: { color: '#e5e5e0' } } }
+  }
+});
+</script>
+</body>
+</html>

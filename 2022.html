@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2022 Fatal Violence Against Transgender People — Combined Analysis</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1400px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:8pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:300px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:#555}
+.legend-item{display:flex;align-items:center;gap:5px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:8px 6px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-confirmed{background:#c1121f;color:#fff}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+.badge-closed{background:#555;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2022</div>
+  <h1>Fatal Violence Against Transgender & Gender-Non-Conforming People</h1>
+  <p>Combined analysis and case-by-case dataset. Data from local news, court records, law enforcement — NOT HRC assessments.<br>
+  Victim list sourced from: <a href="https://reports.hrc.org/an-epidemic-of-violence-2022" target="_blank" style="color:#e8a838;text-decoration:underline">HRC's 2022 Fatal Violence Report</a><br>
+  </p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">34</div><div class="label">Total Victims</div><div class="sub">32 homicides + 2 police-involved</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">23</div><div class="label">Cases Solved/Closed</div><div class="sub">71.9% of homicides</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">9</div><div class="label">Unsolved</div><div class="sub">28.1% of homicides</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">82%</div><div class="label">Killed by Firearm</div><div class="sub">28 of 34</div></div>
+</div>
+
+<!-- CHART 1: SUSPECTS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 1: Identified Suspects by Race/Ethnicity</div><div class="chart-sub">Solved homicide cases with identified suspects (excludes police-involved). Includes 22 unique suspects across 23 solved/closed cases.</div><div class="chart-wrap"><canvas id="chartSUSPECTS"></canvas></div><div class="note-box"><strong>Note:</strong> 14 of 22 identified suspects (63.6%) are Black. 5 are White (22.7%), including 2 White females (murder-suicide perpetrators), and 3 are Hispanic (13.6%). Suspect race verified via mugshots, police descriptions, and victim statements where available.</div></div>
+
+<!-- CHART 2: VICTIMS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 2: Victims by Race/Ethnicity</div><div class="chart-sub">All 34 victims documented in 2022</div><div class="chart-wrap"><canvas id="chartVICTIMS"></canvas></div><div class="note-box"><strong>Note:</strong> 21 of 34 victims (61.8%) are Black. 6 are White (17.6%), 4 are Latina (11.8%), 2 are AANHPI (5.9%), and 1 is Native American/Two-Spirit (2.9%).</div></div>
+
+<!-- CHART 3: SPECIFIC Pairings -->
+<div class="chart-card"><div class="chart-title">Chart 3: Suspect → Victim Race Pairings (Specific)</div><div class="chart-sub">Each bar = one specific pairing (e.g. "Black suspect → Black victim"). Green = intraracial, Red = interracial. Only pairings with 1+ cases shown.</div><div class="chart-wrap"><canvas id="chartPAIRINGS"></canvas></div><div class="note-box"><strong>Finding:</strong> 18 of 22 solved cases (81.8%) are intraracial. The dominant pairing is Black suspect → Black victim (12 cases, 54.5%). Interracial pairings include Black suspect → Latina victim (1), Hispanic suspect → Black victim (1), White suspect → AANHPI victim (1), and White suspect → Black victim (1).</div></div>
+
+<!-- CHART 4: Solved vs Unsolved by Race -->
+<div class="chart-card"><div class="chart-title">Chart 4: Solved vs. Unsolved by Victim Race</div><div class="chart-sub">Racial disparity in case resolution (excludes 2 police-involved killings)</div><div class="chart-wrap"><canvas id="chartSOLVED"></canvas></div><div class="note-box"><strong>Key disparity:</strong> Black victims: 14 solved, 7 unsolved (66.7% solve rate). Latina victims: 3 solved, 1 unsolved (75%). White victims: 4 solved, 1 unsolved (80%). AANHPI: 1 solved, 0 unsolved. Native: 1 solved, 0 unsolved.</div></div>
+
+<!-- CHART 5: Bias Motive -->
+<div class="chart-card"><div class="chart-title">Chart 5: Bias Motive Coding</div><div class="chart-sub">All 34 victims coded by bias motive evidence</div><div class="chart-wrap"><canvas id="chartBIAS"></canvas></div><div class="note-box"><strong>Methodology:</strong> Confirmed = hate crime charges or explicit LE statement (3 cases: Club Q shooting, Cherry Bush). Suspected = evidence of animus, no formal charge (3 cases: Ariyanna Mitchell — gender questioned before shooting; Fern Feather — trans panic defense; Shawmaynè Marie — shot after learning victim was transgender via dating site). No Evidence = documented alternative motive (9 cases: IPV, robbery, familicide, police-involved). Unknown = insufficient info or unsolved (19 cases).</div></div>
+
+<!-- CHART 6: Bias by Suspect Race -->
+<div class="chart-card"><div class="chart-title">Chart 6: Bias Motive by Suspect Race</div><div class="chart-sub">Solved cases only — suspects with KNOWN race. No "unknown race" category.</div><div class="chart-wrap"><canvas id="chartBIAS_RACE"></canvas></div><div class="note-box"><strong>Note:</strong> Among Black suspects: 2 suspected bias, 3 no evidence (IPV/random), 9 unknown motive. Among White suspects: 1 confirmed (Aldrich/Club Q), 1 suspected (Brunell/trans panic), 2 no evidence (familicide, murder-suicide), 1 unknown (Hubbird). Among Hispanic suspects: 1 confirmed (Sanchez/Cherry Bush hate crime), 1 no evidence (Montemayor — police said not hate crime), 1 unknown (Sierra).</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Complete Research Dataset — 2022</div>
+<div class="section-sub">Chronological order. Sources are local news and court records. 34 victims total.</div>
+
+<div class="legend-row"><div class="legend-item"><span class="badge badge-confirmed">Confirmed</span> Hate crime charges or explicit anti-trans motive from LE</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-suspected">Suspected Bias</span> Evidence of animus, no formal charge</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-none">No Evidence</span> Documented non-bias motive</div></div>
+<div class="legend-row" style="margin-bottom:16px"><div class="legend-item"><span class="badge badge-unknown">Unknown</span> Insufficient info or unsolved</div></div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Victim Name</th><th>Race</th><th>Age</th><th>City, State</th><th>Date</th><th>Cause of Death</th><th>Brief Summary</th><th>Police-Involved</th><th>Bias Motive</th><th>Suspect(s)</th><th>Suspect Race</th><th>Suspect Gender</th><th>Suspect Age</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Amariey Lei</td><td>Black</td><td>20</td><td>Wilkinsburg, PA</td><td>Jan 1</td><td>Gunshot</td><td>Found with gunshot wounds at 6 AM on New Year's Day on a street in Wilkinsburg. Talented dancer with Legacy Arts Project.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.cbsnews.com/pittsburgh/news/amariey-lej-wilkinsburg-shooting-death/" target="_blank">CBS Pittsburgh</a></td></tr>
+
+<tr><td>2</td><td>Duval Princess</td><td>Black</td><td>24</td><td>Jacksonville, FL</td><td>Jan 3</td><td>Gunshot</td><td>Shot at a shopping center in Jacksonville. Keith Keglar Jr. arrested two months later, pled guilty to second-degree murder Dec 2023, and sentenced to 40 years in prison Jun 2024.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Keith Keglar Jr.</td><td>Black</td><td>Male</td><td>21</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.news4jax.com/news/local/2023/12/11/man-pleads-guilty-to-murder-of-tevin-robinson/" target="_blank">News4Jax</a></td></tr>
+
+<tr><td>3</td><td>Matthew Spampinato</td><td>White</td><td>21</td><td>New Castle, DE</td><td>Feb 9</td><td>Hit-and-run vehicle</td><td>Trans man killed in a hit-and-run while walking home from his job at Starbucks along Route 273. Driver never identified; police say no new leads.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified driver</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/crime/2022/3/06/young-trans-man-matthew-spampinato-killed-hit-and-run" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>4</td><td>Naomie Skinner</td><td>Black</td><td>25</td><td>Highland Park, MI</td><td>Feb 12</td><td>Gunshot</td><td>Shot by her boyfriend Michael Cortez Norris during domestic altercation. Norris dragged her body from apartment and fled; tracked down by police. Pled guilty to second-degree murder and felony firearm; sentenced Jul 2023. IPV case.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Michael Cortez Norris</td><td>Black</td><td>Male</td><td>26</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.detroitnews.com/story/news/local/wayne-county/2023/07/12/highland-park-man-sentenced-for-killing-girlfriend-a-trans-woman/70407003007/" target="_blank">Detroit News</a></td></tr>
+
+<tr><td>5</td><td>Cypress Ramos</td><td>Latina</td><td>21</td><td>Lubbock, TX</td><td>Feb 13</td><td>Blunt force trauma</td><td>Found dead in a storage unit. Allan Montemayor charged with murder; claimed self-defense and that a song told him to kill. Police said NOT a hate crime.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Allan Montemayor</td><td>Hispanic</td><td>Male</td><td>32</td><td><span class="badge badge-solved">Charged</span></td><td><a href="https://www.kcbd.com/2022/02/17/man-charged-with-murder-connection-body-found-storage-unit/" target="_blank">KCBD</a></td></tr>
+
+<tr><td>6</td><td>Paloma Vazquez</td><td>Latina</td><td>29</td><td>Houston, TX</td><td>Feb 26</td><td>Gunshot</td><td>Shot and killed in Houston. Limited details available; no suspect identified. Case remains unsolved.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://abc13.com/transgender-woman-killed-paloma-vazquez-vigil-for-murder-investigation/11618711/" target="_blank">ABC13 Houston</a></td></tr>
+
+<tr><td>7</td><td>Tatiana Labelle</td><td>Black</td><td>33</td><td>Chicago, IL</td><td>Mar 18</td><td>Multiple injuries (assault)</td><td>Body found in a trash bin in the Chatham neighborhood. Inquest determined death resulted from multiple injuries due to assault. No arrest made.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/crime/2022/3/21/trans-woman-tatiana-labelle-found-dead-trash-can-chicago" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>8</td><td>Katie Newhouse</td><td>AANHPI</td><td>19</td><td>Canton, GA</td><td>Mar 19</td><td>Gunshot</td><td>Shot by her father Howard Newhouse, who then died by suicide. Familicide. Katie was autistic and a Minecraft enthusiast; father had mental health issues.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Howard Newhouse (father, deceased)</td><td>White</td><td>Male</td><td>—</td><td><span class="badge badge-closed">Closed (murder-suicide)</span></td><td><a href="https://www.pghlesbian.com/2022/04/kathryn-katie-newhouse-19-and-her-father-howard-found-dead-in-cherokee-county-georgia/" target="_blank">PghLesbian</a></td></tr>
+
+<tr><td>9</td><td>Kesha Webster</td><td>Black</td><td>24</td><td>Jackson, MS</td><td>Mar 26</td><td>Homicide</td><td>Found dead in Jackson. Family describes it as a "robbery-homicide." Over 100 attended her vigil. No arrest made.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.wlbt.com/2022/04/11/family-wants-justice-after-loved-one-found-dead/" target="_blank">WLBT</a></td></tr>
+
+<tr><td>10</td><td>Miia Love Parker</td><td>Black</td><td>25</td><td>Chester, PA</td><td>Apr 1</td><td>Gunshot</td><td>Shot while in a parked vehicle at 3:30 AM. Friend drove her to hospital where she died. Police identified suspect Saad Najeed Dwight, 38, considered armed and dangerous.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Saad Najeed Dwight</td><td>Black</td><td>Male</td><td>38</td><td><span class="badge badge-unsolved">At Large</span></td><td><a href="https://www.advocate.com/crime/2022/4/13/25-year-old-trans-woman-miia-love-parker-shot-dead-philadelphia" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>11</td><td>Ariyanna Mitchell</td><td>Black</td><td>17</td><td>Hampton, VA</td><td>Apr 2</td><td>Gunshot</td><td>Shot multiple times at a party after suspect questioned her gender identity. Court docs say Williams asked if she was a boy or girl, then opened fire. Youngest victim of 2022.</td><td>No</td><td><span class="badge badge-suspected">Suspected Bias</span></td><td>Jimmy Leshawn Williams</td><td>Black</td><td>Male</td><td>19</td><td><span class="badge badge-solved">Charged</span></td><td><a href="https://www.washingtonblade.com/2022/05/07/investigation-continues-for-murder-of-17-year-old-trans-woman-in-hampton-va/" target="_blank">Washington Blade</a></td></tr>
+
+<tr><td>12</td><td>Fern Feather</td><td>White</td><td>29</td><td>Morristown, VT</td><td>Apr 12</td><td>Stabbing</td><td>Found stabbed to death along a road. Seth Brunell charged; claimed trans panic defense, saying Feather made a sexual advance. Police found no signs of struggle. Pled guilty to voluntary manslaughter Apr 2025; sentenced to no additional prison time (credited ~3 years served) plus 10 years probation with GPS monitoring. Lenient outcome resulted from a sheriff's deputy improperly questioning Brunell during transport.</td><td>No</td><td><span class="badge badge-suspected">Suspected Bias</span></td><td>Seth Brunell</td><td>White</td><td>Male</td><td>43</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.wcax.com/2025/04/17/unexpected-guilty-plea-morristown-murder-trial-defendant-sentenced-probation/" target="_blank">WCAX</a></td></tr>
+
+<tr><td>13</td><td>Ray Muscat</td><td>White</td><td>26</td><td>Independence Twp, MI</td><td>May 8</td><td>Gunshot</td><td>Trans man shot by his girlfriend Ruby Taverner, 22, who also killed her brother Bishop Taverner, 25, before dying by suicide. Double homicide-suicide. IPV case.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Ruby Taverner (deceased)</td><td>White</td><td>Female</td><td>22</td><td><span class="badge badge-closed">Closed (murder-suicide)</span></td><td><a href="https://www.pghlesbian.com/2022/05/ray-muscat-24-a-trans-man-killed-in-michigan-triple-murder-suicide/" target="_blank">PghLesbian</a></td></tr>
+
+<tr><td>14</td><td>Sasha Mason</td><td>Latina</td><td>45</td><td>Zebulon, NC</td><td>May 13</td><td>Gunshot</td><td>Shot and killed during an armed robbery at her apartment at 1:45 AM. Two suspects arrested: Ali Tariq Khabir Wiggins (same day) and Julius Antwan Smith (two days later). Police say attack was targeted; victim knew suspects.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Ali T.K. Wiggins; Julius A. Smith</td><td>Black</td><td>Male</td><td>—</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.advocate.com/crime/2022/6/27/trans-women-color-killed-north-carolina-wisconsin" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>15</td><td>Nedra Sequence Morris</td><td>Black</td><td>50</td><td>Opa-locka, FL</td><td>May 14</td><td>Gunshot</td><td>Found shot in a pool of blood on a street; family says shot at another location and body dumped. Cornelius Bailey arrested May 2023, charged with second-degree murder and tampering. Police said NOT a hate crime; acted randomly.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Cornelius Bailey</td><td>Black</td><td>Male</td><td>26</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.nbcmiami.com/news/local/man-arrested-in-connection-to-the-death-of-transgender-woman-in-opa-locka/3041021/" target="_blank">NBC Miami</a></td></tr>
+
+<tr><td>16</td><td>Maddie Hofmann</td><td>AANHPI</td><td>47</td><td>Malvern, PA</td><td>May 19</td><td>Gunshot (police)</td><td>Shot by police during a wellness check at her home. Born in Korea, adopted by American family. Had a handgun; struggled with officer. DA ruled use of force justified. Family disputed finding.</td><td>Yes</td><td><span class="badge badge-none">No Evidence</span></td><td>Officer Edward (Fairfax Co. PD)</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-closed">Closed (justified)</span></td><td><a href="https://www.advocate.com/transgender/2022/5/06/here-are-trans-americans-killed-2022-so-far" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>17</td><td>Chanelika Hemingway</td><td>Black</td><td>30</td><td>Albany, NY</td><td>May 31</td><td>Gunshot</td><td>Found dead in her apartment during welfare check; shot in the head. Iaeir Robinson, 27, convicted of second-degree murder Nov 2023. Claimed victim transmitted HIV to him. Sentenced Jan 2024 to 25 years to life plus concurrent 5 years for weapons possession.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Iaeir Robinson</td><td>Black</td><td>Male</td><td>27</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.advocate.com/crime/guilty-death-trans-woman-hemingway" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>18</td><td>Brazil Johnson</td><td>Black</td><td>28</td><td>Milwaukee, WI</td><td>Jun 15</td><td>Gunshot</td><td>Shot multiple times in Milwaukee. Worked as a chef. No suspect identified; case remains unsolved.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/crime/2022/6/27/trans-women-color-killed-north-carolina-wisconsin" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>19</td><td>Shawmaynè Marie</td><td>Black</td><td>27</td><td>Gulfport, MS</td><td>Jun 21</td><td>Gunshot</td><td>Shot multiple times in her apartment after argument with Makhari Gasaway, who met her through a dating site. Gasaway admitted shooting her after learning she was male. Sister also shot. Sentenced to 50 years (30 to serve).</td><td>No</td><td><span class="badge badge-suspected">Suspected Bias</span></td><td>Makhari Seven Gasaway</td><td>Black</td><td>Male</td><td>20</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.wlox.com/2024/10/14/california-man-sentenced-50-years-role-deadly-2022-shooting-gulfport/" target="_blank">WLOX</a></td></tr>
+
+<tr><td>20</td><td>Kitty Monroe</td><td>Black</td><td>—</td><td>Cordova, TN</td><td>Jun 29</td><td>Gunshot</td><td>Shot to death near Memphis. Samuel Ward Jr. arrested and charged with voluntary manslaughter. Found guilty by Shelby County jury May 2025; sentencing pending. Jury rejected self-defense claim after ME testified gunshot trajectories contradicted Ward's account. Remembered as a "beautiful person" and animal lover.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Samuel Ward Jr.</td><td>Black</td><td>Male</td><td>—</td><td><span class="badge badge-solved">Convicted</span></td><td><a href="https://www.localmemphis.com/article/news/crime/one-woman-found-dead-in-cordova-after-police-respond-to-an-assault-call/522-66a202c0-fca9-4d85-bbe1-de2b63bc1d3c" target="_blank">Local Memphis</a></td></tr>
+
+<tr><td>21</td><td>Cherry Bush</td><td>Black</td><td>48</td><td>Los Angeles, CA</td><td>Jul 5</td><td>Gunshot</td><td>Unhoused trans woman fatally shot in the Sylmar neighborhood. Eric Antonio Sanchez charged with murder, attempted murder, and a hate-crime allegation by LA County DA.</td><td>No</td><td><span class="badge badge-confirmed">Confirmed</span></td><td>Eric Antonio Sanchez</td><td>Hispanic</td><td>Male</td><td>29</td><td><span class="badge badge-solved">Charged</span></td><td><a href="https://www.advocate.com/crime/2022/7/27/cherry-bush-unhoused-trans-woman-killed-alleged-hate-crime" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>22</td><td>Aaron Lynch</td><td>White</td><td>26</td><td>McLean, VA</td><td>Jul 7</td><td>Gunshot (police)</td><td>Trans man shot four times by Fairfax County police officer during mental health crisis at his home. Was holding a wine bottle and wooden mask. Tasers failed. Family says shooting was unjustified.</td><td>Yes</td><td><span class="badge badge-none">No Evidence</span></td><td>Officer Edward George (FCPD)</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-closed">Closed (under investigation)</span></td><td><a href="https://www.nbcwashington.com/news/local/northern-virginia/video-shows-deadly-mclean-police-shooting-of-aaron-lynch-mental-health-crisis/3125483/" target="_blank">NBC Washington</a></td></tr>
+
+<tr><td>23</td><td>Martasia Richmond</td><td>Black</td><td>30</td><td>Chicago, IL</td><td>Jul 11</td><td>Stabbing</td><td>Stabbed to death; found on porch when police responded to domestic battery complaint. Daniel Burley, 31, described as her partner, charged with first-degree murder. Defense claims self-defense. IPV case.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Daniel Burley</td><td>Black</td><td>Male</td><td>31</td><td><span class="badge badge-solved">Charged</span></td><td><a href="https://www.advocate.com/crime/2022/7/19/black-trans-women-lost-violence-mississippi-and-illinois" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>24</td><td>Keshia Chanel Geter</td><td>Black</td><td>26</td><td>Augusta, GA</td><td>Jul 20</td><td>Gunshot</td><td>Fatally shot outside a Knights Inn motel where she'd been traveling with a friend. Jaquarie Allen, 22, of Augusta, charged with murder and possession of a firearm during commission of a crime.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Jaquarie Allen</td><td>Black</td><td>Male</td><td>22</td><td><span class="badge badge-solved">Charged</span></td><td><a href="https://www.advocate.com/transgender/2022/5/06/here-are-trans-americans-killed-2022-so-far" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>25</td><td>Kandii Redd</td><td>Black</td><td>29</td><td>Kansas City, MO</td><td>Jul 24</td><td>Stabbing</td><td>Award-winning performer stabbed to death during an argument that escalated to a physical altercation. Found in an apartment. No arrest reported.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/crime/2022/8/15/kandii-redd-award-winning-trans-performer-killed-kansas-city" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>26</td><td>Hayden Davis</td><td>Black</td><td>28</td><td>Detroit, MI</td><td>Jul 25</td><td>Gunshot</td><td>Found dead on a street, body wrapped in a blanket, shot several times. No suspect identified.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/transgender/2022/5/06/here-are-trans-americans-killed-2022-so-far" target="_blank">The Advocate</a></td></tr>
+
+<tr><td>27</td><td>Marisela Castro</td><td>Latina</td><td>39</td><td>Houston, TX</td><td>Jul 29</td><td>Gunshot</td><td>Born in Honduras, worked in construction in Houston. Shot in the back of the head after being lured through an online interaction. Oscar Ariel Sierra, 16 at the time, arrested Mar 2023; pled guilty to murder mid-trial May 2024 and sentenced to life in prison (eligible for parole after 30 years). A second, younger suspect was also arrested.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Oscar Ariel Sierra</td><td>Hispanic</td><td>Male</td><td>16</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.khou.com/article/news/crime/marisela-castro-houston-transgendered-woman-murdered-sentencing/285-007bfd1f-700f-4730-8575-2002ad8ff9b9" target="_blank">KHOU</a></td></tr>
+
+<tr><td>28</td><td>Acey Morrison</td><td>Native American</td><td>30</td><td>Rapid City, SD</td><td>Aug 21</td><td>Gunshot</td><td>Two-Spirit member of the Lakota tribe, fatally shot in her hometown. Gregory Edward Landers, 54, pled guilty to second-degree manslaughter Nov 2024. Remembered as "kindhearted, joyous, respectful, and loving."</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Gregory Landers</td><td>White</td><td>Male</td><td>54</td><td><span class="badge badge-solved">Convicted</span></td><td><a href="https://southdakotasearchlight.com/2024/11/21/man-who-killed-transgender-native-american-woman-in-2022-takes-manslaughter-plea/" target="_blank">SD Searchlight</a></td></tr>
+
+<tr><td>29</td><td>Dede Ricks</td><td>Black</td><td>33</td><td>Detroit, MI</td><td>Aug 27</td><td>Gunshot</td><td>Shot to death at a home in Detroit. Deontae Close arrested same day and charged with second-degree murder and felony firearm. Convicted and sentenced to 12–30 years in prison.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Deontae Close</td><td>Black</td><td>Male</td><td>31</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.waynecounty.com/elected/prosecutor/detroit-man-charged-in-manistique-street-fatal-shooting.aspx" target="_blank">Wayne County DA</a></td></tr>
+
+<tr><td>30</td><td>Mya Allen</td><td>Black</td><td>35</td><td>Milwaukee, WI</td><td>Aug 29</td><td>Gunshot</td><td>Also known as Regina Allen. Shot to death in Milwaukee; before dying, she described her shooter to police as a white male in his 30s with brown hair. Clayton Hubbird, 31, arrested Oct 2, 2022. Pled guilty to first-degree reckless homicide May 2024; sentenced to 23 years in prison plus 7 years extended supervision Jul 2024. Described as full of laughter and joy.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Clayton Hubbird</td><td>White</td><td>Male</td><td>31</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.cbs58.com/news/milwaukee-man-sentenced-to-23-years-in-prison-for-killing-transgender-woman-regina-allen-in-2022" target="_blank">CBS58</a></td></tr>
+
+<tr><td>31</td><td>Semaj Billingslea</td><td>Black</td><td>33</td><td>Jacksonville, FL</td><td>Sep 21</td><td>Gunshot</td><td>Black trans man shot multiple times in parking lot of Baymont Inn motel. Found alive, died at hospital. No suspect identified. Father called him "larger than life."</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.actionnewsjax.com/news/local/larger-than-life-vigil-held-transgender-man-gunned-down-youngerman-circle/EVDVL3J56FB5DC2TIFJMUFWLZE/" target="_blank">Action News Jax</a></td></tr>
+
+<tr><td>32</td><td>Tiffany Banks</td><td>Black</td><td>25</td><td>Miami, FL</td><td>Oct 1</td><td>Gunshot</td><td>Shot and killed in Miami. Larry Sam Pierre Louis arrested Oct 5 and charged with second-degree murder with a weapon.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Larry Sam Pierre Louis</td><td>Black</td><td>Male</td><td>—</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.advocate.com/crime/2022/10/21/black-trans-woman-tiffany-banks-killed-miami" target="_blank">Advocate</a></td></tr>
+
+<tr><td>33</td><td>Daniel Aston</td><td>White</td><td>28</td><td>Colorado Springs, CO</td><td>Nov 19</td><td>Gunshot</td><td>Trans man and Club Q bartender killed in mass shooting. Anderson Lee Aldrich, 22, opened fire with AR-15-style rifle. Pled guilty to 5 murder counts + hate crimes. Sentenced to 5 consecutive life terms + 2,208 years state; 55 life + 190 years federal.</td><td>No</td><td><span class="badge badge-confirmed">Confirmed</span></td><td>Anderson Lee Aldrich</td><td>White</td><td>Male</td><td>22</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://www.denverpost.com/2022/11/20/club-q-shooting-victim-daniel-davis-aston-obit/" target="_blank">Denver Post</a></td></tr>
+
+<tr><td>34</td><td>Kelly Loving</td><td>White</td><td>40</td><td>Colorado Springs, CO</td><td>Nov 19</td><td>Gunshot</td><td>Trans woman killed in Club Q mass shooting alongside Daniel Aston and 3 others. Same suspect (Aldrich). Federal hate crime convictions secured June 2024.</td><td>No</td><td><span class="badge badge-confirmed">Confirmed</span></td><td>Anderson Lee Aldrich</td><td>White</td><td>Male</td><td>22</td><td><span class="badge badge-solved">Convicted/Sentenced</span></td><td><a href="https://us.cnn.com/2024/06/18/us/club-q-shooter-hate-crime-sentencing/" target="_blank">CNN</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-box"><strong>Methodology:</strong> Victim list from HRC's 2022 report. All details independently verified via local news and court records. HRC assessments not used for case status, bias motive, or suspect info. Unsolved cases searched for updates through 2025. Police-involved killings (2 cases) excluded from solve rates and suspect demographics. Murder-suicides (2 cases) counted as closed/solved. Miia Love Parker listed as "at large" — suspect identified and charged but not apprehended as of last reporting. Suspect race verified from mugshots, police descriptions, and victim statements where available; some based on available reporting context.</div>
+
+<div class="footer">Fatal Violence Against Transgender People, 2022 · From local news and court records</div>
+
+<script>
+const RC={black:'#000000',white:'#4169E1',hispanic:'#8B4513',asian:'#FFD700',native:'#FF8C00',other:'#999999'};
+const MC={confirmed:'#c1121f',suspected:'#e8a838',none:'#cccccc',unknown:'#e0e0e0'};
+
+// CHART 1: SUSPECTS by Race (FIRST CHART)
+// 14 Black, 5 White, 3 Hispanic = 22 total identified suspects
+new Chart(document.getElementById('chartSUSPECTS'),{type:'bar',data:{labels:['Black','White','Hispanic'],datasets:[{data:[14,5,3],backgroundColor:[RC.black,RC.white,RC.hispanic]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+' suspects'}}}},scales:{y:{beginAtZero:true,ticks:{stepSize:2}}}}});
+
+// CHART 2: VICTIMS by Race (SECOND CHART)
+// 21 Black, 6 White, 4 Latina, 2 AANHPI, 1 Native
+new Chart(document.getElementById('chartVICTIMS'),{type:'bar',data:{labels:['Black','White','Latina','AANHPI','Native American'],datasets:[{data:[21,6,4,2,1],backgroundColor:[RC.black,RC.white,RC.hispanic,RC.asian,RC.native]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+' victims'}}}},scales:{y:{beginAtZero:true,ticks:{stepSize:2}}}}});
+
+// CHART 3: SPECIFIC PAIRINGS
+new Chart(document.getElementById('chartPAIRINGS'),{type:'bar',data:{labels:['Black susp.→Black vic.','White susp.→White vic.','Hispanic susp.→Latina vic.','Black susp.→Latina vic.','Hispanic susp.→Black vic.','White susp.→AANHPI vic.','White susp.→Black vic.'],datasets:[{data:[12,4,2,1,1,1,1],backgroundColor:['#2d6a4f','#2d6a4f','#2d6a4f','#c1121f','#c1121f','#c1121f','#c1121f']}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+' case(s)'}}}},scales:{y:{beginAtZero:true,ticks:{stepSize:2}}}}});
+
+// CHART 4: Solved vs Unsolved by Race (excl police-involved: 32 cases)
+// Black: 14 solved, 7 unsolved; Latina: 3/1; White: 4/1; AANHPI: 1/0; Native: 1/0
+new Chart(document.getElementById('chartSOLVED'),{type:'bar',data:{labels:['Black','Latina','White','AANHPI','Native'],datasets:[{label:'Solved/Closed',data:[14,3,4,1,1],backgroundColor:'#2d6a4f'},{label:'Unsolved',data:[7,1,1,0,0],backgroundColor:'#c1121f'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:2}}}}});
+
+// CHART 5: Bias Motive (all 34 victims)
+// Confirmed: 3, Suspected: 3, No Evidence: 9, Unknown: 19
+new Chart(document.getElementById('chartBIAS'),{type:'bar',data:{labels:['Confirmed','Suspected','No Evidence','Unknown'],datasets:[{data:[3,3,9,19],backgroundColor:[MC.confirmed,MC.suspected,MC.none,MC.unknown]}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.raw+' cases'}}}},scales:{y:{beginAtZero:true,ticks:{stepSize:2}}}}});
+
+// CHART 6: Bias by Suspect Race (solved w/ known race only, no unknown race)
+// Black suspects (14): 0 confirmed, 2 suspected, 3 no evidence, 9 unknown
+// White suspects (5): 1 confirmed, 1 suspected, 2 no evidence, 1 unknown
+// Hispanic suspects (3): 1 confirmed, 0 suspected, 1 no evidence, 1 unknown
+new Chart(document.getElementById('chartBIAS_RACE'),{type:'bar',data:{labels:['Black Suspects (14)','White Suspects (5)','Hispanic Suspects (3)'],datasets:[{label:'Confirmed',data:[0,1,1],backgroundColor:MC.confirmed},{label:'Suspected',data:[2,1,0],backgroundColor:MC.suspected},{label:'No Evidence',data:[3,2,1],backgroundColor:MC.none},{label:'Unknown',data:[9,1,1],backgroundColor:MC.unknown}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:2}}}}});
+</script>
+</body>
+</html>

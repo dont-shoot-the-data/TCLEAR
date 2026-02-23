@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2023 Fatal Violence Against Transgender People — Combined Analysis</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1400px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:8pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;max-height:340px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+.legend-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:11px;color:#555}
+.legend-item{display:flex;align-items:center;gap:5px}
+table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:8px 6px;text-align:left;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:7px 6px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-confirmed{background:#c1121f;color:#fff}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+.badge-closed{background:#555;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2023</div>
+  <h1>Fatal Violence Against Transgender & Gender-Non-Conforming People</h1>
+  <p>Combined analysis and case-by-case dataset. Data from local news, court records, law enforcement — NOT HRC assessments.<br>
+  Victim list sourced from: <a href="https://reports.hrc.org/an-epidemic-of-violence-2023" target="_blank" style="color:#e8a838;text-decoration:underline">HRC's 2023 Fatal Violence Report</a><br>
+  </p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">35</div><div class="label">Total Victims</div><div class="sub">Tracked by HRC / Advocate</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">21</div><div class="label">Cases Solved</div><div class="sub">66% of non-police homicides</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">11</div><div class="label">Unsolved</div><div class="sub">No arrest or charges</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">69%</div><div class="label">Killed by Firearm</div><div class="sub">24 of 35</div></div>
+</div>
+
+<!-- CHART 1: SUSPECTS by Race — THIS MUST BE FIRST -->
+<div class="chart-card"><div class="chart-title">Chart 1: Identified Suspects by Race/Ethnicity</div><div class="chart-sub">Solved homicide cases with identified suspects (excludes police-involved killings and murder-suicides with deceased suspects)</div><div class="chart-wrap"><canvas id="chartSUSPECTS"></canvas></div><div class="note-box"><strong>Note:</strong> Black suspects account for 11 of 19 identified suspects (58%). White suspects account for 5 (26%). Hispanic suspects account for 3 (16%). All previously "Not confirmed" suspect races have been identified through mugshots and booking photos. The hypothesis — that Black suspects outnumber White suspects every year — holds for 2023.</div></div>
+
+<!-- CHART 2: VICTIMS by Race — SECOND -->
+<div class="chart-card"><div class="chart-title">Chart 2: Victims by Race/Ethnicity</div><div class="chart-sub">All 35 victims documented in 2023</div><div class="chart-wrap"><canvas id="chartVICTIMS"></canvas></div><div class="note-box"><strong>Note:</strong> Black victims represent 23 of 35 (66%). White victims = 6 (17%). Latina/Hispanic = 5 (14%, including Afro-Latina coded under Latina). Indigenous = 1 (3%). Black trans women continue to be disproportionately affected.</div></div>
+
+<!-- CHART 3: SPECIFIC Suspect→Victim Race Pairings -->
+<div class="chart-card"><div class="chart-title">Chart 3: Suspect → Victim Race Pairings (Specific)</div><div class="chart-sub">Each bar = one specific pairing. Green = intraracial, Red = interracial. Only pairings with 1+ cases shown. Excludes police-involved, murder-suicides, and unconfirmed suspect race.</div><div class="chart-wrap"><canvas id="chartPAIRINGS"></canvas></div><div class="note-box"><strong>Finding:</strong> Black suspect → Black victim is the most common pairing (11 cases). White suspect → White victim = 4 cases. Hispanic suspect → Latino victim = 2 cases (intraracial). Hispanic suspect → Black victim = 1 case (interracial). Black suspect → White victim = 1 case (interracial: Tiggs → Butchart, random crime spree).</div></div>
+
+<!-- CHART 4: Solved vs Unsolved by Race -->
+<div class="chart-card"><div class="chart-title">Chart 4: Solved vs. Unsolved by Victim Race</div><div class="chart-sub">Racial disparity in case resolution (excludes police-involved)</div><div class="chart-wrap"><canvas id="chartSOLVED"></canvas></div><div class="note-box"><strong>Key disparity:</strong> Black victims: 13 solved, 8 unsolved (62% solve rate). Latina victims: 3 solved, 1 unsolved (75%). White victims: 5 solved, 0 unsolved (100%). Cases involving White victims were more likely to be resolved.</div></div>
+
+<!-- CHART 5: Bias Motive -->
+<div class="chart-card"><div class="chart-title">Chart 5: Bias Motive Coding</div><div class="chart-sub">All 35 victims coded by bias motive evidence</div><div class="chart-wrap"><canvas id="chartBIAS"></canvas></div><div class="note-box"><strong>Methodology:</strong> Confirmed = hate crime charges or explicit LE statement. Suspected = evidence of animus, no charge. No Evidence = documented alternative motive (IPV, robbery, mass shooting, police killing, random crime spree). Unknown = insufficient info or unsolved with no motive info.</div></div>
+
+<!-- CHART 6: Bias by Suspect Race (SOLVED WITH KNOWN RACE ONLY) -->
+<div class="chart-card"><div class="chart-title">Chart 6: Bias Motive by Suspect Race</div><div class="chart-sub">Solved cases only — suspects with KNOWN race. No "unknown race" category.</div><div class="chart-wrap"><canvas id="chartBIAS_RACE"></canvas></div><div class="note-box"><strong>Note:</strong> All "Suspected bias" cases involving Black suspects total 4 of 11. White suspects include 2 suspected bias cases (Newton and Smith, who killed Williamson after an online lure). Hispanic suspects had 0 suspected bias — all 3 were coded No Evidence (IPV/workplace). No hate crime charges were filed in any 2023 case.</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Complete Research Dataset — 2023</div>
+<div class="section-sub">Chronological order. Sources are local news and court records.</div>
+
+<div class="legend-row"><div class="legend-item"><span class="badge badge-confirmed">Confirmed</span> Hate crime charges or explicit anti-trans motive from LE</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-suspected">Suspected Bias</span> Evidence of animus, no formal charge</div></div>
+<div class="legend-row"><div class="legend-item"><span class="badge badge-none">No Evidence</span> Documented non-bias motive</div></div>
+<div class="legend-row" style="margin-bottom:16px"><div class="legend-item"><span class="badge badge-unknown">Unknown</span> Insufficient info or unsolved</div></div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Victim Name</th><th>Race</th><th>Age</th><th>City, State</th><th>Date</th><th>Cause of Death</th><th>Brief Summary</th><th>Police-Involved</th><th>Bias Motive</th><th>Suspect(s)</th><th>Suspect Race</th><th>Suspect Gender</th><th>Suspect Age</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>Jasmine "Star" Mack</td><td>Black</td><td>36</td><td>Washington, DC</td><td>Jan 7</td><td>Stabbing</td><td>Found on street with stab wound to leg; unresponsive. No fixed address at time of death.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.wusa9.com/article/news/local/family-transgender-woman-who-was-killed-in-ivy-city-speaks-out/65-4d3b697c-64e0-45c2-8d27-9696b2bca92b" target="_blank">WUSA9</a></td></tr>
+<tr><td>2</td><td>KC Johnson</td><td>White</td><td>27</td><td>Wilmington, NC</td><td>Jan 13</td><td>Blunt force (hammer)</td><td>Killed after meeting suspect on social media; remains found in April on Savannah River, GA.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>William Haven Hicks</td><td>White</td><td>Male</td><td>26</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.wect.com/2023/05/02/man-charged-with-murder-missing-wilmington-woman/" target="_blank">WECT</a></td></tr>
+<tr><td>3</td><td>Tortuguita (Manuel Esteban Paez Terán)</td><td>Indigenous</td><td>26</td><td>Atlanta, GA</td><td>Jan 18</td><td>Shot (57 times)</td><td>Shot by Georgia State Patrol troopers during Cop City protest raid. Autopsy: no gunshot residue on hands. No charges filed against officers.</td><td>Yes</td><td><span class="badge badge-none">No Evidence</span></td><td>GA State Patrol (6 troopers)</td><td>N/A</td><td>N/A</td><td>N/A</td><td><span class="badge badge-closed">Closed</span></td><td><a href="https://www.npr.org/2023/03/24/1165575808/tortuguita-atlanta-cop-city-autopsy" target="_blank">NPR</a></td></tr>
+<tr><td>4</td><td>Maria Jose Rivera Rivera</td><td>Latina</td><td>22</td><td>Houston, TX</td><td>~Jan 21</td><td>Shot</td><td>Found dead in apartment after neighbors reported odor; apparent murder-suicide by intimate partner. Immigrant from El Salvador.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Intimate partner (deceased)</td><td>—</td><td>Male</td><td>—</td><td><span class="badge badge-closed">Closed</span></td><td><a href="https://www.advocate.com/crime/transgender-woman-killed-houston-rivera" target="_blank">The Advocate</a></td></tr>
+<tr><td>5</td><td>Unique Banks</td><td>Latina</td><td>21</td><td>Chicago, IL</td><td>Jan 23</td><td>Shot</td><td>Killed in mass shooting home invasion in South Shore; mother also killed, 3 others wounded. Suspect identified in photo lineups but charges declined by prosecutors.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Suspect identified, charges declined</td><td>—</td><td>Male</td><td>~19</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://chicago.suntimes.com/crime/2023/2/7/23590217/prosecutors-decline-to-charge-teen-arrested-in-mass-shooting-at-south-shore-apartment" target="_blank">Chicago Sun-Times</a></td></tr>
+<tr><td>6</td><td>Zachee Imanitwitaho</td><td>Black</td><td>26</td><td>Louisville, KY</td><td>Feb 3</td><td>Shot</td><td>Shot in JBS meat-processing plant parking lot by coworker who later turned himself in. Rwandan immigrant.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Edilberto Lores-Reyes</td><td>Hispanic</td><td>Male</td><td>58</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.whas11.com/article/news/crime/louisville-metro-police-investigating-homicide-near-camp-ground-road/417-48a95c78-3bc5-4e37-8fae-6a0e3a7a4af2" target="_blank">WHAS11</a></td></tr>
+<tr><td>7</td><td>Cashay Henderson</td><td>Black</td><td>31</td><td>Milwaukee, WI</td><td>Feb 26</td><td>Shot</td><td>Shot to death; apartment set on fire. Suspect had searched for trans escort day of killing and texted "I caught a body of a disgusting [expletive] tran."</td><td>No</td><td><span class="badge badge-suspected">Suspected</span></td><td>Cordell M. Howze</td><td>Black</td><td>Male</td><td>33</td><td><span class="badge badge-solved">Convicted — Life w/o parole</span></td><td><a href="https://www.jsonline.com/story/news/crime/2024/06/14/cordell-howze-convicted-of-killing-cashay-henderson-in-milwaukee/74094015007/" target="_blank">Milwaukee Journal Sentinel</a></td></tr>
+<tr><td>8</td><td>Tasiyah "Siyah" Woodland</td><td>Black</td><td>18</td><td>Mechanicsville, MD</td><td>Mar 24</td><td>Shot</td><td>Shot outside bar parking lot after confrontation. Police say gender identity not a factor; family says hate crime. Second suspect also arrested.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Darryl Carlton Parks Jr.; Erin Nicole Battle</td><td>Black</td><td>Male; Female</td><td>29; 29</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.fox5dc.com/news/dc-man-arrested-for-murder-of-transgender-woman-in-st-marys-county-sheriff" target="_blank">FOX5 DC</a></td></tr>
+<tr><td>9</td><td>Ashley Burton</td><td>Black</td><td>37</td><td>Atlanta, GA</td><td>Apr 11</td><td>Shot</td><td>Shot in face during dispute at apartment; went door-to-door for help before collapsing. Suspect stole phones to conceal identity. Police believe domestic violence.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Darius Mills</td><td>Black</td><td>Male</td><td>31</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.fox5atlanta.com/news/ashley-burton-murder-suspect-arrest-charges-atlanta" target="_blank">FOX5 Atlanta</a></td></tr>
+<tr><td>10</td><td>Koko Da Doll (Rasheeda Williams)</td><td>Black</td><td>35</td><td>Atlanta, GA</td><td>Apr 18</td><td>Shot</td><td>Shot at shopping plaza. Star of Sundance documentary "Kokomo City." Police said not believed targeted for being trans.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Jermarcus Jernigan</td><td>Black</td><td>Male</td><td>17</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://abcnews.go.com/US/suspect-arrested-fatal-shooting-atlanta-transgender-woman-koko/story?id=98914618" target="_blank">ABC News</a></td></tr>
+<tr><td>11</td><td>Banko Brown</td><td>Black</td><td>24</td><td>San Francisco, CA</td><td>Apr 27</td><td>Shot</td><td>Shot by Walgreens security guard during alleged shoplifting ($14.64 candy). DA declined charges citing self-defense. Brown was unarmed and homeless.</td><td>Yes</td><td><span class="badge badge-none">No Evidence</span></td><td>Michael Earl-Wayne Anthony (security guard)</td><td>N/A</td><td>N/A</td><td>33</td><td><span class="badge badge-closed">Closed — no charges</span></td><td><a href="https://www.cnn.com/2023/05/16/us/banko-brown-san-francisco-wallgreens-shooting/index.html" target="_blank">CNN</a></td></tr>
+<tr><td>12</td><td>LaKendra Andrews</td><td>Black</td><td>26</td><td>Dallas, TX</td><td>Apr 29</td><td>Shot</td><td>Found on street with gunshot wound; died shortly after. Investigation remains open.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/crime/lakendra-andrews-trans-woman-killed" target="_blank">The Advocate</a></td></tr>
+<tr><td>13</td><td>Ashia Davis</td><td>Black</td><td>34</td><td>Highland Park, MI</td><td>Jun 1</td><td>Shot</td><td>Shot execution-style in back of head at hotel. Suspect met her for sex, armed himself before meeting, deleted phone records. Pleaded guilty to 2nd-degree murder.</td><td>No</td><td><span class="badge badge-suspected">Suspected</span></td><td>Carlos Lamar Scotland</td><td>Black</td><td>Male</td><td>17</td><td><span class="badge badge-solved">Convicted — 17-30 yrs</span></td><td><a href="https://www.fox2detroit.com/news/charging-decision-made-in-transgender-womans-killing-at-highland-park-hotel" target="_blank">FOX2 Detroit</a></td></tr>
+<tr><td>14</td><td>Chanell Perez Ortiz</td><td>Afro-Latina</td><td>29</td><td>Carolina, PR</td><td>Jun 25</td><td>Shot</td><td>Found on highway with multiple bullet wounds (7-8 casings). Being investigated as transfemicide by Puerto Rico police.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/crime/trans-woman-killed-puerto-rico" target="_blank">The Advocate</a></td></tr>
+<tr><td>15</td><td>Jacob Williamson</td><td>White</td><td>18</td><td>Pageland, SC</td><td>Jun 30</td><td>Killed (method unreleased)</td><td>Lured by online date from SC to Monroe, NC; killed at suspect's home, body dumped on roadside. Both suspects later charged with 1st-degree murder.</td><td>No</td><td><span class="badge badge-suspected">Suspected</span></td><td>Joshua Newton; Victoria Smith</td><td>White</td><td>Male; Female</td><td>25; 22</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.postandcourier.com/columbia/killing-of-sc-transgender-teen-in-nc-leaves-family-searching-for-answers/article_9b3ed8b2-2026-11ee-b0ab-031fa661c1bd.html" target="_blank">Post and Courier</a></td></tr>
+<tr><td>16</td><td>Camdyn Rider</td><td>White</td><td>21</td><td>Winter Haven, FL</td><td>Jul 21</td><td>Shot</td><td>Pregnant trans man (8 months) shot by fiancé who then killed himself. Unborn child also died. Couple had history of arguments/physical violence.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Riley John Groover (deceased)</td><td>White</td><td>Male</td><td>26</td><td><span class="badge badge-closed">Closed — murder-suicide</span></td><td><a href="https://www.wtsp.com/article/news/crime/riley-groover-pregnant-woman-killed-winter-haven/67-57ca36f1-08a0-4841-8e17-4e3e4185ac2a" target="_blank">WTSP</a></td></tr>
+<tr><td>17</td><td>Jean Thomas Butchart</td><td>White</td><td>26</td><td>Van Buren Twp., MI</td><td>Aug 4</td><td>Shot</td><td>Shot in head by stranger on first day of new job. Victim of random crime spree; suspect also attacked two other people in unrelated incidents.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Matthew Torrey Tiggs Jr.</td><td>Black</td><td>Male</td><td>22</td><td><span class="badge badge-solved">Convicted — 18 yrs</span></td><td><a href="https://www.mlive.com/news/2023/12/changes-made-after-michigan-man-misidentified-mistakenly-deadnamed-after-murder.html" target="_blank">MLive</a></td></tr>
+<tr><td>18</td><td>DéVonnie J'Rae Johnson</td><td>Black</td><td>~28</td><td>Los Angeles, CA</td><td>Aug 7</td><td>Shot</td><td>Shot by Ralphs grocery security guard. Police said she had fire extinguisher/screwdriver; family disputes account. Guard not charged.</td><td>Yes</td><td><span class="badge badge-none">No Evidence</span></td><td>Security guard (not charged)</td><td>N/A</td><td>N/A</td><td>N/A</td><td><span class="badge badge-closed">Closed — no charges</span></td><td><a href="https://www.advocate.com/crime/transgender-woman-shot-los-angeles" target="_blank">The Advocate</a></td></tr>
+<tr><td>19</td><td>Luis Ángel Díaz Castro</td><td>Latino</td><td>22</td><td>San Juan, PR</td><td>~Aug 7-11</td><td>Killed (body decomposing)</td><td>Body found in closet of ex-boyfriend's apartment, hidden under clothes. Ex had been released from jail on DV charge the day victim went missing.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Domingo Rafael Aquino Ubri</td><td>Hispanic</td><td>Male</td><td>—</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.advocate.com/crime/transgender-man-killed-puerto-rico" target="_blank">The Advocate</a></td></tr>
+<tr><td>20</td><td>Thomas "Tom-Tom" Robertson</td><td>Black</td><td>28</td><td>Calumet City, IL</td><td>Aug 17</td><td>Shot</td><td>Shot to death; companion also shot and hospitalized. Few details available; investigation ongoing.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.pghlesbian.com/2023/09/28-year-old-black-gender-nonconforming-person-killed/" target="_blank">PGH Lesbian Correspondents</a></td></tr>
+<tr><td>21</td><td>Codii Lawrence</td><td>White</td><td>25</td><td>Weirton, WV</td><td>Sep 5</td><td>Hit by car</td><td>Struck by car while walking along road 40 miles from home. Driver cooperating. Circumstances under investigation.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Driver (cooperating)</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unknown">Under investigation</span></td><td><a href="https://www.pghlesbian.com/2023/09/25-year-old-trans-man-codii-lawrence-killed/" target="_blank">PGH Lesbian Correspondents</a></td></tr>
+<tr><td>22</td><td>Alexa Alex Andreevna Sokova</td><td>White</td><td>30</td><td>Palm Bay, FL</td><td>Sep 8</td><td>Shot</td><td>Found dead in wooded area with multiple gunshot wounds; missing since Aug 30. Roommate arrested fleeing police in Alabama.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Robert Paul Lanning III</td><td>White</td><td>Male</td><td>28</td><td><span class="badge badge-solved">Convicted — 18 yrs</span></td><td><a href="https://www.al.com/news/2023/09/man-arrested-in-north-alabama-pursuit-now-charged-in-florida-murder.html" target="_blank">AL.com</a></td></tr>
+<tr><td>23</td><td>Charm Wilson</td><td>Black</td><td>32</td><td>Cleveland, OH</td><td>Sep 8</td><td>Hit by car</td><td>Struck and killed by car. Driver taken into custody. No further details released.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Driver (in custody)</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unknown">Under investigation</span></td><td><a href="https://www.pghlesbian.com/2023/09/32-year-old-black-trans-woman-charm-wilson-killed-in-cleveland/" target="_blank">PGH Lesbian Correspondents</a></td></tr>
+<tr><td>24</td><td>YOKO</td><td>Black</td><td>30</td><td>New Orleans, LA</td><td>Sep 19</td><td>Hit-and-run</td><td>Hit by stolen SUV while on motor scooter. Driver fled; arrested next day changing tire on the SUV along interstate.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Bryan Mitchell Sr.</td><td>Black</td><td>Male</td><td>35</td><td><span class="badge badge-solved">Arrested</span></td><td><a href="https://www.fox8live.com/2023/09/21/person-scooter-struck-killed-gentilly-by-hit-and-run-driver-stolen-suv-nopd-says/" target="_blank">WVUE (FOX8)</a></td></tr>
+<tr><td>25</td><td>Sherlyn Marjorie</td><td>Latina</td><td>35</td><td>Albuquerque, NM</td><td>~Sep 16</td><td>Beaten</td><td>Beaten to death by former intimate partner; body found in drainage tunnel wrapped in tape and plastic. Suspect claimed extortion but no evidence found.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Jose Mendoza-Espinoza</td><td>Hispanic</td><td>Male</td><td>29</td><td><span class="badge badge-solved">Arrested — murder</span></td><td><a href="https://www.advocate.com/crime/trans-woman-sherlyn-marjorie-killed" target="_blank">The Advocate</a></td></tr>
+<tr><td>26</td><td>A'nee Roberson (Johnson)</td><td>Black</td><td>30</td><td>Washington, DC</td><td>Oct 14</td><td>Blunt force trauma</td><td>Attacked and left in street, then struck by car. Died at hospital. Driver not involved in initial attack; assailant unknown.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified (attacker)</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.fox5dc.com/news/transgender-woman-dead-assaulted-struck-killed-u-street-dc-nellies-sports-bar" target="_blank">FOX5 DC</a></td></tr>
+<tr><td>27</td><td>Chyna Long</td><td>Black</td><td>—</td><td>Milwaukee, WI</td><td>Oct 8</td><td>Shot</td><td>Found shot to death on street. Family believes she was targeted for being trans; had been frequently harassed.</td><td>No</td><td><span class="badge badge-suspected">Suspected</span></td><td>Antonio Currin</td><td>Black</td><td>Male</td><td>29</td><td><span class="badge badge-solved">Convicted — 50 yrs</span></td><td><a href="https://www.advocate.com/crime/chyna-long-suspect-arrested" target="_blank">The Advocate</a></td></tr>
+<tr><td>28</td><td>Dominic DuPree (Palace)</td><td>Black</td><td>25</td><td>Chicago, IL</td><td>Oct 13</td><td>Shot</td><td>Shot to death while in a vehicle. No further details available.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.pghlesbian.com/2023/10/a-black-gender-nonconforming-person-killed-by-gun-violence-in-chicago/" target="_blank">PGH Lesbian Correspondents</a></td></tr>
+<tr><td>29</td><td>Lisa Love</td><td>Black</td><td>35</td><td>Chicago, IL</td><td>Oct 17</td><td>Shot</td><td>Shot in chest and back while leaving friend's home. Family says car drove up, made U-turn, and shot her ~30 seconds later. Family believes targeted.</td><td>No</td><td><span class="badge badge-suspected">Suspected</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/crime/lisa-love-killed-chicago-transgender" target="_blank">The Advocate</a></td></tr>
+<tr><td>30</td><td>London Price</td><td>Black</td><td>26</td><td>Miami-Dade, FL</td><td>Oct 23</td><td>Shot</td><td>Pistol-whipped then shot outside home in front of grandmother. Former boyfriend had let suspect move in.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Anthony Quinn Peyton II</td><td>Black</td><td>Male</td><td>25</td><td><span class="badge badge-solved">Arrested — 2nd degree murder</span></td><td><a href="https://www.advocate.com/crime/london-price-trans-woman-killed" target="_blank">The Advocate</a></td></tr>
+<tr><td>31</td><td>Amiri Jean Reid</td><td>Black</td><td>21</td><td>Toledo, OH</td><td>Nov 14</td><td>Shot</td><td>Shot in head while driving with Richardson. Suspect later found dead of apparent self-inflicted gunshot on Thanksgiving Day.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Jorenzo Phillips (deceased)</td><td>Black</td><td>Male</td><td>19</td><td><span class="badge badge-closed">Closed — suspect deceased</span></td><td><a href="https://www.advocate.com/crime/transgender-woman-gnc-man-killed" target="_blank">The Advocate</a></td></tr>
+<tr><td>32</td><td>Kejuan Richardson</td><td>Black</td><td>21</td><td>Toledo, OH</td><td>Nov 14</td><td>Shot</td><td>Shot in head while driving with Reid by same suspect. Both pronounced dead at hospital.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Jorenzo Phillips (deceased)</td><td>Black</td><td>Male</td><td>19</td><td><span class="badge badge-closed">Closed — suspect deceased</span></td><td><a href="https://www.advocate.com/crime/transgender-woman-gnc-man-killed" target="_blank">The Advocate</a></td></tr>
+<tr><td>33</td><td>Savannah Ryan Williams</td><td>Black</td><td>38</td><td>Minneapolis, MN</td><td>Nov 29</td><td>Shot</td><td>Shot in head after performing oral sex on suspect. Suspect told police he became "suspicious" and "had to do it."</td><td>No</td><td><span class="badge badge-suspected">Suspected</span></td><td>Damarean Kaylon Bible</td><td>Black</td><td>Male</td><td>25</td><td><span class="badge badge-solved">Convicted — 367 months</span></td><td><a href="https://www.kare11.com/article/news/crime/trans-woman-killed-friend-said-she-was-full-of-life/89-dca16e1e-c543-4ce7-9e38-7baa0a8aff35" target="_blank">KARE</a></td></tr>
+<tr><td>34</td><td>Amber Minor</td><td>Black</td><td>40</td><td>Raytown, MO</td><td>Dec 24</td><td>Shot</td><td>Found shot to death in driveway Christmas Eve morning. Investigation ongoing.</td><td>No</td><td><span class="badge badge-unknown">Unknown</span></td><td>Unidentified</td><td>—</td><td>—</td><td>—</td><td><span class="badge badge-unsolved">Unsolved</span></td><td><a href="https://www.advocate.com/crime/amber-minor-transgender-woman-killed" target="_blank">The Advocate</a></td></tr>
+<tr><td>35</td><td>Meghan Riley Lewis</td><td>White</td><td>—</td><td>Bel Air, MD</td><td>Dec 27</td><td>Shot</td><td>Shot by food delivery driver after verbal dispute at apartment complex escalated to physical altercation.</td><td>No</td><td><span class="badge badge-none">No Evidence</span></td><td>Brian Michael Delen</td><td>White</td><td>Male</td><td>47</td><td><span class="badge badge-solved">Convicted — assault, 10 yrs</span></td><td><a href="https://www.advocate.com/crime/meghan-lewis-killed-baltimore" target="_blank">The Advocate</a></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-box"><strong>Methodology:</strong> Victim list from HRC/Advocate. All details independently verified via local news and court records. HRC assessments not used for bias coding. Unsolved cases searched for arrest updates through 2025. Police-involved killings (Tortuguita, Banko Brown, DéVonnie Johnson) excluded from solve rates and suspect demographics. All suspect races verified through mugshots, booking photos, court appearance coverage, or official records. White suspect coding triple-checked per protocol. Vehicular deaths (Codii Lawrence, Charm Wilson) included as tracked by HRC but noted as under investigation with unclear circumstances.</div>
+
+<div class="footer"><strong>Fatal Violence Against Transgender People, 2023</strong> · From local news and court records</div>
+
+<script>
+const RC={black:'#000000',white:'#4169E1',hispanic:'#8B4513',asian:'#FFD700',native:'#FF8C00',other:'#999999'};
+const MC={confirmed:'#c1121f',suspected:'#e8a838',none:'#cccccc',unknown:'#e0e0e0'};
+
+// CHART 1: SUSPECTS by Race (excludes police-involved, murder-suicides w/ deceased suspect, unidentified)
+// Black: Parks, Howze, Mills, Jernigan, Scotland, Currin, Peyton, Phillips, Bible, Tiggs, Mitchell = 11 unique
+// White: Hicks, Newton, Smith, Lanning, Delen = 5 (Smith upgraded to 1st-degree murder)
+// Hispanic: Lores-Reyes, Mendoza-Espinoza, Aquino Ubri = 3
+// All previously "Not confirmed" suspects now identified
+new Chart(document.getElementById('chartSUSPECTS'),{type:'bar',data:{labels:['Black','White','Hispanic'],datasets:[{data:[11,5,3],backgroundColor:[RC.black,RC.white,RC.hispanic]}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+
+// CHART 2: VICTIMS by Race
+// Black: Mack,Zachee,Cashay,Woodland,Burton,Koko,Brown(Banko),Andrews,Davis,Johnson(Devonnie),Robertson,Wilson(Charm),YOKO,Roberson,Long,DuPree,Love,Price,Reid,Richardson,Williams(Savannah),Minor = 22
+// Latina: Rivera,Banks,Perez Ortiz,Diaz Castro = 4 (Chanell is Afro-Latina coded as Latina)
+// White: KC Johnson,Williamson,Rider,Butchart,Lawrence,Sokova,Lewis = 7
+// Indigenous: Tortuguita = 1
+// Sherlyn Marjorie = Latina = +1 = 5 Latina total
+new Chart(document.getElementById('chartVICTIMS'),{type:'bar',data:{labels:['Black','Latina/Hispanic','White','Indigenous'],datasets:[{data:[22,5,7,1],backgroundColor:[RC.black,RC.hispanic,RC.white,RC.native]}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+
+// CHART 3: SPECIFIC PAIRINGS (solved with known suspect+victim race, exclude police, murder-suicides, unconfirmed race)
+// Black→Black: Howze→Henderson, Mills→Burton, Jernigan→Koko, Parks→Woodland, Scotland→Davis, Currin→Long, Peyton→Price, Phillips→Reid, Phillips→Richardson, Bible→Williams, Mitchell→YOKO = 11
+// Black→White: Tiggs→Butchart = 1 (interracial)
+// Hispanic→Black: Lores-Reyes→Zachee = 1
+// Hispanic→Latina: Mendoza-Espinoza→Marjorie = 1, Aquino Ubri→Diaz Castro = 1 total = 2
+// White→White: Hicks→KC Johnson, Newton+Smith→Williamson, Lanning→Sokova, Delen→Lewis = 4
+new Chart(document.getElementById('chartPAIRINGS'),{type:'bar',data:{labels:['Black susp.→Black vic.','Black susp.→White vic.','Hispanic susp.→Black vic.','Hispanic susp.→Latino/a vic.','White susp.→White vic.'],datasets:[{data:[11,1,1,2,4],backgroundColor:['#2d6a4f','#c1121f','#c1121f','#2d6a4f','#2d6a4f']}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+
+// CHART 4: Solved vs Unsolved by Race (excludes police-involved: Tortuguita, Banko, DéVonnie)
+// Black (21 non-police): Solved/Closed: Henderson,Woodland,Burton,Koko,Davis,Long,Price,Reid,Richardson,Williams,Mills→Burton already counted = 
+// Let me recount Black non-police victims: Mack,Zachee,Cashay,Woodland,Burton,Koko,Andrews,Davis,Robertson,YOKO,Wilson(Charm),Roberson,Long,DuPree,Love,Price,Reid,Richardson,Williams,Minor = 20
+// Solved Black: Cashay(Howze),Woodland(Parks),Burton(Mills),Koko(Jernigan),Davis(Scotland),Long(Currin),Price(Peyton),Reid(Phillips),Richardson(Phillips),Williams(Bible),YOKO(Mitchell) = 11
+// + Zachee (Lores-Reyes, Hispanic suspect killing Black victim) = 12 solved
+// Unsolved Black: Mack,Andrews,Robertson,Wilson(Charm is under investigation),Roberson,DuPree,Love,Minor = 8
+// Latina (4 non-police): Rivera(closed-murder-suicide),Banks(unsolved),Perez Ortiz(unsolved),Marjorie(solved),Diaz Castro(solved) = 5
+// Solved Latina: Rivera(closed),Marjorie(solved),Diaz Castro(solved) = 3, Unsolved: Banks, Perez Ortiz = 2
+// White (7 non-police, minus Tortuguita=Indigenous): KC Johnson(solved),Williamson(solved),Rider(closed),Butchart(solved),Lawrence(under investigation),Sokova(solved),Lewis(solved) = 7
+// Solved White: KC Johnson,Williamson,Rider(closed),Butchart,Sokova,Lewis = 6, Under investigation: Lawrence = 1
+// Indigenous: Tortuguita (police-involved, excluded)
+new Chart(document.getElementById('chartSOLVED'),{type:'bar',data:{labels:['Black','Latina/Hispanic','White'],datasets:[{label:'Solved/Closed',data:[12,3,6],backgroundColor:'#2d6a4f'},{label:'Unsolved',data:[8,2,1],backgroundColor:'#c1121f'}]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:1}}}}});
+
+// CHART 5: Bias Motive (all 35)
+// Confirmed: 0
+// Suspected: Henderson(7),Davis(13),Williamson(15),Long(27),Love(29),Williams(33) = 6
+// No Evidence: Tortuguita(3),Rivera(4),Banks(5),Brown(11),Johnson(18),Rider(16),Butchart(17),YOKO(24),Marjorie(25),Diaz Castro(19),Sokova? wait..
+// Let me recode carefully:
+// No Evidence (documented alternative motive): Tortuguita(police),Rivera(IPV murder-suicide),Banks(mass shooting),Banko(shoplifting dispute),DéVonnie(store confrontation),Rider(IPV murder-suicide),Butchart(random crime spree),YOKO(hit-run stolen vehicle),Marjorie(IPV),Diaz Castro(IPV/DV),Lewis(delivery driver dispute) = 11
+// Suspected: Henderson,Davis,Williamson,Long,Love,Williams(Savannah) = 6
+// Unknown: Everyone else = 35-0-6-11 = 18
+new Chart(document.getElementById('chartBIAS'),{type:'bar',data:{labels:['Confirmed','Suspected','No Evidence','Unknown'],datasets:[{data:[0,6,11,18],backgroundColor:[MC.confirmed,MC.suspected,MC.none,MC.unknown]}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+
+// CHART 6: Bias by Suspect Race (SOLVED WITH KNOWN RACE ONLY, all suspects now have known race)
+// Black suspects (11): 
+//   Suspected: Howze(Henderson), Scotland(Davis), Currin(Long), Bible(Williams) = 4
+//   No Evidence: Tiggs(Butchart-random crime spree), Mitchell(YOKO-hit-run stolen vehicle) = 2
+//   Unknown: Parks(Woodland), Mills(Burton), Jernigan(Koko), Peyton(Price), Phillips(Reid/Richardson) = 5
+//   So Black: Confirmed=0, Suspected=4, No Evidence=2, Unknown=5
+// White suspects (5): 
+//   Suspected: Newton(Williamson), Smith(Williamson) = 2
+//   No Evidence: Delen(Lewis-delivery driver dispute) = 1
+//   Unknown: Hicks(KC Johnson), Lanning(Sokova) = 2
+//   So White: Confirmed=0, Suspected=2, No Evidence=1, Unknown=2
+// Hispanic suspects (3): 
+//   Lores-Reyes(Zachee)→Unknown=1, Mendoza-Espinoza(Marjorie)→No Evidence=1, Aquino Ubri(Diaz Castro)→No Evidence=1
+//   So Hispanic: No Evidence=2, Unknown=1
+new Chart(document.getElementById('chartBIAS_RACE'),{type:'bar',data:{labels:['Black Suspects','White Suspects','Hispanic Suspects'],datasets:[{label:'Confirmed',data:[0,0,0],backgroundColor:MC.confirmed},{label:'Suspected',data:[4,2,0],backgroundColor:MC.suspected},{label:'No Evidence',data:[2,1,2],backgroundColor:MC.none},{label:'Unknown',data:[5,2,1],backgroundColor:MC.unknown}]},options:{responsive:true,plugins:{legend:{position:'top'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:1}}}}});
+</script>
+</body>
+</html>

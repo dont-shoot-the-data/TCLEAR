@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatal Violence Against Transgender People in the United States, 2016 — Case-Level Analysis</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --clr-black: #000000;
+    --clr-white-race: #4169E1;
+    --clr-hispanic: #8B4513;
+    --clr-aanhpi: #FFD700;
+    --clr-native: #FF8C00;
+    --clr-unknown: #CCCCCC;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: #FAFAF8;
+    color: #1a1a1a;
+    line-height: 1.6;
+    padding: 0 20px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; }
+  header {
+    text-align: center;
+    padding: 50px 0 30px;
+    border-bottom: 3px double #333;
+    margin-bottom: 40px;
+  }
+  header h1 { font-size: 1.9em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 10px; color: #111; }
+  header .subtitle { font-size: 1.1em; color: #555; font-style: italic; }
+  header .meta { font-size: 0.85em; color: #777; margin-top: 8px; }
+  h2 { font-size: 1.4em; margin: 40px 0 12px; padding-bottom: 6px; border-bottom: 1px solid #ccc; color: #222; }
+  h3 { font-size: 1.15em; margin: 25px 0 8px; color: #333; }
+  p, li { font-size: 0.95em; margin-bottom: 10px; }
+  .methodology {
+    background: #f0efe8; border-left: 4px solid #555;
+    padding: 20px 25px; margin: 20px 0 30px; font-size: 0.9em;
+  }
+  .methodology ul { margin-left: 18px; margin-top: 8px; }
+  .methodology li { margin-bottom: 4px; }
+  .methodology a { color: #1a5276; }
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin: 20px 0 30px;
+  }
+  .stat-card { background: #fff; border: 1px solid #ddd; padding: 18px; text-align: center; }
+  .stat-card .number { font-size: 2.2em; font-weight: 700; color: #111; display: block; }
+  .stat-card .label { font-size: 0.82em; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+  .chart-section { margin: 30px 0; padding: 20px; background: #fff; border: 1px solid #ddd; }
+  .chart-section h3 { margin-top: 0; text-align: center; }
+  .chart-container { position: relative; max-width: 700px; margin: 0 auto; height: 360px; }
+  .chart-note { font-size: 0.8em; color: #888; text-align: center; margin-top: 6px; font-style: italic; }
+  .legend-bar {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 14px; margin: 15px 0 5px; font-size: 0.82em;
+  }
+  .legend-bar span { display: inline-flex; align-items: center; gap: 5px; }
+  .legend-bar .swatch { display: inline-block; width: 14px; height: 14px; border: 1px solid #aaa; }
+  .table-wrap { overflow-x: auto; margin: 20px 0; border: 1px solid #ccc; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.78em; min-width: 2300px; }
+  thead { background: #222; color: #fff; }
+  th { padding: 10px 8px; text-align: left; font-weight: 600; font-size: 0.9em; white-space: nowrap; position: sticky; top: 0; }
+  td { padding: 8px; border-bottom: 1px solid #e0e0e0; vertical-align: top; }
+  tr:nth-child(even) { background: #f7f7f4; }
+  tr:hover { background: #eeeee8; }
+  tr.police-involved { background: #fef3cd !important; }
+  .tag { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 0.85em; font-weight: 600; }
+  .tag-solved { background: #d4edda; color: #155724; }
+  .tag-unsolved { background: #f8d7da; color: #721c24; }
+  .tag-charged { background: #fff3cd; color: #856404; }
+  .tag-police { background: #cce5ff; color: #004085; }
+  .tag-suspected { background: #fd7e14; color: #fff; }
+  .tag-noevidence { background: #6c757d; color: #fff; }
+  .tag-unknown { background: #e2e3e5; color: #383d41; }
+  td a { color: #1a5276; text-decoration: none; }
+  td a:hover { text-decoration: underline; }
+  footer {
+    text-align: center; padding: 30px 0; border-top: 1px solid #ccc;
+    margin-top: 40px; font-size: 0.8em; color: #888;
+  }
+  footer a { color: #1a5276; }
+  @media print { body { font-size: 11pt; } .chart-section { break-inside: avoid; } table { font-size: 7pt; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Fatal Violence Against Transgender People in the United States, 2016</h1>
+  <div class="subtitle">Case-Level Analysis of Victim Demographics, Suspect Characteristics, Case Outcomes, and Bias Motivation</div>
+  <div class="meta">Data compiled from court records, law enforcement reports, and verified news sources</div>
+</header>
+
+<h2>Methodology</h2>
+<div class="methodology">
+  <p><strong>Victim identification:</strong> The Human Rights Campaign (HRC) documented 21 victims of fatal violence against transgender and gender non-conforming people in the United States in 2016 in their report <em>A Matter of Life and Death</em> (<a href="https://assets2.hrc.org/files/assets/resources/A-Matter-of-Life-and-Death-2016.pdf" target="_blank">view HRC report — PDF</a>). HRC also noted 5 additional "Of Note" deaths that were difficult to classify: Kayden Clarke (police-involved shooting), Nino Acox Jackson (ruled non-foul play), Veronica Banks Cano (unclear if homicide), Skye Mockabee (police later believed accidental), and Lexxi Sironen (cause undetermined, case closed). This dataset includes HRC's 21 main cases plus 3 "Of Note" cases where homicide remained plausible at time of inclusion (Clarke, Banks Cano, Mockabee), for a total of 24 documented cases. Jackson and Sironen are excluded because authorities determined their deaths were not homicides. <strong>Note:</strong> Subsequent research confirmed the Cuyahoga County Medical Examiner ruled Mockabee's death a cocaine overdose. Mockabee is retained in the dataset for completeness but excluded from solve rate and suspect demographic calculations alongside the police-involved killing.</p>
+  <p><strong>Case research protocol:</strong> Each case was researched using a minimum of two independent searches — one for initial incident details and one for case disposition — to capture developments through 2025. Case details were drawn exclusively from court records, law enforcement press releases, and local news coverage. The HRC report was used solely for victim identification; all case facts were independently verified.</p>
+  <p><strong>Demographic verification:</strong></p>
+  <ul>
+    <li><strong>Victim race:</strong> Verified from news descriptions, family statements, and community sources — never inferred from surnames.</li>
+    <li><strong>Suspect race:</strong> Verified from booking photos, explicit news descriptions, court affidavits, or law enforcement records — never inferred from names.</li>
+  </ul>
+  <p><strong>Bias motive coding:</strong></p>
+  <ul>
+    <li><strong>Confirmed:</strong> Formal hate crime charges filed or explicit law enforcement statement of bias motive.</li>
+    <li><strong>Suspected:</strong> Evidence of anti-transgender animus (e.g., trans panic statements, derogatory remarks about victim's gender identity) but no hate crime charges filed.</li>
+    <li><strong>No Evidence:</strong> Documented alternative motive (intimate partner violence, robbery, interpersonal dispute) with no evidence of bias.</li>
+    <li><strong>Unknown:</strong> Insufficient information to determine motive, typically in unsolved cases.</li>
+  </ul>
+  <p><strong>Solve rate calculations:</strong> Police-involved killings (n=1) and the ruled non-homicide (Mockabee, n=1) are excluded from solve rate denominators and from suspect demographic analyses. All suspects in group cases are counted individually.</p>
+</div>
+
+<h2>Summary Statistics</h2>
+<div class="stats-grid">
+  <div class="stat-card"><span class="number">16</span><span class="label">Cases Solved (73%)</span></div>
+  <div class="stat-card"><span class="number">6</span><span class="label">Cases Unsolved</span></div>
+  <div class="stat-card"><span class="number">1</span><span class="label">Police-Involved Killing</span></div>
+  <div class="stat-card"><span class="number">1</span><span class="label">Ruled Non-Homicide</span></div>
+  <div class="stat-card"><span class="number">5</span><span class="label">Suspected Bias Motive</span></div>
+  <div class="stat-card"><span class="number">13</span><span class="label">Firearm Deaths (54%)</span></div>
+</div>
+
+<div class="legend-bar">
+  <span><span class="swatch" style="background:#000"></span> Black</span>
+  <span><span class="swatch" style="background:#4169E1"></span> White</span>
+  <span><span class="swatch" style="background:#8B4513"></span> Hispanic/Latino</span>
+  <span><span class="swatch" style="background:#9370DB"></span> Multiracial</span>
+  <span><span class="swatch" style="background:#FFD700;border-color:#b89b00"></span> AANHPI</span>
+  <span><span class="swatch" style="background:#FF8C00"></span> Native American</span>
+  <span><span class="swatch" style="background:#CCCCCC"></span> Unknown</span>
+</div>
+
+<!-- CHART 1: Suspects by Race -->
+<div class="chart-section">
+  <h3>Figure 1. Known Suspects by Race</h3>
+  <div class="chart-container"><canvas id="chart1"></canvas></div>
+  <p class="chart-note">N=28 identified suspects across 16 solved cases. Excludes police-involved killing (n=1), ruled non-homicide (n=1), and unsolved cases (n=6). All suspects in group cases counted individually.</p>
+</div>
+
+<!-- CHART 2: Victims by Race -->
+<div class="chart-section">
+  <h3>Figure 2. Victims by Race</h3>
+  <div class="chart-container"><canvas id="chart2"></canvas></div>
+  <p class="chart-note">N=24 victims. All 24 documented cases included.</p>
+</div>
+
+<!-- CHART 3: Suspect→Victim Pairings -->
+<div class="chart-section">
+  <h3>Figure 3. Suspect–Victim Racial Pairings</h3>
+  <div class="chart-container" style="height:420px"><canvas id="chart3"></canvas></div>
+  <p class="chart-note">N=23 known-race suspect-victim pairings (excluding suspects of unknown race, n=5). Color indicates suspect's race. Format: Suspect Race → Victim Race.</p>
+</div>
+
+<!-- CHART 4: Solved/Unsolved by Victim Race -->
+<div class="chart-section">
+  <h3>Figure 4. Case Outcomes by Victim Race</h3>
+  <div class="chart-container"><canvas id="chart4"></canvas></div>
+  <p class="chart-note">Police-involved killing (n=1, White trans man) and ruled non-homicide (n=1, Mockabee, cocaine overdose) shown separately. "Solved" = arrest made. Effective solve rate: 16 of 22 non-police, confirmed-homicide cases (73%).</p>
+</div>
+
+<!-- CHART 5: Bias Motive Distribution -->
+<div class="chart-section">
+  <h3>Figure 5. Bias Motive Classification</h3>
+  <div class="chart-container"><canvas id="chart5"></canvas></div>
+  <p class="chart-note">N=22 non-police, confirmed-homicide cases. Excludes police-involved (n=1) and ruled non-homicide (n=1). "Confirmed" = hate crime charges or explicit LE statement. "Suspected" = evidence of animus without formal charge.</p>
+</div>
+
+<!-- CHART 6: Bias Motive by Suspect Race -->
+<div class="chart-section">
+  <h3>Figure 6. Bias Motive by Suspect Race (Solved Cases Only)</h3>
+  <div class="chart-container"><canvas id="chart6"></canvas></div>
+  <p class="chart-note">N=16 solved cases (excluding police-involved and ruled non-homicide). Shows bias classification by suspect race. Color = suspect race.</p>
+</div>
+
+<h2>Complete Case Data</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+  <th>#</th>
+  <th>Victim Name</th>
+  <th>Age</th>
+  <th>Victim Race</th>
+  <th>Gender Identity</th>
+  <th>Location</th>
+  <th>Date</th>
+  <th>Cause of Death</th>
+  <th>Police-Involved</th>
+  <th>Suspect(s)</th>
+  <th>Suspect Race</th>
+  <th>Suspect Gender</th>
+  <th>Case Status</th>
+  <th>Bias Motive</th>
+  <th>Notes</th>
+  <th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>1</td><td>Monica Loera</td><td>43</td><td>Latina</td><td>Trans woman</td>
+  <td>Austin, TX</td><td>Jan 22</td><td>Gunshot</td><td>No</td>
+  <td>JonCasey Rowell (29)</td><td>White</td><td>Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-noevidence">No Evidence</span></td>
+  <td>Convicted Nov 2017, 20-year sentence. Sex work client dispute; defendant claimed self-defense, rejected by jury.</td>
+  <td><a href="https://www.kxan.com/2017/11/06/man-found-guilty-of-killing-transgender-woman-in-2016/" target="_blank">KXAN Austin</a></td>
+</tr>
+<tr>
+  <td>2</td><td>Jasmine Sierra</td><td>53</td><td>Latina</td><td>Trans woman</td>
+  <td>Bakersfield, CA</td><td>Jan 22</td><td>Suspicious death (gunshots heard)</td><td>No</td>
+  <td>Unknown</td><td>Unknown</td><td>Unknown</td>
+  <td><span class="tag tag-unsolved">Unsolved</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Neighbors reported hearing gunshots. Misgendered by police/media; friends unaware of death until March.</td>
+  <td><a href="https://www.turnto23.com/news/local-news/vigil-held-for-jasmine-sierra-who-died-in-january-but-was-misgendered-when-identified" target="_blank">KERO Bakersfield</a></td>
+</tr>
+<tr class="police-involved">
+  <td>3</td><td>Kayden Clarke</td><td>24</td><td>White</td><td>Trans man</td>
+  <td>Mesa, AZ</td><td>Feb 4</td><td>Gunshot (police)</td><td>Yes</td>
+  <td>Mesa PD officers</td><td>N/A</td><td>N/A</td>
+  <td><span class="tag tag-police">Police-Involved</span></td>
+  <td>N/A</td>
+  <td>Shot by police responding to suicide call. Had Asperger's; lunged at officers with knife. Had previously attempted "suicide by cop." Excluded from solve rate.</td>
+  <td><a href="https://www.cnn.com/2016/02/06/us/transgender-man-with-aspergers-killed/index.html" target="_blank">CNN</a></td>
+</tr>
+<tr>
+  <td>4</td><td>Veronica Banks Cano</td><td>~35</td><td>Latina</td><td>Trans woman</td>
+  <td>San Antonio, TX</td><td>Feb 19</td><td>Found dead (motel bathtub)</td><td>No</td>
+  <td>Unknown</td><td>Unknown</td><td>Unknown</td>
+  <td><span class="tag tag-unsolved">Unsolved</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Found dead in motel bathtub. Worked as nurse's assistant. Unclear if officially ruled homicide.</td>
+  <td><a href="https://www.mic.com/articles/136149/another-trans-person-was-found-dead-in-texas-and-we-need-to-talk-about-it" target="_blank">Mic.com</a></td>
+</tr>
+<tr>
+  <td>5</td><td>Maya Young</td><td>25</td><td>Black</td><td>Trans woman</td>
+  <td>Philadelphia, PA</td><td>Feb 20</td><td>Stabbing</td><td>No</td>
+  <td>Tiffany Floyd (24); Jose Pena (19)</td><td>Black; Hispanic</td><td>Female; Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-noevidence">No Evidence</span></td>
+  <td>Floyd: 8–20 yrs (3rd-degree). Pena: 40–80 yrs (1st-degree; also killed Jonathan Martel). Interpersonal conflict.</td>
+  <td><a href="https://www.nbcphiladelphia.com/news/breaking/Transgender-Woman-Murder-Maya-Young-Penn-Street-370932211.html" target="_blank">NBC Philadelphia</a></td>
+</tr>
+<tr>
+  <td>6</td><td>Demarkis Stansberry</td><td>30</td><td>Black</td><td>Trans man</td>
+  <td>Baton Rouge, LA</td><td>Feb 27</td><td>Gunshot</td><td>No</td>
+  <td>Nicholas Matthews (24)</td><td>Unknown</td><td>Male</td>
+  <td><span class="tag tag-charged">Charged</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Matthews turned himself in same day; charged with negligent homicide, illegal use of weapon, possession of firearm by felon. Claimed gun discharged accidentally at point-blank range to victim's head. Initially fled and hid weapon; brother Frederick Matthews initially lied to police. Bail set at $90,000. Final disposition not found in public records.</td>
+  <td><a href="https://www.theadvocate.com/baton_rouge/news/crime_police/article_2c0b8965-b301-511f-aa4d-cf67dee862d0.html" target="_blank">The Advocate (Baton Rouge)</a></td>
+</tr>
+<tr>
+  <td>7</td><td>Kedarie/Kandicee Johnson</td><td>16</td><td>Black</td><td>Gender-fluid</td>
+  <td>Burlington, IA</td><td>Mar 2</td><td>Gunshot</td><td>No</td>
+  <td>Jorge Sanders-Galvez (23); Jaron Purham (26)</td><td>Hispanic/Black*; Black</td><td>Male; Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-suspected">Suspected</span></td>
+  <td>Both convicted 1st-degree murder, LWOP. Suspects flirted believing victim female, discovered male anatomy, kidnapped/tortured/shot. Federal hate crime prosecutor assigned; no charges filed. Iowa statute excludes gender identity. *Sanders-Galvez identified as both Hispanic and African-American per defense attorney's change-of-venue motion (<a href="https://www.kbur.com/2017/10/19/second-change-of-venue-granted-for-man-accused-of-kedarie-johnsons-murder/" target="_blank">KBUR</a>; <a href="https://www.tspr.org/tspr-local/2017-10-25/sanders-galvez-murder-trial-gets-underway" target="_blank">TSPR</a>).</td>
+  <td><a href="https://www.justice.gov/archives/opa/pr/man-convicted-first-degree-murder-joint-kidnapping-torture-and-execution-gender-fluid-teen" target="_blank">U.S. Dept. of Justice</a></td>
+</tr>
+<tr>
+  <td>8</td><td>Quartney Davia Dawsonn-Yochum</td><td>32</td><td>Black</td><td>Trans woman</td>
+  <td>Los Angeles, CA</td><td>Mar 23</td><td>Gunshot</td><td>No</td>
+  <td>Daniel Molayem (39)</td><td>Unknown</td><td>Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-noevidence">No Evidence</span></td>
+  <td>Convicted 1st-degree murder, 50 yrs to life. 15+ year IPV relationship. Victim expressed fear he would kill her. Conviction upheld on appeal 2018.</td>
+  <td><a href="https://www.nbclosangeles.com/local/mans-conviction-upheld-for-murdering-transgender-partner-on-skid-row/173087/" target="_blank">NBC Los Angeles</a></td>
+</tr>
+<tr>
+  <td>9</td><td>Shante Thompson</td><td>34</td><td>Black</td><td>Trans woman</td>
+  <td>Houston, TX</td><td>Apr 10</td><td>Beaten/stabbed/shot</td><td>No</td>
+  <td>Tariq Lackings (23)</td><td>Black</td><td>Male</td>
+  <td><span class="tag tag-charged">Charged</span></td>
+  <td><span class="tag tag-suspected">Suspected</span></td>
+  <td>Charged capital murder. Group attack (up to 12 people) with pipes, knives, gun. Mother said victim harassed "for a long time." Lackings accepted plea deal during Aug 2018 trial; specific terms not publicly reported. Charge for second victim (Willie Sims) dropped; Sims' death remains unsolved. Check Harris County District Clerk for disposition details.</td>
+  <td><a href="https://www.cbsnews.com/news/suspect-in-murder-of-houston-transgender-woman-man-arrested/" target="_blank">CBS News</a></td>
+</tr>
+<tr>
+  <td>10</td><td>Keyonna Blakeney</td><td>22</td><td>Black</td><td>Trans woman</td>
+  <td>Rockville, MD</td><td>Apr 16</td><td>Stabbing</td><td>No</td>
+  <td>Keith Renier (21); Arbra Bethea (17)</td><td>Black; Black</td><td>Male; Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-noevidence">No Evidence</span></td>
+  <td>Renier: 30 yrs (2nd-degree murder). Bethea: 10 yrs (accessory). Robbery scheme — Bethea knew victim, lured her for date to rob.</td>
+  <td><a href="https://www.washingtonblade.com/2016/04/20/md-trans-womans-murder-draws-condemnation/" target="_blank">Washington Blade</a></td>
+</tr>
+<tr>
+  <td>11</td><td>Reecey Walker</td><td>32</td><td>Black</td><td>Trans woman</td>
+  <td>Wichita, KS</td><td>May 1</td><td>Stabbing</td><td>No</td>
+  <td>16-year-old boy (name withheld)</td><td>Unknown</td><td>Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Found guilty of 2nd-degree murder in Sedgwick County Juvenile Court, Apr 2018. Sentenced Jun 8, 2018 (age 18) to maximum juvenile penalty: Juvenile Corrections until age 22½, aftercare until 23, plus 3 yrs probation. If violated, faces up to 165 months in adult prison. Suspect's mother had claimed self-defense from sexual assault; friends/family of victim disputed this.</td>
+  <td><a href="http://www.kake.com/story/38383652/wichita-teen-sentenced-in-stabbing-death-of-transgender-woman" target="_blank">KAKE News</a></td>
+</tr>
+<tr>
+  <td>12</td><td>Mercedes Successful</td><td>32</td><td>Black</td><td>Trans woman</td>
+  <td>Haines City, FL</td><td>May 15</td><td>Gunshot</td><td>No</td>
+  <td>Re'shaunte Jermaine Anglin (18); Ray Walker (22)</td><td>Unknown; Unknown</td><td>Male; Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-noevidence">No Evidence</span></td>
+  <td>Solved Oct 2017. Anglin indicted for 1st-degree murder, armed robbery, tampering with evidence after DNA on key fob linked him to crime. FBI records revealed "sexual and intimate relationship" between Anglin and victim. Anglin sentenced to 27 years (2019); appealed (Case No. 19-3136, FL 2nd DCA, 2021). Walker charged as accessory after the fact and tampering with evidence; disposition unknown.</td>
+  <td><a href="https://www.wfla.com/news/polk-county/arrests-made-in-haines-city-cold-case-murder/" target="_blank">WFLA Tampa</a></td>
+</tr>
+<tr>
+  <td>13</td><td>Amos Beede</td><td>38</td><td>White</td><td>Trans man</td>
+  <td>Burlington, VT</td><td>May 28</td><td>Blunt force (beaten)</td><td>No</td>
+  <td>Erik Averill (21); Jordan Paul (21); Myia Barber (22); Allison Gee (25); Amber Dennis</td><td>White; White; White; White; White</td><td>Male; Male; Female; Female; Female</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Dispute between homeless encampments. Died 6 days later from brain injuries. All cases resolved via plea deals — none convicted of 2nd-degree murder as originally charged. Paul: manslaughter (12–15 yrs). Barber: involuntary manslaughter (min 10 yrs). Averill: manslaughter (~14 yrs). Gee: aggravated assault (5 yrs of 15-yr split, testified for prosecution). Fifth suspect Amber Dennis: aggravated assault (7 yrs 3 mo – 15 yrs).</td>
+  <td><a href="https://www.wcax.com/content/news/5th-attacker-sentenced-in-brutal-Burlington-beating-death-507799091.html" target="_blank">WCAX Vermont</a></td>
+</tr>
+<tr>
+  <td>14</td><td>Goddess Diamond</td><td>20</td><td>Black</td><td>Trans woman</td>
+  <td>New Orleans, LA</td><td>Jun 5</td><td>Blunt force / burned</td><td>No</td>
+  <td>Unknown (man on surveillance)</td><td>Unknown</td><td>Unknown</td>
+  <td><span class="tag tag-unsolved">Unsolved</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Left in burning car. Man spotted on surveillance carrying gasoline container. Worked at Walmart.</td>
+  <td><a href="https://www.advocate.com/crime/2016/6/15/trans-woman-killed-new-orleans-police-considering-hate-crime" target="_blank">The Advocate (LGBT)</a></td>
+</tr>
+<tr>
+  <td>15</td><td>Deeniquia "Dee Dee" Dodds</td><td>22</td><td>Black</td><td>Trans woman</td>
+  <td>Washington, DC</td><td>Jul 4</td><td>Gunshot</td><td>No</td>
+  <td>Shareem Hall (28); Monte Johnson (21); Jalonte Little; Cyheme Hall (21)</td><td>Black; Black; Black; Black</td><td>Male; Male; Male; Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-noevidence">No Evidence</span></td>
+  <td>All four sentenced after 2019 mistrial (deadlocked jury), all accepted plea deals. Shareem Hall: 7 yrs (2nd-degree murder plea) + 2 yrs probation violation (Apr 2022). Johnson: 8 yrs (voluntary manslaughter, Dec 2021). Little: 8 yrs (voluntary manslaughter, Dec 2021). Cyheme Hall: 7 yrs concurrent (2nd-degree murder + conspiracy plea, May 2022); also faces possible 9-yr MD sentence. Robbery motive confirmed; hate crime enhancement dropped for insufficient evidence. Shot Jul 4; died Jul 13.</td>
+  <td><a href="https://www.washingtonblade.com/2022/05/11/fourth-man-charged-in-2016-d-c-trans-murder-sentenced-to-seven-years/" target="_blank">Washington Blade</a></td>
+</tr>
+<tr>
+  <td>16</td><td>Dee Whigham</td><td>25</td><td>Black</td><td>Trans woman</td>
+  <td>Biloxi, MS</td><td>Jul 23</td><td>Stabbing (119 wounds)</td><td>No</td>
+  <td>Dwanya Hickerson (20)</td><td>Black</td><td>Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-suspected">Suspected</span></td>
+  <td>Pled guilty; 40 yrs murder + 15 yrs robbery. Navy sailor. Stabbed 119 times upon learning she was transgender ("I lost it"). Sheriff investigated as possible hate crime.</td>
+  <td><a href="https://www.wlox.com/story/32524530/navy-sailor-charged-with-capital-murder-of-transgender-woman/" target="_blank">WLOX Biloxi</a></td>
+</tr>
+<tr>
+  <td>17</td><td>Skye Mockabee</td><td>26</td><td>Black</td><td>Trans woman</td>
+  <td>Cleveland, OH</td><td>Jul 30</td><td>Head trauma</td><td>No</td>
+  <td>N/A (ruled non-homicide)</td><td>N/A</td><td>N/A</td>
+  <td><span class="tag tag-unknown">Ruled Non-Homicide</span></td>
+  <td>N/A</td>
+  <td>Found in warehouse parking lot. Cuyahoga County ME ruled cause of death as <strong>cocaine overdose</strong>, not homicide. Family disputed ruling, believing she was killed due to transgender identity and was last seen getting into a van with a man met online. HRC/NCAVP continued listing her in 2016 totals. Fourth trans woman to die in Cuyahoga County in four years. Excluded from solve rate calculations.</td>
+  <td><a href="https://www.mic.com/articles/150394/skye-mockabee-trans-woman-in-cleveland-found-dead-in-parking-lot" target="_blank">Mic.com</a></td>
+</tr>
+<tr>
+  <td>18</td><td>Erykah Tijerina</td><td>36</td><td>Latina</td><td>Trans woman</td>
+  <td>El Paso, TX</td><td>Aug 8</td><td>Stabbing (chisel)</td><td>No</td>
+  <td>Anthony Michael Bowden (21)</td><td>Black*</td><td>Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-suspected">Suspected</span></td>
+  <td>Convicted Jan 2019, sentenced 35 years. Fort Bliss soldier. Court affidavit: neighbors described "light-skinned African-American man." Purchased chisel before killing. Trans panic: "killed Tijerina because he was about to be exposed."</td>
+  <td><a href="https://kfoxtv.com/news/local/former-fort-bliss-soldier-on-trial-for-murder-of-transgender-woman" target="_blank">KFOX-14 El Paso</a></td>
+</tr>
+<tr>
+  <td>19</td><td>Rae'Lynn Thomas</td><td>28</td><td>Black</td><td>Trans woman</td>
+  <td>Columbus, OH</td><td>Aug 11</td><td>Gunshot / beaten</td><td>No</td>
+  <td>James Allen Byrd</td><td>Black</td><td>Male</td>
+  <td><span class="tag tag-charged">Closed (Defendant Deceased)</span></td>
+  <td><span class="tag tag-suspected">Suspected</span></td>
+  <td>Mother's ex-boyfriend. Charged with murder. Called victim "the devil," disapproved of transition. Found incompetent to stand trial Dec 2016 by Judge Guy Reece ("presently mentally ill… does not understand… the proceedings"); committed to mental hospital. Obituary records consistent with Byrd indicate he died May 31, 2020, at OSU Hospital, Columbus — case effectively closed by death of defendant without reaching trial.</td>
+  <td><a href="https://www.10tv.com/article/news/local/man-found-incompetent-trial-columbus-womans-murder/530-b91ed624-e6f5-434d-9d94-75c2898ed992" target="_blank">10TV Columbus</a></td>
+</tr>
+<tr>
+  <td>20</td><td>T.T. Saffore</td><td>28</td><td>Black</td><td>Trans woman</td>
+  <td>Chicago, IL</td><td>Sep 11</td><td>Throat slit</td><td>No</td>
+  <td>Unknown</td><td>Unknown</td><td>Unknown</td>
+  <td><span class="tag tag-unsolved">Unsolved</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Found near railroad tracks. Another woman had threatened her with knife days before. Misgendered by major Chicago newspapers.</td>
+  <td><a href="https://www.windycitytimes.com/lgbt/Transgender-woman-found-slain-on-Chicagos-West-Side/56450.html" target="_blank">Windy City Times</a></td>
+</tr>
+<tr>
+  <td>21</td><td>Crystal Edmonds</td><td>32</td><td>Black</td><td>Trans woman</td>
+  <td>Baltimore, MD</td><td>Sep 16</td><td>Gunshot</td><td>No</td>
+  <td>Unknown</td><td>Unknown</td><td>Unknown</td>
+  <td><span class="tag tag-unsolved">Unsolved</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Gunshot to back of head, found approximately 3 AM.</td>
+  <td><a href="https://www.washingtonblade.com/2016/09/16/trans-woman-shot-killed-baltimore/" target="_blank">Washington Blade</a></td>
+</tr>
+<tr>
+  <td>22</td><td>Jazz Alford</td><td>30</td><td>Black</td><td>Trans woman</td>
+  <td>Birmingham, AL</td><td>Sep 23</td><td>Found dead (motel)</td><td>No</td>
+  <td>Denzell Thomas</td><td>Black</td><td>Male</td>
+  <td><span class="tag tag-solved">Convicted</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Pled guilty. Originally misgendered by police/media. Sister Toya Milan is also a trans woman.</td>
+  <td><a href="https://www.wvtm13.com/article/birmingham-man-pleads-guilty-in-transgender-womans-2016-death/28082964" target="_blank">WVTM13 Birmingham</a></td>
+</tr>
+<tr>
+  <td>23</td><td>Brandi Bledsoe</td><td>32</td><td>Black</td><td>Trans woman</td>
+  <td>Cleveland, OH</td><td>Oct 8</td><td>Found dead</td><td>No</td>
+  <td>Heidi Krudy (30); Michelle Cole (29)</td><td>White; Black</td><td>Female; Female</td>
+  <td><span class="tag tag-solved">Convicted/Charged</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Cole pled guilty May 2018 to obstructing justice, gross abuse of a corpse, and tampering with evidence; murder charge dropped. Krudy's final disposition unknown — last reported as awaiting trial (May 2018). Check Cuyahoga County Clerk of Courts for Krudy update.</td>
+  <td><a href="https://www.cleveland19.com/story/38194399/guilty-plea-in-connection-with-the-2016-murder-of-a-transgender-woman/" target="_blank">Cleveland 19</a></td>
+</tr>
+<tr>
+  <td>24</td><td>Noony Norwood</td><td>30</td><td>Black</td><td>Trans woman</td>
+  <td>Richmond, VA</td><td>Nov 6</td><td>Gunshot</td><td>No</td>
+  <td>Unknown (person of interest photo released)</td><td>Unknown</td><td>Unknown</td>
+  <td><span class="tag tag-unsolved">Unsolved</span></td>
+  <td><span class="tag tag-unknown">Unknown</span></td>
+  <td>Shot Nov 5, died Nov 6 — five days after 30th birthday. Police released photo of person of interest (never publicly identified). Listed as active Cold Case Homicide by Richmond PD (Nov 2021). As of Oct 2022, Det. Anthony Coates actively investigating; police noted witnesses reported Norwood "was dancing with a guy at the club that night" and may have been targeted.</td>
+  <td><a href="https://www.wtvr.com/news/reopen-the-case/william-norwood-october-31-2022" target="_blank">WTVR Richmond</a></td>
+</tr>
+</tbody>
+</table>
+<p style="font-size:0.78em; color:#666; margin-top:6px; padding:0 8px;">* Bowden (Case 18): Race based on court affidavit description ("light-skinned African-American man") rather than booking photo or explicit self-identification. Counted as Black in charts. Sanders-Galvez (Case 7): Identified as both Hispanic and African-American per defense attorney's change-of-venue motion (KBUR, Oct 2017; TSPR, Oct 2017). Counted as Multiracial in charts.</p>
+</div>
+
+<h2>Analytical Notes</h2>
+<h3>Victim Demographics</h3>
+<p>Of the 24 documented victims, 18 (75%) were Black, 4 (17%) were Hispanic/Latina, and 2 (8%) were White. Twenty victims (83%) were transgender women; two were transgender men; one was gender-fluid; and one (Kayden Clarke) was a trans man killed by police. The median age at death was 30 years (range: 16–53). These patterns are consistent with multi-year HRC data showing Black transgender women face disproportionately high rates of fatal violence.</p>
+
+<h3>Geographic Distribution</h3>
+<p>Cases were distributed across 17 states, with Texas (3 cases), Ohio (3 cases), and Louisiana (2 cases) reporting the most incidents. Southern states accounted for 13 of 24 cases (54%). No geographic region was exempt from fatal anti-transgender violence.</p>
+
+<h3>Cause of Death</h3>
+<p>Firearms were involved in 13 deaths (54%), stabbing/sharp force in 7 (29%), blunt force trauma in 2 (8%), and method was unclear or multiple in 2 cases. The predominance of firearm deaths mirrors broader U.S. homicide patterns but underscores the role of gun accessibility in violence against transgender people.</p>
+
+<h3>Case Outcomes and Solve Rates</h3>
+<p>Excluding the one police-involved killing and the one case ruled a non-homicide (Mockabee — cocaine overdose per Cuyahoga County ME), 16 of 22 confirmed homicide cases (73%) resulted in at least one arrest — exceeding the national homicide clearance rate of approximately 59% in 2016 (FBI UCR data). Of the 16 solved cases, 10 resulted in convictions, 2 in plea deals to lesser charges, 1 defendant was found incompetent and later died, and 3 remained at the "charged" stage as of last available records. Six cases (27%) remain entirely unsolved. Notably, the Demarkis Stansberry case, previously reported as unsolved, had in fact resulted in a same-day arrest (Nicholas Matthews charged with negligent homicide). The Mercedes Successful case was solved in October 2017 when Re'shaunte Jermaine Anglin was indicted via DNA evidence and later sentenced to 27 years.</p>
+
+<h3>Suspect Demographics</h3>
+<p>Among the 28 individually identified suspects across solved cases: 14 were Black (50%), 7 were White (25%), 1 was Hispanic (4%), 1 was multiracial Hispanic/Black (4%), and 5 were of unknown race (18%). Twenty-two of 28 suspects were male (79%); six were female (Tiffany Floyd, Heidi Krudy, Michelle Cole, Myia Barber, Allison Gee, Amber Dennis). Jorge Sanders-Galvez was reclassified from Hispanic to multiracial (Hispanic and African-American) based on his defense attorney's statements during change-of-venue proceedings. Intraracial violence (Black suspect–Black victim) constituted the most common pairing, consistent with general homicide patterns in the United States.</p>
+
+<h3>Bias Motivation</h3>
+<p>No case in 2016 resulted in formal hate crime charges at either the state or federal level. Five cases were coded as "Suspected" bias based on strong evidence of anti-transgender animus: Kedarie Johnson (trans panic — killed upon discovery of male anatomy), Dee Whigham (stabbed 119 times after revealing transgender identity), Erykah Tijerina (killed by client who feared exposure), Rae'Lynn Thomas (suspect called victim "the devil" for transitioning), and Shante Thompson (documented pattern of anti-trans harassment). Six cases were coded "No Evidence" based on documented alternative motives (IPV, robbery, interpersonal dispute, intimate relationship). Eleven cases were coded "Unknown" due to unsolved status or insufficient information. In the Deeniquia Dodds case, a hate crime enhancement was pursued at trial but dropped after the 2019 mistrial due to insufficient evidence that the victim was targeted for her gender identity rather than for robbery.</p>
+<p>The absence of formal hate crime charges across all 24 cases — despite compelling evidence of bias in several — reflects structural barriers including: jurisdictions lacking gender identity coverage in hate crime statutes (e.g., Iowa), prosecutors' strategic preference for higher-penalty standard murder charges, law enforcement's historical reluctance to classify anti-transgender violence as bias-motivated, the high evidentiary burden for establishing bias as a motivation, and, as demonstrated in the Dodds case, the difficulty of proving bias when robbery or other motives are also present.</p>
+
+<footer>
+  Sources: Court records, FBI UCR, local news archives. All case data verified through minimum two independent sources. Compiled February 2026.<br>
+  HRC victim list: <a href="https://assets2.hrc.org/files/assets/resources/A-Matter-of-Life-and-Death-2016.pdf" target="_blank"><em>A Matter of Life and Death: Fatal Violence Against Transgender People in America 2016</em> (PDF)</a>
+</footer>
+
+</div>
+
+<script>
+Chart.defaults.font.family = "'Georgia', serif";
+Chart.defaults.font.size = 12;
+Chart.defaults.plugins.legend.display = false;
+
+// CHART 1: Suspects by Race — Black=14, White=7, Hispanic=1, Multiracial=1, Unknown=5
+new Chart(document.getElementById('chart1'), {
+  type: 'bar',
+  data: {
+    labels: ['Black', 'White', 'Hispanic', 'Multiracial\n(Hispanic/Black)', 'Unknown'],
+    datasets: [{
+      data: [14, 7, 1, 1, 5],
+      backgroundColor: ['#000000','#4169E1','#8B4513','#9370DB','#CCCCCC'],
+      borderWidth: 1, borderColor: '#666'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      y: { beginAtZero: true, ticks: { stepSize: 2 }, title: { display: true, text: 'Number of Suspects' } },
+      x: { title: { display: true, text: 'Race of Suspect' } }
+    }
+  }
+});
+
+// CHART 2: Victims by Race — Black=18, Latina=4, White=2
+new Chart(document.getElementById('chart2'), {
+  type: 'bar',
+  data: {
+    labels: ['Black', 'Latina/Hispanic', 'White'],
+    datasets: [{
+      data: [18, 4, 2],
+      backgroundColor: ['#000000','#8B4513','#4169E1'],
+      borderWidth: 1, borderColor: '#666'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      y: { beginAtZero: true, ticks: { stepSize: 2 }, title: { display: true, text: 'Number of Victims' } },
+      x: { title: { display: true, text: 'Race of Victim' } }
+    }
+  }
+});
+
+// CHART 3: Suspect→Victim Pairings (bar color = suspect race)
+new Chart(document.getElementById('chart3'), {
+  type: 'bar',
+  data: {
+    labels: [
+      'Black → Black',
+      'Unknown → Black',
+      'White → White',
+      'Hispanic → Black',
+      'Multiracial → Black',
+      'Black → Latina',
+      'White → Latina',
+      'White → Black'
+    ],
+    datasets: [{
+      data: [13, 5, 5, 1, 1, 1, 1, 1],
+      backgroundColor: ['#000000','#CCCCCC','#4169E1','#8B4513','#9370DB','#000000','#4169E1','#4169E1'],
+      borderWidth: 1, borderColor: '#666'
+    }]
+  },
+  options: {
+    indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+    scales: {
+      x: { beginAtZero: true, ticks: { stepSize: 1 }, title: { display: true, text: 'Number of Pairings' } },
+      y: { title: { display: true, text: 'Suspect Race → Victim Race' } }
+    }
+  }
+});
+
+// CHART 4: Solved/Unsolved by Victim Race
+new Chart(document.getElementById('chart4'), {
+  type: 'bar',
+  data: {
+    labels: ['Black', 'Latina/Hispanic', 'White'],
+    datasets: [
+      { label: 'Solved (Arrest Made)', data: [13, 2, 1], backgroundColor: '#2E7D32', borderWidth: 1, borderColor: '#1B5E20' },
+      { label: 'Unsolved', data: [4, 2, 0], backgroundColor: '#C62828', borderWidth: 1, borderColor: '#8E0000' },
+      { label: 'Ruled Non-Homicide', data: [1, 0, 0], backgroundColor: '#FF8F00', borderWidth: 1, borderColor: '#E65100' },
+      { label: 'Police-Involved (excluded)', data: [0, 0, 1], backgroundColor: '#1565C0', borderWidth: 1, borderColor: '#0D47A1' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: true, position: 'top' } },
+    scales: {
+      y: { beginAtZero: true, stacked: true, ticks: { stepSize: 2 }, title: { display: true, text: 'Number of Cases' } },
+      x: { stacked: true, title: { display: true, text: 'Victim Race' } }
+    }
+  }
+});
+
+// CHART 5: Bias Motive — Unknown=11, Suspected=5, NoEvidence=6, Confirmed=0
+new Chart(document.getElementById('chart5'), {
+  type: 'bar',
+  data: {
+    labels: ['Unknown', 'No Evidence', 'Suspected', 'Confirmed'],
+    datasets: [{
+      data: [11, 6, 5, 0],
+      backgroundColor: ['#E2E3E5','#6C757D','#FD7E14','#DC3545'],
+      borderWidth: 1, borderColor: '#666'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    scales: {
+      y: { beginAtZero: true, ticks: { stepSize: 2 }, title: { display: true, text: 'Number of Cases' } },
+      x: { title: { display: true, text: 'Bias Motive Classification' } }
+    }
+  }
+});
+
+// CHART 6: Bias by Suspect Race (solved only)
+// Suspected: Black=4, Multiracial=1, White=0, Hispanic=0, Unknown=0
+// No Evidence: Black=7, White=1, Hispanic=1, Unknown=3
+// Unknown: Black=2, White=6, Unknown=2
+new Chart(document.getElementById('chart6'), {
+  type: 'bar',
+  data: {
+    labels: ['Suspected Bias', 'No Evidence of Bias', 'Unknown'],
+    datasets: [
+      { label: 'Black suspect', data: [4, 7, 2], backgroundColor: '#000000' },
+      { label: 'White suspect', data: [0, 1, 7], backgroundColor: '#4169E1' },
+      { label: 'Hispanic suspect', data: [0, 1, 0], backgroundColor: '#8B4513' },
+      { label: 'Multiracial suspect', data: [1, 0, 0], backgroundColor: '#9370DB' },
+      { label: 'Unknown race', data: [0, 3, 2], backgroundColor: '#CCCCCC' }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: true, position: 'top' } },
+    scales: {
+      y: { beginAtZero: true, stacked: true, ticks: { stepSize: 1 }, title: { display: true, text: 'Number of Suspects' } },
+      x: { stacked: true, title: { display: true, text: 'Bias Motive Classification' } }
+    }
+  }
+});
+</script>
+</body>
+</html>

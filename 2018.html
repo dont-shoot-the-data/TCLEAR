@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2018 Fatal Violence Against Transgender People — Combined Analysis</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f5f3ef;color:#222;line-height:1.5;padding:20px;max-width:1500px;margin:0 auto}
+@media print{body{background:#fff;padding:0;font-size:9pt}table{font-size:7pt}.chart-card{break-inside:avoid}}
+.header{background:#1a1a2e;border-radius:10px;padding:28px;color:#f0f0f0;margin-bottom:20px}
+.header h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:900;margin-bottom:8px}
+.header p{font-size:13px;color:#aaa;line-height:1.6}
+.header .year-badge{display:inline-block;background:#e8a838;color:#1a1a2e;font-weight:700;font-size:14px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+.stat-box{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:14px 18px;flex:1;min-width:130px}
+.stat-box .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:800;line-height:1}
+.stat-box .label{font-size:12px;color:#444;font-weight:600;margin-top:4px}
+.stat-box .sub{font-size:10px;color:#888;margin-top:2px}
+.chart-card{background:#fff;border:1px solid #e0e0e0;border-radius:10px;padding:20px;margin-bottom:16px}
+.chart-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:2px}
+.chart-sub{font-size:11px;color:#666;margin-bottom:12px}
+.chart-wrap{position:relative;width:100%;height:300px}
+.section-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:800;color:#1a1a2e;margin:24px 0 6px}
+.section-sub{font-size:12px;color:#666;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:10.5px;margin-bottom:20px;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #ddd}
+thead th{background:#1a1a2e;color:#f0f0f0;padding:7px 5px;text-align:left;font-weight:600;font-size:9.5px;text-transform:uppercase;letter-spacing:.3px;position:sticky;top:0;white-space:nowrap}
+tbody td{padding:6px 5px;border-bottom:1px solid #eee;vertical-align:top}
+tbody tr:nth-child(even){background:#faf8f5}
+tbody tr:hover{background:#f0ede6}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.badge-confirmed{background:#c1121f;color:#fff}
+.badge-suspected{background:#e8a838;color:#1a1a2e}
+.badge-none{background:#e0e0e0;color:#555}
+.badge-unknown{background:#f0f0f0;color:#888;border:1px solid #ddd}
+.badge-solved{background:#2d6a4f;color:#fff}
+.badge-unsolved{background:#c1121f;color:#fff}
+a{color:#0066cc;text-decoration:none}a:hover{text-decoration:underline}
+.note-box{background:#faf8f5;border:1px solid #e8e4dc;border-radius:8px;padding:12px 16px;font-size:11px;color:#555;line-height:1.6;margin:12px 0}
+.note-box strong{color:#1a1a2e}
+.divider{border:none;border-top:3px solid #1a1a2e;margin:40px 0 20px}
+.footer{background:#1a1a2e;border-radius:10px;padding:16px 20px;color:#aaa;font-size:10px;line-height:1.6;margin-top:24px}
+.footer strong{color:#e8a838}
+.circ{font-size:10px;line-height:1.4;max-width:240px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="year-badge">2018</div>
+  <h1>Fatal Violence Against Transgender &amp; Gender-Non-Conforming People</h1>
+  <p>Combined analysis and case-by-case dataset. Data independently verified via local news and court records.<br>
+  Victim list sourced from <a href="https://assets2.hrc.org/files/assets/resources/AntiTransViolence-2018Report-Final.pdf" target="_blank" style="color:#e8a838">HRC's 2018 Fatal Violence Report</a>. All case details verified through independent sources.</p>
+</div>
+
+<div class="stats-row">
+  <div class="stat-box"><div class="num" style="color:#c1121f">26</div><div class="label">Total Victims</div><div class="sub">Documented transgender/GNC fatalities</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">12</div><div class="label">Cases Solved</div><div class="sub">46% of homicides</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">13</div><div class="label">Unsolved</div><div class="sub">Including 1 with accomplice only charged</div></div>
+  <div class="stat-box"><div class="num" style="color:#1a1a2e">73%</div><div class="label">Killed by Firearm</div><div class="sub">19 of 26</div></div>
+</div>
+
+<!-- CHART 1: SUSPECTS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 1: Identified Suspects by Race/Ethnicity</div><div class="chart-sub">Solved homicide cases with identified suspects. N = 13 suspects.</div><div class="chart-wrap"><canvas height="300" id="chartSUSPECTS"></canvas></div><div class="note-box"><strong>Note:</strong> Of 13 identified suspects, 7 (54%) were Black, 3 (23%) were White, and 3 (23%) were Hispanic. Black suspects were the largest group despite Black Americans comprising ~13% of the U.S. population; however, the victim pool was also disproportionately Black (77%), and most violence was intraracial.</div></div>
+
+<!-- CHART 2: VICTIMS by Race -->
+<div class="chart-card"><div class="chart-title">Chart 2: Victims by Race/Ethnicity</div><div class="chart-sub">All 26 victims documented in 2018</div><div class="chart-wrap"><canvas height="300" id="chartVICTIMS"></canvas></div><div class="note-box"><strong>Note:</strong> Black transgender women comprised 20 of 26 victims (77%), confirming the extreme disproportionality of lethal violence toward this demographic. Latina victims represented 12% (3) and White victims 12% (3).</div></div>
+
+<!-- CHART 3: Suspect-Victim Race Pairings -->
+<div class="chart-card"><div class="chart-title">Chart 3: Suspect → Victim Race Pairings (Specific)</div><div class="chart-sub">Each bar = one specific pairing. Green = intraracial, Red = interracial. N = 13 solved cases.</div><div class="chart-wrap"><canvas height="300" id="chartPAIRINGS"></canvas></div><div class="note-box"><strong>Finding:</strong> 11 of 13 solved cases (85%) were intraracial — the suspect and victim shared the same racial category. Two cases were interracial (Black suspect → Latina victim; Hispanic suspect → Black victim). This largely mirrors national homicide patterns where most violence occurs within racial groups.</div></div>
+
+<!-- CHART 4: Solved vs Unsolved by Race -->
+<div class="chart-card"><div class="chart-title">Chart 4: Solved vs. Unsolved by Victim Race</div><div class="chart-sub">Racial disparity in case resolution. N = 26.</div><div class="chart-wrap"><canvas height="300" id="chartSOLVED"></canvas></div><div class="note-box"><strong>Key disparity:</strong> Only 7 of 20 Black victims' cases were solved (35%), compared to 3 of 3 for White victims (100%) and 3 of 3 for Latina victims (100%). The stark disparity in solve rates by victim race is consistent with systemic under-investigation of homicides affecting Black transgender women.</div></div>
+
+<!-- CHART 5: Bias Motive -->
+<div class="chart-card"><div class="chart-title">Chart 5: Bias Motive Coding</div><div class="chart-sub">All 26 victims coded by bias motive evidence</div><div class="chart-wrap"><canvas height="300" id="chartBIAS"></canvas></div><div class="note-box"><strong>Methodology:</strong> Confirmed = hate crime charges or explicit LE statement. Suspected = evidence of animus, no charge. No Evidence = documented alternative motive (IPV, robbery, serial killing). Unknown = insufficient info or unsolved with no motive.</div></div>
+
+<!-- CHART 6: Bias by Suspect Race -->
+<div class="chart-card"><div class="chart-title">Chart 6: Bias Motive by Suspect Race</div><div class="chart-sub">Solved cases only — suspects with known race. N = 13.</div><div class="chart-wrap"><canvas height="300" id="chartBIAS_RACE"></canvas></div><div class="note-box"><strong>Note:</strong> No cases in 2018 resulted in confirmed hate crime charges. The 2 "Suspected" cases both involved Black suspects in intimate/sexual encounters with Black trans women (Stanton and Stough), where concealment of the relationship or trans identity may have been a factor.</div></div>
+
+<hr class="divider">
+
+<div class="section-title">Complete Research Dataset — 2018</div>
+<div class="section-sub">Chronological order. Sources are local news and court records. All cases independently verified.</div>
+
+<div style="overflow-x:auto">
+<table>
+<thead><tr><th>#</th><th>Victim Name</th><th>Race</th><th>Age</th><th>City, State</th><th>Date</th><th>Cause of Death</th><th>Circumstances</th><th>Police-Involved</th><th>Bias Motive</th><th>Suspect(s)</th><th>Suspect Race</th><th>Suspect Gender</th><th>Suspect Age</th><th>Status</th><th>Source</th></tr></thead>
+<tbody>
+
+<tr><td>1</td><td>Christa Leigh Steele-Knudslien</td><td>White</td><td>42</td><td>North Adams, MA</td><td>Jan 5, 2018</td><td>Stabbed / bludgeoned</td>
+<td class="circ">Killed by her husband with a hammer and knife in their home after a domestic argument. He confessed to police the same night, saying he "snapped."</td>
+<td>No</td><td><span class="badge badge-none">No Evidence</span></td>
+<td>Mark Steele-Knudslien (husband)</td><td>White</td><td>Male</td><td>47</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://www.independent.co.uk/news/world/americas/transgender-woman-killed-first-2018-christa-leigh-steeleknudslien-beauty-pageants-a8152226.html" target="_blank">The Independent</a></td></tr>
+
+<tr><td>2</td><td>Viccky Gutierrez</td><td>Latina</td><td>33</td><td>Los Angeles, CA</td><td>Jan 10, 2018</td><td>Stabbed / arson</td>
+<td class="circ">Met suspect online for paid sex; he demanded a refund. When she refused, he stabbed her and set the apartment on fire. Arrested the next day.</td>
+<td>No</td><td><span class="badge badge-none">No Evidence</span></td>
+<td>Kevyn Ramirez</td><td>Hispanic</td><td>Male</td><td>29</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://www.cbsnews.com/losangeles/news/los-angeles-man-sentenced-25-life-killing-transgender-woman/" target="_blank">CBS Los Angeles</a></td></tr>
+
+<tr><td>3</td><td>Zakaria Fry</td><td>White</td><td>28</td><td>Albuquerque, NM</td><td>Jan 18, 2018</td><td>Blunt force trauma</td>
+<td class="circ">She and her 70-year-old roommate were bludgeoned to death by a man staying with them. Bodies found a month later in trash bins 40 miles away; suspect used victim's credit cards. Spiess was sentenced to 30 years in prison.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>Charles Anthony Spiess (a.k.a. James Knight)</td><td>White</td><td>Male</td><td>32</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://www.krqe.com/news/albuquerque-metro/man-sentenced-to-prison-for-murdering-albuquerque-roommates/" target="_blank">KRQE</a></td></tr>
+
+<tr><td>4</td><td>Celine Walker</td><td>Black</td><td>36</td><td>Jacksonville, FL</td><td>Feb 4, 2018</td><td>Gunshot</td>
+<td class="circ">Shot multiple times in an Extended Stay hotel room after an argument with someone she had a previous relationship with. DNA match led to arrest 19 months later; suspect admitted to the killing. Phoenix pleaded guilty to second-degree murder in October 2020 and was sentenced to 35 years in Florida State Prison.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>Sean Bernard Phoenix</td><td>Black</td><td>Male</td><td>21</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://www.jacksonville.com/story/news/crime/2020/10/15/jacksonville-man-pleads-guilty-transgender-killing-gets-35-years/3662711001/" target="_blank">Jacksonville.com</a></td></tr>
+
+<tr><td>5</td><td>Tonya Harvey</td><td>Black</td><td>35</td><td>Buffalo, NY</td><td>Feb 6, 2018</td><td>Gunshot</td>
+<td class="circ">Shot and killed on a dead-end street on Buffalo's East Side. DA investigated as a potential hate crime. $4,000 Crime Stoppers reward offered. As of 2021, family still seeking justice; possible witness-silencing motive identified by Erie County DA. No arrest made.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://buffalonews.com/2018/02/08/shepard-street-homicide-victim-was-transgender-woman/" target="_blank">Buffalo News</a></td></tr>
+
+<tr><td>6</td><td>Phylicia Mitchell</td><td>Black</td><td>45</td><td>Cleveland, OH</td><td>Feb 23, 2018</td><td>Gunshot</td>
+<td class="circ">Shot in the chest inside her home. Her roommate Gary Sanders was charged with aggravated murder but convicted only of involuntary manslaughter by a jury. Prosecutors said the killing was not transgender-related.</td>
+<td>No</td><td><span class="badge badge-none">No Evidence</span></td>
+<td>Gary Lamar Sanders</td><td>Black</td><td>Male</td><td>36</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://www.wsaz.com/content/news/Murder-suspect-wanted-in-Cleveland-area-arrested-in-Fayette-County-488039561.html" target="_blank">WSAZ</a></td></tr>
+
+<tr><td>7</td><td>Amia Tyrae Berryman</td><td>Black</td><td>28</td><td>Baton Rouge, LA</td><td>Mar 26, 2018</td><td>Gunshot</td>
+<td class="circ">Found shot to death at the Shades Motel on Airline Highway in Baton Rouge. Surveillance footage showed Dedrick Butler entering Berryman's motel room just after 1 AM; a gunshot was heard minutes later. Butler was seen on video calmly leaving and fleeing in a black four-door vehicle. Police used the victim's phone to identify Butler and arrested him four days later on March 30, 2018. Charged with second-degree murder, possession of a firearm by a convicted felon, and possession of a weapon with an obliterated serial number. Indicted by grand jury. Bond set at $350,000. Note: HRC and LGBTQ advocacy organizations initially reported this case but never published follow-up coverage of the arrest, creating a persistent gap in community datasets.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>Dedrick Butler</td><td>Black</td><td>Male</td><td>22</td>
+<td><span class="badge badge-solved">Arrested / Indicted</span></td>
+<td><a href="https://www.wbrz.com/news/man-accused-of-murdering-prostitute-at-baton-rouge-motel/" target="_blank">WBRZ</a></td></tr>
+
+<tr><td>8</td><td>Sasha Wall</td><td>Black</td><td>29</td><td>Chesterfield County, SC</td><td>Apr 1, 2018</td><td>Gunshot (multiple)</td>
+<td class="circ">Found shot multiple times in her running car on a rural road on Easter Sunday; the car had been idling ~2 hours. Phone missing. Sheriff believes she knew her killer. $1,000 reward offered. As of May 2025, Chesterfield County has a dedicated "war room" for this case; evidence has been resubmitted for forensic testing. The murder weapon and Wall's cellphone remain missing. This is the county's only unsolved homicide in 17 years.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://www.postandcourier.com/news/2018-killing-of-sc-black-transgender-woman-still-unsolved-advocates-push-for-closure/article_6887d272-6b74-11e9-be8a-2b9cd0cf4904.html" target="_blank">Post and Courier</a></td></tr>
+
+<tr><td>9</td><td>Karla Patricia Flores-Pavón</td><td>Latina</td><td>26</td><td>Dallas, TX</td><td>May 9, 2018</td><td>Strangulation</td>
+<td class="circ">Strangled in her apartment. Suspect met her online, was arrested 8 days later during a traffic stop with her property. Police determined motive was robbery. Johnson convicted of capital murder on August 18, 2022 (jury deliberated 14 minutes) and sentenced to automatic life without parole.</td>
+<td>No</td><td><span class="badge badge-none">No Evidence</span></td>
+<td>Jimmy Eugene Johnson III</td><td>Black</td><td>Male</td><td>24</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://dallasvoice.com/suspect-convicted-in-2018-murder-of-trans-woman-on-trial-for-capital-murder/" target="_blank">Dallas Voice</a></td></tr>
+
+<tr><td>10</td><td>Nino Fortson</td><td>Black</td><td>36</td><td>Atlanta, GA</td><td>May 13, 2018</td><td>Gunshot</td>
+<td class="circ">A transgender man/gender-nonconforming person shot during a street argument. Fortson fired a gun in the air and walked away before being shot by someone in the group. Police said no evidence gender identity played a role.</td>
+<td>No</td><td><span class="badge badge-none">No Evidence</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://www.ajc.com/news/crime--law/transgender-man-shot-killed-northwest-atlanta/ngBzxSDnCrxm5scgsuIgQO/" target="_blank">Atlanta Journal-Constitution</a></td></tr>
+
+<tr><td>11</td><td>Gigi Pierce</td><td>White</td><td>28</td><td>Portland, OR</td><td>May 21, 2018</td><td>Gunshot</td>
+<td class="circ">Shot during a sidewalk altercation with friend Sophia Adler. A grand jury reviewed evidence over 3 days and declined to indict Adler for murder, ruling self-defense after finding Pierce had a knife and attempted to stab Adler. Adler pled guilty only to unlawful firearm possession (no concealed carry license) and was sentenced to 100 days in jail.</td>
+<td>No</td><td><span class="badge badge-none">No Evidence</span></td>
+<td>Sophia Grace Adler (self-defense ruled)</td><td>White</td><td>Female</td><td>33</td>
+<td><span class="badge badge-unsolved">Self-Defense</span></td>
+<td><a href="https://www.koin.com/news/woman-sentenced-in-sw-portland-fatal-shooting/" target="_blank">KOIN</a></td></tr>
+
+<tr><td>12</td><td>Antash'a English</td><td>Black</td><td>38</td><td>Jacksonville, FL</td><td>Jun 1, 2018</td><td>Gunshot</td>
+<td class="circ">Shot in a drive-by and found between two abandoned homes. Before dying, she told police the suspect wore a gray hoodie and left in a gray four-door car. Performer at InCahoots Night Club for 10 years. Jacksonville's 2nd trans homicide of 2018.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://outsfl.com/state/at-least-29-trans-people-killed-in-florida-since-2015" target="_blank">OutSFL</a></td></tr>
+
+<tr><td>13</td><td>Diamond Stephens</td><td>Black</td><td>39</td><td>Meridian, MS</td><td>Jun 18, 2018</td><td>Gunshot</td>
+<td class="circ">Shot in the back of the head while driving home. Her van crashed into a house. One or two other individuals may have been in the vehicle. Police/media misgendered her for over a month.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://www.wtok.com/content/news/Monday-shooting-death-update.html" target="_blank">WTOK</a></td></tr>
+
+<tr><td>14</td><td>Cathalina Christina James</td><td>Black</td><td>24</td><td>Jacksonville, FL</td><td>Jun 24, 2018</td><td>Gunshot</td>
+<td class="circ">Shot at the Quality Inn hotel. Police released a suspect sketch and surveillance footage of a beige/white suspect vehicle in August 2018. $3,000 Crime Stoppers reward offered. Jacksonville's 3rd trans homicide of 2018, prompting activists to fear a serial killer targeting trans women. James' father believes she was targeted.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://outsfl.com/state/at-least-29-trans-people-killed-in-florida-since-2015" target="_blank">OutSFL</a></td></tr>
+
+<tr><td>15</td><td>Keisha Wells</td><td>Black</td><td>54</td><td>Cleveland, OH</td><td>Jun 24, 2018</td><td>Gunshot</td>
+<td class="circ">Shot in a parking lot; 11 shell casings found. Last seen at Cocktails bar. James Butler was charged with complicity for helping dispose of the body, but the primary shooter remains unidentified.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>James Butler (accomplice only)</td><td>Black</td><td>Male</td><td>27</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://www.cleveland.com/metro/2018/06/man_helped_dump_body_of.html" target="_blank">Cleveland.com</a></td></tr>
+
+<tr><td>16</td><td>Sasha Garden</td><td>Black</td><td>27</td><td>Orlando, FL</td><td>Jul 19, 2018</td><td>Trauma (unspecified)</td>
+<td class="circ">Found dead at an Orlando apartment complex with trauma to her body. She was a sex worker and aspiring hairstylist from Milwaukee. Sheriff initially misgendered her. $5,000 reward offered.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://outsfl.com/state/at-least-29-trans-people-killed-in-florida-since-2015" target="_blank">OutSFL</a></td></tr>
+
+<tr><td>17</td><td>Dejanay Stanton</td><td>Black</td><td>24</td><td>Chicago, IL</td><td>Aug 30, 2018</td><td>Gunshot</td>
+<td class="circ">Shot in the head in a South Side alley. She had a secret sexual relationship with 17-year-old Tremon Hill (400+ texts). Hill expressed suicidal feelings about the relationship and asked her to delete their photos before killing her.</td>
+<td>No</td><td><span class="badge badge-suspected">Suspected Bias</span></td>
+<td>Tremon T. Hill</td><td>Black</td><td>Male</td><td>17</td>
+<td><span class="badge badge-solved">Arrested</span></td>
+<td><a href="https://chicago.suntimes.com/2019/1/13/18314363/prosecutors-teen-had-sexual-relationship-with-trans-woman-he-allegedly-shot" target="_blank">Chicago Sun-Times</a></td></tr>
+
+<tr><td>18</td><td>Vontashia Bell</td><td>Black</td><td>18</td><td>Shreveport, LA</td><td>Aug 30, 2018</td><td>Gunshot</td>
+<td class="circ">Found shot in the chest and wrist on a Shreveport street around 4:30 AM. She was a senior at Woodlawn High. Youngest known trans victim of 2018. No arrest made.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://www.ksla.com/2018/08/31/year-old-murder-victims-gender-preference-could-aid-investigators/" target="_blank">KSLA</a></td></tr>
+
+<tr><td>19</td><td>Shantee Tucker</td><td>Black</td><td>30</td><td>Philadelphia, PA</td><td>Sep 5, 2018</td><td>Gunshot (8 times)</td>
+<td class="circ">Shot 8 times on Old York Road after arguing with someone in a black pickup truck. She had just turned 30. The area was known as a stroll for trans sex workers. Police said the killing was not motivated by gender identity.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://www.phillyvoice.com/shantee-tucker-candlelight-march-black-transgender-woman-shot-hunting-park/" target="_blank">PhillyVoice</a></td></tr>
+
+<tr><td>20</td><td>Londonn Moore (Tyren Kinard)&dagger;</td><td>Black</td><td>20</td><td>North Port, FL</td><td>Sep 8, 2018</td><td>Gunshot (multiple)</td>
+<td class="circ">Found shot multiple times in the head and upper body, left face-down on a remote street. Her car was found days later in Punta Gorda, less than a quarter mile from the suspect's home. Police linked Juan Salazar-Diaz through fingerprints on a cigarette pack at the scene and DNA in the victim's car. Phone records showed prior contact between the two. Salazar-Diaz, who had six prior felony convictions and had been released from prison only months before, was convicted of second-degree murder and grand theft auto in March 2024 and sentenced to life without parole in June 2024 under Florida's prison releasee re-offender law. &dagger;Note: At trial, prosecutors and the victim's mother confirmed Kinard identified as a gay man, not transgender. Included per HRC listing, but classification is disputed.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>Juan Jose Salazar-Diaz</td><td>Hispanic</td><td>Male</td><td>~21</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://www.mysuncoast.com/2024/03/22/man-accused-gunning-down-another-man-found-guilty-all-charges/" target="_blank">MySuncoast (WWSB)</a></td></tr>
+
+<tr><td>21</td><td>Nikki Enriquez</td><td>Latina</td><td>28</td><td>Laredo, TX</td><td>Sep 15, 2018</td><td>Gunshot</td>
+<td class="circ">Shot in the head by serial killer Juan David Ortiz, an active-duty Border Patrol intelligence supervisor who targeted sex workers. Ortiz had been a regular customer of most of his victims, paying for sexual encounters, but also expressed hatred for sex workers, telling investigators he wanted to "clean up the streets." Nikki was one of four victims killed over a 12-day span. Ortiz convicted of capital murder on all four counts in December 2022 and sentenced to life without parole. His appeal was denied in mid-2024.</td>
+<td>No</td><td><span class="badge badge-none">No Evidence</span></td>
+<td>Juan David Ortiz (serial killer, Border Patrol)</td><td>Hispanic</td><td>Male</td><td>35</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://www.npr.org/2022/12/07/1141484449/ex-border-patrol-agent-convicted-of-killing-4-women-in-texas" target="_blank">NPR</a></td></tr>
+
+<tr><td>22</td><td>Ciara Minaj Carter Frazier</td><td>Black</td><td>31</td><td>Chicago, IL</td><td>Oct 3, 2018</td><td>Stabbing (multiple)</td>
+<td class="circ">Stabbed multiple times in an abandoned building after an argument with a man. Body left in the backyard. She was a sex worker known in the ballroom scene; neighbors saw a regular male client in a white car. A person of interest was briefly detained in October 2018 but released; Cook County State's Attorney rejected felony charges for insufficient evidence. CPD clearance rate for trans homicides is only 14% (per 2024 Chicago Sun-Times investigation).</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://chicago.suntimes.com/2018/10/4/18374491/transgender-woman-fatally-stabbed-body-left-behind-abandoned-west-side-building" target="_blank">Chicago Sun-Times</a></td></tr>
+
+<tr><td>23</td><td>Regina Denise Brown</td><td>Black</td><td>53</td><td>Orangeburg, SC</td><td>Oct 10, 2018</td><td>Beaten / arson</td>
+<td class="circ">Found dead in her burning home. Police allege suspect Kenneth Jenkins beat her during an altercation, set the house on fire, and fled in her car. Jenkins, a recently released ex-convict, was charged with murder after allegedly confessing.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>Kenneth Lamont Jenkins</td><td>Black</td><td>Male</td><td>37</td>
+<td><span class="badge badge-solved">Arrested</span></td>
+<td><a href="https://thetandd.com/news/local/crime-and-courts/man-charged-with-murder-warrant-alleges-suspect-confessed-but-he/article_bb517073-ba11-5dcc-a5c9-cf5b7c02b3f9.html" target="_blank">Times and Democrat</a></td></tr>
+
+<tr><td>24</td><td>Brittany White</td><td>Black</td><td>29</td><td>Dallas, TX</td><td>Oct 21, 2018</td><td>Gunshot</td>
+<td class="circ">Found shot to death inside her car in southeast Dallas. Police investigated potential ties to serial killer Kendrell Lavar Lyles, who was arrested in June 2019 for the murders of Muhlaysia Booker and two others (FBI assisted). However, no charges were ever filed against Lyles or anyone else for White's murder specifically. Note: Dallas Voice initially described the victim as a gay man; HRC counted her as a transgender woman.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://www.nbcdfw.com/news/local/body-discovered-in-white-rock-lake-police/232249/" target="_blank">NBC DFW</a></td></tr>
+
+<tr><td>25</td><td>Tydi Dansbury</td><td>Black</td><td>37</td><td>Baltimore, MD</td><td>Nov 26, 2018</td><td>Gunshot</td>
+<td class="circ">Found with a gunshot wound on Guilford Avenue at 4:15 AM after neighbors reported hearing an argument. Died at the hospital. A dark-colored car was seen speeding from the scene. Case remains open.</td>
+<td>No</td><td><span class="badge badge-unknown">Unknown</span></td>
+<td>—</td><td>—</td><td>—</td><td>—</td>
+<td><span class="badge badge-unsolved">Unsolved</span></td>
+<td><a href="https://www.washingtonblade.com/2018/11/30/baltimore-shooting-trans-murder/" target="_blank">Washington Blade</a></td></tr>
+
+<tr><td>26</td><td>Kelly Stough (Keanna Mattel)</td><td>Black</td><td>36</td><td>Detroit, MI</td><td>Dec 7, 2018</td><td>Gunshot</td>
+<td class="circ">Found shot on a Detroit street near an area known for sex work. Former pastor Albert Weathers (of Logos Church, Detroit) was arrested 3 days later; he claimed self-defense. Prosecutors said it was a dispute over payment for sex. A sex worker testified Weathers routinely sought trans women. Weathers pled guilty to second-degree murder on July 27, 2023, and was sentenced September 8, 2023, to 8 years for murder plus 2 years for felony firearm. Case prosecuted through the Fair Michigan Justice Project.</td>
+<td>No</td><td><span class="badge badge-suspected">Suspected Bias</span></td>
+<td>Albert Weathers (former pastor)</td><td>Black</td><td>Male</td><td>46</td>
+<td><span class="badge badge-solved">Convicted</span></td>
+<td><a href="https://www.detroitnews.com/story/news/local/wayne-county/2023/07/27/man-pleads-guilty-in-2018-shooting-of-transgender-woman-in-detroit/70482407007/" target="_blank">Detroit News</a></td></tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="note-box"><strong>Methodology:</strong> Victim list from <a href="https://assets2.hrc.org/files/assets/resources/AntiTransViolence-2018Report-Final.pdf" target="_blank">HRC's 2018 report</a>. All details independently verified via local news and court records. HRC assessments not used for bias motive, case status, or suspect demographics. All suspect race designations independently verified via mugshots, booking photos, official police descriptions, or court records (February 2026 audit). <strong>Key corrections from 2026 audit:</strong> Amia Tyrae Berryman (#7) was solved within 4 days — Dedrick Butler arrested March 30, 2018 (HRC and LGBTQ advocacy sources never reported the arrest, creating a persistent error in community datasets). Keisha Wells (#15): James Butler charged with complicity (disposing body) but primary shooter remains unidentified — counted as unsolved. Brittany White (#24): Included per HRC listing; Dallas Voice reported the victim also identified as a gay man. Londonn Moore (#20)&dagger;: At trial, prosecutors and the victim's mother confirmed the victim (Tyren Kinard) identified as a gay man, not transgender — included per HRC listing but classification is disputed. Nino Fortson (#10): Identified as a transgender man / gender-nonconforming person. Gigi Pierce (#11): Sophia Adler was initially charged with murder but a grand jury declined to indict; the killing was ruled self-defense. Adler pled guilty only to unlawful firearm possession — not counted as a murder suspect.</div>
+
+<div class="footer"><strong>2018 Fatal Violence Against Transgender People</strong> · Combined Analysis<br>Data from local news and court records · All cases independently verified · Suspect race designations audited February 2026</div>
+
+<script>
+Chart.defaults.animation.duration = 0;
+Chart.defaults.responsive = true;
+Chart.defaults.maintainAspectRatio = false;
+const RC={black:'#000000',white:'#4169E1',hispanic:'#8B4513'};
+const MC={confirmed:'#c1121f',suspected:'#e8a838',none:'#cccccc',unknown:'#e0e0e0'};
+
+new Chart(document.getElementById('chartSUSPECTS'),{type:'bar',data:{labels:['Black','White','Hispanic'],datasets:[{data:[7,3,3],backgroundColor:[RC.black,RC.white,RC.hispanic]}]},options:{responsive:true,maintainAspectRatio:false,resizeDelay:100,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+
+new Chart(document.getElementById('chartVICTIMS'),{type:'bar',data:{labels:['Black','Latina','White'],datasets:[{data:[20,3,3],backgroundColor:[RC.black,RC.hispanic,RC.white]}]},options:{responsive:true,maintainAspectRatio:false,resizeDelay:100,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+
+new Chart(document.getElementById('chartPAIRINGS'),{type:'bar',data:{labels:['Black→Black','White→White','Hispanic→Latina','Black→Latina','Hispanic→Black'],datasets:[{data:[6,3,2,1,1],backgroundColor:['#2d6a4f','#2d6a4f','#2d6a4f','#c1121f','#c1121f']}]},options:{responsive:true,maintainAspectRatio:false,resizeDelay:100,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:1}}}}});
+
+new Chart(document.getElementById('chartSOLVED'),{type:'bar',data:{labels:['Black','Latina','White'],datasets:[{label:'Solved',data:[7,3,3],backgroundColor:'#2d6a4f'},{label:'Unsolved',data:[13,0,0],backgroundColor:'#c1121f'}]},options:{responsive:true,maintainAspectRatio:false,resizeDelay:100,plugins:{legend:{position:'top'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:2}}}}});
+
+new Chart(document.getElementById('chartBIAS'),{type:'bar',data:{labels:['Confirmed','Suspected','No Evidence','Unknown'],datasets:[{data:[0,2,7,17],backgroundColor:[MC.confirmed,MC.suspected,MC.none,MC.unknown]}]},options:{responsive:true,maintainAspectRatio:false,resizeDelay:100,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true,ticks:{stepSize:2}}}}});
+
+new Chart(document.getElementById('chartBIAS_RACE'),{type:'bar',data:{labels:['Black Suspects','White Suspects','Hispanic Suspects'],datasets:[{label:'Confirmed',data:[0,0,0],backgroundColor:MC.confirmed},{label:'Suspected',data:[2,0,0],backgroundColor:MC.suspected},{label:'No Evidence',data:[2,2,2],backgroundColor:MC.none},{label:'Unknown',data:[3,1,1],backgroundColor:MC.unknown}]},options:{responsive:true,maintainAspectRatio:false,resizeDelay:100,plugins:{legend:{position:'top'}},scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true,ticks:{stepSize:1}}}}});
+</script>
+</body>
+</html>

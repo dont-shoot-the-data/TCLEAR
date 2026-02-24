@@ -1,26 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a1a2e"/>
-      <stop offset="100%" style="stop-color:#16213e"/>
-    </linearGradient>
-  </defs>
-  <rect width="64" height="64" rx="12" fill="url(#bg)"/>
-  <rect x="2" y="2" width="60" height="60" rx="10" fill="none" stroke="#e8a838" stroke-width="2"/>
-  <!-- Bar chart in gold - shifted up to make room for text -->
-  <rect x="12" y="28" width="8" height="16" rx="1" fill="#e8a838" opacity="0.9"/>
-  <rect x="23" y="18" width="8" height="26" rx="1" fill="#e8a838" opacity="0.9"/>
-  <rect x="34" y="10" width="8" height="34" rx="1" fill="#e8a838" opacity="0.9"/>
-  <rect x="45" y="14" width="8" height="30" rx="1" fill="#e8a838" opacity="0.9"/>
-  <!-- Crosshair circle -->
-  <circle cx="32" cy="26" r="18" fill="none" stroke="#ff4444" stroke-width="2" opacity="0.6"/>
-  <!-- Crosshair lines -->
-  <line x1="32" y1="4" x2="32" y2="16" stroke="#ff4444" stroke-width="2" opacity="0.6"/>
-  <line x1="32" y1="36" x2="32" y2="48" stroke="#ff4444" stroke-width="2" opacity="0.6"/>
-  <line x1="10" y1="26" x2="22" y2="26" stroke="#ff4444" stroke-width="2" opacity="0.6"/>
-  <line x1="42" y1="26" x2="54" y2="26" stroke="#ff4444" stroke-width="2" opacity="0.6"/>
-  <!-- No slash -->
-  <line x1="17" y1="41" x2="47" y2="11" stroke="#ff4444" stroke-width="2.5" opacity="0.7" stroke-linecap="round"/>
-  <!-- T-CLEAR text at bottom -->
-  <text x="32" y="58" font-family="'Courier New',monospace" font-size="10" font-weight="bold" fill="#e8a838" text-anchor="middle" letter-spacing="1">T-CLEAR</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <circle cx="50" cy="50" r="48" fill="#1a1a2e" stroke="#e8a838" stroke-width="3"/>
+  <rect x="18" y="58" width="12" height="22" fill="#e8a838"/>
+  <rect x="33" y="44" width="12" height="36" fill="#e8a838"/>
+  <rect x="48" y="30" width="12" height="50" fill="#e8a838"/>
+  <rect x="63" y="18" width="12" height="62" fill="#e8a838"/>
+  <circle cx="50" cy="48" r="28" fill="none" stroke="#00c850" stroke-width="2.5" opacity="0.9"/>
+  <line x1="50" y1="14" x2="50" y2="82" stroke="#00c850" stroke-width="2" opacity="0.9"/>
+  <line x1="16" y1="48" x2="84" y2="48" stroke="#00c850" stroke-width="2" opacity="0.9"/>
+  <line x1="10" y1="88" x2="90" y2="8" stroke="#ff2828" stroke-width="5" stroke-linecap="round"/>
 </svg>

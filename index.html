@@ -369,6 +369,61 @@ body.dark-mode .yc-link{background:#e8a838 !important;color:#1a1a2e !important;b
 body.dark-mode .year-card .yc-year{color:#e8a838 !important}
 body.dark-mode .year-card .yc-stat span{color:#e8a838 !important}
 
+/* Dark mode: inline-styled tables in objections & statistical analysis */
+body.dark-mode .acad-body table[style*="border-collapse"] tr[style*="background:#faf8f4"] td{background:#1c2128 !important;color:#e6edf3 !important}
+body.dark-mode .acad-body table[style*="border-collapse"] td{color:#e6edf3 !important;border-bottom-color:#30363d !important}
+body.dark-mode .acad-body table[style*="border-collapse"] td[style*="border-right"]{border-right-color:#30363d !important}
+body.dark-mode .acad-body table[style*="border-collapse"] th{background:#e8a838 !important;color:#0d1117 !important}
+body.dark-mode .acad-body table[style*="border-collapse"] tr[style*="background:#1a1a2e"]{background:#e8a838 !important}
+body.dark-mode .acad-body table[style*="border-collapse"] tr[style*="background:#1a1a2e"] td{background:#e8a838 !important;color:#0d1117 !important}
+body.dark-mode .acad-body table[style*="border-collapse"] a[style*="color:#e8a838"]{color:#e8a838 !important}
+body.dark-mode .acad-body table[style*="border-collapse"] span[style*="color:#888"]{color:#8b949e !important}
+body.dark-mode .acad-body table[style*="border-collapse"] td[style*="color:#c1121f"]{color:#ff6b6b !important}
+body.dark-mode .acad-body table[style*="border-collapse"] td[style*="color:#4169E1"]{color:#6ca6ff !important}
+body.dark-mode .acad-body table[style*="border-collapse"] td[style*="color:#2e7d32"]{color:#69db7c !important}
+/* Objection summary stat boxes */
+body.dark-mode .obj-stat-box{background:#161b22 !important;border-color:#30363d !important}
+body.dark-mode .obj-stat-box .obj-stat-num{color:#e8a838 !important}
+body.dark-mode .obj-stat-box .obj-stat-label{color:#c9d1d9 !important}
+body.dark-mode .obj-stat-box .obj-stat-sub{color:#8b949e !important}
+
+/* Column-divider tables: light gray borders between all columns */
+.col-dividers td,.col-dividers th{border-right:1px solid #e0e0e0}
+.col-dividers td:last-child,.col-dividers th:last-child{border-right:none}
+.col-dividers thead th{border-right-color:#444}
+.col-dividers thead th:last-child{border-right:none}
+body.dark-mode .col-dividers td{border-right-color:#30363d !important}
+body.dark-mode .col-dividers th{border-right-color:#555 !important}
+body.dark-mode .col-dividers td:last-child,body.dark-mode .col-dividers th:last-child{border-right:none !important}
+
+/* Objection banner cards */
+.obj-banner{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:10px;padding:18px 24px;margin:28px 0 0;cursor:pointer;display:flex;align-items:center;gap:16px;transition:all 0.2s;border:2px solid transparent;user-select:none}
+.obj-banner:hover{border-color:#e8a838;box-shadow:0 4px 20px rgba(232,168,56,0.15)}
+.obj-banner-num{font-family:'DM Sans',sans-serif;font-size:13px;font-weight:800;color:#1a1a2e;background:#e8a838;padding:6px 12px;border-radius:6px;white-space:nowrap;letter-spacing:0.5px;flex-shrink:0}
+.obj-banner-title{font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;color:#f0f0f0;flex:1;line-height:1.35}
+.obj-banner-arrow{font-size:18px;color:#e8a838;transition:transform 0.25s;flex-shrink:0}
+.obj-banner.obj-collapsed .obj-banner-arrow{transform:rotate(-90deg)}
+.obj-content{padding-top:16px}
+.obj-content.obj-hidden{display:none}
+@media(max-width:600px){
+  .obj-banner{padding:14px 16px;gap:10px}
+  .obj-banner-num{font-size:11px;padding:5px 10px}
+  .obj-banner-title{font-size:13px}
+}
+body.dark-mode .obj-banner{background:linear-gradient(135deg,#21262d 0%,#161b22 100%);border-color:#30363d}
+body.dark-mode .obj-banner:hover{border-color:#e8a838}
+body.dark-mode .obj-banner-title{color:#e6edf3}
+
+
+body.dark-mode #caSourcesModal > div{background:#161b22 !important;border:1px solid #30363d}
+body.dark-mode #caSourcesModal h3{color:#e6edf3 !important}
+body.dark-mode #caSourcesModal p{color:#8b949e !important}
+body.dark-mode #caSourcesList{border-color:#30363d !important}
+body.dark-mode #caSourcesList a{border-bottom-color:#21262d !important}
+body.dark-mode #caSourcesList a:hover{background:#21262d !important}
+body.dark-mode #caSourcesList a span:nth-child(2){color:#c9d1d9 !important}
+
+
 body.dark-mode .dispro-stat-over{background:#1c1c2e !important;border-color:#7b68ee !important;box-shadow:0 4px 20px rgba(123,104,238,0.2) !important}
 body.dark-mode .dispro-stat-over .dispro-stat-ratio{color:#7b68ee !important}
 body.dark-mode .dispro-stat-over .dispro-stat-label{color:#7b68ee !important}
@@ -564,6 +619,28 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
   <div class="chart-sub">Known-race suspects in solved cases by year. Excludes suspects of unknown race and police-involved killings.</div>
   <div class="chart-wrap"><canvas id="chartA"></canvas></div>
   <div class="note-box"><strong>Key Finding:</strong> Black suspects were the single largest racial group among identified suspects in every year from 2015 to 2024, ranging from 7 (2018) to 21 (2021). In no single year did white suspects exceed half the number of Black suspects: the closest was 2016, when white suspects (7) were exactly half of Black suspects (14). In the other nine years, white suspects fell well below half as low as zero in 2020, when Black suspects numbered 16). However, the victim pool was also disproportionately Black every year, and the vast majority of this violence was intraracial (Black suspects killing Black victims), mirroring national homicide patterns where most violence occurs within racial groups. This does not support a narrative of racially targeted interracial violence.</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0">
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">12.2</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Black</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#4169E1">3.4</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">White</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#8B4513">3.0</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Hispanic</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#999">0.2</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Asian/Other</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+    </div>
+  </div>
 </div>
 
 <!-- Chart C: Victims by Race Over Time -->
@@ -572,6 +649,28 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
   <div class="chart-sub">All documented victims by year, coded by race/ethnicity.</div>
   <div class="chart-wrap"><canvas id="chartB"></canvas></div>
   <div class="note-box"><strong>Key Finding:</strong> Black transgender women comprised the overwhelming majority of victims every year, ranging from 67% (2024) to 91% (2019) of total victims. This extreme overrepresentation (Black transgender women are roughly 0.01% of the U.S. population) represents the single most consistent finding across all ten years of data.</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0">
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">21.1</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Black</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#4169E1">4.3</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">White</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#8B4513">4.1</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Hispanic</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#999">0.9</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Asian/Other</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+    </div>
+  </div>
 </div>
 
 <div class="chart-row">
@@ -621,9 +720,72 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
   <div class="chart-title">Chart I: Top Documented Circumstances in Trans Homicides (2015–2024)</div>
   <div class="chart-sub">Based on 264 cases with extractable circumstance data (87% of 304 total). Of these, 134 had an identifiable motive; 130 were unsolved or motive unclear. Categories derived from independent review of news coverage, court records, and police reports (not HRC assessments).</div>
   <div class="chart-wrap-tall"><canvas id="chartI"></canvas></div>
-  <div class="note-box"><strong>Key Finding:</strong> The #1 documented circumstance is <strong>intimate partner, domestic, and family violence</strong>, accounting for 30 of 134 known-motive cases (22%). This mirrors national patterns where intimate partner violence is the leading cause of homicide for women broadly. The remaining known-motive categories beyond the top 5: Random/Stranger/Mass Event (9), Police-Involved (9), Concealment of Relationship (5), In Custody (3), Incidental (1). Trans identity-related motives (discovery/panic [19] + concealment [5]) combined account for 24 cases (18% of known-motive), making it the second-largest category when merged. The data does not support the narrative that most of these homicides are hate-motivated; most documented circumstances reflect the same patterns seen in general homicide data.<br><br><em>Note: 130 of 264 extractable cases (49%) had unknown or unclear motives, mostly unsolved cases. The true motive distribution may differ from what is shown here. N = 186 unique suspects (188 racial classifications; 2 suspects in 2015 were coded under two racial categories).</em>
+  <div class="note-box"><strong>Key Finding:</strong> The #1 documented circumstance is <strong>intimate partner, domestic, and family violence</strong>, accounting for 30 of 134 known-motive cases (22%). This mirrors national patterns where intimate partner violence is the leading cause of homicide for women broadly. The remaining known-motive categories beyond the top 5: Random/Stranger/Mass Event (9), Police-Involved (9), Concealment of Relationship (5), In Custody (3), Incidental (1). Trans identity-related motives (discovery/panic [19] + concealment [5]) combined account for 24 cases (18% of known-motive), making it the second-largest category when merged. The data does not support the narrative that most of these homicides are hate-motivated; most documented circumstances reflect the same patterns seen in general homicide data.<br><br><strong>Why discovery/panic is coded &ldquo;Suspected,&rdquo; not &ldquo;Confirmed&rdquo;:</strong> A hate crime requires evidence of premeditated targeting &mdash; seeking out a victim <em>because</em> they are transgender. Discovery/panic cases are reactive: a person learns of the victim&rsquo;s transgender status during an intimate encounter and responds with violence. The act is criminal and the response is disproportionate, but the motive is interpersonal reaction, not ideological targeting. Collapsing this distinction into &ldquo;hate crime&rdquo; inflates the confirmed bias count and obscures the actual dynamics driving the violence (see Objection 6 in Discussion for extended analysis).<br><br><em>Note: 130 of 264 extractable cases (49%) had unknown or unclear motives, mostly unsolved cases. The true motive distribution may differ from what is shown here. N = 186 unique suspects (188 racial classifications; 2 suspects in 2015 were coded under two racial categories).</em>
 
   </div>
+</div>
+
+<!-- Chart J: Age Distribution -->
+<div class="chart-card">
+  <div class="chart-title">Chart J: Age Distribution of Victims and Suspects</div>
+  <div class="chart-sub">All years combined, 2015&ndash;2024. Victims: N&nbsp;=&nbsp;297 of 304 with known age. Suspects: N&nbsp;=&nbsp;178 of 188 with known age.</div>
+  <div class="chart-wrap-tall"><canvas id="chartJ"></canvas></div>
+  <div class="note-box"><strong>Key Finding:</strong> Nearly three-quarters (72.5%) of identified suspects are under age 35, with the 18&ndash;24 bracket (37.1%) representing the single largest suspect age group. Suspects skew younger than victims on average (27.9 vs. 29.6). The 25&ndash;34 bracket dominates victims (45.8%) while 18&ndash;24 dominates suspects (37.1%). A notable 7.3% of identified suspects were minors (under 18) at the time of the killing. This age profile is consistent with national homicide data, where both offending and victimization peak in the late teens through early thirties.</div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 0">
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">29.6</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Victim Avg Age</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">median: 28</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#c1121f">27.9</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Suspect Avg Age</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">median: 25</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">25&ndash;34</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Peak Bracket</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">both victims &amp; suspects</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#c1121f">7.3%</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Suspects Under 18</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">13 minors identified</div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart K: Average Age Over Time -->
+<div class="chart-card">
+  <div class="chart-title">Chart K: Average Age Over Time &mdash; Victims and Suspects</div>
+  <div class="chart-sub">Mean age per year, 2015&ndash;2024. Victim age: N&nbsp;=&nbsp;297. Suspect age: N&nbsp;=&nbsp;178.</div>
+  <div class="chart-wrap"><canvas id="chartK"></canvas></div>
+  <div class="note-box"><strong>Key Finding:</strong> Average victim age has remained remarkably stable across the decade, fluctuating between approximately 27 and 33 with no clear upward or downward trend. Average suspect age tracks a similar pattern, consistently falling at or below the victim average. The absence of a strong trend line suggests the demographic profile of this violence has remained structurally unchanged over the study period.</div>
+</div>
+
+<!-- Chart L: Suspect Sex -->
+<div class="chart-card">
+  <div class="chart-title">Chart L: Identified Suspect Sex</div>
+  <div class="chart-sub">All solved cases with identified suspects, 2015&ndash;2024. N&nbsp;=&nbsp;195 suspects with known sex. Excludes 109 unsolved cases with no identified suspect.</div>
+  <div class="chart-wrap" style="max-width:480px;margin:0 auto"><canvas id="chartL"></canvas></div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 0">
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">176</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Male</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">90.3% of identified</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#c1121f">18</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Female</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">9.2% of identified</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#e8a838">1</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Trans</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">0.5% of identified</div>
+    </div>
+  </div>
+  <div class="note-box"><strong>Key Finding:</strong> Of 195 identified suspects with known sex, 176 (90.3%) are male, 18 (9.2%) are female, and 1 (0.5%) is transgender. This is consistent with national homicide offending patterns: the FBI&rsquo;s Supplementary Homicide Reports show that approximately 88&ndash;90% of known homicide offenders are male in any given year. The female suspect rate (9.2%) is also consistent with the national female offender share (~10&ndash;12%). The 18 female suspects include intimate partners, co-defendants, and accessory charges. Nothing in the sex distribution of suspects in this dataset deviates from the baseline of American homicide.</div>
 </div>
 
 <!-- ========== SECTION 2: YEAR-BY-YEAR REPORTS (RESULTS CONTINUED) ========== -->
@@ -999,7 +1161,7 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
     <p><strong>Source Framework:</strong> The Human Rights Campaign&rsquo;s annual reports on fatal violence against transgender and gender-non-conforming people (2015&ndash;2024) were used as the victim identification framework. Each named victim was independently verified against local news coverage, court records, and law enforcement statements. The ten annual HRC source reports used in this study are linked below:</p>
 
     <div style="margin:16px 0 20px;padding:16px 20px;background:rgba(255,255,255,0.04);border-radius:8px;border:1px solid rgba(255,255,255,0.08)">
-      <table style="width:100%;border-collapse:collapse;font-size:14px">
+      <table class="col-dividers" style="width:100%;border-collapse:collapse;font-size:14px">
         <thead><tr style="border-bottom:1px solid rgba(255,255,255,0.15)">
           <th style="text-align:left;padding:6px 12px 6px 0;color:#999;font-weight:600">Year</th>
           <th style="text-align:left;padding:6px 12px;color:#999;font-weight:600">Victims</th>
@@ -1060,13 +1222,20 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
     <h4>Comparison to National Baselines</h4>
     <p>This study&rsquo;s findings are compared below to the three primary national data sources on homicide demographics:</p>
 
-    <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
-      <thead><tr style="background:#1a1a2e;color:#f0f0f0"><th style="padding:8px;text-align:left">Metric</th><th style="padding:8px;text-align:center">This Study</th><th style="padding:8px;text-align:center">FBI SHR</th><th style="padding:8px;text-align:center">BJS</th><th style="padding:8px;text-align:center">CDC</th></tr></thead>
+    <table class="col-dividers" style="width:100%;border-collapse:separate;border-spacing:0;margin:16px 0;font-size:14px;table-layout:fixed;overflow:hidden">
+      <colgroup>
+        <col style="width:28%">
+        <col style="width:18%">
+        <col style="width:18%">
+        <col style="width:18%">
+        <col style="width:18%">
+      </colgroup>
+      <thead><tr style="background:#1a1a2e;color:#f0f0f0"><th style="padding:10px 14px;text-align:left;border-right:2px solid #444">Metric</th><th style="padding:10px 14px;text-align:center;border-right:2px solid #444">This Study</th><th style="padding:10px 14px;text-align:center;border-right:2px solid #444">FBI SHR</th><th style="padding:10px 14px;text-align:center;border-right:2px solid #444">BJS</th><th style="padding:10px 14px;text-align:center">CDC</th></tr></thead>
       <tbody>
-        <tr><td style="padding:8px;border-bottom:1px solid #ddd">Black offenders/victims %</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>64.9% / 69.4%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">55.9%</td><td style="text-align:center;border-bottom:1px solid #ddd">~52%</td><td style="text-align:center;border-bottom:1px solid #ddd">~55%</td></tr>
-        <tr style="background:#faf8f4"><td style="padding:8px;border-bottom:1px solid #ddd">Intraracial %</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>~80%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">~81%</td><td style="text-align:center;border-bottom:1px solid #ddd">~78%</td><td style="text-align:center;border-bottom:1px solid #ddd">N/A</td></tr>
-        <tr><td style="padding:8px;border-bottom:1px solid #ddd">IPV as top motive</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>22%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">~20% (all)</td><td style="text-align:center;border-bottom:1px solid #ddd">~34% (female)</td><td style="text-align:center;border-bottom:1px solid #ddd">~55% (female, known circ.)</td></tr>
-        <tr style="background:#faf8f4"><td style="padding:8px;border-bottom:1px solid #ddd">Clearance rate</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>62%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">~58% (avg)</td><td style="text-align:center;border-bottom:1px solid #ddd">~52%</td><td style="text-align:center;border-bottom:1px solid #ddd">N/A</td></tr>
+        <tr><td style="padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">Black offenders/victims %</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0"><strong>64.9% / 69.4%</strong></td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">55.9%</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">~52%</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd">~55%</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">Intraracial %</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0"><strong>~80%</strong></td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">~81%</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">~78%</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd">N/A</td></tr>
+        <tr><td style="padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">IPV as top motive</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0"><strong>22%</strong></td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">~20% (all)</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">~34% (female)</td><td style="text-align:center;padding:10px 14px;border-bottom:1px solid #ddd">~55% (female, known circ.)</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:10px 14px;border-right:2px solid #e0e0e0">Clearance rate</td><td style="text-align:center;padding:10px 14px;border-right:2px solid #e0e0e0"><strong>62%</strong></td><td style="text-align:center;padding:10px 14px;border-right:2px solid #e0e0e0">~58% (avg)</td><td style="text-align:center;padding:10px 14px;border-right:2px solid #e0e0e0">~52%</td><td style="text-align:center;padding:10px 14px">N/A</td></tr>
       </tbody>
     </table>
 
@@ -1084,7 +1253,7 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
 
     <p>A chi-square goodness-of-fit test was conducted to determine whether the racial distribution of identified suspects differs significantly from what would be expected based on U.S. population shares (ACS 2020&ndash;2023 estimates).</p>
 
-    <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
+    <table class="col-dividers" style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
       <thead><tr style="background:#1a1a2e;color:#f0f0f0"><th style="padding:8px;text-align:left">Race</th><th style="padding:8px;text-align:center">Observed (N)</th><th style="padding:8px;text-align:center">Expected (N)</th><th style="padding:8px;text-align:center">O &minus; E</th><th style="padding:8px;text-align:center">(O&minus;E)&sup2;/E</th></tr></thead>
       <tbody>
         <tr><td style="padding:6px;border-bottom:1px solid #ddd">Black</td><td style="text-align:center;border-bottom:1px solid #ddd">122</td><td style="text-align:center;border-bottom:1px solid #ddd">25.6</td><td style="text-align:center;border-bottom:1px solid #ddd;color:#c1121f;font-weight:700">+96.4</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>363.70</strong></td></tr>
@@ -1115,7 +1284,7 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
 
     <h4>Confidence Intervals (95%, Clopper-Pearson Exact)</h4>
 
-    <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
+    <table class="col-dividers" style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
       <thead><tr style="background:#1a1a2e;color:#f0f0f0"><th style="padding:8px;text-align:left">Race</th><th style="padding:8px;text-align:center">Observed %</th><th style="padding:8px;text-align:center">95% CI</th><th style="padding:8px;text-align:center">Population %</th><th style="padding:8px;text-align:center">Overlap?</th></tr></thead>
       <tbody>
         <tr><td style="padding:6px;border-bottom:1px solid #ddd">Black</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>64.9%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">57.6% &ndash; 71.7%</td><td style="text-align:center;border-bottom:1px solid #ddd">13.6%</td><td style="text-align:center;border-bottom:1px solid #ddd;color:#c1121f;font-weight:700">No</td></tr>
@@ -1196,34 +1365,217 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
 
     <h4>Robustness Checks</h4>
 
-    <p><strong>Objection 1: &ldquo;These Are Arrests, Not Convictions&rdquo;</strong></p>
+    <div class="obj-banner" onclick="toggleObj(this)"><span class="obj-banner-num">OBJECTION 1</span><span class="obj-banner-title">&ldquo;These Are Arrests, Not Convictions&rdquo;</span><span class="obj-banner-arrow">&#9660;</span></div>
+    <div class="obj-content">
 
     <p>Black suspects are the majority in <strong>every single year from 2015 to 2024</strong>, ranging from 53% to 79%. Ten years, hundreds of independent police departments, prosecutors, and judges:</p>
 
-    <table style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
-      <thead><tr style="background:#1a1a2e;color:#f0f0f0"><th style="padding:8px;text-align:center">Year</th><th style="padding:8px;text-align:center">Black</th><th style="padding:8px;text-align:center">White</th><th style="padding:8px;text-align:center">Hispanic</th><th style="padding:8px;text-align:center">Asian/Other</th><th style="padding:8px;text-align:center">Total</th><th style="padding:8px;text-align:center">Black %</th></tr></thead>
+    <table class="col-dividers" style="width:100%;border-collapse:collapse;margin:16px 0;font-size:14px">
+      <thead><tr style="background:#1a1a2e;color:#f0f0f0"><th style="padding:8px;text-align:center">Year</th><th style="padding:8px;text-align:center">Black</th><th style="padding:8px;text-align:center">White</th><th style="padding:8px;text-align:center">Hispanic</th><th style="padding:8px;text-align:center">Asian/Other</th><th style="padding:8px;text-align:center;border-right:2px solid #e8a838">Total</th><th style="padding:8px;text-align:center">Black %</th><th style="padding:8px;text-align:center">White %</th><th style="padding:8px;text-align:center">Hispanic %</th><th style="padding:8px;text-align:center">Asian/Other %</th></tr></thead>
       <tbody>
-        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2015</td><td style="text-align:center;border-bottom:1px solid #ddd">8</td><td style="text-align:center;border-bottom:1px solid #ddd">2</td><td style="text-align:center;border-bottom:1px solid #ddd">5</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">15</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>53%</strong></td></tr>
-        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2016</td><td style="text-align:center;border-bottom:1px solid #ddd">14</td><td style="text-align:center;border-bottom:1px solid #ddd">7</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">23</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>61%</strong></td></tr>
-        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2017</td><td style="text-align:center;border-bottom:1px solid #ddd">10</td><td style="text-align:center;border-bottom:1px solid #ddd">4</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">16</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>63%</strong></td></tr>
-        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2018</td><td style="text-align:center;border-bottom:1px solid #ddd">7</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">13</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>54%</strong></td></tr>
-        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2019</td><td style="text-align:center;border-bottom:1px solid #ddd">11</td><td style="text-align:center;border-bottom:1px solid #ddd">2</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">14</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>79%</strong></td></tr>
-        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2020</td><td style="text-align:center;border-bottom:1px solid #ddd">16</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">6</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">22</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>73%</strong></td></tr>
-        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2021</td><td style="text-align:center;border-bottom:1px solid #ddd">21</td><td style="text-align:center;border-bottom:1px solid #ddd">4</td><td style="text-align:center;border-bottom:1px solid #ddd">4</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">29</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>72%</strong></td></tr>
-        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2022</td><td style="text-align:center;border-bottom:1px solid #ddd">14</td><td style="text-align:center;border-bottom:1px solid #ddd">5</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">22</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>64%</strong></td></tr>
-        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2023</td><td style="text-align:center;border-bottom:1px solid #ddd">11</td><td style="text-align:center;border-bottom:1px solid #ddd">5</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">19</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>58%</strong></td></tr>
-        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2024</td><td style="text-align:center;border-bottom:1px solid #ddd">10</td><td style="text-align:center;border-bottom:1px solid #ddd">2</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">15</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>67%</strong></td></tr>
-        <tr style="background:#1a1a2e;color:#f0f0f0;font-weight:700"><td style="padding:8px;text-align:center">Total</td><td style="text-align:center">122</td><td style="text-align:center">34</td><td style="text-align:center">30</td><td style="text-align:center">2</td><td style="text-align:center">188</td><td style="text-align:center">65%</td></tr>
+        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2015</td><td style="text-align:center;border-bottom:1px solid #ddd">8</td><td style="text-align:center;border-bottom:1px solid #ddd">2</td><td style="text-align:center;border-bottom:1px solid #ddd">5</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">15</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>53%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">13%</td><td style="text-align:center;border-bottom:1px solid #ddd">33%</td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2016</td><td style="text-align:center;border-bottom:1px solid #ddd">14</td><td style="text-align:center;border-bottom:1px solid #ddd">7</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">23</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>61%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">30%</td><td style="text-align:center;border-bottom:1px solid #ddd">4%</td><td style="text-align:center;border-bottom:1px solid #ddd">4%</td></tr>
+        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2017</td><td style="text-align:center;border-bottom:1px solid #ddd">10</td><td style="text-align:center;border-bottom:1px solid #ddd">4</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">16</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>63%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">25%</td><td style="text-align:center;border-bottom:1px solid #ddd">6%</td><td style="text-align:center;border-bottom:1px solid #ddd">6%</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2018</td><td style="text-align:center;border-bottom:1px solid #ddd">7</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">13</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>54%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">23%</td><td style="text-align:center;border-bottom:1px solid #ddd">23%</td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td></tr>
+        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2019</td><td style="text-align:center;border-bottom:1px solid #ddd">11</td><td style="text-align:center;border-bottom:1px solid #ddd">2</td><td style="text-align:center;border-bottom:1px solid #ddd">1</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">14</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>79%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">14%</td><td style="text-align:center;border-bottom:1px solid #ddd">7%</td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2020</td><td style="text-align:center;border-bottom:1px solid #ddd">16</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">6</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">22</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>73%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td><td style="text-align:center;border-bottom:1px solid #ddd">27%</td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td></tr>
+        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2021</td><td style="text-align:center;border-bottom:1px solid #ddd">21</td><td style="text-align:center;border-bottom:1px solid #ddd">4</td><td style="text-align:center;border-bottom:1px solid #ddd">4</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">29</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>72%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">14%</td><td style="text-align:center;border-bottom:1px solid #ddd">14%</td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2022</td><td style="text-align:center;border-bottom:1px solid #ddd">14</td><td style="text-align:center;border-bottom:1px solid #ddd">5</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">22</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>64%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">23%</td><td style="text-align:center;border-bottom:1px solid #ddd">14%</td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td></tr>
+        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2023</td><td style="text-align:center;border-bottom:1px solid #ddd">11</td><td style="text-align:center;border-bottom:1px solid #ddd">5</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">19</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>58%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">26%</td><td style="text-align:center;border-bottom:1px solid #ddd">16%</td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd">2024</td><td style="text-align:center;border-bottom:1px solid #ddd">10</td><td style="text-align:center;border-bottom:1px solid #ddd">2</td><td style="text-align:center;border-bottom:1px solid #ddd">3</td><td style="text-align:center;border-bottom:1px solid #ddd">0</td><td style="text-align:center;border-bottom:1px solid #ddd">15</td><td style="text-align:center;border-bottom:1px solid #ddd"><strong>67%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd">13%</td><td style="text-align:center;border-bottom:1px solid #ddd">20%</td><td style="text-align:center;border-bottom:1px solid #ddd">0%</td></tr>
+        <tr style="background:#1a1a2e;color:#f0f0f0;font-weight:700"><td style="padding:8px;text-align:center">Total</td><td style="text-align:center">122</td><td style="text-align:center">34</td><td style="text-align:center">30</td><td style="text-align:center">2</td><td style="text-align:center">188</td><td style="text-align:center">65%</td><td style="text-align:center">18%</td><td style="text-align:center">16%</td><td style="text-align:center">1%</td></tr>
       </tbody>
     </table>
 
-    <p>This is not what arrest bias looks like. It is what <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/tables/expanded-homicide-data-table-6.xls" target="_blank" style="color:#e8a838">national intraracial homicide data</a>: <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide" target="_blank" style="color:#e8a838">91% of Black homicide victims are killed by Black offenders</a>. Beyond that: case files document at least <strong>120 convictions and guilty pleas</strong>, including 56 guilty pleas, 28 life sentences or LWOP, 10 confessions corroborated by physical evidence, and 34 cases with surveillance video.</p>
+    <p>How does this compare to national homicide? The FBI&rsquo;s <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/tables/expanded-homicide-data-table-3.xls" target="_blank" style="color:#e8a838">Expanded Homicide Data Table 3</a> publishes murder offenders by race annually. Below is every year of published data that overlaps with this study (2015&ndash;2019, from the UCR Summary Reporting System). After 2019, the FBI transitioned to the National Incident-Based Reporting System (NIBRS) and discontinued the traditional offender-by-race tables. The NIBRS data is available through the FBI&rsquo;s Crime Data Explorer but is not directly comparable: agency coverage collapsed to ~65% in 2021, and the format changed substantially. For methodological consistency, only the 2015&ndash;2019 UCR data is presented here.</p>
 
-    <p><strong>Objection 2: &ldquo;Black People Are Disproportionately Exonerated&rdquo;</strong></p>
+    <table class="col-dividers" style="width:100%;border-collapse:collapse;margin:16px 0;font-size:13px">
+      <thead><tr style="background:#1a1a2e;color:#f0f0f0">
+        <th style="padding:8px;text-align:center;border-right:2px solid #444" rowspan="2">Year</th>
+        <th style="padding:8px;text-align:center;border-right:2px solid #e8a838" colspan="5">FBI National (Expanded Homicide Data Table 3)</th>
+        <th style="padding:8px;text-align:center" colspan="3">This Study (T-CLEAR)</th>
+      </tr>
+      <tr style="background:#1a1a2e;color:#ccc;font-size:11px">
+        <th style="padding:6px;text-align:center;border-right:1px solid #444">Black %</th>
+        <th style="padding:6px;text-align:center;border-right:1px solid #444">White %*</th>
+        <th style="padding:6px;text-align:center;border-right:1px solid #444">Other %</th>
+        <th style="padding:6px;text-align:center;border-right:1px solid #444">Hispanic&dagger;</th>
+        <th style="padding:6px;text-align:center;border-right:2px solid #e8a838">Ethnicity Unknown</th>
+        <th style="padding:6px;text-align:center;border-right:1px solid #444">Black %</th>
+        <th style="padding:6px;text-align:center;border-right:1px solid #444">White %</th>
+        <th style="padding:6px;text-align:center">Hispanic %</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-weight:700">2015</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">53.3%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">44.0%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">2.7%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">1,312</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">42.7%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0"><strong>53%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">13%</td><td style="text-align:center;border-bottom:1px solid #ddd">33%</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-weight:700">2016</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">53.5%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">43.9%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">2.6%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">1,533</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">43.4%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0"><strong>61%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">30%</td><td style="text-align:center;border-bottom:1px solid #ddd">4%</td></tr>
+        <tr><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-weight:700">2017</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">54.2%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">43.1%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">2.6%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">1,505</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">40.7%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0"><strong>63%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">25%</td><td style="text-align:center;border-bottom:1px solid #ddd">6%</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:6px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-weight:700">2018</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">54.9%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">42.4%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">2.7%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">1,576</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0">52.4%</td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0"><strong>54%</strong></td><td style="text-align:center;border-bottom:1px solid #ddd;border-right:1px solid #e0e0e0">23%</td><td style="text-align:center;border-bottom:1px solid #ddd">23%</td></tr>
+        <tr><td style="padding:6px;text-align:center;border-right:2px solid #e0e0e0;font-weight:700">2019</td><td style="text-align:center;border-right:1px solid #e0e0e0">55.9%</td><td style="text-align:center;border-right:1px solid #e0e0e0">41.1%</td><td style="text-align:center;border-right:1px solid #e0e0e0">3.0%</td><td style="text-align:center;border-right:1px solid #e0e0e0">1,531</td><td style="text-align:center;border-right:2px solid #e0e0e0">52.8%</td><td style="text-align:center;border-right:1px solid #e0e0e0"><strong>79%</strong></td><td style="text-align:center;border-right:1px solid #e0e0e0">14%</td><td style="text-align:center">7%</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:11px;color:#888;margin-top:-8px;margin-bottom:16px">FBI source: <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/tables/expanded-homicide-data-table-3.xls" target="_blank" style="color:#e8a838">Expanded Homicide Data Table 3</a>, 2015&ndash;2019. *FBI &ldquo;White&rdquo; includes Hispanic/Latino individuals &mdash; see note below. &dagger;Hispanic count reflects only agencies that reported ethnicity; &ldquo;Ethnicity Unknown&rdquo; shows the percentage of all offenders for whom ethnicity was not reported. By 2019, more than half of all offenders had unknown ethnicity, meaning the Hispanic count captures only a fraction of actual Hispanic offenders.</p>
+
+    <div class="chart-card" style="margin:16px 0">
+      <div class="chart-title">FBI National vs. T-CLEAR: Black Suspect/Offender Share Over Time</div>
+      <div class="chart-sub">Black offenders as % of known-race offenders (FBI, 2015&ndash;2019) vs. Black suspects as % of identified suspects (T-CLEAR, 2015&ndash;2024). FBI discontinued traditional offender-by-race tables after 2019 due to the NIBRS transition.</div>
+      <div class="chart-wrap"><canvas id="chartFBI"></canvas></div>
+    </div>
+
+    <div class="acad-highlight">
+      <strong>The pattern is unmistakable:</strong> The FBI&rsquo;s national data shows Black offenders at 53&ndash;56% of known-race murder offenders every year from 2015 to 2019. This study&rsquo;s Black suspect rate (65% overall) is <em>higher</em> than the national average, but this is predicted by the victim demographics: when 70% of victims are Black and ~91% of Black homicide is intraracial, a Black suspect rate above the national baseline is exactly what the FBI&rsquo;s own cross-tabulation predicts (68.0% &mdash; see Statistical Analysis). The T-CLEAR data is not an anomaly. It is the national pattern, amplified by the demographics of the victim pool.
+    </div>
+
+    <div class="acad-highlight" style="border-left-color:#c1121f">
+      <strong>Critical note on the FBI&rsquo;s &ldquo;White&rdquo; category:</strong> The FBI classifies race and ethnicity as separate fields. A Hispanic offender is recorded as &ldquo;White&rdquo; in the race column and &ldquo;Hispanic&rdquo; in the ethnicity column &mdash; but ethnicity reporting is optional and, in most years, unknown for 40&ndash;53% of offenders. This means the &ldquo;White&rdquo; column in every FBI table is inflated by an unknown number of Hispanic offenders. If Hispanic offenders were removed, the non-Hispanic White share would drop well below 40%. This study separates Hispanic suspects from White suspects using booking photos and explicit news descriptions, which is why the White column in T-CLEAR (18% overall) is far lower than the FBI&rsquo;s &ldquo;White&rdquo; column (41&ndash;44%). <strong>The FBI&rsquo;s classification system structurally obscures the true White offender share by absorbing Hispanic offenders into it.</strong> This is the subject of an <a href="https://dont-shoot-the-data.github.io/fbi-letter/" target="_blank" style="color:#e8a838">open letter to the FBI&rsquo;s CJIS Division</a> by the author of this study.
+    </div>
+
+    <p>This is not what arrest bias looks like. It is what <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/tables/expanded-homicide-data-table-6.xls" target="_blank" style="color:#e8a838">national intraracial homicide data</a> looks like: <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide" target="_blank" style="color:#e8a838">91% of Black homicide victims are killed by Black offenders</a>. Beyond that: case files document at least <strong>120 convictions and guilty pleas</strong>, including 56 guilty pleas, 28 life sentences or LWOP, 10 confessions corroborated by physical evidence, and 34 cases with surveillance video.</p>
+
+    
+    </div><!-- /obj-content -->
+
+    <div class="obj-banner" onclick="toggleObj(this)"><span class="obj-banner-num">OBJECTION 2</span><span class="obj-banner-title">&ldquo;FBI Arrest Data Reflects Law Enforcement Racial Bias, Not Actual Offending Patterns&rdquo;</span><span class="obj-banner-arrow">&#9660;</span></div>
+    <div class="obj-content">
+
+    <p>The objection: FBI arrest data cannot be trusted because it reflects racially biased policing, not actual offending. Officers disproportionately arrest Black and Hispanic individuals due to systemic racism in law enforcement, and any analysis built on this data inherits that bias. Response: examine a state where the data is collected under the authority of exclusively Democratic Attorneys General &mdash; the most left-leaning major state in the country, for a quarter of a century.</p>
+
+    <h4>California: 25 Years, Five AGs, All Democrats</h4>
+
+    <p>The California Department of Justice publishes annual &ldquo;Crime in California&rdquo; reports containing Table 31: Felony Arrests by Race/Ethnic Group. This data covers every law enforcement agency in the state. From 2000 to 2024, every single Attorney General who oversaw this data collection was a Democrat:</p>
+
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+    <table class="col-dividers" style="width:100%;min-width:680px;border-collapse:collapse;margin:16px 0;font-size:14px">
+      <thead><tr style="background:#1a1a2e;color:#f0f0f0">
+        <th style="padding:12px 20px;text-align:left;white-space:nowrap">Attorney General</th>
+        <th style="padding:12px 24px;text-align:center;white-space:nowrap">Party</th>
+        <th style="padding:12px 24px;text-align:center;white-space:nowrap">Years</th>
+        <th style="padding:12px 20px;text-align:left">Note</th>
+      </tr></thead>
+      <tbody>
+        <tr><td style="padding:12px 20px;border-bottom:1px solid #ddd;white-space:nowrap">Bill Lockyer</td><td style="padding:12px 24px;text-align:center;border-bottom:1px solid #ddd;font-weight:700">Democratic</td><td style="padding:12px 24px;text-align:center;border-bottom:1px solid #ddd;white-space:nowrap">1999&ndash;2007</td><td style="padding:12px 20px;border-bottom:1px solid #ddd;font-size:12px;color:#888">Former State Senate President Pro Tem</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:12px 20px;border-bottom:1px solid #ddd;white-space:nowrap">Jerry Brown</td><td style="padding:12px 24px;text-align:center;border-bottom:1px solid #ddd;font-weight:700">Democratic</td><td style="padding:12px 24px;text-align:center;border-bottom:1px solid #ddd;white-space:nowrap">2007&ndash;2011</td><td style="padding:12px 20px;border-bottom:1px solid #ddd;font-size:12px;color:#888">Later served as Governor (2011&ndash;2019)</td></tr>
+        <tr><td style="padding:12px 20px;border-bottom:1px solid #ddd;white-space:nowrap">Kamala Harris</td><td style="padding:12px 24px;text-align:center;border-bottom:1px solid #ddd;font-weight:700">Democratic</td><td style="padding:12px 24px;text-align:center;border-bottom:1px solid #ddd;white-space:nowrap">2011&ndash;2017</td><td style="padding:12px 20px;border-bottom:1px solid #ddd;font-size:12px;color:#888">Later served as U.S. Vice President (2021&ndash;2025)</td></tr>
+        <tr style="background:#faf8f4"><td style="padding:12px 20px;border-bottom:1px solid #ddd;white-space:nowrap">Xavier Becerra</td><td style="padding:12px 24px;text-align:center;border-bottom:1px solid #ddd;font-weight:700">Democratic</td><td style="padding:12px 24px;text-align:center;border-bottom:1px solid #ddd;white-space:nowrap">2017&ndash;2021</td><td style="padding:12px 20px;border-bottom:1px solid #ddd;font-size:12px;color:#888">Later served as HHS Secretary</td></tr>
+        <tr><td style="padding:12px 20px;white-space:nowrap">Rob Bonta</td><td style="padding:12px 24px;text-align:center;font-weight:700">Democratic</td><td style="padding:12px 24px;text-align:center;white-space:nowrap">2021&ndash;present</td><td style="padding:12px 20px;font-size:12px;color:#888">First Filipino-American state AG in U.S. history</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="acad-highlight">
+      <strong>Kamala Harris and implicit bias training:</strong> In 2015, AG Kamala Harris launched the nation&rsquo;s <a href="https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-kicks-first-its-kind-law-enforcement-training" target="_blank" style="color:#e8a838">first-of-its-kind implicit bias training program for law enforcement</a>, requiring the California Department of Justice to integrate bias awareness into police training statewide. This follows a familiar pattern: institutions diagnose &ldquo;bias&rdquo; as the cause of racial disparities in arrest data, launch high-profile interventions, and the numbers don&rsquo;t move. Hispanic individuals led California homicide arrests before Harris&rsquo;s training (2000&ndash;2014), during it (2015&ndash;2016), and for the entire decade after it (2017&ndash;2024). The rank order never changed. The gaps never closed. If racially biased policing were manufacturing these patterns, a statewide implicit bias intervention overseen by one of the most progressive AGs in the country would have produced <em>some</em> measurable shift. It didn&rsquo;t &mdash; because the data was never reflecting bias. It was reflecting offending.
+    </div>
+
+    <h4>Disproportionality: Population Share vs. Arrest Share</h4>
+
+    <p>The 24-year average arrest shares compared to California&rsquo;s population shares:</p>
+
+    <div class="chart-card" style="margin:16px 0">
+      <div class="chart-title">California Homicide: Population Share vs. Arrest Share (24-Year Avg)</div>
+      <div class="chart-sub">Population: ACS estimates (24-year avg). Arrest share: CA AG Table 31, 2000&ndash;2024 (excl. 2001).</div>
+      <div class="chart-wrap"><canvas id="chartCADispro"></canvas></div>
+    </div>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0">
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:140px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">4.4&times;</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Black Disproportionality</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">26.1% arrests / 6.0% population</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:140px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#8B4513">1.3&times;</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Hispanic Disproportionality</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">47.4% arrests / 36.9% population</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:140px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#4169E1">0.48&times;</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">White Disproportionality</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">19.4% arrests / 40.4% population</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:140px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#999">0.42&times;</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Asian/Other Disproportionality</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">7.1% arrests / 17.0% population</div>
+      </div>
+    </div>
+
+    <h4>California Homicide Arrests by Race, 2000&ndash;2024</h4>
+
+    <p>Below is 24 years of homicide arrest data from the California Attorney General&rsquo;s annual reports (2001 excluded &mdash; the AG&rsquo;s office published duplicate 2002 data for that year). Hispanic individuals lead homicide arrests in <strong>every single year</strong> &mdash; 24 for 24 &mdash; followed by Black, then White, then Other. This is California, not Mississippi.</p>
+
+    <div class="chart-card" style="margin:16px 0">
+      <div class="chart-title">California Homicide Arrests by Race/Ethnicity, 2000&ndash;2024</div>
+      <div class="chart-sub">Source: California Attorney General, &ldquo;Crime in California&rdquo; Table 31 (Felony Arrests), 2000&ndash;2024. 2001 excluded (duplicate data). <strong>Hispanic leads every year, 24 for 24.</strong></div>
+      <div style="display:flex;gap:8px;margin:10px 0 14px">
+        <button onclick="toggleCAChart('counts')" id="btn-ca-counts" class="c1-toggle c1-toggle-active">Counts</button>
+        <button onclick="toggleCAChart('rate')" id="btn-ca-rate" class="c1-toggle">Rate</button>
+      </div>
+      <div id="caChartSubNote" style="font-size:11px;color:#888;margin:-8px 0 10px;display:none"></div>
+      <div class="chart-wrap-tall"><canvas id="chartCAHomicide"></canvas></div>
+    </div>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0">
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#8B4513">770.6</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Hispanic</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg arrests/year</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">424.4</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Black</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg arrests/year</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#4169E1">315.3</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">White</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg arrests/year</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#999">115.3</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Other</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg arrests/year</div>
+      </div>
+    </div>
+
+
+    <h4>Table 31: 2024 Source Data</h4>
+
+    <p>Below is Table 31 from the 2024 California Attorney General&rsquo;s &ldquo;Crime in California&rdquo; report. The homicide row shows 629 Hispanic, 389 Black, 212 White, and 75 Other felony arrests. Click to view the full report.</p>
+
+    <div style="max-width:900px;margin:20px 0;text-align:left">
+      <a href="https://data-openjustice.doj.ca.gov/sites/default/files/2025-07/Crime%20In%20CA%202024%20final.pdf" target="_blank"><img src="table31-ca-2024.png" style="width:100%;border-radius:8px;border:1px solid #ddd;cursor:pointer" alt="Table 31 from the 2024 California Crime in California report showing Felony Arrests by Category, Gender, and Race/Ethnic Group. Homicide: 629 Hispanic, 389 Black, 212 White, 75 Other."></a>
+      <p style="font-size:11px;color:#888;margin-top:8px">Source: <a href="https://data-openjustice.doj.ca.gov/sites/default/files/2025-07/Crime%20In%20CA%202024%20final.pdf" target="_blank" style="color:#e8a838">California Department of Justice, &ldquo;Crime in California 2024,&rdquo; Table 31</a>. Click image to open full report (PDF).</p>
+    </div>
+
+    <p style="margin:16px 0"><button onclick="openCASourcesModal()" style="background:#e8a838;color:#1a1a2e;border:none;padding:10px 20px;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:0.3px;transition:all 0.2s;box-shadow:0 2px 8px rgba(232,168,56,0.3)">&#128269; Verify Any Year: All 25 CA AG Reports (2000&ndash;2024)</button></p>
+
+    <!-- Modal for CA AG source reports -->
+    <div id="caSourcesModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;justify-content:center;align-items:center;padding:20px">
+      <div style="background:#fff;border-radius:12px;max-width:600px;width:100%;max-height:80vh;overflow-y:auto;padding:28px;position:relative">
+        <button onclick="document.getElementById('caSourcesModal').style.display='none';document.body.style.overflow=''" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:#888">&times;</button>
+        <h3 style="font-family:'DM Sans',sans-serif;font-size:18px;font-weight:800;color:#1a1a2e;margin-bottom:4px">California Attorney General &middot; Crime in California</h3>
+        <p style="font-size:12px;color:#888;margin-bottom:16px">All statewide arrest data is sourced from these annual reports. Each link opens the official PDF.</p>
+        <div id="caSourcesList" style="border:1px solid #e0e0e0;border-radius:8px;overflow:hidden"></div>
+        <p style="font-size:10px;color:#888;margin-top:12px;text-align:center">25 reports &middot; 2000&ndash;2024 &middot; Published by the California Department of Justice</p>
+      </div>
+    </div>
+
+    <div class="acad-highlight" style="border-left-color:#2d6a4f;background:#f0faf5">
+      <strong>Three independent datasets, three different collection systems, same result.</strong><br><br>
+      <strong>1. FBI National Data (UCR/SHR, 2015&ndash;2019):</strong> Black offenders comprise 53&ndash;56% of known-race murder offenders nationally. The &ldquo;White&rdquo; category is inflated by Hispanic offenders due to the FBI&rsquo;s ethnicity reporting gap.<br>
+      <strong>2. California AG Data (Table 31, 2000&ndash;2024):</strong> Hispanic individuals lead homicide arrests every year for 24 consecutive years; Black individuals are second at 4.4&times; their population share; White individuals are <em>under</em>represented at 0.48&times;. Collected by five consecutive Democratic AGs, including one who pioneered implicit bias training for police.<br>
+      <strong>3. T-CLEAR (This Study, 2015&ndash;2024):</strong> Black suspects comprise 64.9% of identified perpetrators of fatal violence against transgender Americans, consistent across all 10 years.<br><br>
+      The California data is the most devastating rebuttal to the bias claim because it eliminates every confound: the data collectors are Democrats, the state has some of the most progressive policing policies in the country, and the AG who oversaw the middle of the dataset literally created the nation&rsquo;s first implicit bias training for law enforcement. If this data is racist, then Kamala Harris is complicit in it.
+    </div>
+
+    </div><!-- /obj-content -->
+
+    <div class="obj-banner" onclick="toggleObj(this)"><span class="obj-banner-num">OBJECTION 3</span><span class="obj-banner-title">&ldquo;Black People Are Disproportionately Exonerated&rdquo;</span><span class="obj-banner-arrow">&#9660;</span></div>
+    <div class="obj-content">
 
     <p>The <a href="https://exonerationregistry.org" target="_blank" style="color:#e8a838">National Registry of Exonerations</a> documented <a href="https://exonerationregistry.org/sites/exonerationregistry.org/files/documents/Updated%20CP%20-%20Race%20Report%20Preview.pdf" target="_blank" style="color:#e8a838">approximately 1,167 murder exonerations from 1989 to 2022</a> (33 years): an average of <strong>35 per year</strong> (19 Black, 11 White), though recent years have seen 85+ murder exonerations annually. Against <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/tables/expanded-homicide-data-table-3.xls" target="_blank" style="color:#e8a838">6,425 Black homicide offenders per year</a>, that is a 0.30% exoneration rate. The White rate: 0.23%. Nearly identical.</p>
 
-    <table style="width:100%;max-width:650px;border-collapse:separate;border-spacing:0;margin:16px 0;font-size:14px;table-layout:fixed;overflow:hidden">
+    <table class="col-dividers" style="width:100%;max-width:650px;border-collapse:separate;border-spacing:0;margin:16px 0;font-size:14px;table-layout:fixed;overflow:hidden">
       <colgroup>
         <col style="width:46%">
         <col style="width:27%">
@@ -1270,17 +1622,121 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
       The NRE&rsquo;s own identified drivers of wrongful murder convictions, <a href="https://exonerationregistry.org/sites/exonerationregistry.org/files/documents/Updated%20CP%20-%20Government_Misconduct_and_Convicting_the_Innocent%20(1).pdf" target="_blank" style="color:#e8a838">police misconduct and cross-racial misidentification</a>, do not apply here. These are overwhelmingly intraracial cases between people who knew each other. There is no cross-racial eyewitness to misidentify anyone.
     </div>
 
-    <p><strong>Objection 3: &ldquo;What About the Unsolved Cases?&rdquo;</strong></p>
+    </div><!-- /obj-content -->
+
+    <div class="obj-banner" onclick="toggleObj(this)"><span class="obj-banner-num">OBJECTION 4</span><span class="obj-banner-title">&ldquo;Police Kill 10,000 Unarmed Black People a Year&rdquo;</span><span class="obj-banner-arrow">&#9660;</span></div>
+    <div class="obj-content">
+
+    <p>A common rebuttal to any discussion of Black overrepresentation in offending data is to redirect to police violence: the claim that police kill thousands or even tens of thousands of unarmed Black people annually. This is not a strawman. The <a href="https://www.skeptic.com/research-center/reports/Research-Report-CUPES-007.pdf" target="_blank" style="color:#e8a838">Skeptic Research Center</a> (McCaffree &amp; Saide, 2021; N&nbsp;=&nbsp;980 U.S. adults) asked respondents: &ldquo;If you had to guess, how many unarmed Black men were killed by police in 2019?&rdquo; The results:</p>
+
+    <table class="col-dividers" style="width:100%;max-width:700px;border-collapse:separate;border-spacing:0;margin:16px 0;font-size:14px;table-layout:fixed;overflow:hidden">
+      <colgroup>
+        <col style="width:34%">
+        <col style="width:22%">
+        <col style="width:22%">
+        <col style="width:22%">
+      </colgroup>
+      <thead><tr style="background:#1a1a2e;color:#f0f0f0">
+        <th style="padding:10px 14px;text-align:left;border-right:2px solid #444">Political ID</th>
+        <th style="padding:10px 14px;text-align:center;border-right:2px solid #444">Said &ldquo;1,000+&rdquo;</th>
+        <th style="padding:10px 14px;text-align:center;border-right:2px solid #444">Said &ldquo;10,000+&rdquo;</th>
+        <th style="padding:10px 14px;text-align:center">Got It Right<br><span style="font-size:10px;color:#ccc">(&ldquo;about 10&rdquo;)</span></th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td style="padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-weight:700">Very Liberal</td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-size:18px;color:#c1121f"><strong>53.5%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-size:18px;color:#c1121f"><strong>22.1%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;font-size:18px"><strong>15.7%</strong></td>
+        </tr>
+        <tr style="background:#faf8f4">
+          <td style="padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-weight:700">Liberal</td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-size:18px;color:#c1121f"><strong>38.8%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-size:18px"><strong>12.1%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;font-size:18px"><strong>22.4%</strong></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-weight:700">Moderate</td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-size:18px"><strong>25.8%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-size:18px"><strong>9.4%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;font-size:18px"><strong>33.6%</strong></td>
+        </tr>
+        <tr style="background:#faf8f4">
+          <td style="padding:10px 14px;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-weight:700">Conservative</td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-size:18px"><strong>13.2%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;border-right:2px solid #e0e0e0;font-size:18px"><strong>4.2%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-bottom:1px solid #ddd;font-size:18px"><strong>46.4%</strong></td>
+        </tr>
+        <tr>
+          <td style="padding:10px 14px;border-right:2px solid #e0e0e0;font-weight:700">Very Conservative</td>
+          <td style="padding:10px 14px;text-align:center;border-right:2px solid #e0e0e0;font-size:18px"><strong>20.4%</strong></td>
+          <td style="padding:10px 14px;text-align:center;border-right:2px solid #e0e0e0;font-size:18px"><strong>7.3%</strong></td>
+          <td style="padding:10px 14px;text-align:center;font-size:18px"><strong>46.0%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:11px;color:#888;margin-top:-8px;margin-bottom:16px">Source: <a href="https://www.skeptic.com/research-center/reports/Research-Report-CUPES-007.pdf" target="_blank" style="color:#e8a838">McCaffree, K. &amp; Saide, A. (2021). &ldquo;How Informed are Americans about Race and Policing?&rdquo;</a> Skeptic Research Center, CUPES-007. N&nbsp;=&nbsp;980 U.S. adults surveyed September/October 2020.</p>
+
+    <p>More than half of &ldquo;very liberal&rdquo; respondents believed 1,000 or more unarmed Black men were killed by police in a single year. More than one in five believed the number was 10,000 or higher. The researchers described this as &ldquo;a likely error of at least an order of magnitude.&rdquo; The actual number, according to the <a href="https://www.washingtonpost.com/graphics/investigations/police-shootings-database/" target="_blank" style="color:#e8a838">Washington Post Fatal Force database</a> (described by <em>Nature</em> as the &ldquo;most complete database&rdquo; on police shootings): <strong>13 unarmed Black men</strong> were fatally shot by police in 2019. This study uses the same database across the identical 2015&ndash;2024 window:</p>
+
+    <div class="chart-card" style="margin:16px 0">
+      <div class="chart-title">Unarmed Fatal Police Shootings by Race/Ethnicity, 2015&ndash;2024</div>
+      <div class="chart-sub">Source: <a href="https://www.washingtonpost.com/graphics/investigations/police-shootings-database/" target="_blank" style="color:#e8a838">Washington Post Fatal Force Database</a>. Filtered for unarmed subjects only. Same 10-year period as this study.</div>
+      <div class="chart-wrap"><canvas id="chartPolice"></canvas></div>
+    </div>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0">
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">18.0</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Black</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#4169E1">22.2</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">White</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#8B4513">11.2</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Hispanic</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#999">0.9</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Asian</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">avg/year</div>
+      </div>
+    </div>
+
+    <p>Over the entire 10-year period, the Washington Post documented a total of <strong>523</strong> unarmed fatal police shootings across all races: an average of <strong>52.3 per year</strong>. The average for unarmed Black individuals: <strong>18 per year</strong>, not 10,000. The per-capita overrepresentation of Black individuals in unarmed police shootings (Black Americans are ~13.6% of the population but account for ~34.4% of unarmed police shooting fatalities) is real but is substantially explained by the same factor documented throughout this study: <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/tables/expanded-homicide-data-table-3.xls" target="_blank" style="color:#e8a838">disproportionate involvement in violent crime</a>. When a demographic group accounts for 55.9% of known homicide offenders (FBI SHR) and is correspondingly overrepresented in armed confrontations, robberies, and other violent police encounters, a higher rate of unarmed police shooting fatalities is a statistical expectation, not evidence of independent racial targeting.</p>
+
+    <p>This does not excuse any individual unjustified shooting. It explains the aggregate pattern. The same logic applies to the suspect demographics in this study: when Black Americans commit homicide at rates far exceeding their population share (a fact documented by every federal data source), the finding that Black suspects are overrepresented among those who kill transgender people is not an anomaly requiring a special explanation. It is the baseline.</p>
+
+    <div class="acad-highlight">
+      <strong>Key point:</strong> The claim that police kill 10,000 unarmed Black people a year overstates the actual figure by a factor of approximately 556. The Washington Post database, covering the identical 2015&ndash;2024 window as this study, documents 180 total unarmed Black police shooting fatalities in ten years. The per-capita overrepresentation exists but follows directly from the same disproportionate violent crime involvement that explains the suspect demographics in this study. Inflating the police shooting numbers by orders of magnitude serves the same function as attributing transgender homicides to white supremacy: it substitutes narrative for data.
+    </div>
+
+    </div><!-- /obj-content -->
+
+    <div class="obj-banner" onclick="toggleObj(this)"><span class="obj-banner-num">OBJECTION 5</span><span class="obj-banner-title">&ldquo;What About the Unsolved Cases?&rdquo;</span><span class="obj-banner-arrow">&#9660;</span></div>
+    <div class="obj-content">
 
     <p>Of 304 victims, 186 have an identified suspect with known race. The remaining 118 are unsolved. <strong>Worst case:</strong> assign every unsolved case to a White perpetrator. Result: Black suspects at 122 of 304 = <strong>40.1%, still 2.9&times; their 13.6% population share</strong>. White suspects would rise to 50%, still <em>below</em> their 59.3% population share. <strong>Expected case:</strong> applying <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide" target="_blank" style="color:#e8a838">national intraracial rates</a> to the ~70% Black unsolved victim pool would add ~74 Black suspects, producing <strong>64%, identical to the solved rate</strong>.</p>
 
-    <p><strong>Objection 4: &ldquo;Trans Discovery Violence Should All Be Coded as Hate Crimes&rdquo;</strong></p>
+    </div><!-- /obj-content -->
+
+    <div class="obj-banner" onclick="toggleObj(this)"><span class="obj-banner-num">OBJECTION 6</span><span class="obj-banner-title">&ldquo;Trans Discovery Violence Should All Be Coded as Hate Crimes&rdquo;</span><span class="obj-banner-arrow">&#9660;</span></div>
+    <div class="obj-content">
 
     <p>Grant this objection entirely. Reclassify all 34 &ldquo;Suspected&rdquo; bias cases as confirmed, producing a maximum of 45 bias-motivated homicides over ten years. Using the Williams Institute&rsquo;s 2022 estimate of approximately 1.6 million transgender individuals aged 13 and older (Herman et al. 2022), the crude overall transgender homicide rate over the study period is approximately 1.9 per 100,000. The CDC age-adjusted general population homicide rate averaged approximately 6.8 per 100,000 over 2015&ndash;2024 (ranging from ~5.7 in 2015 to ~8.2 in 2021). However, this crude comparison has significant limitations. First, the HRC numerator is an acknowledged minimum floor, not a comprehensive census; Dinno (2017) modeled underreporting scenarios of up to 80% of cases missed. Second, the transgender population denominator has shifted substantially: from ~1.4 million adults (Flores et al. 2016) to ~1.6 million aged 13+ (Herman et al. 2022) to ~2.8 million aged 13+ (2025 estimate), making any single-point denominator unreliable for a 10-year numerator. Third, and most critically, the comparison is demographically unmatched: the general population rate includes low-risk demographics (suburban, elderly, affluent) that dilute the average. When Dinno stratified by age and race, young Black transfeminine individuals faced a homicide rate of approximately 95.1 per 100,000 under the most conservative assumptions (highest population prevalence estimate, zero undercount), far exceeding the rate for Black cisgender women aged 15&ndash;34 (40.9 per 100,000); under higher undercount assumptions, this rate increases dramatically. The crude rate comparison is presented here as context but should not be interpreted as evidence that transgender people face below-average homicide risk. Even under the most expansive bias classification, 85% of cases (259 of 304) would still not be bias-motivated, and the dominant circumstances (intimate partner violence, sex work encounters, interpersonal disputes) remain unchanged.</p>
 
     <p><strong>A note on framing:</strong> This study does not minimize the gravity of any homicide, including those triggered by discovery of a victim&rsquo;s transgender status. These killings are criminal acts and the perpetrators were charged and prosecuted accordingly. However, a methodological question arises: is a killing triggered by the discovery of undisclosed transgender identity during a sexual encounter analytically identical to a premeditated attack motivated by abstract hatred of transgender people? The &ldquo;trans panic&rdquo; framing treats these as equivalent. But the interpersonal context matters for accurate motive coding: these cases typically involve a specific deception about sexual identity that the other party experienced as a consent violation, however disproportionate and criminal the violent response. This is not offered as moral justification; it is offered as an analytical distinction between targeted hate violence and reactive interpersonal violence. Collapsing that distinction inflates the hate crime count, obscures the actual dynamics, and misdirects prevention efforts away from the interpersonal contexts where the majority of this violence actually occurs.</p>
 
-    <p><strong>Objection 5: &ldquo;The 56% Unknown Category Could Hide Substantial Bias&rdquo;</strong></p>
+    </div><!-- /obj-content -->
+
+    <div class="obj-banner" onclick="toggleObj(this)"><span class="obj-banner-num">OBJECTION 7</span><span class="obj-banner-title">&ldquo;The 56% Unknown Category Could Hide Substantial Bias&rdquo;</span><span class="obj-banner-arrow">&#9660;</span></div>
+    <div class="obj-content">
 
     <p>Grant this objection and model it. Of 302 coded cases, 170 were coded Unknown. The remaining 132 break down as: 11 Confirmed (3.6%), 34 Suspected (11.3%), and 87 No Evidence (28.8%).</p>
 
@@ -1291,6 +1747,8 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
     <div class="acad-highlight">
       <strong>Summary:</strong> The suspect demographics in this dataset are confirmed by convictions and guilty pleas, consistent across 10 independent years, and mirror <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/expanded-homicide" target="_blank" style="color:#e8a838">national FBI homicide patterns</a>. National exoneration data (19 per year out of 6,425 Black homicide offenders) shows wrongful conviction rates are nearly identical across races when measured against offending rates (0.30% vs. 0.23%). The expected wrongful convictions in this dataset: less than one. Even assigning all 118 unsolved cases to White perpetrators, Black suspects remain at 40%, three times their population share.
     </div>
+
+    </div><!-- /obj-content -->
 
     <h4>Limitations</h4>
 
@@ -1988,6 +2446,588 @@ new Chart(document.getElementById('chartI'), {
   }
 });
 
+// ========== CHART: FBI National vs T-CLEAR Black Suspect % ==========
+new Chart(document.getElementById('chartFBI'), {
+  type: 'line',
+  data: {
+    labels: years,
+    datasets: [
+      {
+        label: 'T-CLEAR (this study)',
+        data: [53, 61, 63, 54, 79, 73, 72, 64, 58, 67],
+        borderColor: '#e8a838',
+        backgroundColor: '#e8a838',
+        _labelColor: '#e8a838',
+        pointBackgroundColor: '#e8a838',
+        pointBorderColor: '#e8a838',
+        pointHoverBackgroundColor: '#e8a838',
+        pointHoverBorderColor: '#e8a838',
+        borderWidth: 3,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        tension: 0.1,
+        fill: false
+      },
+      {
+        label: 'FBI National (Table 3)',
+        data: [53.3, 53.5, 54.2, 54.9, 55.9, null, null, null, null, null],
+        borderColor: RC.black,
+        backgroundColor: RC.black,
+        _labelColor: RC.black,
+        pointBackgroundColor: RC.black,
+        pointBorderColor: RC.black,
+        pointHoverBackgroundColor: RC.black,
+        pointHoverBorderColor: RC.black,
+        borderWidth: 3,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        tension: 0.1,
+        borderDash: [6, 4],
+        fill: false,
+        spanGaps: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'circle', padding: 16, font: { size: 12, weight: '600' } } },
+      tooltip: {
+        mode: 'index',
+        intersect: false,
+        callbacks: {
+          label: function(ctx) {
+            if (ctx.raw === null) return ctx.dataset.label + ': No data (NIBRS gap)';
+            return ctx.dataset.label + ': ' + ctx.raw + '% Black';
+          }
+        }
+      },
+      datalabels: {
+        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] !== null; },
+        anchor: 'end',
+        align: function(ctx) { return ctx.datasetIndex === 0 ? 'top' : 'bottom'; },
+        offset: 4,
+        font: { size: 10, weight: '700' },
+        color: function(ctx) {
+          var dark = document.body.classList.contains('dark-mode');
+          return ctx.datasetIndex === 0 ? '#e8a838' : (dark ? '#7b68ee' : '#1a1a2e');
+        },
+        formatter: function(v) { return v !== null ? v + '%' : ''; }
+      }
+    },
+    scales: {
+      y: { min: 40, max: 85, title: { display: true, text: 'Black Offender/Suspect %', font: { size: 11 } }, ticks: { stepSize: 5, callback: function(v) { return v + '%'; } } },
+      x: { title: { display: true, text: 'Year', font: { size: 11 } } }
+    },
+    interaction: { mode: 'nearest', axis: 'x', intersect: false }
+  }
+});
+
+// ========== CHART J: Age Distribution Bar Chart ==========
+new Chart(document.getElementById('chartJ'), {
+  type: 'bar',
+  data: {
+    labels: ['Under 18', '18–24', '25–34', '35–44', '45–54', '55+'],
+    datasets: [
+      {
+        label: 'Victims (N=297)',
+        data: [13, 77, 136, 48, 19, 4],
+        backgroundColor: '#1a1a2e',
+        borderRadius: 4,
+        barPercentage: 0.85,
+        categoryPercentage: 0.7
+      },
+      {
+        label: 'Suspects (N=178)',
+        data: [13, 66, 63, 21, 11, 4],
+        backgroundColor: '#c1121f',
+        borderRadius: 4,
+        barPercentage: 0.85,
+        categoryPercentage: 0.7
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rectRounded', padding: 16, font: { size: 12, weight: '600' } } },
+      tooltip: {
+        callbacks: {
+          label: function(ctx) {
+            var totals = ctx.datasetIndex === 0 ? 297 : 178;
+            var pct = (ctx.raw / totals * 100).toFixed(1);
+            return ctx.dataset.label.split(' (')[0] + ': ' + ctx.raw + ' (' + pct + '%)';
+          }
+        }
+      },
+      datalabels: {
+        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 2; },
+        anchor: 'end',
+        align: 'top',
+        offset: 2,
+        font: { size: 10, weight: '600' },
+        color: function(ctx) {
+          var dark = document.body.classList.contains('dark-mode');
+          return ctx.datasetIndex === 0 ? (dark ? '#6ca6ff' : '#1a1a2e') : (dark ? '#ff6b6b' : '#c1121f');
+        },
+        formatter: function(v, ctx) {
+          var totals = ctx.datasetIndex === 0 ? 297 : 178;
+          return (v / totals * 100).toFixed(1) + '%';
+        }
+      }
+    },
+    scales: {
+      y: { beginAtZero: true, title: { display: true, text: 'Number of Individuals', font: { size: 11 } } },
+      x: { ticks: { font: { size: 12, weight: '600' } } }
+    }
+  }
+});
+
+// ========== CHART K: Average Age Over Time ==========
+new Chart(document.getElementById('chartK'), {
+  type: 'line',
+  data: {
+    labels: years,
+    datasets: [
+      {
+        label: 'Victim Avg Age',
+        data: [28.9, 30.2, 29.6, 32.8, 26.7, 29.3, 29.2, 30.0, 28.0, 31.3],
+        borderColor: '#1a1a2e',
+        backgroundColor: '#1a1a2e',
+        _labelColor: '#1a1a2e',
+        pointBackgroundColor: '#1a1a2e',
+        pointBorderColor: '#1a1a2e',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.1,
+        fill: false
+      },
+      {
+        label: 'Suspect Avg Age',
+        data: [28.8, 25.4, 26.7, 30.5, 29.1, 27.8, 25.9, 28.0, 28.2, 29.6],
+        borderColor: '#c1121f',
+        backgroundColor: '#c1121f',
+        _labelColor: '#c1121f',
+        pointBackgroundColor: '#c1121f',
+        pointBorderColor: '#c1121f',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.1,
+        borderDash: [5, 3],
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'circle', padding: 16, font: { size: 11 } } },
+      tooltip: {
+        mode: 'index',
+        intersect: false,
+        callbacks: {
+          label: function(ctx) {
+            return ctx.dataset.label + ': ' + ctx.raw.toFixed(1) + ' years';
+          }
+        }
+      },
+      datalabels: {
+        display: true,
+        anchor: 'end',
+        align: 'top',
+        offset: 2,
+        font: { size: 10, weight: '600' },
+        color: function(ctx) {
+          var dark = document.body.classList.contains('dark-mode');
+          return ctx.datasetIndex === 0 ? (dark ? '#6ca6ff' : '#1a1a2e') : (dark ? '#ff6b6b' : '#c1121f');
+        },
+        formatter: function(v) { return v.toFixed(1); }
+      }
+    },
+    scales: {
+      y: { min: 20, max: 38, title: { display: true, text: 'Average Age (years)', font: { size: 11 } }, ticks: { stepSize: 2 } },
+      x: { title: { display: true, text: 'Year', font: { size: 11 } } }
+    },
+    interaction: { mode: 'nearest', axis: 'x', intersect: false }
+  }
+});
+
+// ========== CHART L: Suspect Sex Donut ==========
+new Chart(document.getElementById('chartL'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Male', 'Female', 'Trans'],
+    datasets: [{
+      data: [176, 18, 1],
+      backgroundColor: ['#1a1a2e', '#c1121f', '#e8a838'],
+      borderColor: ['#fff', '#fff', '#fff'],
+      borderWidth: 3,
+      hoverBackgroundColor: ['#2a2a4e', '#e8303d', '#f0b848'],
+      hoverBorderColor: ['#e8a838', '#e8a838', '#e8a838'],
+      hoverBorderWidth: 4,
+      hoverOffset: 18
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: true,
+    cutout: '55%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          usePointStyle: true,
+          pointStyle: 'rectRounded',
+          padding: 20,
+          font: { size: 13, weight: '600', family: "'DM Sans', sans-serif" },
+          color: '#333'
+        }
+      },
+      tooltip: {
+        backgroundColor: 'rgba(26,26,46,0.95)',
+        titleFont: { size: 14, weight: '700', family: "'DM Sans', sans-serif" },
+        bodyFont: { size: 13, family: "'DM Sans', sans-serif" },
+        padding: 14,
+        cornerRadius: 8,
+        callbacks: {
+          label: function(ctx) {
+            var total = 195;
+            var pct = (ctx.raw / total * 100).toFixed(1);
+            return ctx.label + ': ' + ctx.raw + ' suspects (' + pct + '%)';
+          }
+        }
+      },
+      datalabels: {
+        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 5; },
+        color: '#fff',
+        font: { size: 14, weight: '700', family: "'DM Sans', sans-serif" },
+        formatter: function(v) {
+          var pct = (v / 195 * 100).toFixed(1);
+          return v + '\n' + pct + '%';
+        },
+        textAlign: 'center'
+      }
+    }
+  }
+});
+
+
+// ========== CHART: CA Homicide Arrests by Race (Objection 2) ==========
+var caYears = ['00','02','03','04','05','06','07','08','09','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24'];
+var caCountsData = {
+  Hispanic: [698,897,812,932,946,910,1022,944,907,797,686,796,702,657,684,617,720,672,609,754,726,688,689,629],
+  Black:    [397,455,456,476,487,539,495,436,430,414,421,425,355,388,375,401,376,370,381,462,421,447,389,389],
+  White:    [374,349,424,409,386,351,373,346,343,293,345,336,284,287,300,298,295,282,258,279,250,273,220,212],
+  Other:    [158,163,147,161,137,167,127,124,124,134,120,80,82,95,80,124,110,92,104,102,109,77,76,75]
+};
+// Pre-compute pct data (each race as % of total that year)
+var caPctData = { Hispanic: [], Black: [], White: [], Other: [] };
+// Pre-compute rate data (arrest share ÷ population share = disproportionality multiplier)
+var caPopShare = { Hispanic: 36.9, Black: 6.0, White: 40.4, Other: 17.0 };
+var caRateData = { Hispanic: [], Black: [], White: [], Other: [] };
+for (var i = 0; i < caYears.length; i++) {
+  var t = caCountsData.Hispanic[i] + caCountsData.Black[i] + caCountsData.White[i] + caCountsData.Other[i];
+  var races = ['Hispanic','Black','White','Other'];
+  for (var r = 0; r < 4; r++) {
+    var pct = t > 0 ? (caCountsData[races[r]][i] / t) * 100 : 0;
+    caPctData[races[r]].push(Math.round(pct * 10) / 10);
+    caRateData[races[r]].push(caPopShare[races[r]] > 0 ? Math.round((pct / caPopShare[races[r]]) * 100) / 100 : 0);
+  }
+}
+var caChartMode = 'counts';
+var chartCAHomicide = new Chart(document.getElementById('chartCAHomicide'), {
+  type: 'line',
+  data: {
+    labels: caYears,
+    datasets: [
+      {
+        label: 'Hispanic',
+        data: caCountsData.Hispanic.slice(),
+        borderColor: RC.hispanic, backgroundColor: RC.hispanic, _labelColor: RC.hispanic,
+        pointBackgroundColor: RC.hispanic, pointBorderColor: RC.hispanic,
+        pointHoverBackgroundColor: RC.hispanic, pointHoverBorderColor: RC.hispanic,
+        borderWidth: 2.5, pointRadius: 4, pointHoverRadius: 6, tension: 0.15, fill: false
+      },
+      {
+        label: 'Black',
+        data: caCountsData.Black.slice(),
+        borderColor: RC.black, backgroundColor: RC.black, _labelColor: RC.black,
+        pointBackgroundColor: RC.black, pointBorderColor: RC.black,
+        pointHoverBackgroundColor: RC.black, pointHoverBorderColor: RC.black,
+        borderWidth: 2.5, pointRadius: 4, pointHoverRadius: 6, tension: 0.15, fill: false
+      },
+      {
+        label: 'White',
+        data: caCountsData.White.slice(),
+        borderColor: RC.white, backgroundColor: RC.white, _labelColor: RC.white,
+        pointBackgroundColor: RC.white, pointBorderColor: RC.white,
+        pointHoverBackgroundColor: RC.white, pointHoverBorderColor: RC.white,
+        borderWidth: 2.5, pointRadius: 4, pointHoverRadius: 6, tension: 0.15, fill: false
+      },
+      {
+        label: 'Asian/Other',
+        data: caCountsData.Other.slice(),
+        borderColor: RC.other, backgroundColor: RC.other, _labelColor: RC.other,
+        pointBackgroundColor: RC.other, pointBorderColor: RC.other,
+        pointHoverBackgroundColor: RC.other, pointHoverBorderColor: RC.other,
+        borderWidth: 2, pointRadius: 3, pointHoverRadius: 5, tension: 0.15, borderDash: [5,3], fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'circle', padding: 16, font: { size: 11 } } },
+      tooltip: { mode: 'index', intersect: false, callbacks: { label: function(ctx) { var suffix = caChartMode === 'rate' ? '×' : caChartMode === 'pct' ? '%' : ''; return ctx.dataset.label + ': ' + ctx.parsed.y + suffix; } } },
+      datalabels: { display: false }
+    },
+    scales: {
+      y: { beginAtZero: true, title: { display: true, text: 'Homicide Arrests (Count)', font: { size: 11 } }, ticks: { stepSize: 200 } },
+      x: { title: { display: true, text: 'Year', font: { size: 11 } }, ticks: { maxRotation: 45, font: { size: 10 } } }
+    },
+    interaction: { mode: 'nearest', axis: 'x', intersect: false }
+  }
+});
+function toggleCAChart(mode) {
+  caChartMode = mode;
+  var src = mode === 'rate' ? caRateData : mode === 'pct' ? caPctData : caCountsData;
+  var races = ['Hispanic','Black','White','Other'];
+  for (var i = 0; i < 4; i++) {
+    chartCAHomicide.data.datasets[i].data = src[races[i]].slice();
+  }
+  var note = document.getElementById('caChartSubNote');
+  if (mode === 'rate') {
+    chartCAHomicide.options.scales.y.title.text = 'Disproportionality Rate';
+    chartCAHomicide.options.scales.y.ticks.stepSize = 1;
+    chartCAHomicide.options.scales.y.max = 6;
+    chartCAHomicide.options.scales.y.ticks.callback = function(v) { return v.toFixed(1) + '×'; };
+    note.style.display = 'block';
+    note.innerHTML = '<strong>Rate</strong> = arrest share ÷ population share. 1.0× = proportional representation. Black at ~4.3× means their arrest share is 4.3 times their population share.';
+  } else if (mode === 'pct') {
+    chartCAHomicide.options.scales.y.title.text = 'Share of Homicide Arrests (%)';
+    chartCAHomicide.options.scales.y.ticks.stepSize = 10;
+    chartCAHomicide.options.scales.y.max = 60;
+    chartCAHomicide.options.scales.y.ticks.callback = function(v) { return v + '%'; };
+    note.style.display = 'none';
+  } else {
+    chartCAHomicide.options.scales.y.title.text = 'Homicide Arrests (Count)';
+    chartCAHomicide.options.scales.y.ticks.stepSize = 200;
+    delete chartCAHomicide.options.scales.y.max;
+    chartCAHomicide.options.scales.y.ticks.callback = undefined;
+    note.style.display = 'none';
+  }
+  chartCAHomicide.update();
+  document.getElementById('btn-ca-counts').className = 'c1-toggle' + (mode === 'counts' ? ' c1-toggle-active' : '');
+  document.getElementById('btn-ca-rate').className = 'c1-toggle' + (mode === 'rate' ? ' c1-toggle-active' : '');
+}
+
+// ========== CHART: CA Homicide Disproportionality (Objection 2) ==========
+new Chart(document.getElementById('chartCADispro'), {
+  type: 'bar',
+  data: {
+    labels: ['Hispanic', 'Black', 'White', 'Asian/Other'],
+    datasets: [
+      {
+        label: 'Arrest Share (24-yr avg)',
+        data: [47.4, 26.1, 19.4, 7.1],
+        backgroundColor: [RC.hispanic, RC.black, RC.white, RC.other],
+        borderRadius: 4,
+        barPercentage: 0.7,
+        categoryPercentage: 0.65
+      },
+      {
+        label: 'CA Population Share',
+        data: [36.9, 6.0, 40.4, 17.0],
+        backgroundColor: 'rgba(200,200,200,0.35)',
+        borderColor: 'rgba(150,150,150,0.6)',
+        borderWidth: 1,
+        borderRadius: 4,
+        barPercentage: 0.7,
+        categoryPercentage: 0.65
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'rect', padding: 16, font: { size: 11 } } },
+      tooltip: { callbacks: { label: function(c) { return c.dataset.label + ': ' + c.parsed.y + '%'; } } },
+      datalabels: {
+        display: true,
+        anchor: 'end',
+        align: 'top',
+        offset: 2,
+        font: { size: 11, weight: '700' },
+        color: function(ctx) {
+          var dark = document.body.classList.contains('dark-mode');
+          if (ctx.datasetIndex === 1) return dark ? '#8b949e' : '#888';
+          var cols = dark
+            ? ['#cd853f', '#7b68ee', '#6ca6ff', '#aaaaaa']
+            : [RC.hispanic, RC.black, RC.white, RC.other];
+          return cols[ctx.dataIndex] || '#333';
+        },
+        formatter: function(v) { return v + '%'; }
+      }
+    },
+    scales: {
+      y: { beginAtZero: true, max: 55, title: { display: true, text: 'Share (%)', font: { size: 11 } }, ticks: { callback: function(v) { return v + '%'; } } },
+      x: { ticks: { font: { size: 12, weight: '600' } } }
+    }
+  }
+});
+
+// ========== CA AG Sources Modal (Objection 2) ==========
+function openCASourcesModal() {
+  var sources = [
+    { year: '2024', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2025-07/Crime%20In%20CA%202024%20final.pdf', note: 'Page 41' },
+    { year: '2023', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2024-07/Crime%20In%20CA%202023f.pdf' },
+    { year: '2022', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2023-06/Crime%20In%20CA%202022f.pdf' },
+    { year: '2021', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2022-08/Crime%20In%20CA%202021_0.pdf' },
+    { year: '2020', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2022-08/Crime%20In%20CA%202020.pdf' },
+    { year: '2019', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2022-08/Crime%20In%20CA%202019.pdf' },
+    { year: '2018', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2022-08/Crime%20In%20CA%202018%2020190701.pdf' },
+    { year: '2017', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2022-08/cd17.pdf' },
+    { year: '2016', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2022-08/cd16.pdf' },
+    { year: '2015', url: 'https://data-openjustice.doj.ca.gov/sites/default/files/2022-08/cd15.pdf' },
+    { year: '2014', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd14/cd14.pdf' },
+    { year: '2013', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd13/cd13.pdf' },
+    { year: '2012', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd12/cd12.pdf' },
+    { year: '2011', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd11/cd11.pdf' },
+    { year: '2010', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd10/preface.pdf' },
+    { year: '2009', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd09/preface.pdf' },
+    { year: '2008', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd08/preface.pdf' },
+    { year: '2007', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd07/preface.pdf' },
+    { year: '2006', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd06-full-report.pdf' },
+    { year: '2005', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd05-full-report.pdf' },
+    { year: '2004', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd04-full-report.pdf' },
+    { year: '2003', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd03-full-report.pdf' },
+    { year: '2002', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd02-full-report.pdf' },
+    { year: '2001', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd01-full-report.pdf', note: 'Duplicate of 2002' },
+    { year: '2000', url: 'https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/publications/candd/cd00-full-report.pdf' }
+  ];
+  var html = sources.map(function(s) {
+    var note = s.note ? ' <span style="font-size:10px;color:#aaa">(' + s.note + ')</span>' : '';
+    return '<a href="' + s.url + '" target="_blank" style="display:flex;align-items:center;gap:12px;padding:10px 16px;text-decoration:none;border-bottom:1px solid #f0f0f0;transition:background 0.15s"' +
+      ' onmouseover="this.style.background=\'#faf8f4\'" onmouseout="this.style.background=\'\'">' +
+      '<span style="font-family:\'DM Sans\',sans-serif;font-size:14px;font-weight:700;color:#e8a838;min-width:40px">' + s.year + '</span>' +
+      '<span style="font-size:12px;color:#555;flex:1">Crime in California ' + s.year + note + '</span>' +
+      '<span style="font-size:10px;color:#aaa">PDF &#8599;</span></a>';
+  }).join('');
+  document.getElementById('caSourcesList').innerHTML = html;
+  document.getElementById('caSourcesModal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('caSourcesModal').style.display === 'flex') {
+    document.getElementById('caSourcesModal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+});
+
+
+// ========== CHART: Unarmed Police Shootings by Race (Objection 4) ==========
+new Chart(document.getElementById('chartPolice'), {
+  type: 'line',
+  data: {
+    labels: years,
+    datasets: [
+      {
+        label: 'Black',
+        data: [37, 20, 21, 22, 11, 18, 12, 12, 16, 11],
+        borderColor: RC.black,
+        backgroundColor: RC.black,
+        _labelColor: RC.black,
+        pointBackgroundColor: RC.black,
+        pointBorderColor: RC.black,
+        pointHoverBackgroundColor: RC.black,
+        pointHoverBorderColor: RC.black,
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.1,
+        fill: false
+      },
+      {
+        label: 'White',
+        data: [31, 29, 29, 26, 26, 27, 7, 23, 18, 6],
+        borderColor: RC.white,
+        backgroundColor: RC.white,
+        _labelColor: RC.white,
+        pointBackgroundColor: RC.white,
+        pointBorderColor: RC.white,
+        pointHoverBackgroundColor: RC.white,
+        pointHoverBorderColor: RC.white,
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.1,
+        fill: false
+      },
+      {
+        label: 'Hispanic',
+        data: [21, 13, 14, 9, 11, 10, 10, 9, 7, 8],
+        borderColor: RC.hispanic,
+        backgroundColor: RC.hispanic,
+        _labelColor: RC.hispanic,
+        pointBackgroundColor: RC.hispanic,
+        pointBorderColor: RC.hispanic,
+        pointHoverBackgroundColor: RC.hispanic,
+        pointHoverBorderColor: RC.hispanic,
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointHoverRadius: 7,
+        tension: 0.1,
+        fill: false
+      },
+      {
+        label: 'Asian',
+        data: [0, 1, 1, 1, 5, 1, 0, 0, 0, 0],
+        borderColor: RC.other,
+        backgroundColor: RC.other,
+        _labelColor: RC.other,
+        pointBackgroundColor: RC.other,
+        pointBorderColor: RC.other,
+        pointHoverBackgroundColor: RC.other,
+        pointHoverBorderColor: RC.other,
+        borderWidth: 2,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        tension: 0.1,
+        borderDash: [5, 3],
+        fill: false
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'circle', padding: 16, font: { size: 11 } } },
+      tooltip: { mode: 'index', intersect: false },
+      datalabels: {
+        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 0; },
+        anchor: 'end',
+        align: 'top',
+        offset: 2,
+        font: { size: 10, weight: '600' },
+        color: function(ctx) { if(!ctx.dataset)return '#333'; var dark=document.body.classList.contains('dark-mode'); var p={Black:'#7b68ee',White:'#6ca6ff',Hispanic:'#cd853f','Asian/Other':'#aaaaaa','Asian':'#aaaaaa'}; if(dark&&ctx.dataset.label&&p[ctx.dataset.label])return p[ctx.dataset.label]; return ctx.dataset._labelColor||'#333'; }
+      }
+    },
+    scales: {
+      y: { beginAtZero: true, max: 42, title: { display: true, text: 'Unarmed Fatal Shootings', font: { size: 11 } }, ticks: { stepSize: 5 } },
+      x: { title: { display: true, text: 'Year', font: { size: 11 } } }
+    },
+    interaction: { mode: 'nearest', axis: 'x', intersect: false }
+  }
+});
+
 // ========== CHART 1 TOGGLE ==========
 // ========== CHART A: % / # UNIT TOGGLE ==========
 var chartAShowCounts = false;
@@ -2119,7 +3159,7 @@ function toggleDark(){
   var darkMap={
     '#000000':'#7b68ee','#1a1a2e':'#7b68ee','#8B4513':'#cd853f',
     '#cccccc':'#555555','#e0e0e0':'#444444','#999999':'#aaaaaa',
-    '#2d6a4f':'#4abe8a',
+    '#2d6a4f':'#4abe8a','#c1121f':'#ff6b6b',
     'rgba(45,106,79,0.1)':'rgba(80,200,140,0.35)',
     'rgba(193,18,31,0.15)':'rgba(193,18,31,0.35)'
   };
@@ -2152,7 +3192,7 @@ function toggleDark(){
       if(ds.label==='Black'){ds.backgroundColor=RC.black;ds.borderColor=RC.black;ds.pointBackgroundColor=RC.black;}
       else if(ds.label==='White'){ds.backgroundColor=RC.white;ds.borderColor=RC.white;ds.pointBackgroundColor=RC.white;}
       else if(ds.label==='Hispanic'){ds.backgroundColor=RC.hispanic;ds.borderColor=RC.hispanic;ds.pointBackgroundColor=RC.hispanic;}
-      else if(ds.label==='Asian/Other'){ds.backgroundColor=RC.other;ds.borderColor=RC.other;ds.pointBackgroundColor=RC.other;}
+      else if(ds.label==='Asian/Other'||ds.label==='Asian'){ds.backgroundColor=RC.other;ds.borderColor=RC.other;ds.pointBackgroundColor=RC.other;}
       else {
       if(ds.backgroundColor){
         if(Array.isArray(ds.backgroundColor)){
@@ -2185,8 +3225,8 @@ function toggleDark(){
 function fixRaceCharts(){
   var dark=document.body.classList.contains('dark-mode');
   if(typeof Chart==='undefined')return;
-  var darkRC={Black:'#7b68ee',White:'#6ca6ff',Hispanic:'#cd853f','Asian/Other':'#aaaaaa'};
-  var lightRC={Black:'#000000',White:'#4169E1',Hispanic:'#8B4513','Asian/Other':'#999999'};
+  var darkRC={Black:'#7b68ee',White:'#6ca6ff',Hispanic:'#cd853f','Asian/Other':'#aaaaaa','Asian':'#aaaaaa'};
+  var lightRC={Black:'#000000',White:'#4169E1',Hispanic:'#8B4513','Asian/Other':'#999999','Asian':'#999999'};
   var palette=dark?darkRC:lightRC;
   Object.values(Chart.instances).forEach(function(c){
     var changed=false;
@@ -2206,6 +3246,19 @@ function fixRaceCharts(){
   });
 }
 
+
+// ========== OBJECTION COLLAPSE TOGGLE ==========
+function toggleObj(el){
+  var content=el.nextElementSibling;
+  if(content.classList.contains('obj-hidden')){
+    content.classList.remove('obj-hidden');
+    el.classList.remove('obj-collapsed');
+  } else {
+    content.classList.add('obj-hidden');
+    el.classList.add('obj-collapsed');
+  }
+}
+
 /* Restore preference on load */
 if(localStorage.getItem('darkMode')==='1'){
   document.body.classList.add('dark-mode');
@@ -2218,7 +3271,7 @@ if(localStorage.getItem('darkMode')==='1'){
         var darkMap={
           '#000000':'#7b68ee','#1a1a2e':'#7b68ee','#8B4513':'#cd853f',
           '#cccccc':'#555555','#e0e0e0':'#444444','#999999':'#aaaaaa',
-          '#2d6a4f':'#4abe8a',
+          '#2d6a4f':'#4abe8a','#c1121f':'#ff6b6b',
           'rgba(45,106,79,0.1)':'rgba(80,200,140,0.35)',
           'rgba(193,18,31,0.15)':'rgba(193,18,31,0.35)'
         };

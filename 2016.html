@@ -110,12 +110,12 @@
     <li><strong>No Evidence:</strong> Documented alternative motive (intimate partner violence, robbery, interpersonal dispute) with no evidence of bias.</li>
     <li><strong>Unknown:</strong> Insufficient information to determine motive, typically in unsolved cases.</li>
   </ul>
-  <p><strong>Solve rate calculations:</strong> Police-involved killings (n=1) and the ruled non-homicide (Mockabee, n=1) are excluded from solve rate denominators and from suspect demographic analyses. All suspects in group cases are counted individually.</p>
+  <p><strong>Solve rate calculations:</strong> The standardized solve rate uses all 24 victims as the denominator (16 of 24 = 67%), consistent with the methodology used across all years of the T-CLEAR study. Police-involved killings (n=1) and the ruled non-homicide (Mockabee, n=1) remain in the denominator but are excluded from suspect demographic analyses.</p>
 </div>
 
 <h2>Summary Statistics</h2>
 <div class="stats-grid">
-  <div class="stat-card"><span class="number">16</span><span class="label">Cases Solved (73%)</span></div>
+  <div class="stat-card"><span class="number">16</span><span class="label">Cases Solved (67%)</span></div>
   <div class="stat-card"><span class="number">6</span><span class="label">Cases Unsolved</span></div>
   <div class="stat-card"><span class="number">1</span><span class="label">Police-Involved Killing</span></div>
   <div class="stat-card"><span class="number">1</span><span class="label">Ruled Non-Homicide</span></div>
@@ -127,7 +127,6 @@
   <span><span class="swatch" style="background:#000"></span> Black</span>
   <span><span class="swatch" style="background:#4169E1"></span> White</span>
   <span><span class="swatch" style="background:#8B4513"></span> Hispanic/Latino</span>
-  <span><span class="swatch" style="background:#9370DB"></span> Multiracial</span>
   <span><span class="swatch" style="background:#FFD700;border-color:#b89b00"></span> AANHPI</span>
   <span><span class="swatch" style="background:#FF8C00"></span> Native American</span>
   <span><span class="swatch" style="background:#CCCCCC"></span> Unknown</span>
@@ -151,14 +150,14 @@
 <div class="chart-section">
   <h3>Figure 3. Suspect–Victim Racial Pairings</h3>
   <div class="chart-container" style="height:420px"><canvas id="chart3"></canvas></div>
-  <p class="chart-note">N=23 known-race suspect-victim pairings (excluding suspects of unknown race, n=5). Color indicates suspect's race. Format: Suspect Race → Victim Race.</p>
+  <p class="chart-note">N=24 known-race suspect-victim pairings (excluding suspects of unknown race, n=5). *Sanders-Galvez (Case 7) is dual-coded Black and Hispanic; this case generates one pairing under each race. Color indicates suspect's race. Format: Suspect Race → Victim Race.</p>
 </div>
 
 <!-- CHART 4: Solved/Unsolved by Victim Race -->
 <div class="chart-section">
   <h3>Figure 4. Case Outcomes by Victim Race</h3>
   <div class="chart-container"><canvas id="chart4"></canvas></div>
-  <p class="chart-note">Police-involved killing (n=1, White trans man) and ruled non-homicide (n=1, Mockabee, cocaine overdose) shown separately. "Solved" = arrest made. Effective solve rate: 16 of 22 non-police, confirmed-homicide cases (73%).</p>
+  <p class="chart-note">Police-involved killing (n=1, White trans man) and ruled non-homicide (n=1, Mockabee, cocaine overdose) shown separately. "Solved" = arrest made. Solve rate: 16 of 24 total victims (67%); excluding police-involved and non-homicide cases, 16 of 22 (73%).</p>
 </div>
 
 <!-- CHART 5: Bias Motive Distribution -->
@@ -211,7 +210,7 @@
   <td><a href="https://www.kxan.com/2017/11/06/man-found-guilty-of-killing-transgender-woman-in-2016/" target="_blank">KXAN Austin</a></td>
 </tr>
 <tr>
-  <td>2</td><td>Jasmine Sierra</td><td>53</td><td>Latina</td><td>Trans woman</td>
+  <td>2</td><td>Jasmine Sierra</td><td>52</td><td>Latina</td><td>Trans woman</td>
   <td>Bakersfield, CA</td><td>Jan 22</td><td>Suspicious death (gunshots heard)</td><td>No</td>
   <td>Unknown</td><td>Unknown</td><td>Unknown</td>
   <td>—</td>
@@ -237,7 +236,7 @@
   <td>—</td>
   <td><span class="tag tag-unsolved">Unsolved</span></td>
   <td><span class="tag tag-unknown">Unknown</span></td>
-  <td>Found dead in motel bathtub. Worked as nurse's assistant. Unclear if officially ruled homicide.</td>
+  <td>Found dead in motel bathtub. Worked as nurse's assistant. <strong>⚠️ Homicide classification disputed:</strong> Death was never officially ruled a homicide; no signs of trauma were reported. HRC listed as "Of Note" case where homicide remained plausible. Retained in dataset for completeness.</td>
   <td><a href="https://www.mic.com/articles/136149/another-trans-person-was-found-dead-in-texas-and-we-need-to-talk-about-it" target="_blank">Mic.com</a></td>
 </tr>
 <tr>
@@ -247,7 +246,7 @@
   <td>24, 19</td>
   <td><span class="tag tag-solved">Convicted</span></td>
   <td><span class="tag tag-noevidence">No Evidence</span></td>
-  <td>Floyd: 8–20 yrs (3rd-degree). Pena: 40–80 yrs (1st-degree; also killed Jonathan Martel). Interpersonal conflict.</td>
+  <td>Floyd: 8–20 yrs (3rd-degree). Pena: 40–80 yrs (3rd-degree murder plea; also killed Jonathan Martel). Interpersonal conflict.</td>
   <td><a href="https://www.nbcphiladelphia.com/news/breaking/Transgender-Woman-Murder-Maya-Young-Penn-Street-370932211.html" target="_blank">NBC Philadelphia</a></td>
 </tr>
 <tr>
@@ -287,7 +286,7 @@
   <td>23</td>
   <td><span class="tag tag-charged">Charged</span></td>
   <td><span class="tag tag-suspected">Suspected</span></td>
-  <td>Charged capital murder. Group attack (up to 12 people) with pipes, knives, gun. Mother said victim harassed "for a long time." Lackings accepted plea deal during Aug 2018 trial; specific terms not publicly reported. Charge for second victim (Willie Sims) dropped; Sims' death remains unsolved. Check Harris County District Clerk for disposition details.</td>
+  <td>Charged capital murder. Group attack (up to 8 people) with pipes, knives, gun. Mother said victim harassed "for a long time." Lackings accepted plea deal during Aug 2018 trial; specific terms not publicly reported. Charge for second victim (Willie Sims) dropped; Sims' death remains unsolved. Check Harris County District Clerk for disposition details.</td>
   <td><a href="https://www.cbsnews.com/news/suspect-in-murder-of-houston-transgender-woman-man-arrested/" target="_blank">CBS News</a></td>
 </tr>
 <tr>
@@ -322,7 +321,7 @@
 </tr>
 <tr>
   <td>13</td><td>Amos Beede</td><td>38</td><td>White</td><td>Trans man</td>
-  <td>Burlington, VT</td><td>May 28</td><td>Blunt force (beaten)</td><td>No</td>
+  <td>Burlington, VT</td><td>May 29</td><td>Blunt force (beaten)</td><td>No</td>
   <td>Erik Averill (21); Jordan Paul (21); Myia Barber (22); Allison Gee (25); Amber Dennis</td><td>White; White; White; White; White</td><td>Male; Male; Female; Female; Female</td>
   <td>21, 21, 22, 25, 29</td>
   <td><span class="tag tag-solved">Convicted</span></td>
@@ -343,11 +342,11 @@
 <tr>
   <td>15</td><td>Deeniquia "Dee Dee" Dodds</td><td>22</td><td>Black</td><td>Trans woman</td>
   <td>Washington, DC</td><td>Jul 4</td><td>Gunshot</td><td>No</td>
-  <td>Shareem Hall (28); Monte Johnson (21); Jalonte Little; Cyheme Hall (21)</td><td>Black; Black; Black; Black</td><td>Male; Male; Male; Male</td>
+  <td>Shareem Hall (28); Monte Johnson (21); Jalonta Little; Cyheme Hall (21)</td><td>Black; Black; Black; Black</td><td>Male; Male; Male; Male</td>
   <td>22, 21, 26, 21</td>
   <td><span class="tag tag-solved">Convicted</span></td>
   <td><span class="tag tag-noevidence">No Evidence</span></td>
-  <td>All four sentenced after 2019 mistrial (deadlocked jury), all accepted plea deals. Shareem Hall: 7 yrs (2nd-degree murder plea) + 2 yrs probation violation (Apr 2022). Johnson: 8 yrs (voluntary manslaughter, Dec 2021). Little: 8 yrs (voluntary manslaughter, Dec 2021). Cyheme Hall: 7 yrs concurrent (2nd-degree murder + conspiracy plea, May 2022); also faces possible 9-yr MD sentence. Robbery motive confirmed; hate crime enhancement dropped for insufficient evidence. Shot Jul 4; died Jul 13.</td>
+  <td>Shareem Hall and Cyheme Hall pled before trial. Johnson and Little went to trial, resulting in 2019 mistrial (deadlocked jury); both subsequently accepted plea deals. Shareem Hall: 7 yrs (2nd-degree murder plea) + 2 yrs probation violation (Apr 2022). Johnson: 8 yrs (voluntary manslaughter, Dec 2021). Little: 8 yrs (voluntary manslaughter, Dec 2021). Cyheme Hall: 7 yrs concurrent (2nd-degree murder + conspiracy plea, May 2022); also faces possible 9-yr MD sentence. Robbery motive confirmed; hate crime enhancement dropped for insufficient evidence. Shot Jul 4; died Jul 13.</td>
   <td><a href="https://www.washingtonblade.com/2022/05/11/fourth-man-charged-in-2016-d-c-trans-murder-sentenced-to-seven-years/" target="_blank">Washington Blade</a></td>
 </tr>
 <tr>
@@ -382,7 +381,7 @@
 </tr>
 <tr>
   <td>19</td><td>Rae'Lynn Thomas</td><td>28</td><td>Black</td><td>Trans woman</td>
-  <td>Columbus, OH</td><td>Aug 11</td><td>Gunshot / beaten</td><td>No</td>
+  <td>Columbus, OH</td><td>Aug 10</td><td>Gunshot / beaten</td><td>No</td>
   <td>James Allen Byrd</td><td>Black</td><td>Male</td>
   <td>53</td>
   <td><span class="tag tag-charged">Closed (Defendant Deceased)</span></td>
@@ -391,7 +390,7 @@
   <td><a href="https://www.10tv.com/article/news/local/man-found-incompetent-trial-columbus-womans-murder/530-b91ed624-e6f5-434d-9d94-75c2898ed992" target="_blank">10TV Columbus</a></td>
 </tr>
 <tr>
-  <td>20</td><td>T.T. Saffore</td><td>28</td><td>Black</td><td>Trans woman</td>
+  <td>20</td><td>T.T. Saffore</td><td>27</td><td>Black</td><td>Trans woman</td>
   <td>Chicago, IL</td><td>Sep 11</td><td>Throat slit</td><td>No</td>
   <td>Unknown</td><td>Unknown</td><td>Unknown</td>
   <td>—</td>
@@ -417,7 +416,7 @@
   <td>23</td>
   <td><span class="tag tag-solved">Convicted</span></td>
   <td><span class="tag tag-unknown">Unknown</span></td>
-  <td>Pled guilty. Originally misgendered by police/media. Sister Toya Milan is also a trans woman.</td>
+  <td>Pled guilty Jun 2019, sentenced to 25 years. Originally misgendered by police/media. Sister Toya Milan is also a trans woman.</td>
   <td><a href="https://www.wvtm13.com/article/birmingham-man-pleads-guilty-in-transgender-womans-2016-death/28082964" target="_blank">WVTM13 Birmingham</a></td>
 </tr>
 <tr>
@@ -442,7 +441,7 @@
 </tr>
 </tbody>
 </table>
-<p style="font-size:0.78em; color:#666; margin-top:6px; padding:0 8px;">* Bowden (Case 18): Race based on court affidavit description ("light-skinned African-American man") rather than booking photo or explicit self-identification. Counted as Black in charts. Sanders-Galvez (Case 7): Identified as both Hispanic and African-American per defense attorney's change-of-venue motion (KBUR, Oct 2017; TSPR, Oct 2017). Counted as Multiracial in charts.</p>
+<p style="font-size:0.78em; color:#666; margin-top:6px; padding:0 8px;">* Bowden (Case 18): Race based on court affidavit description ("light-skinned African-American man") rather than booking photo or explicit self-identification. Counted as Black in charts. Sanders-Galvez (Case 7): Identified as both Hispanic and African-American per defense attorney's change-of-venue motion (KBUR, Oct 2017; TSPR, Oct 2017). Dual-coded: counted once under Black and once under Hispanic in all charts, consistent with methodology for dual-coded suspects (see 2015: Vallum, Redding).</p>
 </div>
 
 <h2>Analytical Notes</h2>
@@ -456,10 +455,10 @@
 <p>Firearms were involved in 13 deaths (54%), stabbing/sharp force in 7 (29%), blunt force trauma in 2 (8%), and method was unclear or multiple in 2 cases. The predominance of firearm deaths mirrors broader U.S. homicide patterns but underscores the role of gun accessibility in violence against transgender people.</p>
 
 <h3>Case Outcomes and Solve Rates</h3>
-<p>Excluding the one police-involved killing and the one case ruled a non-homicide (Mockabee — cocaine overdose per Cuyahoga County ME), 16 of 22 confirmed homicide cases (73%) resulted in at least one arrest — exceeding the national homicide clearance rate of approximately 59% in 2016 (FBI UCR data). Of the 16 solved cases, 10 resulted in convictions, 2 in plea deals to lesser charges, 1 defendant was found incompetent and later died, and 3 remained at the "charged" stage as of last available records. Six cases (27%) remain entirely unsolved. Notably, the Demarkis Stansberry case, previously reported as unsolved, had in fact resulted in a same-day arrest (Nicholas Matthews charged with negligent homicide). The Mercedes Successful case was solved in October 2017 when Re'shaunte Jermaine Anglin was indicted via DNA evidence and later sentenced to 27 years.</p>
+<p>Excluding the one police-involved killing and the one case ruled a non-homicide (Mockabee — cocaine overdose per Cuyahoga County ME), 16 of 22 confirmed homicide cases (73%) resulted in at least one arrest. Using the standardized denominator (all 24 victims, including police-involved and non-homicide cases), the solve rate is 67% — exceeding the national homicide clearance rate of approximately 59% in 2016 (FBI UCR data). Of the 16 solved cases, 10 resulted in convictions, 2 in plea deals to lesser charges, 1 defendant was found incompetent and later died, and 3 remained at the "charged" stage as of last available records. Six cases (27%) remain entirely unsolved. Notably, the Demarkis Stansberry case, previously reported as unsolved, had in fact resulted in a same-day arrest (Nicholas Matthews charged with negligent homicide). The Mercedes Successful case was solved in October 2017 when Re'shaunte Jermaine Anglin was indicted via DNA evidence and later sentenced to 27 years.</p>
 
 <h3>Suspect Demographics</h3>
-<p>Among the 28 individually identified suspects across solved cases: 14 were Black (50%), 7 were White (25%), 1 was Hispanic (4%), 1 was multiracial Hispanic/Black (4%), and 5 were of unknown race (18%). Twenty-two of 28 suspects were male (79%); six were female (Tiffany Floyd, Heidi Krudy, Michelle Cole, Myia Barber, Allison Gee, Amber Dennis). Jorge Sanders-Galvez was reclassified from Hispanic to multiracial (Hispanic and African-American) based on his defense attorney's statements during change-of-venue proceedings. Intraracial violence (Black suspect–Black victim) constituted the most common pairing, consistent with general homicide patterns in the United States.</p>
+<p>Among the 28 individually identified suspects across solved cases (29 racial classifications due to one dual-coded suspect): 15 were classified as Black (including Sanders-Galvez), 7 as White, 2 as Hispanic (including Sanders-Galvez), and 5 were of unknown race. Jorge Sanders-Galvez (Case 7) identified as both Hispanic and African-American per his defense attorney's change-of-venue motion; he is counted once under each category, consistent with the dual-coding methodology applied to Vallum and Redding in 2015. Twenty-two of 28 suspects were male (79%); six were female (Tiffany Floyd, Heidi Krudy, Michelle Cole, Myia Barber, Allison Gee, Amber Dennis). Intraracial violence (Black suspect, Black victim) constituted the most common pairing, consistent with general homicide patterns in the United States.</p>
 
 <h3>Bias Motivation</h3>
 <p>No case in 2016 resulted in formal hate crime charges at either the state or federal level. Five cases were coded as "Suspected" bias based on strong evidence of anti-transgender animus: Kedarie Johnson (trans panic — killed upon discovery of male anatomy), Dee Whigham (stabbed 119 times after revealing transgender identity), Erykah Tijerina (killed by client who feared exposure), Rae'Lynn Thomas (suspect called victim "the devil" for transitioning), and Shante Thompson (documented pattern of anti-trans harassment). Six cases were coded "No Evidence" based on documented alternative motives (IPV, robbery, interpersonal dispute, intimate relationship). Eleven cases were coded "Unknown" due to unsolved status or insufficient information. In the Deeniquia Dodds case, a hate crime enhancement was pursued at trial but dropped after the 2019 mistrial due to insufficient evidence that the victim was targeted for her gender identity rather than for robbery.</p>
@@ -477,14 +476,14 @@ Chart.defaults.font.family = "'Georgia', serif";
 Chart.defaults.font.size = 12;
 Chart.defaults.plugins.legend.display = false;
 
-// CHART 1: Suspects by Race — Black=14, White=7, Hispanic=1, Multiracial=1, Unknown=5
+// CHART 1: Suspects by Race — Black=15*, White=7, Hispanic=2*, Unknown=5 (*Sanders-Galvez dual-coded)
 new Chart(document.getElementById('chart1'), {
   type: 'bar',
   data: {
-    labels: ['Black', 'White', 'Hispanic', 'Multiracial\n(Hispanic/Black)', 'Unknown'],
+    labels: ['Black*', 'White', 'Hispanic*', 'Unknown'],
     datasets: [{
-      data: [14, 7, 1, 1, 5],
-      backgroundColor: ['#000000','#4169E1','#8B4513','#9370DB','#CCCCCC'],
+      data: [15, 7, 2, 5],
+      backgroundColor: ['#000000','#4169E1','#8B4513','#CCCCCC'],
       borderWidth: 1, borderColor: '#666'
     }]
   },
@@ -522,18 +521,17 @@ new Chart(document.getElementById('chart3'), {
   type: 'bar',
   data: {
     labels: [
-      'Black → Black',
+      'Black → Black*',
       'Unknown → Black',
       'White → White',
-      'Hispanic → Black',
-      'Multiracial → Black',
+      'Hispanic → Black*',
       'Black → Latina',
       'White → Latina',
       'White → Black'
     ],
     datasets: [{
-      data: [13, 5, 5, 1, 1, 1, 1, 1],
-      backgroundColor: ['#000000','#CCCCCC','#4169E1','#8B4513','#9370DB','#000000','#4169E1','#4169E1'],
+      data: [14, 5, 5, 2, 1, 1, 1],
+      backgroundColor: ['#000000','#CCCCCC','#4169E1','#8B4513','#000000','#4169E1','#4169E1'],
       borderWidth: 1, borderColor: '#666'
     }]
   },
@@ -589,7 +587,7 @@ new Chart(document.getElementById('chart5'), {
 });
 
 // CHART 6: Bias by Suspect Race (solved only)
-// Suspected: Black=4, Multiracial=1, White=0, Hispanic=0, Unknown=0
+// Suspected: Black=5*, White=0, Hispanic=1*, Unknown=0 (*Sanders-Galvez dual-coded)
 // No Evidence: Black=7, White=1, Hispanic=1, Unknown=3
 // Unknown: Black=2, White=6, Unknown=2
 new Chart(document.getElementById('chart6'), {
@@ -597,10 +595,9 @@ new Chart(document.getElementById('chart6'), {
   data: {
     labels: ['Suspected Bias', 'No Evidence of Bias', 'Unknown'],
     datasets: [
-      { label: 'Black suspect', data: [4, 7, 2], backgroundColor: '#000000' },
+      { label: 'Black suspect', data: [5, 7, 2], backgroundColor: '#000000' },
       { label: 'White suspect', data: [0, 1, 7], backgroundColor: '#4169E1' },
-      { label: 'Hispanic suspect', data: [0, 1, 0], backgroundColor: '#8B4513' },
-      { label: 'Multiracial suspect', data: [1, 0, 0], backgroundColor: '#9370DB' },
+      { label: 'Hispanic suspect', data: [1, 1, 0], backgroundColor: '#8B4513' },
       { label: 'Unknown race', data: [0, 3, 2], backgroundColor: '#CCCCCC' }
     ]
   },

@@ -60,17 +60,17 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 
 <div class="stats-row">
   <div class="stat-box"><div class="num" style="color:#c1121f">22</div><div class="label">Total Victims</div><div class="sub">Documented homicides in 2019</div></div>
-  <div class="stat-box"><div class="num" style="color:#2d6a4f">15</div><div class="label">Cases Solved</div><div class="sub">68% solve rate (10 convicted + 2 awaiting trial + 1 released/pending + 1 detained + 1 closed)</div></div>
-  <div class="stat-box"><div class="num" style="color:#e8a838">7</div><div class="label">Unsolved</div><div class="sub">No killer identified (includes 1 accessory-only arrest)</div></div>
+  <div class="stat-box"><div class="num" style="color:#2d6a4f">14</div><div class="label">Cases Solved</div><div class="sub">64% solve rate (10 convicted + 2 awaiting trial + 2 closed)</div></div>
+  <div class="stat-box"><div class="num" style="color:#e8a838">8</div><div class="label">Unsolved</div><div class="sub">No killer identified (includes 1 accessory-only arrest, 2 dismissed-charges cases)</div></div>
   <div class="stat-box"><div class="num" style="color:#1a1a2e">82%</div><div class="label">Killed by Firearm</div><div class="sub">18 of 22 victims</div></div>
 </div>
 
 <!-- CHART 1: SUSPECTS by Race -->
 <div class="chart-card">
   <div class="chart-title">Chart 1: Identified Suspects by Race/Ethnicity</div>
-  <div class="chart-sub">Solved homicide cases with identified suspects — 15 suspects total (excludes police-involved)</div>
+  <div class="chart-sub">Solved homicide cases with identified suspects — 14 suspects total (excludes police-involved and self-defense closures)</div>
   <div class="chart-wrap"><canvas id="chartSUSPECTS"></canvas></div>
-  <div class="note-box"><strong>Note:</strong> Race verified from mugshots or explicit police descriptions only. 1 suspect has unverified race coded as "Unknown." Of the 14 with confirmed race: 11 Black, 2 White, 1 Hispanic.</div>
+  <div class="note-box"><strong>Note:</strong> Race verified from mugshots or explicit police descriptions only. All 14 suspects have confirmed race: 11 Black, 2 White, 1 Hispanic. Formerly listed suspect John Booth removed after all charges were dismissed. Dominick Archield retained as identified suspect despite charges being dismissed Nov. 2024 (witness recantation); race verified from booking records.</div>
 </div>
 
 <!-- CHART 2: VICTIMS by Race -->
@@ -84,7 +84,7 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 <!-- CHART 3: SPECIFIC Suspect-Victim Race Pairings -->
 <div class="chart-card">
   <div class="chart-title">Chart 3: Suspect → Victim Race Pairings (Specific)</div>
-  <div class="chart-sub">Each bar = one specific pairing. Green = intraracial, Red = interracial. Limited to 14 cases with both suspect and victim race verified.</div>
+  <div class="chart-sub">Each bar = one specific pairing. Green = intraracial, Red = interracial. All 14 suspects have verified race.</div>
   <div class="chart-wrap"><canvas id="chartPAIRINGS"></canvas></div>
   <div class="note-box"><strong>Finding:</strong> Of the 14 solved cases with verified suspect race: 13 (93%) were intraracial (11 Black→Black, 2 White→White) and 1 (7%) was interracial (Hispanic→Black). This mirrors general homicide patterns where intraracial violence predominates.</div>
 </div>
@@ -94,7 +94,7 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
   <div class="chart-title">Chart 4: Solved vs. Unsolved by Victim Race</div>
   <div class="chart-sub">Racial disparity in case resolution (includes "Closed" in solved count)</div>
   <div class="chart-wrap"><canvas id="chartSOLVED"></canvas></div>
-  <div class="note-box"><strong>Key disparity:</strong> Both White victim cases were solved (100%), compared to 65% of Black victim cases (13 of 20). All 7 unsolved cases involve Black transgender women.</div>
+  <div class="note-box"><strong>Key disparity:</strong> Both White victim cases were solved (100%), compared to 60% of Black victim cases (12 of 20). All 8 unsolved cases involve Black transgender women.</div>
 </div>
 
 <!-- CHART 5: Bias Motive -->
@@ -108,15 +108,15 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 <!-- CHART 6: Bias by Suspect Race -->
 <div class="chart-card">
   <div class="chart-title">Chart 6: Bias Motive by Suspect Race</div>
-  <div class="chart-sub">Solved cases only — 14 suspects with verified race. No "unknown race" category.</div>
+  <div class="chart-sub">Solved cases only — 14 suspects with verified race.</div>
   <div class="chart-wrap"><canvas id="chartBIAS_RACE"></canvas></div>
-  <div class="note-box"><strong>Note:</strong> Of 11 Black suspects: confirmed anti-LGBTQ bias in 2 (Devon Robinson targeted LGBTQ party; Daqua Ritter convicted of federal hate crime), suspected bias in 1 (Javaras Hammonds — dating app lure), documented alternative motive in 1 (Joshua Bourgeois — IPV), and unknown in 7. Of 2 White suspects: confirmed bias in 1 (David Bogdanov — hate crime conviction), alternative motive in 1 (Connor Betts — mass shooting). The single Hispanic suspect (Ruben Alvarado) had unknown motive.</div>
+  <div class="note-box"><strong>Note:</strong> Of 11 Black suspects: confirmed anti-LGBTQ bias in 2 (Devon Robinson targeted LGBTQ party; Daqua Ritter convicted of federal hate crime), suspected bias in 1 (Javaras Hammonds — dating app lure), documented alternative motive in 1 (Joshua Bourgeois — IPV), and unknown in 7 (includes Dominick Archield — charges dismissed). Of 2 White suspects: confirmed bias in 1 (David Bogdanov — hate crime conviction), alternative motive in 1 (Connor Betts — mass shooting). The single Hispanic suspect (Ruben Alvarado) had unknown motive.</div>
 </div>
 
 <hr class="divider">
 
 <div class="section-title">Complete Research Dataset — 2019</div>
-<div class="section-sub">22 victims in chronological order. Sources are local news and court records. Two searches minimum per case. Updated through Feb. 2026.</div>
+<div class="section-sub">22 victims in chronological order. Sources are local news and court records. Two searches minimum per case. Updated through Mar. 2026.</div>
 
 <div class="legend-row"><div class="legend-item"><span class="badge badge-confirmed">Confirmed</span> Hate crime charges or explicit anti-trans motive from LE/prosecutor</div></div>
 <div class="legend-row"><div class="legend-item"><span class="badge badge-suspected">Suspected Bias</span> Evidence of animus, no formal charge</div></div>
@@ -129,7 +129,7 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 <tbody>
 <tr>
   <td>1</td><td>Dana Martin</td><td>Black</td><td>31</td><td>Montgomery, AL</td><td>Jan 6</td><td>Gunshot</td>
-  <td class="circ">Found shot in the driver's seat of her car in a roadside ditch near Montgomery. A friend noted she had previously survived a shooting (2015) by a man recently released from prison, and found the timing suspicious. Case accepted by the Montgomery Cold Case Task Force; CrimeStoppers offers a $5,000 reward. No arrests as of Feb. 2026.</td>
+  <td class="circ">Found shot in the driver's seat of her car in a roadside ditch near Montgomery. A friend noted she had previously survived a shooting (2015) by a man recently released from prison, and found the timing suspicious. Case accepted by the Montgomery Cold Case Task Force; CrimeStoppers offers an $11,000 reward. No arrests as of Feb. 2026.</td>
   <td>No</td>
   <td><span class="badge badge-unknown">Unknown</span></td>
   <td>—</td><td>—</td><td>—</td><td>—</td>
@@ -147,15 +147,15 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 </tr>
 <tr>
   <td>3</td><td>Claire Legato</td><td>Black</td><td>21</td><td>Cleveland, OH</td><td>Apr 15 (died May 14)</td><td>Gunshot</td>
-  <td class="circ">Shot in the head at 4 a.m. during an argument between her mother and John Booth over a stolen tax refund check. She was hospitalized and died a month later from her injuries.</td>
+  <td class="circ">Shot in the head at 4 a.m. during an argument between her mother and John Booth over a stolen tax refund check. She was hospitalized and died a month later from her injuries. Booth's charges were subsequently dismissed; whether he was reindicted is unknown as of Feb. 2026.</td>
   <td>No</td>
   <td><span class="badge badge-unknown">Unknown</span></td>
   <td>John Booth, 61</td><td>Unknown</td><td>Male</td><td>61</td>
-  <td><span class="badge badge-solved">Warrant Issued</span></td>
+  <td><span class="badge badge-unsolved">Charges Dismissed</span></td>
   <td><a href="https://www.cleveland.com/metro/2019/04/argument-over-tax-check-led-to-shooting-of-transgender-woman-in-cleveland-police-say.html" target="_blank">Cleveland.com</a></td>
 </tr>
 <tr>
-  <td>4</td><td>Muhlaysia Booker</td><td>Black</td><td>23</td><td>Dallas, TX</td><td>May 18</td><td>Gunshot</td>
+  <td>4</td><td>Muhlaysia Booker</td><td>Black</td><td>22</td><td>Dallas, TX</td><td>May 18</td><td>Gunshot</td>
   <td class="circ">Found shot to death on a Dallas street, one month after a viral video showed her being beaten by a mob at an apartment complex. Suspect Kendrell Lyles was later linked to two additional murders (Leticia Grant and Kenneth Cichocki, both May 2019, Collin County). Lyles pleaded guilty to murder in Nov. 2023, just as jury selection began; sentenced to 48 years.</td>
   <td>No</td>
   <td><span class="badge badge-unknown">Unknown</span></td>
@@ -174,11 +174,11 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 </tr>
 <tr>
   <td>6</td><td>Paris Cameron</td><td>Black</td><td>20</td><td>Detroit, MI</td><td>May 25</td><td>Gunshot</td>
-  <td class="circ">Shot and killed at a house party in Detroit that was specifically targeted for being an LGBTQ gathering. Devon Robinson opened fire, killing Cameron and two others (Alunte Davis and Timothy Blancher). Convicted by jury of three counts of first-degree premeditated murder (Mar. 2020); sentenced Jul. 2020 to three consecutive life terms without parole.</td>
+  <td class="circ">Shot and killed at a house party in Detroit that was specifically targeted for being an LGBTQ gathering. Devon Robinson opened fire, killing Cameron and two others (Alunte Davis and Timothy Blancher). Convicted by jury of three counts of first-degree premeditated murder (Mar. 2020); sentenced Jul. 2020 to three consecutive life terms without parole. However, because Robinson was 18 at the time of the murders, the Michigan Court of Appeals vacated the mandatory LWOP sentences on Oct. 27, 2022, remanding for resentencing under <em>Miller v. Alabama</em>. Resentencing is pending as of Feb. 2026.</td>
   <td>No</td>
   <td><span class="badge badge-confirmed">Confirmed</span></td>
   <td>Devon Robinson, 18</td><td>Black</td><td>Male</td><td>18</td>
-  <td><span class="badge badge-solved">Convicted (3× LWOP)</span></td>
+  <td><span class="badge badge-solved">Convicted (LWOP vacated; resentencing pending)</span></td>
   <td><a href="https://www.detroitnews.com/story/news/local/detroit-city/2020/07/01/man-19-sentenced-3-life-terms-lgbtq-murders/5355201002/" target="_blank">Detroit News</a></td>
 </tr>
 <tr>
@@ -192,7 +192,7 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 </tr>
 <tr>
   <td>8</td><td>Chanel Scurlock</td><td>Black</td><td>23</td><td>Lumberton, NC</td><td>Jun 5</td><td>Gunshot (8 times)</td>
-  <td class="circ">Shot eight times in a rural field near Lumberton. Evidence suggests she was lured to the isolated location through a dating app, raising strong suspicion of a bias-motivated attack. Hammonds was charged with first-degree murder and robbery with a dangerous weapon; held without bond. No public trial outcome as of Feb. 2026.</td>
+  <td class="circ">Shot eight times in a rural field near Lumberton. Evidence suggests she was lured to the isolated location through a dating app, raising strong suspicion of a bias-motivated attack. Hammonds was charged with first-degree murder and robbery with a dangerous weapon; held without bond. Case placed on the murder trial calendar for Jun. 2024; no public trial outcome as of Feb. 2026.</td>
   <td>No</td>
   <td><span class="badge badge-suspected">Suspected Bias</span></td>
   <td>Javaras Hammonds, 20</td><td>Black</td><td>Male</td><td>20</td>
@@ -210,7 +210,7 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 </tr>
 <tr>
   <td>10</td><td>Brooklyn Lindsey</td><td>Black</td><td>32</td><td>Kansas City, MO</td><td>Jun 25</td><td>Gunshot</td>
-  <td class="circ">Found shot to death in Kansas City. Marcus Lewis, 41, was charged with her murder within weeks. Lewis pleaded guilty (Jun. 2021) to voluntary manslaughter, armed criminal action, and unlawful possession of a weapon; sentenced Aug. 2021 to 22 years (concurrent). DNA on shell casings linked him to the murder.</td>
+  <td class="circ">Found shot to death in Kansas City. Marcus Lewis, 41, was charged with her murder within weeks. Lewis pleaded guilty (Jun. 2021) to voluntary manslaughter, armed criminal action, robbery in the second degree, and felon in possession of a firearm; sentenced Aug. 2021 to 22 years (concurrent). DNA on shell casings linked him to the murder.</td>
   <td>No</td>
   <td><span class="badge badge-unknown">Unknown</span></td>
   <td>Marcus Lewis, 41</td><td>Black</td><td>Male</td><td>41</td>
@@ -219,16 +219,16 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 </tr>
 <tr>
   <td>11</td><td>Denali Berries Stuckey</td><td>Black</td><td>29</td><td>North Charleston, SC</td><td>Jul 20</td><td>Gunshot (face/torso)</td>
-  <td class="circ">Shot in the face and torso in North Charleston. Dominick Archield turned himself in three weeks later; a judge denied bond. While out on a reduced bond (Mar. 2020), he was re-arrested Nov. 2020 for the attempted murder of another person. After ~4 years in jail without trial on both charges, Archield was released Nov. 2024 on a $100,000 signature bond. He still formally faces murder and attempted murder charges, but case dismissal is a real possibility per Post and Courier reporting.</td>
+  <td class="circ">Shot in the face and torso in North Charleston. Dominick Archield turned himself in three weeks later; a judge denied bond. While out on a reduced bond (Mar. 2020), he was re-arrested Nov. 2020 for the attempted murder of another person. After ~4 years in jail without trial on both charges, Archield was released Nov. 2024 on a $100,000 signature bond. On Nov. 27, 2024, all charges — murder and attempted murder — were dismissed after a key witness recanted and evidence mismatch issues surfaced.</td>
   <td>No</td>
   <td><span class="badge badge-unknown">Unknown</span></td>
   <td>Dominick Archield, 34</td><td>Black</td><td>Male</td><td>34</td>
-  <td><span class="badge badge-unsolved">Released; Charges Pending</span></td>
+  <td><span class="badge badge-unsolved">Charges Dismissed (Nov. 2024)</span></td>
   <td><a href="https://www.live5news.com/2019/08/12/judge-denies-bond-suspect-shooting-death-transgender-woman/" target="_blank">Live 5 News</a></td>
 </tr>
 <tr>
   <td>12</td><td>Bubba Walker</td><td>Black</td><td>55</td><td>Charlotte, NC</td><td>Jul 27</td><td>Found in house fire (undetermined)</td>
-  <td class="circ">Her body was discovered in the rubble of a house fire on July 30, believed to have been there for three days. Friends feared she was targeted because of her identity; police opened a homicide investigation.</td>
+  <td class="circ">Her body was discovered in the rubble of a house fire on July 30, believed to have been there for three days. Friends feared she was targeted because of her identity; police opened a homicide investigation. <strong>⚠ Note:</strong> The medical examiner could not determine cause of death because the body was severely burned. Charlotte-Mecklenburg police opened a homicide investigation, but no official homicide ruling was made. Retained in dataset per HRC listing.</td>
   <td>No</td>
   <td><span class="badge badge-unknown">Unknown</span></td>
   <td>—</td><td>—</td><td>—</td><td>—</td>
@@ -300,16 +300,16 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 </tr>
 <tr>
   <td>20</td><td>Brianna "BB" Hill</td><td>Black</td><td>30</td><td>Kansas City, MO</td><td>Oct 14</td><td>Gunshot</td>
-  <td class="circ">Shot and killed at 11:30 a.m. in Kansas City on Oct. 14, 2019. A suspect was detained at the scene — per KCPD Capt. Tim Hernandez, the shooter waited for police and was taken into custody; police were "not looking for any more suspects." However, no formal charges or suspect name were ever publicly released, and no trial or conviction information exists as of Feb. 2026. Separately, two KCPD officers (Matthew Brummett and Charles Prichard) pleaded guilty to third-degree assault for brutalizing Hill during an unrelated arrest five months before her murder.</td>
+  <td class="circ">Shot and killed at 11:30 a.m. in Kansas City on Oct. 14, 2019. A suspect was detained at the scene — per KCPD Capt. Tim Hernandez, the shooter waited for police and was taken into custody; police were "not looking for any more suspects." In Nov. 2022, FOX4 KC reported the case was ruled self-defense; no charges were filed. Separately, two KCPD officers (Matthew Brummett and Charles Prichard) pleaded guilty to third-degree assault for brutalizing Hill during an unrelated arrest five months before her murder.</td>
   <td>No</td>
   <td><span class="badge badge-unknown">Unknown</span></td>
   <td>Unnamed suspect (detained at scene)</td><td>—</td><td>—</td><td>—</td>
-  <td><span class="badge badge-unsolved">Detained; No Charges Filed</span></td>
+  <td><span class="badge badge-closed">Closed — Self-Defense</span></td>
   <td><a href="https://www.huffpost.com/entry/brianna-hill-black-transgender-woman-killed-kansas-city_n_5da9dbe7e4b0e0f0378b2255" target="_blank">HuffPost</a></td>
 </tr>
 <tr>
-  <td>21</td><td>Nikki Kuhnhausen</td><td>White</td><td>17</td><td>Vancouver, WA</td><td>Jun 6 (found Dec 7)</td><td>Strangulation (phone cord)</td>
-  <td class="circ">Went missing June 6 at age 17; her remains were found December 7. David Bogdanov strangled her with a phone charger cord after discovering she was transgender, then hid her body and briefly fled to Ukraine. Convicted by jury of second-degree murder and malicious harassment (WA hate crime statute), Aug. 2021; sentenced Sep. 2021 to 234 months (19.5 yrs) for murder plus 12 months for the hate crime, concurrent. The case prompted the Nikki Kuhnhausen Act (HB 1687, signed Mar. 2020), banning the "LGBTQ+ panic defense" in Washington state.</td>
+  <td>21</td><td>Nikki Kuhnhausen</td><td>White</td><td>17</td><td>Vancouver, WA</td><td>Jun 6 (found Dec 7)</td><td>Strangulation (cellphone charger cord)</td>
+  <td class="circ">Went missing June 6 at age 17; her remains were found December 7. David Bogdanov strangled her with a cellphone charger cord after discovering she was transgender, then hid her body and briefly fled to Ukraine. Convicted by jury of second-degree murder and malicious harassment (WA hate crime statute), Aug. 2021; sentenced Sep. 2021 to 234 months (19.5 yrs) for murder plus 12 months for the hate crime, concurrent. The case prompted the Nikki Kuhnhausen Act (HB 1687, signed Mar. 2020), banning the "LGBTQ+ panic defense" in Washington state.</td>
   <td>No</td>
   <td><span class="badge badge-confirmed">Confirmed</span></td>
   <td>David Bogdanov, 25</td><td>White</td><td>Male</td><td>25</td>
@@ -331,9 +331,9 @@ td.circ{font-size:10px;color:#444;max-width:220px;line-height:1.4}
 
 <div class="note-box"><strong>Victim List — Reconciliation with HRC Report:</strong> HRC's original PDF report (<em>A National Epidemic: Fatal Anti-Transgender Violence in the United States in 2019</em>, published Nov. 18, 2019) named 22 victims. That list was read into the Congressional Record on Nov. 20, 2019 during Transgender Day of Remembrance remarks. Two individuals from the original 22 were subsequently removed from tracking by advocates after further investigation: <strong>Jazzaline Ware</strong> (Memphis, TN) — Memphis police concluded she died of natural causes, not homicide; and <strong>Jamagio Jamar Berryman</strong> (Kansas City, KS) — the Berryman family released a video clarifying the victim was not transgender. This leaves 20 confirmed homicide victims from the original report. This dataset adds two additional victims documented after the report's Nov. 18 publication date: <strong>Nikki Kuhnhausen</strong> (missing Jun. 6, remains found Dec. 7) and <strong>Yahira Nesby</strong> (killed Dec. 19), both of which HRC later added to its web tracker (which eventually counted "at least 27" by year's end). HRC's later web updates also included individuals not in this dataset: Ellie Marie Washtock (described as "gender-expansive," death circumstances unclear), Titi Gulley (death originally ruled suicide; investigation reopened but outcome unclear), Johana Medina Leon (died in ICE custody), and Layleen Cubilette-Polanco (died at Rikers Island). These were excluded because this dataset is limited to confirmed homicides outside of custodial settings. Victims are listed in chronological order by date of death, which closely mirrors the HRC report's ordering.</div>
 
-<div class="note-box"><strong>Case Research Methodology:</strong> All case details independently verified via local news, court records, and law enforcement press releases — not HRC assessments. Each case searched at minimum twice: initial incident report + arrest/charge update through Feb. 2026. Suspect race verified from mugshots or explicit police descriptions (e.g., HPD notation "b/m" for Raymond Donald Williams; DOJ photos for Daqua Ritter; Dallas PD official statement identifying Lyles as "a Black male"; Michigan DOC racial ID for Robinson), never from surnames. Police-involved killings excluded from solve rates and suspect demographics. Bee Love Slater coded "Unsolved" because only an accessory-after-the-fact was arrested (Dec. 2021); the actual shooter remains unidentified. Jordan Cofer's case coded "Closed" (mass shooting; perpetrator deceased at scene). Dominick Archield released Nov. 2024 after ~4 years in jail without trial; charges still formally pending but case dismissal possible. Brianna "BB" Hill's case updated: a suspect was detained at the scene (per KCPD Capt. Hernandez) but no formal charges or name were ever publicly released. Pebbles LaDime Doe's case updated to reflect Daqua Ritter's Feb. 2024 federal hate crime conviction and Oct. 2024 life sentence — the first such conviction based on gender identity under the Matthew Shepard and James Byrd Jr. Hate Crimes Prevention Act. The Nikki Kuhnhausen case prompted the Nikki Kuhnhausen Act (HB 1687), banning the "LGBTQ+ panic defense" in Washington state (signed Mar. 2020). The HRC report is available via <a href="https://issuu.com/humanrightscampaign/docs/anti-transviolencereport2019" target="_blank">Issuu</a>; HRC no longer hosts the original PDF.</div>
+<div class="note-box"><strong>Case Research Methodology:</strong> All case details independently verified via local news, court records, and law enforcement press releases — not HRC assessments. Each case searched at minimum twice: initial incident report + arrest/charge update through Mar. 2026. Suspect race verified from mugshots or explicit police descriptions (e.g., HPD notation "b/m" for Raymond Donald Williams; DOJ photos for Daqua Ritter; Dallas PD official statement identifying Lyles as "a Black male"; Michigan DOC racial ID for Robinson), never from surnames. Police-involved killings and self-defense closures excluded from suspect demographics. Bee Love Slater coded "Unsolved" because only an accessory-after-the-fact was arrested (Dec. 2021); the actual shooter remains unidentified. Jordan Cofer's case coded "Closed" (mass shooting; perpetrator deceased at scene). Dominick Archield: all charges (murder and attempted murder) dismissed Nov. 27, 2024 after a key witness recanted and evidence mismatch issues surfaced; Stuckey case reverts to unsolved. Claire Legato / John Booth: charges dismissed; whether Booth was reindicted is unknown. Brianna "BB" Hill: ruled self-defense per FOX4 KC (Nov. 2022); no charges filed. Coded "Closed" and excluded from suspect demographics (unnamed suspect). Bubba Walker: ME could not determine cause of death due to severe burns; police opened a homicide investigation but no official homicide ruling was made. Retained in dataset per HRC listing. Devon Robinson: LWOP sentences vacated Oct. 27, 2022 by Michigan Court of Appeals under <em>Miller v. Alabama</em> (Robinson was 18 at time of crime); resentencing pending. Pebbles LaDime Doe's case updated to reflect Daqua Ritter's Feb. 2024 federal hate crime conviction and Oct. 2024 life sentence — the first such conviction based on gender identity under the Matthew Shepard and James Byrd Jr. Hate Crimes Prevention Act. The Nikki Kuhnhausen case prompted the Nikki Kuhnhausen Act (HB 1687), banning the "LGBTQ+ panic defense" in Washington state (signed Mar. 2020). The HRC report is available via <a href="https://issuu.com/humanrightscampaign/docs/anti-transviolencereport2019" target="_blank">Issuu</a>; HRC no longer hosts the original PDF.</div>
 
-<div class="footer"><strong>Fatal Violence Against Transgender People, 2019</strong><br>Combined analysis from local news and court records · Updated through Feb. 2026</div>
+<div class="footer"><strong>Fatal Violence Against Transgender People, 2019</strong><br>Combined analysis from local news and court records · Updated through Mar. 2026</div>
 
 <script>
 const RC = {black:'#000000', white:'#4169E1', hispanic:'#8B4513', asian:'#FFD700', native:'#FF8C00', other:'#999999'};
@@ -343,14 +343,13 @@ const MC = {confirmed:'#c1121f', suspected:'#e8a838', none:'#cccccc', unknown:'#
 // Black: 11 (Lyles, Bailey, Robinson, Hammonds, Thomas, Lewis, Archield, Bourgeois, Watson, Williams, Ritter)
 // White: 2 (Bogdanov, Betts)
 // Hispanic: 1 (Alvarado)
-// Unknown: 1 (Booth)
 new Chart(document.getElementById('chartSUSPECTS'), {
   type: 'bar',
   data: {
-    labels: ['Black', 'White', 'Hispanic', 'Unknown'],
+    labels: ['Black', 'White', 'Hispanic'],
     datasets: [{
-      data: [11, 2, 1, 1],
-      backgroundColor: [RC.black, RC.white, RC.hispanic, RC.other]
+      data: [11, 2, 1],
+      backgroundColor: [RC.black, RC.white, RC.hispanic]
     }]
   },
   options: {
@@ -396,15 +395,15 @@ new Chart(document.getElementById('chartPAIRINGS'), {
 });
 
 // CHART 4: Solved vs Unsolved by Race
-// Black: 13 solved, 7 unsolved (Martin, Carmon, Walker, Reeves, Slater, BB Hill, Nesby)
+// Black: 12 solved/closed, 8 unsolved (Martin, Carmon, Legato, Stuckey, Walker, Reeves, Slater, Nesby)
 // White: 2 solved, 0 unsolved
 new Chart(document.getElementById('chartSOLVED'), {
   type: 'bar',
   data: {
     labels: ['Black', 'White'],
     datasets: [
-      {label: 'Solved', data: [13, 2], backgroundColor: '#2d6a4f'},
-      {label: 'Unsolved', data: [7, 0], backgroundColor: '#c1121f'}
+      {label: 'Solved', data: [12, 2], backgroundColor: '#2d6a4f'},
+      {label: 'Unsolved', data: [8, 0], backgroundColor: '#c1121f'}
     ]
   },
   options: {
@@ -436,7 +435,7 @@ new Chart(document.getElementById('chartBIAS'), {
 });
 
 // CHART 6: Bias by Suspect Race (SOLVED WITH KNOWN RACE ONLY)
-// Black (11): Confirmed=2(Robinson,Ritter), Suspected=1(Hammonds), No Evidence=1(Bourgeois), Unknown=7
+// Black (11): Confirmed=2(Robinson,Ritter), Suspected=1(Hammonds), No Evidence=1(Bourgeois), Unknown=7(incl. Archield)
 // White (2): Confirmed=1(Bogdanov), No Evidence=1(Betts)
 // Hispanic (1): Unknown=1(Alvarado)
 new Chart(document.getElementById('chartBIAS_RACE'), {

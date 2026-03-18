@@ -224,14 +224,14 @@ footer {
   <h3>Methodology &amp; Coding Notes</h3>
   <ul>
     <li><strong>Victim list:</strong> Cases #1–25 follow the order documented in the HRC report <em>A Time to Act</em> (November 2017). Cases #26–28 (Brooklyn BreYanna Stevenson, Brandi Seals, Jaylow McGlory) were identified after the report's publication. Total: 28 verified cases.</li>
-    <li><strong>Solve rate:</strong> Of 25 non-police cases, 16 have identified suspects (64% clearance rate). Three suspects were acquitted: Tyrone Kemp (TeeTee Dangerfield case), Doris Carrasquillo (Kashmire Redd case, self-defense), and Desmond Harris (Jaylow McGlory case, self-defense). Two cases had charges dismissed: Kenne McFadden — Mark Daniel Lewis (double jeopardy) and Ava Le'Ray Barrin — Jalen Breon Brown (self-defense immunity, May 2018). One suspect was no-billed by grand jury (Gwynevere River Song — Robert Wayne Mosher, self-defense). An arrest warrant was issued for Leonard Ward in the Ciara McElveen case (July 2018), but it is unclear whether Ward was taken into custody.</li>
+    <li><strong>Solve rate:</strong> Of 28 total victims, 16 have identified suspects (57% clearance rate using the standardized denominator that includes police-involved cases; excluding the 3 police cases, 16 of 25 = 64%). Three suspects were acquitted: Tyrone Kemp (TeeTee Dangerfield case), Doris Carrasquillo (Kashmire Redd case, self-defense), and Desmond Harris (Jaylow McGlory case, self-defense). Two cases had charges dismissed: Kenne McFadden — Mark Daniel Lewis (double jeopardy) and Ava Le'Ray Barrin — Jalen Breon Brown (self-defense immunity, late July 2018). One suspect was no-billed by grand jury (Gwynevere River Song — Robert Wayne Mosher, self-defense). An arrest warrant was issued for Leonard Ward in the Ciara McElveen case (July 2018), but it is unclear whether Ward was taken into custody.</li>
     <li><strong>Suspect race verification:</strong> All race codings verified from mugshot photos, explicit news descriptions, or court records — never inferred from surnames alone.</li>
     <li><strong>Bias motive coding:</strong> "Confirmed" = hate crime charges filed OR explicit anti-trans motive stated by police/prosecutors. "Suspected" = evidence of possible anti-trans animus but no formal hate-crime charge. "No Evidence" = documented IPV, robbery, family dispute, or other non-bias motive. "Unknown" = insufficient information or unsolved case with no known motive.</li>
     <li><strong>Weapon categories:</strong> "Firearm" includes all shootings including by police. "Stabbing" includes knife/sharp instrument. "Other" includes blunt force trauma, drowning, and burns.</li>
     <li><strong>Note on Gwynevere River Song:</strong> Shot by father Robert Wayne Mosher during a family dispute at their home. Grand jury declined to indict (no-billed), reportedly based on self-defense claim. Counted as identified suspect but excluded from solve-rate statistics.</li>
     <li><strong>Note on Kenne McFadden:</strong> Mark Daniel Lewis was indicted for manslaughter after admitting he pushed McFadden into the San Antonio River. Prosecutors presented all evidence at a probation revocation hearing; the judge ruled the conduct was not criminal, and due to double jeopardy the case could not proceed to a criminal trial. Counted as "Charges Dismissed."</li>
     <li><strong>Note on TeeTee Dangerfield:</strong> Tyrone Kemp was charged with malice murder but acquitted by a jury in November 2021. Because Kemp was cleared, the case is counted as unsolved — the actual killer has not been identified.</li>
-    <li><strong>Note on Ava Le'Ray Barrin:</strong> Jalen Breon Brown was charged with murder and aggravated assault. In May 2018, Judge Eric Norris granted a self-defense immunity motion and dismissed all charges. Counted as "Charges Dismissed."</li>
+    <li><strong>Note on Ava Le'Ray Barrin:</strong> Jalen Breon Brown was charged with murder and aggravated assault. In late July 2018, Judge Eric Norris granted a self-defense immunity motion and dismissed all charges. Counted as "Charges Dismissed."</li>
     <li><strong>Note on Kashmire Nazier Redd:</strong> Doris Carrasquillo was charged with first-degree manslaughter but cleared by a jury that found she acted in self-defense.</li>
   </ul>
 </div>
@@ -337,8 +337,8 @@ const cases = [
   },
   {
     num: 3, name: "Jamie Lee Wounded Arrow", age: 28, vRace: "Native American", gender: "Two-Spirit / Trans woman",
-    date: "Jan 6, 2017", location: "Sioux Falls, SD", cause: "Stabbing",
-    summary: "Found dead in her apartment with multiple stab wounds. Oglala Lakota tribal member. Joshua LeClaire was caught via security footage entering her apartment; he later pleaded guilty and was sentenced to 65 years.",
+    date: "Jan 1, 2017", location: "Sioux Falls, SD", cause: "Stabbing",
+    summary: "Found dead in her apartment with multiple stab wounds on New Year's Day. Oglala Lakota tribal member. Joshua LeClaire was caught via security footage entering her apartment; he pleaded guilty and was sentenced to 65 years.",
     suspect: "Joshua Rayvon LeClaire", sRace: "Native American", sGender: "Male",
     sAge: "25",
     status: "Convicted (65 years)", police: "No", bias: "Unknown",
@@ -348,7 +348,7 @@ const cases = [
   {
     num: 4, name: "JoJo Striker", age: 23, vRace: "Black", gender: "Trans woman",
     date: "Feb 8, 2017", location: "Toledo, OH", cause: "Firearm",
-    summary: "Found fatally shot in a vacant garage on Austin Street. DNA evidence led to Antonio Scott Jr., who was 15 at the time of the killing. Arrested in 2022 by U.S. Marshals; convicted of murder and sentenced to life with parole eligibility after 15 years.",
+    summary: "Found fatally shot in a vacant garage on Austin Street. DNA evidence led to Antonio Scott Jr., who was 15 at the time of the killing. Arrested in 2022 by U.S. Marshals; convicted of murder and sentenced to life with parole eligibility after 15 years. Scott was acquitted on a second murder charge.",
     suspect: "Antonio Scott Jr.", sRace: "Black", sGender: "Male",
     sAge: "15",
     status: "Convicted (life, parole after 15 yrs)", police: "No", bias: "Suspected",
@@ -368,7 +368,7 @@ const cases = [
   {
     num: 6, name: "Tiara Richmond (Keke Collier)", age: 24, vRace: "Black", gender: "Trans woman",
     date: "Feb 21, 2017", location: "Chicago, IL", cause: "Firearm",
-    summary: "Fatally shot on the South Side of Chicago. Had survived a previous shooting in January 2017. No arrests have been made.",
+    summary: "Fatally shot on the South Side of Chicago. No arrests have been made.",
     suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
     sAge: "—",
     status: "Unsolved", police: "No", bias: "Unknown",
@@ -386,7 +386,7 @@ const cases = [
     sourceLabel: "NOLA.com"
   },
   {
-    num: 8, name: "Ciara McElveen", age: 26, vRace: "Black", gender: "Trans woman",
+    num: 8, name: "Ciara McElveen", age: 25, vRace: "Black", gender: "Trans woman",
     date: "Feb 27, 2017", location: "New Orleans, LA", cause: "Stabbing",
     summary: "Fatally stabbed and dragged from a vehicle in the 7th Ward of New Orleans, just two days after Chyna Gibson's murder in the same city. Leonard Ward, 55, was named a person of interest in April 2017. In July 2018, NOPD obtained a murder warrant for Ward, but it is unclear whether he was ever taken into custody.",
     suspect: "Leonard Ward (warrant issued)", sRace: "Unknown", sGender: "Male",
@@ -398,7 +398,7 @@ const cases = [
   {
     num: 9, name: "Alphonza Watson", age: 38, vRace: "Black", gender: "Trans woman",
     date: "Mar 22, 2017", location: "Baltimore, MD", cause: "Firearm",
-    summary: "Shot and killed in northeast Baltimore. Her mother said Watson had recently talked about threats. No arrests have been made.",
+    summary: "Shot and killed in north-central Baltimore near 2400 Guilford Avenue. Her mother said Watson had recently talked about threats. No arrests have been made.",
     suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
     sAge: "—",
     status: "Unsolved", police: "No", bias: "Unknown",
@@ -406,7 +406,7 @@ const cases = [
     sourceLabel: "Baltimore Sun"
   },
   {
-    num: 10, name: "Kenne McFadden", age: 27, vRace: "Black", gender: "Trans woman",
+    num: 10, name: "Kenne McFadden", age: 26, vRace: "Black", gender: "Trans woman",
     date: "Apr 9, 2017", location: "San Antonio, TX", cause: "Drowning (pushed into river)",
     summary: "Found dead in the San Antonio River near the Riverwalk. Mark Daniel Lewis told police that McFadden, who was heavily intoxicated, kissed him and he pushed McFadden away into the water. McFadden, who could not swim, drowned. Lewis was indicted for manslaughter, but prosecutors presented evidence at a probation revocation hearing; the judge found the conduct was not criminal, and due to double jeopardy the case could not proceed to trial.",
     suspect: "Mark Daniel Lewis", sRace: "White", sGender: "Male",
@@ -418,7 +418,7 @@ const cases = [
   {
     num: 11, name: "Chay Reed", age: 28, vRace: "Black", gender: "Trans woman",
     date: "Apr 21, 2017", location: "Miami, FL", cause: "Firearm",
-    summary: "Shot and killed in the Liberty City neighborhood of Miami. No arrests have been made.",
+    summary: "Shot and killed in the West Little River neighborhood of Miami. No arrests have been made.",
     suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
     sAge: "—",
     status: "Unsolved", police: "No", bias: "Unknown",
@@ -437,8 +437,8 @@ const cases = [
   },
   {
     num: 13, name: "Sherrell Faulkner", age: 46, vRace: "Black", gender: "Trans woman",
-    date: "May 16, 2017", location: "Charlotte, NC", cause: "Blunt force (Nov 2016 attack)",
-    summary: "Died from injuries sustained in a November 2016 beating. Had been in declining health for months after the attack. No arrests have been made.",
+    date: "May 16, 2017", location: "Charlotte, NC", cause: "Firearm (Nov 2016 attack)",
+    summary: "Died May 16, 2017 from injuries sustained in a November 2016 shooting. She had suffered a gunshot wound to the head and had been in declining health for months after the attack. No arrests have been made.",
     suspect: "Unknown", sRace: "Unknown", sGender: "Unknown",
     sAge: "—",
     status: "Unsolved", police: "No", bias: "Unknown",
@@ -448,17 +448,17 @@ const cases = [
   {
     num: 14, name: "Kendra Marie Adams", age: 28, vRace: "Hispanic", gender: "Trans woman",
     date: "Jun 13, 2017", location: "Ithaca, NY", cause: "Stabbing / burns",
-    summary: "Found dead with burns in a building under construction near Cornell University, next to a can of gasoline. Michael Davis, who had a personal relationship with Adams, was identified via surveillance video and arrested the same day. He pleaded guilty and received 25 years.",
+    summary: "Found dead with burns in a building under construction near Cornell University, next to a can of gasoline. Michael Davis, who had a personal relationship with Adams, was identified via surveillance video and arrested the same day. He pleaded guilty and received 25 years to life.",
     suspect: "Michael A. Davis", sRace: "Black", sGender: "Male",
     sAge: "45",
-    status: "Convicted (25 years)", police: "No", bias: "No Evidence",
+    status: "Convicted (25 years to life)", police: "No", bias: "No Evidence",
     source: "https://www.ithacajournal.com/in-depth/news/local/2019/06/12/josie-berrios-ithaca-murder-arson-domestic-violence-michael-davis/2568393002/",
     sourceLabel: "Ithaca Journal"
   },
   {
     num: 15, name: "Ava Le'Ray Barrin", age: 17, vRace: "Black", gender: "Trans woman",
     date: "Jun 25, 2017", location: "Athens, GA", cause: "Firearm",
-    summary: "Shot in the chest during an altercation in an apartment parking lot. The youngest trans murder victim of 2017. Jalen Brown, an acquaintance who also identified as transgender, claimed self-defense. In May 2018, Judge Eric Norris dismissed the murder charge after granting a self-defense immunity motion, ruling a reasonable person in Brown's situation would have believed the shooting was necessary to prevent death or great bodily harm.",
+    summary: "Shot in the chest during an altercation in an apartment parking lot. The youngest trans murder victim of 2017. Jalen Brown, an acquaintance who also identified as transgender, claimed self-defense. In late July 2018, Judge Eric Norris dismissed the murder charge after granting a self-defense immunity motion, ruling a reasonable person in Brown's situation would have believed the shooting was necessary to prevent death or great bodily harm.",
     suspect: "Jalen Breon Brown", sRace: "Black", sGender: "Trans",
     sAge: "Unknown",
     status: "Dismissed (self-defense immunity)", police: "No", bias: "No Evidence",
@@ -468,7 +468,7 @@ const cases = [
   {
     num: 16, name: "Ebony Morgan", age: 28, vRace: "Black", gender: "Trans woman",
     date: "Jul 2, 2017", location: "Lynchburg, VA", cause: "Firearm",
-    summary: "Shot multiple times in the early morning hours on Rivermont Avenue. Kenneth Allen Kelley Jr. was named a person of interest, then charged with second-degree murder after being arrested in October 2017. He pleaded guilty in February 2018 and was sentenced to 20 years effective imprisonment (40 years with 23 suspended, plus 3 years mandatory for the firearm).",
+    summary: "Shot multiple times in the early morning hours on Rivermont Avenue. Note: Morgan told officials she identified as male. Kenneth Allen Kelley Jr. was named a person of interest, then charged with second-degree murder after being arrested in October 2017. He pleaded guilty in February 2018 and was sentenced to 20 years effective imprisonment (40 years with 23 suspended, plus 3 years mandatory for the firearm).",
     suspect: "Kenneth Allen Kelley Jr.", sRace: "Black", sGender: "Male",
     sAge: "22",
     status: "Convicted (20 years)", police: "No", bias: "Suspected",
@@ -507,7 +507,7 @@ const cases = [
   },
   {
     num: 20, name: "Kashmire Nazier Redd", age: 28, vRace: "Black", gender: "Trans man",
-    date: "Sep 5, 2017", location: "Gates, NY", cause: "Stabbing",
+    date: "Sep 4, 2017", location: "Gates, NY", cause: "Stabbing",
     summary: "Fatally stabbed during a domestic dispute. His partner, Doris Carrasquillo, was initially charged with first-degree manslaughter. At trial, the jury found she acted in self-defense and cleared her of all charges.",
     suspect: "Doris Carrasquillo", sRace: "Hispanic", sGender: "Female",
     sAge: "Unknown",
@@ -528,7 +528,7 @@ const cases = [
   {
     num: 22, name: "Ally Steinfeld", age: 17, vRace: "White", gender: "Trans woman",
     date: "Sep 3, 2017", location: "Cabool, MO", cause: "Stabbing",
-    summary: "Killed and mutilated by acquaintances at a home in rural Missouri. Andrew Vrba was convicted and sentenced to life without parole. Co-defendants Isis Schauer (20 yrs), Briana Calderas (8 yrs), and James Grigsby (4 yrs) also pleaded guilty.",
+    summary: "Killed and mutilated by acquaintances at a home in rural Missouri. Andrew Vrba was convicted and sentenced to life without parole. Co-defendants Isis Schauer (female, 20 yrs), Briana Calderas (female, 8 yrs), and James Grigsby (male, 4 yrs) also pleaded guilty.",
     suspect: "Andrew Vrba (+ 3 co-defendants)", sRace: "White", sGender: "Male",
     sAge: "18",
     status: "Convicted (life without parole)", police: "No", bias: "Suspected",
@@ -538,7 +538,7 @@ const cases = [
   {
     num: 23, name: "Scout Schultz", age: 21, vRace: "White", gender: "Non-binary / intersex",
     date: "Sep 16, 2017", location: "Atlanta, GA", cause: "Firearm (police)",
-    summary: "Shot and killed by Georgia Tech campus police after Schultz approached officers while holding a multi-tool and refused to drop it. Suicide notes were found. Schultz was president of the campus Pride Alliance.",
+    summary: "Shot and killed by Georgia Tech campus police after Schultz approached officers while holding a multi-tool and refused to drop it. Suicide notes were found; the incident has been widely described as suicide-by-cop. Schultz was president of the campus Pride Alliance.",
     suspect: "Georgia Tech Police officer", sRace: "N/A", sGender: "N/A",
     sAge: "N/A",
     status: "Police killing", police: "Yes", bias: "No Evidence",
@@ -571,7 +571,7 @@ const cases = [
     summary: "Shot and killed at a motel in Oklahoma City. Brandon Michael Tyson, a documented Aryan Brotherhood member, was arrested and charged with first-degree murder. He pleaded guilty in April 2019 and was sentenced to life in prison without parole. The judge told Tyson to 'pray for your salvation.' Prosecutors said the two had sex before the shooting; Tyson's claim of being attacked was unsupported.",
     suspect: "Brandon Michael Tyson", sRace: "White", sGender: "Male",
     sAge: "31",
-    status: "Convicted (life without parole)", police: "No", bias: "Confirmed (white supremacist)",
+    status: "Convicted (life without parole)", police: "No", bias: "Suspected (Aryan Brotherhood member; no hate crime charged)",
     source: "https://okcfox.com/news/local/oklahoma-man-convicted-of-killing-transgender-woman",
     sourceLabel: "OKC Fox"
   },
@@ -588,7 +588,7 @@ const cases = [
   {
     num: 28, name: "Jaylow McGlory", age: 29, vRace: "Black", gender: "Trans woman",
     date: "Aug 4, 2017", location: "Alexandria, LA", cause: "Firearm",
-    summary: "Shot twice during a domestic dispute at their shared duplex on Monroe Street. Her partner Desmond Harris, 20, was charged with second-degree murder. At trial, Harris testified McGlory threatened to rape him and had a gun; Harris grabbed the weapon and it discharged. A neighbor testified she heard the couple arguing before hearing two gunshots, and McGlory came to her door bleeding. The jury found Harris not guilty.",
+    summary: "Shot twice during a domestic dispute at their shared duplex on Monroe Street. Her partner Desmond Harris, 20, was charged with second-degree murder. At trial, Harris testified McGlory threatened to rape him and had a gun; Harris grabbed the weapon and it discharged. A neighbor testified she heard the couple arguing before hearing two gunshots, and McGlory came to her door bleeding. The defense invoked a trans panic argument. The jury found Harris not guilty.",
     suspect: "Desmond Donte Harris", sRace: "Black", sGender: "Male",
     sAge: "20",
     status: "Acquitted (self-defense)", police: "No", bias: "No Evidence (domestic violence)",

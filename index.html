@@ -848,24 +848,22 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
 <div class="chart-card" style="border:2px solid #e8a838">
   <div class="chart-title">Chart M: Victim Biological Sex</div>
   <div class="chart-sub">All 304 victims coded by biological sex at birth based on transgender identity classification. Transgender women and biological males living as women = biological male. Transgender men and biological females living as men = biological female. Nonbinary/gender-nonconforming victims with unconfirmed birth sex = unclassified. 2015&ndash;2024.</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:12px 0">
-    <div class="chart-wrap" style="max-width:400px;margin:0 auto;height:300px"><canvas id="chartM"></canvas></div>
-    <div style="display:flex;flex-direction:column;justify-content:center;gap:12px">
-      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;text-align:center">
-        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#1a1a2e">281</div>
-        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Biological Male</div>
-        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">92.4% &middot; Trans women / biological males living as women</div>
-      </div>
-      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;text-align:center">
-        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#c1121f">20</div>
-        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Biological Female</div>
-        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">6.6% &middot; Trans men / biological females living as men</div>
-      </div>
-      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;text-align:center">
-        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#999">3</div>
-        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Unclassified</div>
-        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">1.0% &middot; NB with unconfirmed birth sex</div>
-      </div>
+  <div class="chart-wrap" style="max-width:480px;margin:0 auto"><canvas id="chartM"></canvas></div>
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0 0">
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#1a1a2e">281</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Biological Male</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">92.4% &middot; Trans women</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#c1121f">20</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Biological Female</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">6.6% &middot; Trans men</div>
+    </div>
+    <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:14px 16px;flex:1;min-width:110px;text-align:center">
+      <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:28px;font-weight:800;line-height:1;color:#999">3</div>
+      <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Unclassified</div>
+      <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">1.0% &middot; Nonbinary</div>
     </div>
   </div>
   <div class="note-box" style="border-color:#e8a838"><strong>Key Finding: Why This Matters:</strong> 92.4% of all victims in this dataset are biological males (transgender women). Combined with Chart L (Identified Suspect Biological Sex), which shows 90.3% of identified suspects are male, the picture is unambiguous: <strong>this is overwhelmingly biological males killing biological males.</strong> That is the single most common homicide pattern in the United States. The FBI&rsquo;s Supplementary Homicide Reports consistently show that approximately 90% of homicide offenders and 78% of homicide victims are male. This dataset mirrors that pattern almost exactly. There is nothing unique, transgender-specific, or &ldquo;epidemic&rdquo; about the sex dynamics of this violence. It is the same male-on-male violence that drives American homicide generally, occurring within the same racial patterns (intraracial), through similar interpersonal circumstances (intimate partner violence, disputes, sex work encounters), at rates <em>below</em> those of non-transgender men of the same age and race.<br><br>Prior research (Dinno&nbsp;2017) compared these biological male victims&rsquo; homicide rate to non-transgender <em>women</em>, producing an alarming 2.3&times; multiplier that institutions cited as evidence of a transgender-specific crisis. But the biologically appropriate comparison is non-transgender <em>men</em> of the same age and race. Dinno&rsquo;s own paper reports the rate for Black non-transgender men aged 15&ndash;34: 367 per 100,000. The rate for biological males living as women of 95.1 per 100,000 is not elevated above the male baseline. It is approximately one quarter of it, nearly four times <em>lower</em>. The &ldquo;epidemic&rdquo; framing was built on a comparison that conflated gender identity with biological sex. The male rate appears in the same published paper.</div>
@@ -1105,6 +1103,7 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
 <div style="display:flex;justify-content:center;gap:48px;margin:28px 0;flex-wrap:wrap">
   <div style="text-align:center">
     <a href="https://www.tallahassee.com/story/news/local/2020/09/26/malik-jackson-family-sues-city-over-video-showing-his-last-moments/3547196001/" target="_blank" style="text-decoration:none">
+      <div style="display:inline-block;background:#2d6a4f;color:#fff;font-size:11px;font-weight:800;padding:4px 14px;border-radius:4px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Victim</div>
       <img src="malik-jackson.jpg" style="width:200px;height:240px;object-fit:cover;object-position:top;border-radius:12px;border:3px solid #2d6a4f;display:block;margin:0 auto 12px" alt="Malik Jackson, age 21">
       <div style="color:#fff;font-weight:700;font-size:16px">Malik Jackson</div>
       <div style="color:#999;font-size:13px">1999&ndash;2020 &middot; Age 21</div>
@@ -1113,6 +1112,7 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
   </div>
   <div style="text-align:center">
     <a href="https://www.tallahassee.com/story/news/local/2020/06/02/natosha-tony-mcdade-tallahasssee-protests-protest-mental-illness-fatal-stabbing-police-shooting/5300384002/" target="_blank" style="text-decoration:none">
+      <div style="display:inline-block;background:#c1121f;color:#fff;font-size:11px;font-weight:800;padding:4px 14px;border-radius:4px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px">Killer</div>
       <img src="tony-mcdade.jpg" style="width:200px;height:240px;object-fit:cover;object-position:top;border-radius:12px;border:3px solid #c1121f;display:block;margin:0 auto 12px" alt="Tony McDade, Florida Department of Corrections">
       <div style="color:#fff;font-weight:700;font-size:16px">Tony McDade</div>
       <div style="color:#999;font-size:13px">1982&ndash;2020 &middot; Age 38</div>
@@ -1700,8 +1700,10 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
     </table>
     </div>
 
-    <div class="acad-highlight">
-      <strong>Kamala Harris and implicit bias training:</strong> In 2015, AG Kamala Harris launched the nation&rsquo;s <a href="https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-kicks-first-its-kind-law-enforcement-training" target="_blank" style="color:#e8a838">first-of-its-kind implicit bias training program for law enforcement</a>, requiring the California Department of Justice to integrate bias awareness into police training statewide. This follows a familiar pattern: institutions diagnose &ldquo;bias&rdquo; as the cause of racial disparities in arrest data, launch high-profile interventions, and the numbers don&rsquo;t move. Hispanic individuals led California homicide arrests before Harris&rsquo;s training (2000&ndash;2014), during it (2015&ndash;2016), and for the entire decade after it (2017&ndash;2024). The rank order never changed. The gaps never closed. If racially biased policing were manufacturing these patterns, a statewide implicit bias intervention overseen by one of the most progressive AGs in the country would have produced <em>some</em> measurable shift. It didn&rsquo;t, because the data was never reflecting bias. It was reflecting offending.
+    <div class="acad-highlight" style="border-left-color:#c1121f;background:#fef2f2">
+      <strong>What the data means about Kamala Harris and implicit bias training:</strong> As California Attorney General from 2011 to 2017, Kamala Harris had direct access to the data shown above. Every annual <em>Crime in California</em> report published during her tenure showed the same pattern: Hispanic individuals leading homicide arrests, Black individuals second at over four times their population share, White individuals underrepresented. This data was compiled by her own office. In 2015, rather than acknowledging what her own data showed, Harris launched the nation&rsquo;s <a href="https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-kicks-first-its-kind-law-enforcement-training" target="_blank" style="color:#e8a838">first-of-its-kind implicit bias training program for law enforcement</a>, diagnosing the racial disparities in arrest data as a product of police bias. The premise was clear: if officers were trained to recognize their unconscious biases, the racial gaps in arrest data would narrow.<br><br>
+      They did not narrow. They did not change at all. Hispanic individuals led California homicide arrests before the training (2000&ndash;2014), during it (2015&ndash;2016), and for the entire decade after it (2017&ndash;2024). The rank order never shifted. The ratios never moved. Twenty-four consecutive years of data, spanning five Democratic attorneys general, producing the identical pattern before, during, and after the most high-profile implicit bias intervention in the country.<br><br>
+      The training did not fail because it was poorly implemented. It failed because it was treating the wrong disease. The data was never reflecting police bias. It was reflecting who was committing homicide. Harris had the evidence in her own annual reports. She diagnosed bias anyway, launched a national model based on that diagnosis, and the data her own office published every year continued to show exactly what it had always shown. The pattern did not change because there was nothing to change. It was not bias. It was reality.
     </div>
 
     <h4>Disproportionality: Population Share vs. Arrest Share</h4>
@@ -4462,11 +4464,38 @@ function toggleAcad(btn) {
   body.classList.toggle('acad-show');
   if(body.classList.contains('acad-show')){
     setTimeout(function(){
+      // Reveal scroll-animated elements
       body.querySelectorAll('.scroll-reveal:not(.scroll-visible)').forEach(function(el){
         el.classList.add('scroll-visible');
         if(window._revealChartInElement) window._revealChartInElement(el);
       });
-    },100);
+      // Resize and animate any charts that were hidden during page load
+      if(typeof Chart !== 'undefined'){
+        body.querySelectorAll('canvas').forEach(function(canvas){
+          if(!canvas.id) return;
+          var instances = Object.values(Chart.instances);
+          for(var i=0;i<instances.length;i++){
+            if(instances[i].canvas && instances[i].canvas.id === canvas.id){
+              var c = instances[i];
+              c.resize();
+              // If chart still has original data (wasn't zeroed), replay animation
+              if(!c._originalData){
+                var origData = c.data.datasets.map(function(ds){ return ds.data.slice(); });
+                c.data.datasets.forEach(function(ds){ ds.data = ds.data.map(function(){ return 0; }); });
+                c.options.animation = false;
+                c.update('none');
+                setTimeout(function(){
+                  c.data.datasets.forEach(function(ds, idx){ ds.data = origData[idx]; });
+                  c.options.animation = { duration: 900, easing: 'easeOutQuart' };
+                  c.update('normal');
+                },50);
+              }
+              break;
+            }
+          }
+        });
+      }
+    },150);
   }
 }
 </script>
@@ -4590,7 +4619,32 @@ function toggleObj(el){
         e.classList.add('scroll-visible');
         if(window._revealChartInElement) window._revealChartInElement(e);
       });
-    },100);
+      // Resize and animate charts that were hidden
+      if(typeof Chart !== 'undefined'){
+        content.querySelectorAll('canvas').forEach(function(canvas){
+          if(!canvas.id) return;
+          var instances = Object.values(Chart.instances);
+          for(var i=0;i<instances.length;i++){
+            if(instances[i].canvas && instances[i].canvas.id === canvas.id){
+              var c = instances[i];
+              c.resize();
+              if(!c._originalData){
+                var origData = c.data.datasets.map(function(ds){ return ds.data.slice(); });
+                c.data.datasets.forEach(function(ds){ ds.data = ds.data.map(function(){ return 0; }); });
+                c.options.animation = false;
+                c.update('none');
+                setTimeout(function(){
+                  c.data.datasets.forEach(function(ds, idx){ ds.data = origData[idx]; });
+                  c.options.animation = { duration: 900, easing: 'easeOutQuart' };
+                  c.update('normal');
+                },50);
+              }
+              break;
+            }
+          }
+        });
+      }
+    },150);
   } else {
     content.classList.add('obj-hidden');
     el.classList.add('obj-collapsed');

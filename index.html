@@ -486,6 +486,23 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
 .suspects-2020-row>div div[style*="font-size:14px"]{font-size:11px !important}
 .suspects-2020-row>div[style*="border:3px solid"]{padding:4px 2px !important;border-width:2px !important}
 }
+
+/* ===== SCROLL-TRIGGERED ANIMATIONS ===== */
+.scroll-reveal{opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)}
+.scroll-reveal.scroll-visible{opacity:1;transform:translateY(0)}
+.scroll-reveal-delay-1{transition-delay:0.1s}
+.scroll-reveal-delay-2{transition-delay:0.2s}
+.scroll-reveal-delay-3{transition-delay:0.3s}
+/* Stagger stat boxes */
+.stats-row .stat-box{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)}
+.stats-row .stat-box.scroll-visible{opacity:1;transform:translateY(0)}
+.stats-row .stat-box:nth-child(1){transition-delay:0s}
+.stats-row .stat-box:nth-child(2){transition-delay:0.08s}
+.stats-row .stat-box:nth-child(3){transition-delay:0.16s}
+.stats-row .stat-box:nth-child(4){transition-delay:0.24s}
+.stats-row .stat-box:nth-child(5){transition-delay:0.32s}
+/* Disable scroll animations for users who prefer reduced motion */
+@media(prefers-reduced-motion:reduce){.scroll-reveal,.stats-row .stat-box{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -4443,6 +4460,14 @@ function toggleAcad(btn) {
   const body = btn.nextElementSibling;
   btn.classList.toggle('acad-open');
   body.classList.toggle('acad-show');
+  if(body.classList.contains('acad-show')){
+    setTimeout(function(){
+      body.querySelectorAll('.scroll-reveal:not(.scroll-visible)').forEach(function(el){
+        el.classList.add('scroll-visible');
+        if(window._revealChartInElement) window._revealChartInElement(el);
+      });
+    },100);
+  }
 }
 </script>
 
@@ -4560,6 +4585,12 @@ function toggleObj(el){
   if(content.classList.contains('obj-hidden')){
     content.classList.remove('obj-hidden');
     el.classList.remove('obj-collapsed');
+    setTimeout(function(){
+      content.querySelectorAll('.scroll-reveal:not(.scroll-visible)').forEach(function(e){
+        e.classList.add('scroll-visible');
+        if(window._revealChartInElement) window._revealChartInElement(e);
+      });
+    },100);
   } else {
     content.classList.add('obj-hidden');
     el.classList.add('obj-collapsed');
@@ -4625,6 +4656,60 @@ if(localStorage.getItem('darkMode')==='1'){
     },500);
   });
 }
+
+// ========== SCROLL-TRIGGERED ANIMATIONS ==========
+(function(){
+  // Disable all chart animations retroactively and store originals
+  var chartMap = {};
+  if(typeof Chart !== 'undefined'){
+    Object.values(Chart.instances).forEach(function(c){
+      if(c.canvas && c.canvas.id){
+        chartMap[c.canvas.id] = c;
+        // Hide chart data by setting it to zero, we'll restore on scroll
+        c._originalData = c.data.datasets.map(function(ds){ return ds.data.slice(); });
+        c.data.datasets.forEach(function(ds){
+          ds.data = ds.data.map(function(){ return 0; });
+        });
+        c.options.animation = false;
+        c.update('none');
+      }
+    });
+  }
+
+  // Add scroll-reveal class to elements
+  var selectors = '.chart-card, .note-box, .method-section, .year-card, .obj-stat-box, .dispro-cards > div, .suspects-2020-box, .principal-findings, .acad-highlight';
+  document.querySelectorAll(selectors).forEach(function(el){ el.classList.add('scroll-reveal'); });
+  document.querySelectorAll('.stats-row .stat-box').forEach(function(el){ el.classList.add('scroll-reveal'); });
+
+  function revealChartInElement(el){
+    var canvas = el.querySelector('canvas');
+    if(!canvas || !canvas.id || !chartMap[canvas.id]) return;
+    var c = chartMap[canvas.id];
+    if(!c._originalData) return;
+    // Restore real data with animation
+    c.data.datasets.forEach(function(ds, i){
+      ds.data = c._originalData[i];
+    });
+    c.options.animation = { duration: 900, easing: 'easeOutQuart' };
+    c.update('normal');
+    delete c._originalData;
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('scroll-visible');
+        revealChartInElement(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  },{ threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.scroll-reveal').forEach(function(el){ observer.observe(el); });
+
+  // Expose for accordion/objection toggles
+  window._revealChartInElement = revealChartInElement;
+})();
 </script>
 
 </body>

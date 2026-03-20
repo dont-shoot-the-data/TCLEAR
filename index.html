@@ -2030,8 +2030,8 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
     <p>More than half of &ldquo;very liberal&rdquo; respondents believed 1,000 or more unarmed Black men were killed by police in a single year. More than one in five believed the number was 10,000 or higher. The researchers described this as &ldquo;a likely error of at least an order of magnitude.&rdquo; The actual number, according to the <a href="https://www.washingtonpost.com/graphics/investigations/police-shootings-database/" target="_blank" style="color:#e8a838">Washington Post Fatal Force database</a> (described by <em>Nature</em> as the &ldquo;most complete database&rdquo; on police shootings): <strong>13 unarmed Black men</strong> were fatally shot by police in 2019. This study uses the same database across the identical 2015&ndash;2024 window:</p>
 
     <div class="chart-card" style="margin:16px 0">
-      <div class="chart-title">Unarmed Fatal Police Shootings by Race/Ethnicity, 2015&ndash;2024</div>
-      <div class="chart-sub">Source: <a href="https://www.washingtonpost.com/graphics/investigations/police-shootings-database/" target="_blank" style="color:#e8a838">Washington Post Fatal Force Database</a>. Filtered for unarmed subjects only. Same 10-year period as this study.</div>
+      <div class="chart-title">Unarmed Fatal Police Shootings by Race vs. Officers Killed by Gunfire, 2015&ndash;2024</div>
+      <div class="chart-sub">Source: <a href="https://www.washingtonpost.com/graphics/investigations/police-shootings-database/" target="_blank" style="color:#e8a838">Washington Post Fatal Force Database</a>. Filtered for unarmed subjects only. Officer deaths: <a href="https://www.odmp.org/search/year" target="_blank" style="color:#e8a838">Officer Down Memorial Page</a> (gunfire only). Same 10-year period as this study.</div>
       <div class="chart-wrap"><canvas id="chartPolice"></canvas></div>
     </div>
 
@@ -2065,6 +2065,8 @@ body.dark-mode [style*="border:4px solid #000000"][style*="max-width:220px"] [st
     <div class="acad-highlight">
       <strong>Key point:</strong> The claim that police kill 10,000 unarmed Black people a year overstates the actual figure by a factor of approximately 556. The Washington Post database, covering the identical 2015&ndash;2024 window as this study, documents 180 total unarmed Black police shooting fatalities in ten years. The per-capita overrepresentation exists but follows directly from the same disproportionate violent crime involvement that explains the suspect demographics in this study. Inflating the police shooting numbers by orders of magnitude serves the same function as attributing transgender homicides to White supremacy: it substitutes narrative for data.
     </div>
+
+    <div class="note-box" style="border-color:#2d6a4f"><strong>Officers killed by gunfire (dashed green line):</strong> The chart above includes officers killed by gunfire each year (source: Officer Down Memorial Page). In every single year from 2015 to 2024, more officers were killed by gunfire than unarmed Black people were killed by police. The 10-year totals: 524 officers killed by gunfire vs. 180 unarmed Black people killed by police. Officers were killed at a rate of 2.9 for every 1 unarmed Black person killed. The public perception that police are systematically executing unarmed Black people coexists with the reality that officers are being killed by gunfire at a higher rate than they are killing unarmed people of any single race.</div>
 
     <h4>T-CLEAR: Police and Security Guard Killings of Transgender People</h4>
 
@@ -4333,6 +4335,23 @@ new Chart(document.getElementById('chartPolice'), {
         tension: 0.1,
         borderDash: [5, 3],
         fill: false
+      },
+      {
+        label: 'Officers Killed by Gunfire',
+        data: [41, 64, 45, 52, 52, 47, 63, 63, 48, 49],
+        borderColor: '#2d6a4f',
+        backgroundColor: '#2d6a4f',
+        _labelColor: '#2d6a4f',
+        pointBackgroundColor: '#2d6a4f',
+        pointBorderColor: '#2d6a4f',
+        pointHoverBackgroundColor: '#2d6a4f',
+        pointHoverBorderColor: '#2d6a4f',
+        borderWidth: 3,
+        pointRadius: 6,
+        pointHoverRadius: 8,
+        tension: 0.1,
+        borderDash: [8, 4],
+        fill: false
       }
     ]
   },
@@ -4352,7 +4371,7 @@ new Chart(document.getElementById('chartPolice'), {
       }
     },
     scales: {
-      y: { beginAtZero: true, max: 42, title: { display: true, text: 'Unarmed Fatal Shootings', font: { size: 11 } }, ticks: { stepSize: 5 } },
+      y: { beginAtZero: true, max: 70, title: { display: true, text: 'Deaths per Year', font: { size: 11 } }, ticks: { stepSize: 10 } },
       x: { title: { display: true, text: 'Year', font: { size: 11 } } }
     },
     interaction: { mode: 'nearest', axis: 'x', intersect: false }
@@ -4491,12 +4510,11 @@ function toggleAcad(btn) {
   body.classList.toggle('acad-show');
   if(body.classList.contains('acad-show')){
     setTimeout(function(){
-      // Reveal scroll-animated elements
+      // Reveal scroll-animated elements (fade in only, no chart restore here)
       body.querySelectorAll('.scroll-reveal:not(.scroll-visible)').forEach(function(el){
         el.classList.add('scroll-visible');
-        if(window._revealChartInElement) window._revealChartInElement(el);
       });
-      // Resize and animate any charts that were hidden during page load
+      // Resize and animate all charts inside this section
       if(typeof Chart !== 'undefined'){
         body.querySelectorAll('canvas').forEach(function(canvas){
           if(!canvas.id) return;
@@ -4505,17 +4523,33 @@ function toggleAcad(btn) {
             if(instances[i].canvas && instances[i].canvas.id === canvas.id){
               var c = instances[i];
               c.resize();
-              // If chart still has original data (wasn't zeroed), replay animation
-              if(!c._originalData){
+              if(c._originalData){
+                // Chart was zeroed on page load - restore with grow animation
+                var saved = c._originalData;
+                delete c._originalData;
+                c.data.datasets.forEach(function(ds){ ds.data = ds.data.map(function(){ return 0; }); });
+                c.options.animation = false;
+                c.update('none');
+                setTimeout((function(chart, data){
+                  return function(){
+                    chart.data.datasets.forEach(function(ds, idx){ ds.data = data[idx]; });
+                    chart.options.animation = { duration: 900, easing: 'easeOutQuart' };
+                    chart.update('normal');
+                  };
+                })(c, saved), 80);
+              } else {
+                // Chart already has data - zero then grow
                 var origData = c.data.datasets.map(function(ds){ return ds.data.slice(); });
                 c.data.datasets.forEach(function(ds){ ds.data = ds.data.map(function(){ return 0; }); });
                 c.options.animation = false;
                 c.update('none');
-                setTimeout(function(){
-                  c.data.datasets.forEach(function(ds, idx){ ds.data = origData[idx]; });
-                  c.options.animation = { duration: 900, easing: 'easeOutQuart' };
-                  c.update('normal');
-                },50);
+                setTimeout((function(chart, data){
+                  return function(){
+                    chart.data.datasets.forEach(function(ds, idx){ ds.data = data[idx]; });
+                    chart.options.animation = { duration: 900, easing: 'easeOutQuart' };
+                    chart.update('normal');
+                  };
+                })(c, origData), 80);
               }
               break;
             }
@@ -4644,9 +4678,7 @@ function toggleObj(el){
     setTimeout(function(){
       content.querySelectorAll('.scroll-reveal:not(.scroll-visible)').forEach(function(e){
         e.classList.add('scroll-visible');
-        if(window._revealChartInElement) window._revealChartInElement(e);
       });
-      // Resize and animate charts that were hidden
       if(typeof Chart !== 'undefined'){
         content.querySelectorAll('canvas').forEach(function(canvas){
           if(!canvas.id) return;
@@ -4655,16 +4687,31 @@ function toggleObj(el){
             if(instances[i].canvas && instances[i].canvas.id === canvas.id){
               var c = instances[i];
               c.resize();
-              if(!c._originalData){
+              if(c._originalData){
+                var saved = c._originalData;
+                delete c._originalData;
+                c.data.datasets.forEach(function(ds){ ds.data = ds.data.map(function(){ return 0; }); });
+                c.options.animation = false;
+                c.update('none');
+                setTimeout((function(chart, data){
+                  return function(){
+                    chart.data.datasets.forEach(function(ds, idx){ ds.data = data[idx]; });
+                    chart.options.animation = { duration: 900, easing: 'easeOutQuart' };
+                    chart.update('normal');
+                  };
+                })(c, saved), 80);
+              } else {
                 var origData = c.data.datasets.map(function(ds){ return ds.data.slice(); });
                 c.data.datasets.forEach(function(ds){ ds.data = ds.data.map(function(){ return 0; }); });
                 c.options.animation = false;
                 c.update('none');
-                setTimeout(function(){
-                  c.data.datasets.forEach(function(ds, idx){ ds.data = origData[idx]; });
-                  c.options.animation = { duration: 900, easing: 'easeOutQuart' };
-                  c.update('normal');
-                },50);
+                setTimeout((function(chart, data){
+                  return function(){
+                    chart.data.datasets.forEach(function(ds, idx){ ds.data = data[idx]; });
+                    chart.options.animation = { duration: 900, easing: 'easeOutQuart' };
+                    chart.update('normal');
+                  };
+                })(c, origData), 80);
               }
               break;
             }

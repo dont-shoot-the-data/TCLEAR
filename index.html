@@ -3896,7 +3896,7 @@ function openNYCSourcesModal() {
     { year: '2018', url: 'https://www.nyc.gov/assets/nypd/downloads/pdf/analysis_and_planning/year-end-2018-enforcement-report.pdf' },
     { year: '2017', url: 'https://www.nyc.gov/assets/nypd/downloads/pdf/analysis_and_planning/year-end-2017-enforcement-report.pdf' },
     { year: '2016', url: 'https://www.nyc.gov/assets/nypd/downloads/pdf/analysis_and_planning/year-end-2016-enforcement-report.pdf' },
-    { year: '2015', url: 'https://www.nyc.gov/assets/nypd/downloads/pdf/analysis_and_planning/year-end-2015-enforcement-report.pdf' }
+    { year: '2015', url: 'https://www.nyc.gov/assets/nypd/downloads/pdf/analysis_and_planning/year_end_2015_enforcement_report.pdf' }
   ];
   var html = '';
   nycSources.forEach(function(s, i) {
@@ -4144,15 +4144,39 @@ new Chart(document.getElementById('chartVADispro'), {
 
 // ========== VA Sources Modal (Objection 8) ==========
 function openVASourcesModal() {
-  var dartUrl = 'https://vsp.virginia.gov/sections-units-bureaus/bass/criminal-justice-information-services/uniform-crime-reporting/';
-  var vaYearList = [];
-  for (var y = 2024; y >= 2000; y--) { vaYearList.push(y); }
-  var html = vaYearList.map(function(y) {
-    return '<a href="' + dartUrl + '" target="_blank" style="display:flex;align-items:center;gap:12px;padding:10px 16px;text-decoration:none;border-bottom:1px solid #f0f0f0;transition:background 0.15s"' +
+  var vaLinks = [
+    { year: 2024, url: 'https://vsp.virginia.gov/wp-content/uploads/2025/12/Crime-In-Virginia-2024.pdf' },
+    { year: 2023, url: 'https://vsp.virginia.gov/wp-content/uploads/2024/08/CRIME-IN-VIRGINIA-2023.pdf' },
+    { year: 2022, url: 'https://vsp.virginia.gov/wp-content/uploads/2023/06/Crime-In-Virginia-2022.pdf' },
+    { year: 2021, url: 'https://vsp.virginia.gov/wp-content/uploads/2022/06/CrimeInVirginia2021.pdf' },
+    { year: 2020, url: 'https://vsp.virginia.gov/wp-content/uploads/2022/02/Crime_In_Virginia_2020.pdf' },
+    { year: 2019, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_In_Virginia_2019.pdf' },
+    { year: 2018, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2018.pdf' },
+    { year: 2017, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2017.pdf' },
+    { year: 2016, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2016.pdf' },
+    { year: 2015, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2015.pdf' },
+    { year: 2014, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2014.pdf' },
+    { year: 2013, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2013.pdf' },
+    { year: 2012, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2012.pdf' },
+    { year: 2011, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2011.pdf' },
+    { year: 2010, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2010.pdf' },
+    { year: 2009, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2009.pdf' },
+    { year: 2008, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2008.pdf' },
+    { year: 2007, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2007.pdf' },
+    { year: 2006, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2006.pdf' },
+    { year: 2005, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2005.pdf' },
+    { year: 2004, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2004.pdf' },
+    { year: 2003, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2003.pdf' },
+    { year: 2002, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2002.pdf' },
+    { year: 2001, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2001.pdf' },
+    { year: 2000, url: 'https://vsp.virginia.gov/wp-content/uploads/2021/08/Crime_in_Virginia_2000.pdf' }
+  ];
+  var html = vaLinks.map(function(item) {
+    return '<a href="' + item.url + '" target="_blank" style="display:flex;align-items:center;gap:12px;padding:10px 16px;text-decoration:none;border-bottom:1px solid #f0f0f0;transition:background 0.15s"' +
       ' onmouseover="this.style.background=\'#faf8f4\'" onmouseout="this.style.background=\'\'">' +
-      '<span style="font-family:\'DM Sans\',sans-serif;font-size:14px;font-weight:700;color:#e8a838;min-width:40px">' + y + '</span>' +
-      '<span style="font-size:12px;color:#555;flex:1">Crime in Virginia ' + y + '</span>' +
-      '<span style="font-size:10px;color:#aaa">DART &#8599;</span></a>';
+      '<span style="font-family:\'DM Sans\',sans-serif;font-size:14px;font-weight:700;color:#e8a838;min-width:40px">' + item.year + '</span>' +
+      '<span style="font-size:12px;color:#555;flex:1">Crime in Virginia ' + item.year + '</span>' +
+      '<span style="font-size:10px;color:#aaa">PDF &#8599;</span></a>';
   }).join('');
   document.getElementById('vaSourcesList').innerHTML = html;
   document.getElementById('vaSourcesModal').style.display = 'flex';

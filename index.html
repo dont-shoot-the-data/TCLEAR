@@ -2709,7 +2709,7 @@ var chartVictimDispro = new Chart(document.getElementById('chartVictimDispro'), 
           return dark?'#e6edf3':'#1a1a2e';
         },
         formatter: function(v, ctx) {
-          if (ctx.datasetIndex === 0) return ctx.dataset.rawCounts[ctx.dataIndex];
+          if (ctx.datasetIndex === 0) return v + '%';
           return v + '%';
         }
       }
@@ -2783,7 +2783,7 @@ var chartSuspectDispro = new Chart(document.getElementById('chartDispro'), {
           return dark?'#e6edf3':'#1a1a2e';
         },
         formatter: function(v, ctx) {
-          if (ctx.datasetIndex === 0) return ctx.dataset.rawCounts[ctx.dataIndex];
+          if (ctx.datasetIndex === 0) return v + '%';
           return v + '%';
         }
       }
@@ -4399,6 +4399,7 @@ function toggleChartAUnits(showCounts) {
   var track = dot.parentElement.querySelector('span:first-of-type');
   var lblPct = document.getElementById('lbl-pct');
   var lblHash = document.getElementById('lbl-hash');
+  // Visual: toggle slides right for #, left for %
   if (showCounts) {
     dot.style.left = '18px'; track.style.background = '#ccc';
     lblPct.style.color = '#999'; lblHash.style.color = '#e8a838';
@@ -4406,75 +4407,75 @@ function toggleChartAUnits(showCounts) {
     dot.style.left = '2px'; track.style.background = '#e8a838';
     lblPct.style.color = '#e8a838'; lblHash.style.color = '#999';
   }
-  // Update suspect chart
+
+  // SUSPECT CHART
   var sChart = chartSuspectDispro;
-  if (!showCounts) {
+  if (showCounts) {
+    // # selected: bars = raw counts, annotations = percentages
+    sChart.data.datasets[0].data = suspectCountData;
+    sChart.options.scales.y.max = 140;
+    sChart.options.scales.y.ticks.callback = function(v) { return v; };
+    sChart.options.scales.y.ticks.stepSize = 20;
+    sChart.options.scales.y.title.text = 'Number of Suspects';
+    sChart.options.plugins.datalabels.formatter = function(v, ctx) {
+      if (ctx.datasetIndex === 0) return v;
+      return v + '%';
+    };
+    sChart.options.plugins.tooltip.callbacks.label = function(ctx) {
+      if (ctx.datasetIndex === 0) return ctx.dataset.label + ': ' + ctx.raw + ' (' + suspectPctData[ctx.dataIndex] + '%)';
+      return ctx.dataset.label + ': ' + ctx.raw + '%';
+    };
+  } else {
+    // % selected (default): bars = percentages, annotations = raw counts
     sChart.data.datasets[0].data = suspectPctData;
-    sChart.data.datasets[1].data = popPctData;
     sChart.options.scales.y.max = 80;
     sChart.options.scales.y.ticks.callback = function(v) { return v + '%'; };
     sChart.options.scales.y.ticks.stepSize = 10;
     sChart.options.scales.y.title.text = 'Percentage of Group';
     sChart.options.plugins.datalabels.formatter = function(v, ctx) {
-      if (ctx.datasetIndex === 0) return suspectCountData[ctx.dataIndex];
+      if (ctx.datasetIndex === 0) return v + '%';
       return v + '%';
     };
     sChart.options.plugins.tooltip.callbacks.label = function(ctx) {
       if (ctx.datasetIndex === 0) return ctx.dataset.label + ': ' + suspectCountData[ctx.dataIndex] + ' (' + ctx.raw + '%)';
       return ctx.dataset.label + ': ' + ctx.raw + '%';
     };
-  } else {
-    sChart.data.datasets[0].data = suspectCountData;
-    sChart.data.datasets[1].data = popPctData;
-    sChart.options.scales.y.max = 140;
-    sChart.options.scales.y.ticks.callback = function(v) { return v; };
-    sChart.options.scales.y.ticks.stepSize = 20;
-    sChart.options.scales.y.title.text = 'Number of Suspects';
-    var sPctRef = suspectPctData;
-    sChart.options.plugins.datalabels.formatter = function(v, ctx) {
-      if (ctx.datasetIndex === 0) return sPctRef[ctx.dataIndex] + '%';
+  }
+  sChart.data.datasets[1].data = popPctData;
+  sChart.update();
+
+  // VICTIM CHART
+  var vChart = chartVictimDispro;
+  if (showCounts) {
+    vChart.data.datasets[0].data = victimCountData;
+    vChart.options.scales.y.max = 240;
+    vChart.options.scales.y.ticks.callback = function(v) { return v; };
+    vChart.options.scales.y.ticks.stepSize = 40;
+    vChart.options.scales.y.title.text = 'Number of Victims';
+    vChart.options.plugins.datalabels.formatter = function(v, ctx) {
+      if (ctx.datasetIndex === 0) return v;
       return v + '%';
     };
-    sChart.options.plugins.tooltip.callbacks.label = function(ctx) {
-      if (ctx.datasetIndex === 0) return ctx.dataset.label + ': ' + ctx.raw + ' (' + sPctRef[ctx.dataIndex] + '%)';
+    vChart.options.plugins.tooltip.callbacks.label = function(ctx) {
+      if (ctx.datasetIndex === 0) return ctx.dataset.label + ': ' + ctx.raw + ' (' + victimPctData[ctx.dataIndex] + '%)';
       return ctx.dataset.label + ': ' + ctx.raw + '%';
     };
-  }
-  sChart.update();
-  // Update victim chart
-  var vChart = chartVictimDispro;
-  if (!showCounts) {
+  } else {
     vChart.data.datasets[0].data = victimPctData;
-    vChart.data.datasets[1].data = popPctData;
     vChart.options.scales.y.max = 80;
     vChart.options.scales.y.ticks.callback = function(v) { return v + '%'; };
     vChart.options.scales.y.ticks.stepSize = 10;
     vChart.options.scales.y.title.text = 'Percentage of Group';
     vChart.options.plugins.datalabels.formatter = function(v, ctx) {
-      if (ctx.datasetIndex === 0) return victimCountData[ctx.dataIndex];
+      if (ctx.datasetIndex === 0) return v + '%';
       return v + '%';
     };
     vChart.options.plugins.tooltip.callbacks.label = function(ctx) {
       if (ctx.datasetIndex === 0) return ctx.dataset.label + ': ' + victimCountData[ctx.dataIndex] + ' (' + ctx.raw + '%)';
       return ctx.dataset.label + ': ' + ctx.raw + '%';
     };
-  } else {
-    vChart.data.datasets[0].data = victimCountData;
-    vChart.data.datasets[1].data = popPctData;
-    vChart.options.scales.y.max = 240;
-    vChart.options.scales.y.ticks.callback = function(v) { return v; };
-    vChart.options.scales.y.ticks.stepSize = 40;
-    vChart.options.scales.y.title.text = 'Number of Victims';
-    var vPctRef = victimPctData;
-    vChart.options.plugins.datalabels.formatter = function(v, ctx) {
-      if (ctx.datasetIndex === 0) return vPctRef[ctx.dataIndex] + '%';
-      return v + '%';
-    };
-    vChart.options.plugins.tooltip.callbacks.label = function(ctx) {
-      if (ctx.datasetIndex === 0) return ctx.dataset.label + ': ' + ctx.raw + ' (' + vPctRef[ctx.dataIndex] + '%)';
-      return ctx.dataset.label + ': ' + ctx.raw + '%';
-    };
   }
+  vChart.data.datasets[1].data = popPctData;
   vChart.update();
 }
 

@@ -549,10 +549,11 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 .hrc-detail-grid{grid-template-columns:1fr;gap:10px}
 .hrc-sash{font-size:8px;width:120px;top:14px;right:-28px}
 .hrc-mugshot-name{font-size:10px;padding:6px 8px}
+.hrc-stat-grid{grid-template-columns:repeat(2,1fr) !important}
 }
 
 /* ===== HRC IMAGE TILT EFFECT ===== */
-.hrc-tilt-wrap{perspective:800px;max-width:460px;margin:24px auto 0}
+.hrc-tilt-wrap{perspective:800px;max-width:100%;margin:24px auto 0}
 .hrc-tilt{border-radius:14px;overflow:hidden;transition:transform 0.15s ease,box-shadow 0.15s ease;transform-style:preserve-3d;will-change:transform;display:block;cursor:pointer}
 .hrc-tilt:hover{box-shadow:0 20px 40px rgba(0,0,0,0.2)}
 .hrc-tilt img{width:100%;display:block;border-radius:14px}
@@ -567,7 +568,7 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 .hrc-gotcha-gray{background:rgba(136,136,136,0.15);color:#aaa;border:1px solid rgba(136,136,136,0.3)}
 .hrc-verdict{display:inline-block;background:#c1121f;color:#fff;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;margin-top:6px}
 @media(max-width:600px){
-.hrc-tilt-wrap{max-width:90%}
+.hrc-tilt-wrap{max-width:100%}
 .five-jur-card .five-jur-row,.five-jur-card .five-jur-colheader{grid-template-columns:1fr 60px 60px 70px !important;padding:12px 16px !important}
 .five-jur-card .five-jur-name{font-size:14px !important}
 .five-jur-card .five-jur-pop,.five-jur-card .five-jur-share{font-size:14px !important}
@@ -1229,11 +1230,11 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 
 <div style="max-width:900px;margin:0 auto">
 
-<p>The <a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" style="color:#e8a838;font-weight:700">HRC Foundation report</a> <em>Black LGBTQ People and Compounding Discrimination</em> (June 2021, page 2) specifically names four Black transgender women killed in January 2021 as evidence that White supremacy is driving the violence, citing &ldquo;an epidemic of violence fueled by discrimination and bias.&rdquo; This study independently verified every one of those cases through local news and court records. Here is what the evidence shows:</p>
+<p>The <a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" style="color:#e8a838;font-weight:700">HRC Foundation report</a> <em>Black LGBTQ People and Compounding Discrimination</em> (June 2021, page 2) specifically names four Black transgender women killed in January 2021 as evidence that White supremacy is driving the violence, citing &ldquo;an epidemic of violence fueled by discrimination and bias.&rdquo; This study independently verified every one of those cases through local news and court records. Here is what the evidence shows:</p>
 
     <div class="hrc-tilt-wrap" onmousemove="hrcTilt(event,this)" onmouseleave="hrcReset(this)">
-      <a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" class="hrc-tilt">
-        <img src="hrc-january-2021-claim.png" alt="Screenshot from HRC Foundation report naming four Black transgender women killed in January 2021 and attributing their deaths to an epidemic of violence fueled by discrimination and bias" style="border:2px solid #e8a838">
+      <a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" class="hrc-tilt">
+        <img src="hrc-january-2021-claim.png" alt="Screenshot from HRC Foundation report naming four Black transgender women killed in January 2021 and attributing their deaths to an epidemic of violence fueled by discrimination and bias" style="border:2px solid #e8a838;width:100%;border-radius:14px">
       </a>
     </div>
 
@@ -1310,11 +1311,16 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
     </div>
 
     <!-- Stat boxes -->
-    <div style="display:flex;gap:12px;flex-wrap:wrap;margin:16px 0">
-      <div class="obj-stat-box" style="background:#fff;border:2px solid #c1121f;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+    <div class="hrc-stat-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0">
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #c1121f;border-radius:10px;padding:16px 18px;text-align:center">
         <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#c1121f">3 / 3</div>
         <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Solved Cases: Black Suspects</div>
         <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">100% of identified perpetrators</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #555;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#555">1</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Unsolved</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">Drive-by shooting, no suspect identified</div>
       </div>
       <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
         <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#1a1a2e">0</div>
@@ -1628,16 +1634,16 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
     <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:12px;padding:28px 24px;margin:20px 0;border:2px solid #e8a838">
 
     <div style="margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(232,168,56,0.2)">
-      <div style="font-size:12px;font-weight:700;color:#e8a838;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px"><a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" style="color:#e8a838;text-decoration:none">Human Rights Campaign Foundation (June 2021)</a></div>
+      <div style="font-size:12px;font-weight:700;color:#e8a838;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px"><a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" style="color:#e8a838;text-decoration:none">Human Rights Campaign Foundation (June 2021)</a></div>
       <div style="font-size:15px;color:#f0f0f0;line-height:1.7;font-style:italic">&ldquo;Racism, and its strategic objective, White supremacy, is a defining characteristic of the American experience.&rdquo;</div>
-      <div style="font-size:12px;color:#8b949e;margin-top:6px"><a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" style="color:#8b949e">The report</a> then names four Black transgender women killed in January 2021 and attributes their deaths to &ldquo;an epidemic of violence fueled by discrimination and bias.&rdquo;</div>
-      <div style="font-size:11px;margin-top:6px"><a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" style="color:#e8a838">Source: <em>Black LGBTQ People and Compounding Discrimination</em>, HRC Foundation, p. 2</a></div>
+      <div style="font-size:12px;color:#8b949e;margin-top:6px"><a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" style="color:#8b949e">The report</a> then names four Black transgender women killed in January 2021 and attributes their deaths to &ldquo;an epidemic of violence fueled by discrimination and bias.&rdquo;</div>
+      <div style="font-size:11px;margin-top:6px"><a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" style="color:#e8a838">Source: <em>Black LGBTQ People and Compounding Discrimination</em>, HRC Foundation, p. 2</a></div>
     </div>
 
     <div style="margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(232,168,56,0.2)">
-      <div style="font-size:12px;font-weight:700;color:#e8a838;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px"><a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" style="color:#e8a838;text-decoration:none">HRC Foundation, Same Report, p. 4</a></div>
+      <div style="font-size:12px;font-weight:700;color:#e8a838;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px"><a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" style="color:#e8a838;text-decoration:none">HRC Foundation, Same Report, p. 4</a></div>
       <div style="font-size:15px;color:#f0f0f0;line-height:1.7;font-style:italic">&ldquo;Black LGBTQ people face injustice far too often at the hands of White supremacy, anti-Blackness and anti-LGBTQ attitudes.&rdquo;</div>
-      <div style="font-size:12px;color:#8b949e;margin-top:6px"><a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" style="color:#8b949e">The same page</a> defines White supremacy in a pull-quote sidebar as &ldquo;an intentionally created and historically maintained political, social and economic system in which white people, both individually and collectively, are able to control power and resources.&rdquo;</div>
+      <div style="font-size:12px;color:#8b949e;margin-top:6px"><a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" style="color:#8b949e">The same page</a> defines White supremacy in a pull-quote sidebar as &ldquo;an intentionally created and historically maintained political, social and economic system in which white people, both individually and collectively, are able to control power and resources.&rdquo;</div>
     </div>
 
     <div style="margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(232,168,56,0.2)">

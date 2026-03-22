@@ -550,13 +550,15 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 .hrc-sash{font-size:8px;width:120px;top:14px;right:-28px}
 .hrc-mugshot-name{font-size:10px;padding:6px 8px}
 .hrc-stat-grid{grid-template-columns:repeat(2,1fr) !important}
+.hrc-connectors{display:none}
+.hrc-label-row{display:none}
 }
 
-/* ===== HRC IMAGE TILT EFFECT ===== */
-.hrc-tilt-wrap{perspective:800px;max-width:100%;margin:24px auto 0}
-.hrc-tilt{border-radius:14px;overflow:hidden;transition:transform 0.15s ease,box-shadow 0.15s ease;transform-style:preserve-3d;will-change:transform;display:block;cursor:pointer}
-.hrc-tilt:hover{box-shadow:0 20px 40px rgba(0,0,0,0.2)}
-.hrc-tilt img{width:100%;display:block;border-radius:14px}
+/* ===== HRC CONNECTOR ARROWS ===== */
+.hrc-connectors{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0;height:36px}
+.hrc-connector-cell{display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hrc-connector-cell .hrc-conn-line{width:2px;flex:1;background:#e8a838}
+.hrc-connector-cell .hrc-conn-arrow{color:#e8a838;font-size:14px;line-height:1;margin-top:-2px}
 
 /* ===== CASE STUDY: HRC FOUR WOMEN ===== */
 .hrc-suspect-card{border-radius:12px;padding:22px;color:#f0f0f0;display:flex;gap:20px;flex-wrap:wrap;align-items:center;transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s ease}
@@ -568,7 +570,6 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 .hrc-gotcha-gray{background:rgba(136,136,136,0.15);color:#aaa;border:1px solid rgba(136,136,136,0.3)}
 .hrc-verdict{display:inline-block;background:#c1121f;color:#fff;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;margin-top:6px}
 @media(max-width:600px){
-.hrc-tilt-wrap{max-width:100%}
 .five-jur-card .five-jur-row,.five-jur-card .five-jur-colheader{grid-template-columns:1fr 60px 60px 70px !important;padding:12px 16px !important}
 .five-jur-card .five-jur-name{font-size:14px !important}
 .five-jur-card .five-jur-pop,.five-jur-card .five-jur-share{font-size:14px !important}
@@ -1136,6 +1137,166 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 </div>
 </div><!-- /Section III acad-section -->
 
+<!-- ========== HRC FOUR WOMEN CASE STUDY ========== -->
+<hr class="divider">
+<div class="acad-section">
+  <button class="acad-toggle acad-open" onclick="toggleAcad(this)" style="padding:20px 24px">
+    <span class="acad-toggle-title" style="font-size:20px;font-weight:800">Case Study: HRC Blames Four Deaths on White Supremacy. The Truth Is the Exact Opposite.</span>
+    <span class="acad-toggle-sub">January 2021 | Black LGBTQ People and Compounding Discrimination, HRC Foundation</span>
+    <span class="acad-toggle-arrow">&#9660;</span>
+  </button>
+  <div class="acad-body acad-show">
+
+<div style="max-width:900px;margin:0 auto">
+
+<p>The <a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" style="color:#e8a838;font-weight:700">HRC Foundation report</a> <em>Black LGBTQ People and Compounding Discrimination</em> (June 2021, page 2) specifically names four Black transgender women killed in January 2021 as evidence that White supremacy is driving the violence, citing &ldquo;an epidemic of violence fueled by discrimination and bias.&rdquo; This study independently verified every one of those cases through local news and court records. Here is what the evidence shows:</p>
+
+    <div class="scroll-reveal" style="max-width:100%;margin:24px auto 0">
+      <a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" style="display:block;cursor:pointer">
+        <img src="hrc-january-2021-claim.png" alt="Screenshot from HRC Foundation report naming four Black transgender women killed in January 2021 and attributing their deaths to an epidemic of violence fueled by discrimination and bias" style="border:2px solid #e8a838;width:100%;border-radius:14px">
+      </a>
+    </div>
+
+    <!-- Connector: HRC image → Mugshots -->
+    <div class="hrc-connectors">
+      <div class="hrc-connector-cell"><div class="hrc-conn-line"></div><div class="hrc-conn-arrow">&#9660;</div></div>
+      <div class="hrc-connector-cell"><div class="hrc-conn-line"></div><div class="hrc-conn-arrow">&#9660;</div></div>
+      <div class="hrc-connector-cell"><div class="hrc-conn-line"></div><div class="hrc-conn-arrow">&#9660;</div></div>
+      <div class="hrc-connector-cell"><div class="hrc-conn-line"></div><div class="hrc-conn-arrow">&#9660;</div></div>
+    </div>
+
+    <!-- Role labels: Unsolved / Suspect -->
+    <div class="hrc-label-row" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 8px;text-align:center">
+      <div><span class="hrc-gotcha-bar hrc-gotcha-gray" style="font-size:10px;padding:4px 14px">Unsolved</span></div>
+      <div><span class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 14px">Suspect</span></div>
+      <div><span class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 14px">Suspect</span></div>
+      <div><span class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 14px">Suspect</span></div>
+    </div>
+
+    <!-- Mugshot Grid: reordered to match HRC screenshot L→R, names = killers -->
+    <div class="hrc-mugshot-grid">
+      <!-- 1. Tyianna Alexander - UNSOLVED -->
+      <div class="hrc-mugshot" style="border:2px solid #555;background:#2d333b;display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center;color:#888;font-family:'DM Sans',sans-serif;padding:10px">
+          <div style="font-size:36px;opacity:0.4">?</div>
+          <div style="font-size:11px;font-weight:700;margin-top:4px">No Suspect</div>
+          <div style="font-size:9px;color:#666;margin-top:2px">Drive-by shooting</div>
+        </div>
+        <div class="hrc-sash hrc-sash-unsolved">Unsolved</div>
+        <div class="hrc-mugshot-name" style="color:#aaa">No Suspect<span style="color:#888">Chicago, IL</span></div>
+      </div>
+      <!-- 2. Bianca Bankz killer: Moses Allen -->
+      <a href="https://www.muckrock.com/foi/atlanta-325/bianca-muffin-banks-homicide-request-122422/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
+        <img src="apd-moses-allen-race.png" alt="Atlanta Police Department incident report identifying Moses Allen as Black or African American">
+        <div class="hrc-sash hrc-sash-black">Black Male</div>
+        <div class="hrc-mugshot-name">Moses Allen, 36<span>Atlanta, GA</span></div>
+      </a>
+      <!-- 3. Dominique Jackson killer: Branden McLaurin -->
+      <a href="https://www.wlbt.com/2021/02/12/jpd-arrests-man-killing-trans-woman/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
+        <img src="suspect-branden-mclaurin.png" alt="Branden McLaurin, suspect in the murder of Dominique Jackson">
+        <div class="hrc-sash hrc-sash-black">Black Male</div>
+        <div class="hrc-mugshot-name">Branden McLaurin, 25<span>Jackson, MS</span></div>
+      </a>
+      <!-- 4. Fifty Bandz killer: Michael Joshua Brooks -->
+      <a href="https://www.louisianafirstnews.com/news/20-year-old-local-man-arrested-in-connection-with-recent-deadly-shooting/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
+        <img src="suspect-michael-brooks.png" alt="Michael Joshua Brooks, convicted murderer of Fifty Bandz">
+        <div class="hrc-sash hrc-sash-black">Black Male</div>
+        <div class="hrc-mugshot-name">Michael J. Brooks, 20<span>Baton Rouge, LA</span></div>
+      </a>
+    </div>
+
+    <!-- Connector: Mugshots → Details -->
+    <div class="hrc-connectors">
+      <div class="hrc-connector-cell"><div class="hrc-conn-line"></div><div class="hrc-conn-arrow">&#9660;</div></div>
+      <div class="hrc-connector-cell"><div class="hrc-conn-line"></div><div class="hrc-conn-arrow">&#9660;</div></div>
+      <div class="hrc-connector-cell"><div class="hrc-conn-line"></div><div class="hrc-conn-arrow">&#9660;</div></div>
+      <div class="hrc-connector-cell"><div class="hrc-conn-line"></div><div class="hrc-conn-arrow">&#9660;</div></div>
+    </div>
+
+    <!-- Outcome labels -->
+    <div class="hrc-label-row" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 8px;text-align:center">
+      <div><span class="hrc-gotcha-bar hrc-gotcha-gray" style="font-size:10px;padding:4px 14px">Unsolved</span></div>
+      <div><span class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 14px">Murder-Suicide</span></div>
+      <div><span class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 14px">Arrested</span></div>
+      <div><span class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 14px">Convicted</span></div>
+    </div>
+
+    <!-- Detail Grid: reordered to match, pills removed (now above) -->
+    <div class="hrc-detail-grid">
+      <!-- 1. Tyianna Alexander -->
+      <div class="hrc-detail-item" style="border-top:3px solid #555">
+        <div class="hrc-detail-date">Jan 6, 2021</div>
+        Shot in a drive-by with friend Brandon Gowdy, who also died. No suspects identified. No evidence of bias, hate crime, or White supremacy.
+        <div style="font-size:9px;color:#8b949e;margin-top:8px">Source: <a href="https://windycitytimes.com/2021/12/08/remembering-tyianna-alexander/" target="_blank">Windy City Times</a></div>
+      </div>
+      <!-- 2. Bianca Bankz -->
+      <div class="hrc-detail-item" style="border-top:3px solid #c1121f">
+        <div class="hrc-detail-date">Jan 17, 2021</div>
+        <strong>Moses Allen, 36</strong>. Shot her twice in the head with a Glock 22, fired 14 rounds total, then killed himself. Allen&rsquo;s phone: transgender searches on Pornhub. APD ruled murder-suicide.
+        <div style="font-size:9px;color:#8b949e;margin-top:8px">Source: <a href="https://www.muckrock.com/foi/atlanta-325/bianca-muffin-banks-homicide-request-122422/" target="_blank">APD Case #210171668</a></div>
+      </div>
+      <!-- 3. Dominique Jackson -->
+      <div class="hrc-detail-item" style="border-top:3px solid #c1121f">
+        <div class="hrc-detail-date">Jan 25, 2021</div>
+        <strong>Branden McLaurin, 25</strong>, arrested Feb 12, 2021. Jackson police: <strong>&ldquo;No evidence to support a hate crime.&rdquo;</strong>
+        <div style="font-size:9px;color:#8b949e;margin-top:8px">Source: <a href="https://www.wlbt.com/2021/02/12/jpd-arrests-man-killing-trans-woman/" target="_blank">WLBT</a></div>
+      </div>
+      <!-- 4. Fifty Bandz -->
+      <div class="hrc-detail-item" style="border-top:3px solid #c1121f">
+        <div class="hrc-detail-date">Jan 28, 2021</div>
+        <strong>Michael Joshua Brooks, 20</strong>, her boyfriend of over one year. <strong style="color:#c1121f">19 gunshot wounds.</strong> Classic intimate partner violence.
+        <div class="hrc-detail-outcome">
+          <div style="display:inline-block;padding:3px 10px;border-radius:4px;font-size:10px;font-weight:800;letter-spacing:0.5px;text-transform:uppercase;margin-top:6px;color:#c9d1d9;border:1px solid rgba(201,209,217,0.3)">Life Without Parole</div>
+        </div>
+        <div style="font-size:9px;color:#8b949e;margin-top:8px">Source: <a href="https://www.theadvocate.com/baton_rouge/news/courts/murder-of-transgender-lover-gets-man-life-sentence/article_00be28d8-01c2-11ee-a6c3-0f2f80b88f93.html" target="_blank">The Advocate (BR)</a></div>
+      </div>
+    </div>
+
+    <!-- Stat boxes -->
+    <div class="hrc-stat-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0">
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #c1121f;border-radius:10px;padding:16px 18px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#c1121f">3 / 3</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Solved Cases: Black Suspects</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">100% of identified perpetrators</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #555;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#555">1</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Unsolved</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">Drive-by shooting, no suspect identified</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#1a1a2e">0</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">White Supremacists</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">in any of the four cases</div>
+      </div>
+      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
+        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#1a1a2e">0</div>
+        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Hate Crime Charges</div>
+        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">in any of the four cases</div>
+      </div>
+    </div>
+
+    <!-- Closing: HRC's claim vs. reality -->
+    <div style="border:2px solid #e8a838;border-radius:12px;padding:28px 28px;margin:20px 0 16px;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);text-align:center">
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;font-style:italic;color:#e8a838;line-height:1.9;max-width:680px;margin:0 auto">&ldquo;Racism, and its strategic objective, <strong style="color:#e8a838;font-size:15px">white supremacy</strong>, is a defining characteristic of the American experience. There have been many recent examples of the ways in which racism persists today and impacts Black LGBTQ community people, often in violent ways. <strong style="color:#fff;font-style:normal">Tyianna Alexander, Bianca Bankz, Dominque Jackson and Fifty Bandz</strong> are four Black transgender women&thinsp;&mdash;&thinsp;all killed in the first month of 2021&thinsp;&mdash;&thinsp;whose lives were lost in an epidemic of violence fueled by discrimination and bias.&rdquo;</div>
+      <div style="font-size:11px;color:#8b949e;margin-top:10px">&mdash; HRC Foundation, <a href="https://reports.hrc.org/black-lgbtq-discrimination-report" target="_blank" style="color:#8b949e"><em>Black LGBTQ People and Compounding Discrimination</em></a>, p. 2</div>
+      <div style="width:60px;height:2px;background:#e8a838;margin:18px auto;opacity:0.4"></div>
+      <div style="font-family:'DM Sans',sans-serif;font-size:13px;color:#c9d1d9;line-height:1.7;max-width:640px;margin:0 auto">Three identified suspects, all Black. Zero hate crime charges. Zero discrimination findings. One unsolved drive-by with no suspect and no evidence of bias. This is what HRC called White supremacy.</div>
+    </div>
+
+    <p>HRC published their report in June 2021. By that date, Brooks and McLaurin had <em>already been arrested</em>. The case facts were public record. HRC&rsquo;s own memorial page for Fifty Bandz <a href="https://www.hrc.org/news/hrc-mourns-fifty-bandz-black-trans-woman-killed-in-louisiana" target="_blank" style="color:#e8a838">acknowledges</a> she &ldquo;was killed by someone she knew.&rdquo; They knew who killed these women. They blamed White supremacy anyway.</p>
+
+    <p>This is not an isolated pattern. As documented in the case study below this one, former President Obama named Tony McDade alongside George Floyd and Breonna Taylor at an Obama Foundation town hall in June 2020 as a victim of police violence against a transgender person of color. McDade had fatally stabbed 21-year-old Malik Jackson hours earlier and then pointed a gun at responding officers. The institutional reflex to frame transgender individuals as victims of systemic racism operated independently of whether the facts of any individual case supported that framing.</p>
+
+    <div class="acad-highlight" style="border-left-color:#c1121f;background:#fef2f2">
+      <strong>The full dataset confirms the pattern.</strong> Across all ten years (2015-2024), this study identified 186 unique suspects in 304 cases. Of suspects with known race: <strong>65.1% were Black, 16.4% were Hispanic, and 18.0% were White.</strong> White suspects are underrepresented relative to the White population share (59.3%) by a factor of 3.3. Not one of the institutional sources quoted in Section VI ever examined suspect demographics. Not HRC. Not the White House. Not the peer-reviewed literature. Not Congress. The entire framework was built on the assumption that the violence was coming from outside the community. It was not. That is what this dataset shows, case by case, court record by court record, for 304 victims across a decade.
+    </div>
+
+</div>
+
+  </div>
+</div>
+
 <!-- ========== CHYNA GIBSON MURAL SECTION ========== -->
 <hr class="divider">
 <div class="acad-section">
@@ -1212,135 +1373,6 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 <p style="font-size:15px;margin:0 0 18px;color:#fff">When a local activist was asked whether McDade&rsquo;s actions should factor into the public response, <a href="https://news.wfsu.org/wfsu-local-news/2020-07-03/malik-jacksons-life-mattered-too-family-tells-its-side-in-tony-mcdade-shooting" target="_blank" style="color:#e8a838;text-decoration:underline;text-decoration-color:rgba(232,168,56,0.4)">she answered</a>: <em>&ldquo;It doesn&rsquo;t matter what he did.&rdquo;</em> Malik Jackson&rsquo;s aunt <a href="https://news.wfsu.org/wfsu-local-news/2020-07-03/malik-jacksons-life-mattered-too-family-tells-its-side-in-tony-mcdade-shooting" target="_blank" style="color:#e8a838;text-decoration:underline;text-decoration-color:rgba(232,168,56,0.4)">offered a different view</a>: <em>&ldquo;Malik Jackson&rsquo;s life mattered too.&rdquo;</em></p>
 
 <p style="font-size:15px;margin:0 0 8px;color:#fff">Malik Jackson is not in this dataset. He was not transgender. He was a 21-year-old Black man who went to work every day and loved to fish and was murdered by someone the police had been called about the night before. His name was never read on a debate stage. No president said his name. No mural was painted. The institutional consensus had no use for Malik Jackson, because his death did not serve the narrative. He was the wrong kind of victim, killed by the wrong kind of person, in the wrong kind of story. So they said the name of the person who killed him instead, and they called it justice.</p>
-
-</div>
-
-  </div>
-</div>
-
-<!-- ========== HRC FOUR WOMEN CASE STUDY ========== -->
-<hr class="divider">
-<div class="acad-section">
-  <button class="acad-toggle acad-open" onclick="toggleAcad(this)" style="padding:20px 24px">
-    <span class="acad-toggle-title" style="font-size:20px;font-weight:800">HRC Named Four Women and Blamed White Supremacy. Here Is Who Actually Killed Them.</span>
-    <span class="acad-toggle-sub">January 2021 | The HRC Foundation Report</span>
-    <span class="acad-toggle-arrow">&#9660;</span>
-  </button>
-  <div class="acad-body acad-show">
-
-<div style="max-width:900px;margin:0 auto">
-
-<p>The <a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" style="color:#e8a838;font-weight:700">HRC Foundation report</a> <em>Black LGBTQ People and Compounding Discrimination</em> (June 2021, page 2) specifically names four Black transgender women killed in January 2021 as evidence that White supremacy is driving the violence, citing &ldquo;an epidemic of violence fueled by discrimination and bias.&rdquo; This study independently verified every one of those cases through local news and court records. Here is what the evidence shows:</p>
-
-    <div class="hrc-tilt-wrap" onmousemove="hrcTilt(event,this)" onmouseleave="hrcReset(this)">
-      <a href="https://hrc-prod-requests.s3-us-west-2.amazonaws.com/Black-LGBTQ-Survey.pdf" target="_blank" class="hrc-tilt">
-        <img src="hrc-january-2021-claim.png" alt="Screenshot from HRC Foundation report naming four Black transgender women killed in January 2021 and attributing their deaths to an epidemic of violence fueled by discrimination and bias" style="border:2px solid #e8a838;width:100%;border-radius:14px">
-      </a>
-    </div>
-
-    <!-- Mugshot Grid: 4 photos with diagonal sashes -->
-    <div class="hrc-mugshot-grid">
-      <!-- 1. Fifty Bandz - CONVICTED / LIFE -->
-      <a href="https://www.louisianafirstnews.com/news/20-year-old-local-man-arrested-in-connection-with-recent-deadly-shooting/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
-        <img src="suspect-michael-brooks.png" alt="Michael Joshua Brooks, convicted murderer of Fifty Bandz">
-        <div class="hrc-sash hrc-sash-black">Black Male</div>
-        <div class="hrc-mugshot-name">Fifty Bandz, 21<span>Baton Rouge, LA</span></div>
-      </a>
-      <!-- 2. Dominique Jackson - ARRESTED -->
-      <a href="https://www.wlbt.com/2021/02/12/jpd-arrests-man-killing-trans-woman/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
-        <img src="suspect-branden-mclaurin.png" alt="Branden McLaurin, suspect in the murder of Dominique Jackson">
-        <div class="hrc-sash hrc-sash-black">Black Male</div>
-        <div class="hrc-mugshot-name">Dominique Jackson, 30<span>Jackson, MS</span></div>
-      </a>
-      <!-- 3. Bianca Bankz - MURDER-SUICIDE -->
-      <a href="https://www.muckrock.com/foi/atlanta-325/bianca-muffin-banks-homicide-request-122422/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
-        <img src="apd-moses-allen-race.png" alt="Atlanta Police Department incident report identifying Moses Allen as Black or African American">
-        <div class="hrc-sash hrc-sash-black">Black Male</div>
-        <div class="hrc-mugshot-name">Bianca Bankz, 30<span>Atlanta, GA</span></div>
-      </a>
-      <!-- 4. Tyianna Alexander - UNSOLVED -->
-      <div class="hrc-mugshot" style="border:2px solid #555;background:#2d333b;display:flex;align-items:center;justify-content:center">
-        <div style="text-align:center;color:#888;font-family:'DM Sans',sans-serif;padding:10px">
-          <div style="font-size:36px;opacity:0.4">?</div>
-          <div style="font-size:11px;font-weight:700;margin-top:4px">No Suspect</div>
-        </div>
-        <div class="hrc-sash hrc-sash-unsolved">Unsolved</div>
-        <div class="hrc-mugshot-name" style="color:#aaa">Tyianna Alexander, 28<span style="color:#888">Chicago, IL</span></div>
-      </div>
-    </div>
-
-    <!-- Detail Grid: compact summaries below -->
-    <div class="hrc-detail-grid">
-      <!-- 1. Fifty Bandz -->
-      <div class="hrc-detail-item" style="border-top:3px solid #c1121f">
-        <div class="hrc-detail-date">Jan 28, 2021</div>
-        <strong>Michael Joshua Brooks, 20</strong>, her boyfriend of over one year. <strong style="color:#c1121f">19 gunshot wounds.</strong> Classic intimate partner violence.
-        <div class="hrc-detail-outcome">
-          <div class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 10px">Convicted</div>
-          <div class="hrc-verdict" style="margin-top:4px">Life Without Parole</div>
-        </div>
-        <div style="font-size:9px;color:#8b949e;margin-top:8px">Source: <a href="https://www.theadvocate.com/baton_rouge/news/courts/murder-of-transgender-lover-gets-man-life-sentence/article_00be28d8-01c2-11ee-a6c3-0f2f80b88f93.html" target="_blank">The Advocate (BR)</a></div>
-      </div>
-      <!-- 2. Dominique Jackson -->
-      <div class="hrc-detail-item" style="border-top:3px solid #c1121f">
-        <div class="hrc-detail-date">Jan 25, 2021</div>
-        <strong>Branden McLaurin, 25</strong>, arrested Feb 12, 2021. Jackson police: <strong>&ldquo;No evidence to support a hate crime.&rdquo;</strong>
-        <div class="hrc-detail-outcome">
-          <div class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 10px">Arrested</div>
-        </div>
-        <div style="font-size:9px;color:#8b949e;margin-top:8px">Source: <a href="https://www.wlbt.com/2021/02/12/jpd-arrests-man-killing-trans-woman/" target="_blank">WLBT</a></div>
-      </div>
-      <!-- 3. Bianca Bankz -->
-      <div class="hrc-detail-item" style="border-top:3px solid #c1121f">
-        <div class="hrc-detail-date">Jan 17, 2021</div>
-        <strong>Moses Allen, 36</strong>. Shot her twice in the head with a Glock 22, fired 14 rounds total, then killed himself. Allen&rsquo;s phone: transgender searches on Pornhub. APD ruled murder-suicide.
-        <div class="hrc-detail-outcome">
-          <div class="hrc-gotcha-bar hrc-gotcha-red" style="font-size:10px;padding:4px 10px">Murder-Suicide</div>
-        </div>
-        <div style="font-size:9px;color:#8b949e;margin-top:8px">Source: <a href="https://www.muckrock.com/foi/atlanta-325/bianca-muffin-banks-homicide-request-122422/" target="_blank">APD Case #210171668</a></div>
-      </div>
-      <!-- 4. Tyianna Alexander -->
-      <div class="hrc-detail-item" style="border-top:3px solid #555">
-        <div class="hrc-detail-date">Jan 6, 2021</div>
-        Shot in a drive-by with friend Brandon Gowdy, who also died. No suspects identified. No evidence of bias, hate crime, or White supremacy.
-        <div class="hrc-detail-outcome">
-          <div class="hrc-gotcha-bar hrc-gotcha-gray" style="font-size:10px;padding:4px 10px">Unsolved</div>
-        </div>
-        <div style="font-size:9px;color:#8b949e;margin-top:8px">Source: <a href="https://windycitytimes.com/2021/12/08/remembering-tyianna-alexander/" target="_blank">Windy City Times</a></div>
-      </div>
-    </div>
-
-    <!-- Stat boxes -->
-    <div class="hrc-stat-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0">
-      <div class="obj-stat-box" style="background:#fff;border:2px solid #c1121f;border-radius:10px;padding:16px 18px;text-align:center">
-        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#c1121f">3 / 3</div>
-        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Solved Cases: Black Suspects</div>
-        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">100% of identified perpetrators</div>
-      </div>
-      <div class="obj-stat-box" style="background:#fff;border:2px solid #555;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
-        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#555">1</div>
-        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Unsolved</div>
-        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">Drive-by shooting, no suspect identified</div>
-      </div>
-      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
-        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#1a1a2e">0</div>
-        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">White Supremacists</div>
-        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">in any of the four cases</div>
-      </div>
-      <div class="obj-stat-box" style="background:#fff;border:2px solid #e8a838;border-radius:10px;padding:16px 18px;flex:1;min-width:120px;text-align:center">
-        <div class="obj-stat-num" style="font-family:'DM Sans',sans-serif;font-size:32px;font-weight:800;line-height:1;color:#1a1a2e">0</div>
-        <div class="obj-stat-label" style="font-size:12px;color:#444;font-weight:700;margin-top:4px">Hate Crime Charges</div>
-        <div class="obj-stat-sub" style="font-size:10px;color:#888;margin-top:2px">in any of the four cases</div>
-      </div>
-    </div>
-
-    <p>HRC published their report in June 2021. By that date, Brooks and McLaurin had <em>already been arrested</em>. The case facts were public record. HRC&rsquo;s own memorial page for Fifty Bandz <a href="https://www.hrc.org/news/hrc-mourns-fifty-bandz-black-trans-woman-killed-in-louisiana" target="_blank" style="color:#e8a838">acknowledges</a> she &ldquo;was killed by someone she knew.&rdquo; They knew who killed these women. They blamed White supremacy anyway.</p>
-
-    <p>This is not an isolated pattern. As documented in the case study directly above this one, former President Obama named Tony McDade alongside George Floyd and Breonna Taylor at an Obama Foundation town hall in June 2020 as a victim of police violence against a transgender person of color. McDade had fatally stabbed 21-year-old Malik Jackson hours earlier and then pointed a gun at responding officers. The institutional reflex to frame transgender individuals as victims of systemic racism operated independently of whether the facts of any individual case supported that framing.</p>
-
-    <div class="acad-highlight" style="border-left-color:#c1121f;background:#fef2f2">
-      <strong>The full dataset confirms the pattern.</strong> Across all ten years (2015-2024), this study identified 186 unique suspects in 304 cases. Of suspects with known race: <strong>65.1% were Black, 16.4% were Hispanic, and 18.0% were White.</strong> White suspects are underrepresented relative to the White population share (59.3%) by a factor of 3.3. Not one of the institutional sources quoted in Section VI ever examined suspect demographics. Not HRC. Not the White House. Not the peer-reviewed literature. Not Congress. The entire framework was built on the assumption that the violence was coming from outside the community. It was not. That is what this dataset shows, case by case, court record by court record, for 304 victims across a decade.
-    </div>
 
 </div>
 
@@ -5021,6 +5053,7 @@ function toggleDark(){
   try{
   Object.values(Chart.instances).forEach(function(c){
     try{
+    if(!c.data||!c.data.datasets)return;
     if(c.options.scales){
       ['x','y','y1'].forEach(function(ax){
         if(c.options.scales[ax]){
@@ -5080,6 +5113,7 @@ function fixRaceCharts(){
   var lightRC={Black:'#000000',White:'#4169E1',Hispanic:'#8B4513','Asian/Other':'#999999','Asian':'#999999'};
   var palette=dark?darkRC:lightRC;
   Object.values(Chart.instances).forEach(function(c){
+    if(!c.data||!c.data.datasets)return;
     var changed=false;
     c.data.datasets.forEach(function(ds){
       if(ds.label && palette[ds.label]){
@@ -5174,6 +5208,7 @@ if(localStorage.getItem('darkMode')==='1'){
         try{
         Object.values(Chart.instances).forEach(function(c){
           try{
+          if(!c.data||!c.data.datasets){return;}
           if(c.options.scales){
             ['x','y','y1'].forEach(function(ax){
               if(c.options.scales[ax]){
@@ -5267,23 +5302,6 @@ if(localStorage.getItem('darkMode')==='1'){
   // Expose for accordion/objection toggles
   window._revealChartInElement = revealChartInElement;
 })();
-
-// ========== HRC IMAGE TILT EFFECT ==========
-function hrcTilt(e, wrap) {
-  var el = wrap.querySelector('.hrc-tilt');
-  if (!el) return;
-  var rect = wrap.getBoundingClientRect();
-  var x = (e.clientX - rect.left) / rect.width;
-  var y = (e.clientY - rect.top) / rect.height;
-  var tiltX = (y - 0.5) * 12;
-  var tiltY = (x - 0.5) * -12;
-  el.style.transform = 'rotateX(' + tiltX + 'deg) rotateY(' + tiltY + 'deg) scale(1.02)';
-}
-function hrcReset(wrap) {
-  var el = wrap.querySelector('.hrc-tilt');
-  if (!el) return;
-  el.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-}
 </script>
 
 </body>

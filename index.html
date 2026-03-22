@@ -943,6 +943,380 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
   <div class="note-box" style="border-color:#e8a838"><strong>Key Finding: Why This Matters:</strong> 92.4% of all victims in this dataset are biological males (transgender women). Combined with Chart L (Identified Suspect Biological Sex), which shows 90.3% of identified suspects are male, the picture is unambiguous: <strong>this is overwhelmingly biological males killing biological males.</strong> That is the single most common homicide pattern in the United States. The FBI&rsquo;s Supplementary Homicide Reports consistently show that approximately 90% of homicide offenders and 78% of homicide victims are male. This dataset mirrors that pattern almost exactly. There is nothing unique, transgender-specific, or &ldquo;epidemic&rdquo; about the sex dynamics of this violence. It is the same male-on-male violence that drives American homicide generally, occurring within the same racial patterns (intraracial), through similar interpersonal circumstances (intimate partner violence, disputes, sex work encounters), at rates <em>below</em> those of non-transgender men of the same age and race.<br><br>Prior research (Dinno&nbsp;2017) compared these biological male victims&rsquo; homicide rate to non-transgender <em>women</em>, producing an alarming 2.3&times; multiplier that institutions cited as evidence of a transgender-specific crisis. But the biologically appropriate comparison is non-transgender <em>men</em> of the same age and race. Dinno&rsquo;s own paper reports the rate for Black non-transgender men aged 15&ndash;34: 367 per 100,000. The rate for biological males living as women of 95.1 per 100,000 is not elevated above the male baseline. It is approximately one quarter of it, nearly four times <em>lower</em>. The &ldquo;epidemic&rdquo; framing was built on a comparison that conflated gender identity with biological sex. The male rate appears in the same published paper.</div>
 </div>
 
+<!-- Chart N: Geographic Distribution — INSERT BEFORE "SECTION 2: YEAR-BY-YEAR REPORTS" comment -->
+<style>
+/* Chart N light mode (default) */
+#chart-n-geo .gn-header{background:#fff;border-bottom:1px solid #e8e4dc;padding:24px 28px 18px}
+#chart-n-geo .gn-header-label{font-size:11px;font-weight:700;color:#e8a838;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
+#chart-n-geo .gn-header-title{font-family:'DM Sans',sans-serif;font-size:20px;font-weight:900;color:#1a1a2e;line-height:1.2;margin-bottom:6px}
+#chart-n-geo .gn-header-desc{font-size:12px;color:#666;max-width:750px;line-height:1.5}
+#chart-n-geo .gn-stat-row{display:flex;gap:10px;padding:14px 28px;background:#faf8f5;border-bottom:1px solid #e8e4dc;flex-wrap:wrap}
+#chart-n-geo .gn-stat-box{flex:1;min-width:80px;text-align:center;background:#fff;border-radius:10px;padding:10px 6px;border:1px solid #e0dcd4;transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s ease}
+#chart-n-geo .gn-stat-box:first-child{border:2px solid #e8a838}
+#chart-n-geo .gn-stat-box:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(232,168,56,0.18)}
+#chart-n-geo .gn-stat-num{font-family:'DM Sans',sans-serif;font-size:26px;font-weight:900;line-height:1}
+#chart-n-geo .gn-stat-num.gn-gold{color:#b8860b}
+#chart-n-geo .gn-stat-num.gn-red{color:#c1121f}
+#chart-n-geo .gn-stat-num.gn-extreme{color:#D600FF;font-size:30px}
+#chart-n-geo .gn-stat-label{font-size:11px;font-weight:700;color:#1a1a2e;margin-top:2px}
+#chart-n-geo .gn-stat-sub{font-size:8px;color:#888}
+#chart-n-geo .gn-btn-row{display:flex;gap:8px;padding:14px 28px 10px;background:#f5f3ef;align-items:center;flex-wrap:wrap}
+#chart-n-geo .gn-btn{padding:9px 20px;border-radius:6px;border:2px solid #1a1a2e;background:#fff;color:#1a1a2e;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;letter-spacing:0.3px;text-transform:uppercase;transition:all 0.2s}
+#chart-n-geo .gn-btn:hover{background:#f0ede6;transform:translateY(-2px)}
+#chart-n-geo .gn-btn.gn-active{background:#1a1a2e;color:#fff;border-color:#1a1a2e}
+#chart-n-geo .gn-view-label{margin-left:auto;font-size:11px;color:#888}
+
+/* Chart N DARK MODE overrides */
+body.dark-mode #chart-n-geo .gn-header{background:linear-gradient(135deg,#0d1117 0%,#1a1a2e 40%,#16213e 100%);border-bottom-color:rgba(232,168,56,0.2)}
+body.dark-mode #chart-n-geo .gn-header-title{color:#fff}
+body.dark-mode #chart-n-geo .gn-header-desc{color:#8b949e}
+body.dark-mode #chart-n-geo .gn-stat-row{background:rgba(13,17,23,0.5);border-bottom-color:rgba(232,168,56,0.12)}
+body.dark-mode #chart-n-geo .gn-stat-box{background:rgba(232,168,56,0.06);border-color:rgba(232,168,56,0.15)}
+body.dark-mode #chart-n-geo .gn-stat-box:first-child{background:rgba(232,168,56,0.1);border-color:rgba(232,168,56,0.3)}
+body.dark-mode #chart-n-geo .gn-stat-box:hover{box-shadow:0 6px 20px rgba(232,168,56,0.25)}
+body.dark-mode #chart-n-geo .gn-stat-num.gn-gold{color:#e8a838}
+body.dark-mode #chart-n-geo .gn-stat-num.gn-red{color:#ff6b6b}
+body.dark-mode #chart-n-geo .gn-stat-num.gn-extreme{color:#D600FF;font-size:30px}
+body.dark-mode #chart-n-geo .gn-stat-label{color:#c9d1d9}
+body.dark-mode #chart-n-geo .gn-stat-sub{color:#8b949e}
+body.dark-mode #chart-n-geo .gn-btn-row{background:rgba(13,17,23,0.3)}
+body.dark-mode #chart-n-geo .gn-btn{border-color:#30363d;background:transparent;color:#c9d1d9}
+body.dark-mode #chart-n-geo .gn-btn:hover{background:rgba(232,168,56,0.1)}
+body.dark-mode #chart-n-geo .gn-btn.gn-active{background:#e8a838;color:#0d1117;border-color:#e8a838}
+body.dark-mode #chart-n-geo .gn-view-label{color:#8b949e}
+/* Map background */
+#chart-n-geo #geo-map-wrap{background:#e8edf2;transition:background 0.3s}
+body.dark-mode #chart-n-geo #geo-map-wrap{background:#0d1117}
+/* Table dark mode */
+body.dark-mode #chart-n-geo #geo-table-wrap{background:#161b22}
+body.dark-mode #chart-n-geo #geo-table-wrap table{background:#161b22}
+body.dark-mode #chart-n-geo #geoTableBody tr{border-bottom-color:#30363d !important}
+body.dark-mode #chart-n-geo #geoTableBody tr:nth-child(odd){background:rgba(255,255,255,0.03) !important}
+body.dark-mode #chart-n-geo #geoTableBody tr:nth-child(even){background:transparent !important}
+body.dark-mode #chart-n-geo #geoTableBody td{color:#c9d1d9 !important}
+</style>
+
+<div id="chart-n-geo" class="chart-card" style="border:2px solid #e8a838;overflow:hidden;padding:0">
+
+<!-- Header -->
+<div class="gn-header">
+  <div class="gn-header-label">Chart N: Geographic Distribution</div>
+  <div class="gn-header-title">Where Are Transgender Americans Being Killed?</div>
+  <div class="gn-header-desc">304 documented victims, 2015&ndash;2024. City locations extracted from case data in all ten year files. 171 unique cities across 41 states and territories, grouped into 129 metro areas and individual cities. Bubble map groups nearby suburbs with principal cities; the full table shows every grouping with individual city breakdowns.</div>
+</div>
+
+<!-- Top metro areas -->
+<div class="gn-stat-row">
+  <div class="gn-stat-box"><div class="gn-stat-num gn-extreme">17</div><div class="gn-stat-label">Chicago Metro</div><div class="gn-stat-sub">#1 metro</div></div>
+  <div class="gn-stat-box"><div class="gn-stat-num gn-red">10</div><div class="gn-stat-label">Philadelphia Metro</div><div class="gn-stat-sub">#2 metro</div></div>
+  <div class="gn-stat-box"><div class="gn-stat-num gn-red">10</div><div class="gn-stat-label">Houston</div><div class="gn-stat-sub">#3 city</div></div>
+  <div class="gn-stat-box"><div class="gn-stat-num gn-red">10</div><div class="gn-stat-label">DC Metro</div><div class="gn-stat-sub">#4 metro</div></div>
+  <div class="gn-stat-box"><div class="gn-stat-num gn-red">10</div><div class="gn-stat-label">Detroit Metro</div><div class="gn-stat-sub">#5 metro</div></div>
+  <div class="gn-stat-box"><div class="gn-stat-num gn-red">10</div><div class="gn-stat-label">Miami Metro</div><div class="gn-stat-sub">#6 metro</div></div>
+  <div class="gn-stat-box"><div class="gn-stat-num gn-red">10</div><div class="gn-stat-label">Atlanta Metro</div><div class="gn-stat-sub">#7 metro</div></div>
+  <div class="gn-stat-box"><div class="gn-stat-num gn-red">10</div><div class="gn-stat-label">Puerto Rico</div><div class="gn-stat-sub">#8 territory</div></div>
+</div>
+
+<!-- Toggle buttons -->
+<div class="gn-btn-row">
+  <button onclick="toggleGeoView('bubbles')" id="btn-geo-bubbles" class="gn-btn gn-active">City Bubbles</button>
+  <button onclick="toggleGeoView('table')" id="btn-geo-table" class="gn-btn">Full Table</button>
+  <span id="geoViewLabel" class="gn-view-label">45 metro areas with 2+ victims</span>
+</div>
+
+<!-- MAP -->
+<div id="geo-map-wrap" style="position:relative;overflow:hidden">
+  <svg id="geoSVG" viewBox="0 0 900 560" style="width:100%;height:auto;max-height:580px;display:block" preserveAspectRatio="xMidYMid meet"></svg>
+  <div id="geoTooltip" style="display:none;position:absolute;top:60px;left:50%;transform:translateX(-50%);background:rgba(13,17,23,0.97);border:2px solid #e8a838;border-radius:10px;padding:14px 22px;z-index:10;min-width:220px;text-align:center;pointer-events:none;font-family:'DM Sans',sans-serif;box-shadow:0 8px 32px rgba(0,0,0,0.5)">
+    <div id="geoTipName" style="font-size:15px;font-weight:900;color:#e8a838"></div>
+    <div id="geoTipCount" style="font-size:32px;font-weight:900;color:#fff;margin:2px 0"></div>
+    <div id="geoTipSub" style="font-size:10px;color:#8b949e"></div>
+    <div style="font-size:9px;color:#666;margin-top:3px">2015&ndash;2024 combined</div>
+  </div>
+</div>
+
+<!-- TABLE -->
+<div id="geo-table-wrap" style="display:none;max-height:600px;overflow-y:auto">
+  <table style="width:100%;border-collapse:collapse;font-size:12px">
+    <thead><tr style="background:#1a1a2e;color:#f0f0f0;position:sticky;top:0;z-index:2">
+      <th style="padding:10px 12px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px">Rank</th>
+      <th style="padding:10px 12px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px">City / Metro Area</th>
+      <th style="padding:10px 12px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:.5px">Victims</th>
+      <th style="padding:10px 12px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;min-width:160px">Distribution</th>
+      <th style="padding:10px 12px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px">Breakdown</th>
+    </tr></thead>
+    <tbody id="geoTableBody"></tbody>
+  </table>
+</div>
+
+<div style="padding:0 20px 20px">
+  <div class="note-box" style="border-color:#e8a838"><strong>Key Finding:</strong> The Chicago metro area leads with 17 victims, followed by seven areas tied at 10: Philadelphia metro, Houston, the Washington DC metro, the Detroit metro, the Miami metro, the Atlanta metro, and Puerto Rico. The geographic concentration mirrors national homicide patterns: urban centers in the South, Midwest, and Mid-Atlantic account for the vast majority of cases. 171 unique cities across 41 states and territories are represented, but the violence is concentrated in a handful of metropolitan areas with high rates of poverty, housing instability, and survival sex work, the structural factors identified in Section VI as proximate drivers of this violence.</div>
+</div>
+</div>
+
+<script>
+(function(){
+var US_OUTLINE=[
+[48.39,-124.73],[47.91,-124.64],[47.55,-124.37],[47.21,-124.35],[46.87,-124.16],[46.27,-124.04],[45.99,-123.93],[45.56,-124.05],
+[44.92,-124.08],[44.6,-124.2],[44.14,-124.29],[43.68,-124.26],[43.37,-124.40],[42.84,-124.55],[42.0,-124.35],
+[41.75,-124.2],[41.46,-124.08],[40.92,-124.16],[40.45,-124.41],[40.02,-124.1],[39.79,-123.82],[39.45,-123.81],[39.03,-123.7],[38.77,-123.53],[38.36,-123.05],[38.06,-122.87],[37.95,-122.68],
+[37.81,-122.52],[37.79,-122.39],[37.7,-122.36],[37.65,-122.38],[37.55,-122.14],[37.19,-122.39],[37.0,-122.2],
+[36.97,-122.03],[36.62,-121.93],[36.44,-121.93],[36.21,-121.81],[35.97,-121.5],[35.66,-121.28],[35.46,-120.95],[35.2,-120.86],[34.95,-120.65],
+[34.72,-120.61],[34.46,-120.47],[34.41,-119.87],[34.27,-119.26],[34.04,-118.82],[34.07,-118.52],[33.95,-118.45],[33.78,-118.41],[33.74,-118.19],[33.55,-117.83],[33.38,-117.6],[33.17,-117.36],[33.0,-117.28],[32.62,-117.14],
+[32.54,-117.04],[32.72,-114.72],[32.49,-114.81],[31.34,-111.07],[31.33,-109.05],[31.33,-108.21],[31.78,-108.21],[31.78,-106.53],
+[31.39,-106.42],[30.92,-105.0],[30.61,-104.68],[30.29,-104.4],[29.92,-104.15],[29.6,-103.1],[29.36,-102.87],[29.08,-102.3],[28.95,-100.7],[28.55,-100.1],[28.0,-99.5],[27.76,-99.43],[27.47,-99.11],[27.05,-98.57],[26.69,-97.97],[26.45,-97.69],[26.07,-97.17],
+[26.35,-97.12],[26.94,-97.26],[27.3,-97.15],[27.63,-97.11],[27.84,-97.04],[28.07,-96.72],[28.3,-96.4],[28.48,-96.1],[28.68,-95.82],[28.93,-95.35],[29.07,-95.07],[29.25,-94.83],[29.33,-94.72],[29.56,-94.02],[29.72,-93.84],[29.76,-93.34],
+[29.74,-93.04],[29.55,-92.3],[29.52,-91.85],[29.35,-91.45],[29.28,-91.14],[29.0,-90.65],[28.93,-90.15],[29.0,-89.85],[29.1,-89.69],[29.22,-89.55],[29.07,-89.18],[29.35,-89.0],[29.5,-89.01],[29.87,-89.1],[30.1,-89.1],[30.17,-89.0],[30.2,-88.84],[30.23,-88.6],
+[30.25,-88.36],[30.22,-88.02],[30.23,-87.71],[30.28,-87.52],[30.33,-87.18],[30.37,-86.85],[30.4,-86.53],[30.39,-86.0],[30.32,-85.67],[30.16,-85.3],[30.0,-85.0],
+[29.82,-84.7],[29.7,-84.5],[29.55,-84.15],[29.37,-83.55],[29.1,-83.16],[28.9,-82.95],[28.67,-82.82],[28.47,-82.74],[28.17,-82.68],[27.87,-82.64],[27.5,-82.62],[27.2,-82.55],[26.78,-82.23],[26.5,-82.1],[26.2,-81.85],[25.85,-81.42],[25.45,-81.14],[25.14,-80.84],[25.0,-80.52],
+[24.95,-80.6],[25.01,-80.43],[25.13,-80.28],[25.38,-80.08],[25.8,-80.05],[26.1,-80.1],[26.42,-80.07],[26.68,-80.05],[26.95,-80.04],[27.2,-80.07],[27.52,-80.23],[27.88,-80.36],[28.0,-80.52],[28.32,-80.6],[28.5,-80.55],[29.02,-80.9],[29.35,-81.0],[29.6,-81.12],[29.98,-81.27],[30.33,-81.41],[30.72,-81.43],
+[31.0,-81.26],[31.2,-81.16],[31.53,-81.05],[31.95,-80.86],[32.2,-80.72],[32.48,-80.48],[32.75,-80.0],[32.86,-79.72],[33.0,-79.55],[33.22,-79.18],[33.55,-78.58],[33.72,-78.18],[33.85,-77.95],[34.09,-77.8],[34.3,-77.63],
+[34.53,-77.27],[34.68,-76.68],[35.0,-76.0],[35.12,-75.75],[35.25,-75.52],[35.75,-75.5],[36.0,-75.65],[36.33,-75.84],[36.55,-75.95],[36.8,-76.03],
+[36.92,-76.0],[37.0,-76.37],[37.1,-76.33],[37.2,-76.02],[36.96,-76.04],[37.0,-75.8],[37.1,-76.0],[37.25,-76.3],[37.32,-76.05],[37.45,-76.02],[37.55,-75.93],
+[37.82,-75.62],[38.01,-75.32],[38.25,-75.1],[38.45,-75.05],[38.64,-75.05],[38.79,-75.09],
+[38.95,-75.12],[39.15,-74.82],[39.3,-74.56],[39.5,-74.27],[39.76,-74.1],[40.0,-74.05],[40.15,-74.06],[40.34,-74.0],[40.5,-74.02],
+[40.55,-74.02],[40.63,-73.69],[40.58,-73.5],[40.6,-73.2],[40.75,-72.7],[40.82,-72.2],[40.96,-72.0],[41.1,-71.9],
+[41.2,-71.79],[41.32,-71.48],[41.18,-71.24],[41.15,-71.86],[41.05,-72.08],[41.12,-72.5],[41.07,-72.95],[41.05,-73.4],[40.98,-73.66],[40.95,-73.62],
+[41.05,-73.57],[41.2,-73.2],[41.16,-72.53],[41.28,-72.01],[41.32,-71.48],
+[41.53,-70.65],[41.62,-70.3],[41.67,-70.0],[41.77,-69.95],[42.07,-69.98],[42.06,-70.25],[41.68,-70.0],[41.72,-70.28],[42.04,-70.04],[42.07,-70.22],[42.0,-70.6],[41.97,-70.67],[42.05,-70.67],
+[42.35,-71.0],[42.52,-70.83],[42.63,-70.7],[42.77,-70.75],[43.07,-70.7],[43.28,-70.58],[43.5,-70.22],[43.72,-70.0],[43.82,-69.77],[43.97,-69.2],[44.15,-68.68],[44.33,-68.4],[44.42,-68.09],[44.5,-67.86],[44.65,-67.4],[44.81,-66.95],
+[45.3,-67.2],[47.0,-67.78],[47.36,-67.87],
+[47.08,-69.24],[46.7,-69.0],[46.3,-70.0],[45.5,-70.8],[45.01,-71.5],[45.0,-72.0],[45.0,-73.35],[45.0,-74.74],
+[44.72,-75.1],[44.35,-75.75],[44.0,-76.3],[43.77,-76.2],[43.64,-76.22],[43.45,-76.78],[43.35,-77.68],[43.25,-78.7],[43.1,-79.0],[43.0,-79.07],
+[42.87,-78.9],[42.5,-79.35],[42.1,-80.26],[42.0,-80.7],[41.9,-81.0],[41.7,-81.5],[41.5,-82.5],[41.4,-83.4],
+[41.7,-83.0],[42.0,-82.45],[42.3,-82.15],[42.6,-82.52],[43.0,-82.42],[43.4,-82.38],[43.8,-82.52],[44.05,-82.6],[44.3,-82.82],[44.6,-83.15],[44.8,-83.4],[45.0,-83.5],[45.35,-84.08],[45.6,-84.45],[45.8,-84.71],
+[45.85,-84.63],[46.0,-84.5],[46.2,-84.42],[46.5,-84.56],[46.7,-85.0],
+[46.54,-86.6],[46.68,-87.0],[46.75,-87.4],[46.74,-87.85],[46.8,-88.2],[46.85,-88.8],[46.9,-89.6],[46.73,-90.42],[46.6,-90.85],
+[46.65,-91.4],[46.78,-92.0],
+[47.3,-92.0],[47.7,-92.0],[48.0,-92.3],[48.4,-93.0],[48.6,-93.8],[48.7,-94.6],[49.0,-95.0],
+[49.0,-95.8],[49.0,-97.0],[49.0,-99.0],[49.0,-100.0],[49.0,-102.0],[49.0,-104.0],[49.0,-107.0],[49.0,-109.5],[49.0,-112.0],[49.0,-114.0],[49.0,-116.05],[49.0,-117.03],
+[48.93,-117.4],[48.85,-120.0],[48.77,-121.5],[48.63,-122.58],[48.51,-122.76],[48.39,-124.73]
+];
+var LAKE_SUPERIOR=[[46.78,-92.0],[47.0,-91.5],[47.25,-91.0],[47.5,-90.3],[47.75,-89.5],[47.9,-88.5],[47.95,-88.0],[47.72,-87.3],[47.35,-87.0],[47.0,-86.7],[46.7,-85.8],[46.5,-85.2],[46.55,-84.8],[46.72,-84.72],[47.0,-84.85],[47.2,-85.2],[47.3,-85.8],[47.5,-86.6],[47.6,-87.3],[47.8,-88.0],[48.0,-88.8],[48.05,-89.6],[47.95,-90.2],[47.7,-90.8],[47.5,-91.2],[47.0,-91.7],[46.78,-92.0]];
+var LAKE_MI=[[46.1,-86.5],[45.65,-86.85],[45.2,-87.0],[44.7,-87.35],[44.2,-87.55],[43.6,-87.65],[43.1,-87.55],[42.5,-87.15],[42.15,-87.0],[41.68,-86.92],[41.73,-86.6],[42.0,-86.4],[42.4,-86.25],[42.8,-86.2],[43.3,-86.1],[43.8,-86.0],[44.3,-85.6],[44.7,-85.3],[45.2,-85.15],[45.55,-85.35],[45.8,-85.7],[46.0,-86.0],[46.1,-86.5]];
+var LAKE_HURON=[[46.15,-83.95],[45.85,-83.4],[45.5,-83.35],[45.2,-83.2],[44.8,-83.15],[44.4,-83.0],[44.0,-82.7],[43.6,-82.4],[43.35,-82.2],[43.1,-82.05],[43.3,-81.6],[43.6,-81.3],[44.0,-81.0],[44.5,-80.5],[44.8,-80.35],[45.15,-80.75],[45.45,-81.2],[45.7,-81.85],[45.85,-82.5],[46.0,-83.2],[46.15,-83.95]];
+var LAKE_ER=[[42.88,-78.85],[42.75,-79.4],[42.5,-79.9],[42.35,-80.5],[42.15,-81.0],[41.9,-81.7],[41.7,-82.5],[41.5,-83.1],[41.4,-83.4],[41.55,-82.8],[41.8,-82.2],[42.0,-81.5],[42.2,-81.0],[42.4,-80.3],[42.58,-79.6],[42.7,-79.0],[42.88,-78.85]];
+var LAKE_ONT=[[44.2,-76.2],[44.05,-76.65],[43.85,-77.3],[43.6,-78.0],[43.35,-79.0],[43.25,-79.6],[43.35,-79.3],[43.55,-78.6],[43.75,-77.8],[43.9,-77.0],[44.05,-76.5],[44.2,-76.2]];
+// Bubble map data (metro-grouped, 2+ victims)
+var METROS=[
+  {n:"Chicago Metro",s:"IL",c:17,lat:41.88,lng:-87.63,sub:"Chicago (14), Aurora (1), Calumet City (1), Dolton (1)"},
+  {n:"Philadelphia Metro",s:"PA",c:10,lat:39.95,lng:-75.17,sub:"Philadelphia (8), Chester (1), Malvern (1)"},
+  {n:"Houston",s:"TX",c:10,lat:29.76,lng:-95.37},
+  {n:"DC Metro",s:"DC",c:10,lat:38.91,lng:-77.04,sub:"Washington (3), Fairmount Hts (2), McLean (1), Mechanicsville (1), Montgomery Village (1), Rockville (1), Suitland (1)"},
+  {n:"Detroit Metro",s:"MI",c:10,lat:42.33,lng:-83.05,sub:"Detroit (6), Highland Park (2), Independence Twp (1), Van Buren Twp (1)"},
+  {n:"Miami Metro",s:"FL",c:10,lat:25.78,lng:-80.2,sub:"Miami (5), Hallandale Beach (1), Miami Beach (1), Miami-Dade (1), Opa-locka (1), Pompano Beach (1)"},
+  {n:"Atlanta Metro",s:"GA",c:10,lat:33.75,lng:-84.39,sub:"Atlanta (6), Brookhaven (1), College Park (1), East Point (1), Stone Mountain (1)"},
+  {n:"Puerto Rico",s:"PR",c:10,lat:18.22,lng:-66.59,sub:"Humacao (2), San Juan (2), Bayamon (1), Carolina (1), Moca (1), San German (1), Toa Baja (1), Trujillo Alto (1)"},
+  {n:"Dallas",s:"TX",c:9,lat:32.78,lng:-96.8},
+  {n:"Baltimore Metro",s:"MD",c:8,lat:39.29,lng:-76.61,sub:"Baltimore (7), Bel Air (1)"},
+  {n:"Cleveland",s:"OH",c:8,lat:41.5,lng:-81.69},
+  {n:"Kansas City Metro",s:"MO",c:8,lat:39.1,lng:-94.58,sub:"Kansas City (6), Independence (1), Raytown (1)"},
+  {n:"Los Angeles Metro",s:"CA",c:7,lat:34.05,lng:-118.24,sub:"Los Angeles (6), Van Nuys (1)"},
+  {n:"Pittsburgh Metro",s:"PA",c:7,lat:40.44,lng:-80,sub:"Ambridge (2), Sharon (2), Aliquippa (1), New Wilmington (1), Wilkinsburg (1)"},
+  {n:"Charlotte",s:"NC",c:6,lat:35.23,lng:-80.84},
+  {n:"Baton Rouge",s:"LA",c:6,lat:30.45,lng:-91.19},
+  {n:"Jacksonville",s:"FL",c:5,lat:30.33,lng:-81.66},
+  {n:"New Orleans",s:"LA",c:5,lat:29.95,lng:-90.07},
+  {n:"New York Metro",s:"NY",c:5,lat:40.71,lng:-74.01,sub:"New York (3), Brooklyn (1), Gates (1)"},
+  {n:"Memphis Metro",s:"TN",c:4,lat:35.15,lng:-90.05,sub:"Memphis (3), Cordova (1)"},
+  {n:"Milwaukee",s:"WI",c:4,lat:43.04,lng:-87.91},
+  {n:"SF Bay Area",s:"CA",c:4,lat:37.77,lng:-122.42,sub:"San Francisco (3), Milpitas (1)"},
+  {n:"Augusta",s:"GA",c:3,lat:33.47,lng:-81.97},
+  {n:"Jackson",s:"MS",c:3,lat:32.3,lng:-90.18},
+  {n:"San Antonio",s:"TX",c:3,lat:29.42,lng:-98.49},
+  {n:"Shreveport",s:"LA",c:3,lat:32.53,lng:-93.75},
+  {n:"Toledo",s:"OH",c:3,lat:41.65,lng:-83.54},
+  {n:"Albuquerque",s:"NM",c:2,lat:35.08,lng:-106.65},
+  {n:"Arlington",s:"TX",c:2,lat:32.74,lng:-97.11},
+  {n:"Athens",s:"GA",c:2,lat:33.96,lng:-83.38},
+  {n:"Colorado Springs",s:"CO",c:2,lat:38.83,lng:-104.82},
+  {n:"Columbus",s:"OH",c:2,lat:39.96,lng:-82.99},
+  {n:"Las Vegas",s:"NV",c:2,lat:36.17,lng:-115.14},
+  {n:"Louisville",s:"KY",c:2,lat:38.25,lng:-85.76},
+  {n:"Lynchburg",s:"VA",c:2,lat:37.41,lng:-79.14},
+  {n:"Minneapolis",s:"MN",c:2,lat:44.98,lng:-93.27},
+  {n:"Orlando",s:"FL",c:2,lat:28.54,lng:-81.38},
+  {n:"Phoenix",s:"AZ",c:2,lat:33.45,lng:-112.07},
+  {n:"Portland",s:"OR",c:2,lat:45.52,lng:-122.68},
+  {n:"Seattle",s:"WA",c:2,lat:47.61,lng:-122.33},
+  {n:"Tampa",s:"FL",c:2,lat:27.95,lng:-82.46}
+];
+// Full table: 129 rows (metro-grouped + individual cities), sorted by count desc then alpha
+var TABLE_DATA=[
+{n:"Chicago Metro, IL",c:17,b:"Chicago (14), Aurora (1), Calumet City (1), Dolton (1)"},
+{n:"Atlanta Metro, GA",c:10,b:"Atlanta (6), Brookhaven (1), College Park (1), East Point (1), Stone Mountain (1)"},
+{n:"DC Metro",c:10,b:"Washington (3), Fairmount Heights (2), McLean (1), Mechanicsville (1), Montgomery Village (1), Rockville (1), Suitland (1)"},
+{n:"Detroit Metro, MI",c:10,b:"Detroit (6), Highland Park (2), Independence Twp (1), Van Buren Twp (1)"},
+{n:"Houston, TX",c:10,b:""},
+{n:"Miami Metro, FL",c:10,b:"Miami (5), Hallandale Beach (1), Miami Beach (1), Miami-Dade (1), Opa-locka (1), Pompano Beach (1)"},
+{n:"Philadelphia Metro, PA",c:10,b:"Philadelphia (8), Chester (1), Malvern (1)"},
+{n:"Puerto Rico",c:10,b:"Humacao (2), San Juan (2), Bayamon (1), Carolina (1), Moca (1), San German (1), Toa Baja (1), Trujillo Alto (1)"},
+{n:"Dallas, TX",c:9,b:""},
+{n:"Baltimore Metro, MD",c:8,b:"Baltimore (7), Bel Air (1)"},
+{n:"Cleveland, OH",c:8,b:""},
+{n:"Kansas City Metro, MO",c:8,b:"Kansas City (6), Independence (1), Raytown (1)"},
+{n:"Los Angeles Metro, CA",c:7,b:"Los Angeles (6), Van Nuys (1)"},
+{n:"Pittsburgh Metro, PA",c:7,b:"Ambridge (2), Sharon (2), Aliquippa (1), New Wilmington (1), Wilkinsburg (1)"},
+{n:"Baton Rouge, LA",c:6,b:""},
+{n:"Charlotte, NC",c:6,b:""},
+{n:"Jacksonville, FL",c:5,b:""},
+{n:"New Orleans, LA",c:5,b:""},
+{n:"New York Metro, NY",c:5,b:"New York (3), Brooklyn (1), Gates (1)"},
+{n:"Memphis Metro, TN",c:4,b:"Memphis (3), Cordova (1)"},
+{n:"Milwaukee, WI",c:4,b:""},
+{n:"SF Bay Area, CA",c:4,b:"San Francisco (3), Milpitas (1)"},
+{n:"Augusta, GA",c:3,b:""},
+{n:"Jackson, MS",c:3,b:""},
+{n:"San Antonio, TX",c:3,b:""},
+{n:"Shreveport, LA",c:3,b:""},
+{n:"Toledo, OH",c:3,b:""},
+{n:"Albuquerque, NM",c:2,b:""},{n:"Arlington, TX",c:2,b:""},{n:"Athens, GA",c:2,b:""},
+{n:"Colorado Springs, CO",c:2,b:""},{n:"Columbus, OH",c:2,b:""},{n:"Las Vegas, NV",c:2,b:""},
+{n:"Louisville, KY",c:2,b:""},{n:"Lynchburg, VA",c:2,b:""},{n:"Minneapolis, MN",c:2,b:""},
+{n:"Orlando, FL",c:2,b:""},{n:"Phoenix, AZ",c:2,b:""},{n:"Portland, OR",c:2,b:""},
+{n:"Seattle, WA",c:2,b:""},{n:"Tampa, FL",c:2,b:""},
+{n:"Akron, OH",c:1,b:""},{n:"Albany, GA",c:1,b:""},{n:"Albany, NY",c:1,b:""},
+{n:"Alexandria, LA",c:1,b:""},{n:"Allendale County, SC",c:1,b:""},{n:"Amite City, LA",c:1,b:""},
+{n:"Angola Prison, LA",c:1,b:""},{n:"Austin, TX",c:1,b:""},{n:"Bakersfield, CA",c:1,b:""},
+{n:"Biloxi, MS",c:1,b:""},{n:"Birmingham, AL",c:1,b:""},{n:"Boston, MA",c:1,b:""},
+{n:"Buffalo, NY",c:1,b:""},{n:"Burlington, IA",c:1,b:""},{n:"Burlington, VT",c:1,b:""},
+{n:"Cabool, MO",c:1,b:""},{n:"Canton, GA",c:1,b:""},{n:"Canton, MS",c:1,b:""},
+{n:"Charleston, SC",c:1,b:"North Charleston (1)"},{n:"Chesterfield County, SC",c:1,b:""},
+{n:"Cincinnati, OH",c:1,b:""},{n:"Clearwater, FL",c:1,b:""},{n:"Clewiston, FL",c:1,b:""},
+{n:"Dayton, OH",c:1,b:""},{n:"Denton, TX",c:1,b:""},{n:"El Paso, TX",c:1,b:""},
+{n:"Flaherty, KY",c:1,b:""},{n:"Fresno, CA",c:1,b:""},{n:"George County, MS",c:1,b:""},
+{n:"Gervais, OR",c:1,b:""},{n:"Greensboro, NC",c:1,b:""},{n:"Greenville, SC",c:1,b:""},
+{n:"Gulfport, MS",c:1,b:""},{n:"Haines City, FL",c:1,b:""},{n:"Hampton, VA",c:1,b:""},
+{n:"Indianapolis, IN",c:1,b:""},{n:"Ithaca, NY",c:1,b:""},{n:"Jacksonville, NC",c:1,b:""},
+{n:"Lafayette, LA",c:1,b:""},{n:"Laredo, TX",c:1,b:""},{n:"Liberty Township, OH",c:1,b:""},
+{n:"Lompoc, CA",c:1,b:""},{n:"Lubbock, TX",c:1,b:""},{n:"Lumberton, NC",c:1,b:""},
+{n:"Macon, GA",c:1,b:""},{n:"McAlester, OK",c:1,b:""},{n:"Meridian, MS",c:1,b:""},
+{n:"Mesa County, CO",c:1,b:""},{n:"Mesa, AZ",c:1,b:""},{n:"Mobile, AL",c:1,b:""},
+{n:"Monroe, LA",c:1,b:""},{n:"Monroe, NC",c:1,b:""},{n:"Montgomery, AL",c:1,b:""},
+{n:"Morristown, VT",c:1,b:""},{n:"New Castle, DE",c:1,b:""},{n:"Niland, CA",c:1,b:""},
+{n:"Norfolk, VA",c:1,b:""},{n:"North Adams, MA",c:1,b:""},{n:"North Port, FL",c:1,b:""},
+{n:"Oklahoma City, OK",c:1,b:""},{n:"Orangeburg, SC",c:1,b:""},{n:"Palm Bay, FL",c:1,b:""},
+{n:"Port Arthur, TX",c:1,b:""},{n:"Rapid City, SD",c:1,b:""},{n:"Renton, WA",c:1,b:""},
+{n:"Richmond, VA",c:1,b:""},{n:"Robstown, TX",c:1,b:""},{n:"Rochester, NY",c:1,b:""},
+{n:"Rowan County, NC",c:1,b:""},{n:"Sherwood, AR",c:1,b:""},{n:"Sikeston, MO",c:1,b:""},
+{n:"Sioux Falls, SD",c:1,b:""},{n:"Springfield, MO",c:1,b:""},{n:"St. Louis, MO",c:1,b:""},
+{n:"Stow, MA",c:1,b:""},{n:"Tallahassee, FL",c:1,b:""},{n:"Taylorsville, UT",c:1,b:""},
+{n:"Trenton, NJ",c:1,b:""},{n:"Tyler, TX",c:1,b:""},{n:"Vancouver, WA",c:1,b:""},
+{n:"Waxahachie, TX",c:1,b:""},{n:"Weirton, WV",c:1,b:""},{n:"Wichita, KS",c:1,b:""},
+{n:"Wilmington, NC",c:1,b:""},{n:"Winter Haven, FL",c:1,b:""},{n:"York, PA",c:1,b:""},
+{n:"York, SC",c:1,b:""},{n:"Zebulon, NC",c:1,b:""}
+];
+var STATES=[
+  {a:"TX",n:"Texas",c:33,lat:31,lng:-99},{a:"FL",n:"Florida",c:26,lat:28,lng:-82},
+  {a:"LA",n:"Louisiana",c:19,lat:31,lng:-92},{a:"PA",n:"Pennsylvania",c:18,lat:40.8,lng:-77.6},
+  {a:"GA",n:"Georgia",c:18,lat:33,lng:-83.5},{a:"IL",n:"Illinois",c:17,lat:40,lng:-89},
+  {a:"OH",n:"Ohio",c:17,lat:40.5,lng:-82.5},{a:"CA",n:"California",c:15,lat:37,lng:-120},
+  {a:"MD",n:"Maryland",c:14,lat:39,lng:-76.7},{a:"NC",n:"N. Carolina",c:13,lat:35.5,lng:-79.5},
+  {a:"MO",n:"Missouri",c:12,lat:38.5,lng:-92.5},{a:"MI",n:"Michigan",c:10,lat:43,lng:-84.5},
+  {a:"PR",n:"Puerto Rico",c:10,lat:18.2,lng:-66.5},{a:"NY",n:"New York",c:9,lat:42,lng:-75.5},
+  {a:"MS",n:"Mississippi",c:8,lat:32.5,lng:-89.7},{a:"VA",n:"Virginia",c:6,lat:37.5,lng:-79},
+  {a:"SC",n:"S. Carolina",c:6,lat:34,lng:-81},{a:"WA",n:"Washington",c:4,lat:47.5,lng:-120.5},
+  {a:"TN",n:"Tennessee",c:4,lat:35.8,lng:-86},{a:"WI",n:"Wisconsin",c:4,lat:44,lng:-89.5},
+  {a:"KY",n:"Kentucky",c:3,lat:37.8,lng:-85.7},{a:"AZ",n:"Arizona",c:3,lat:34,lng:-111.5},
+  {a:"DC",n:"D.C.",c:3,lat:38.9,lng:-77},{a:"AL",n:"Alabama",c:3,lat:32.7,lng:-86.7},
+  {a:"MA",n:"Massachusetts",c:3,lat:42.3,lng:-71.8},{a:"CO",n:"Colorado",c:3,lat:39,lng:-105.5},
+  {a:"OR",n:"Oregon",c:3,lat:44,lng:-120.5},{a:"NM",n:"New Mexico",c:2,lat:34.5,lng:-106},
+  {a:"SD",n:"S. Dakota",c:2,lat:44,lng:-100},{a:"OK",n:"Oklahoma",c:2,lat:35.5,lng:-97.5},
+  {a:"MN",n:"Minnesota",c:2,lat:45,lng:-94},{a:"NV",n:"Nevada",c:2,lat:36,lng:-115},
+  {a:"VT",n:"Vermont",c:2,lat:44,lng:-72.7},{a:"NJ",n:"New Jersey",c:1,lat:40.2,lng:-74.7},
+  {a:"IN",n:"Indiana",c:1,lat:39.8,lng:-86},{a:"AR",n:"Arkansas",c:1,lat:34.7,lng:-92.3},
+  {a:"DE",n:"Delaware",c:1,lat:39,lng:-75.5},{a:"IA",n:"Iowa",c:1,lat:42,lng:-93.5},
+  {a:"KS",n:"Kansas",c:1,lat:38.5,lng:-98},{a:"WV",n:"W. Virginia",c:1,lat:38.9,lng:-80.5},
+  {a:"UT",n:"Utah",c:1,lat:39.5,lng:-111.5}
+];
+var W=900,H=560,mxC=17;
+function pj(lat,lng){var x=((lng+125)/59)*W,y=((50-lat)/26)*H;if(lat<20){x=W*.82;y=H*.85;}return[x,y];}
+function pp(pts){var d='';for(var i=0;i<pts.length;i++){var p=pj(pts[i][0],pts[i][1]);d+=(i===0?'M':'L')+p[0].toFixed(1)+','+p[1].toFixed(1);}return d+'Z';}
+function bR(c){return Math.max(6,Math.sqrt(c/mxC)*44);}
+window._geoShowTip=function(n,c,s){var t=document.getElementById('geoTooltip');document.getElementById('geoTipName').textContent=n;document.getElementById('geoTipCount').textContent=c+' victims';document.getElementById('geoTipSub').textContent=s||'';t.style.display='block';};
+window._geoHideTip=function(){document.getElementById('geoTooltip').style.display='none';};
+function esc(s){return s.replace(/'/g,"\\'");}
+
+function renderMap(v){
+  var svg=document.getElementById('geoSVG'),h='';
+  var dk=document.body.classList.contains('dark-mode');
+  var countryFill=dk?'rgba(255,255,255,0.035)':'rgba(26,26,46,0.08)';
+  var countryStroke=dk?'rgba(232,168,56,0.18)':'rgba(26,26,46,0.25)';
+  var lakeFill=dk?'#0d1117':'#d0dae5';
+  var lakeStroke=dk?'rgba(232,168,56,0.08)':'rgba(26,26,46,0.12)';
+  var prBoxStroke=dk?'rgba(232,168,56,0.12)':'rgba(26,26,46,0.15)';
+  var prText=dk?'#555':'#888';
+  var stAbbrFill=dk?'rgba(255,255,255,.06)':'rgba(26,26,46,.08)';
+  var labelFill=dk?'rgba(255,255,255,.5)':'rgba(26,26,46,.55)';
+  var legendBg=dk?'rgba(13,17,23,.9)':'rgba(255,255,255,.92)';
+  var legendStroke=dk?'rgba(232,168,56,.2)':'rgba(26,26,46,.12)';
+  var legendText=dk?'#c9d1d9':'#444';
+
+  h+='<defs><radialGradient id="gg" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#e8a838" stop-opacity=".55"/><stop offset="100%" stop-color="#e8a838" stop-opacity="0"/></radialGradient>';
+  h+='<radialGradient id="gr" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#c1121f" stop-opacity=".4"/><stop offset="100%" stop-color="#c1121f" stop-opacity="0"/></radialGradient>';
+  h+='<radialGradient id="gm" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#D600FF" stop-opacity=".5"/><stop offset="100%" stop-color="#D600FF" stop-opacity="0"/></radialGradient></defs>';
+  h+='<path d="'+pp(US_OUTLINE)+'" fill="'+countryFill+'" stroke="'+countryStroke+'" stroke-width="1.2" stroke-linejoin="round"/>';
+  h+='<path d="'+pp(LAKE_SUPERIOR)+'" fill="'+lakeFill+'" stroke="'+lakeStroke+'" stroke-width=".6"/>';
+  h+='<path d="'+pp(LAKE_MI)+'" fill="'+lakeFill+'" stroke="'+lakeStroke+'" stroke-width=".6"/>';
+  h+='<path d="'+pp(LAKE_HURON)+'" fill="'+lakeFill+'" stroke="'+lakeStroke+'" stroke-width=".6"/>';
+  h+='<path d="'+pp(LAKE_ER)+'" fill="'+lakeFill+'" stroke="'+lakeStroke+'" stroke-width=".6"/>';
+  h+='<path d="'+pp(LAKE_ONT)+'" fill="'+lakeFill+'" stroke="'+lakeStroke+'" stroke-width=".6"/>';
+  h+='<rect x="'+(W*.75)+'" y="'+(H*.75)+'" width="'+(W*.16)+'" height="'+(H*.18)+'" rx="4" fill="none" stroke="'+prBoxStroke+'" stroke-width=".8" stroke-dasharray="4,3"/>';
+  h+='<text x="'+(W*.83)+'" y="'+(H*.775)+'" text-anchor="middle" fill="'+prText+'" font-size="9" font-weight="600" font-family="\'DM Sans\',sans-serif">PR</text>';
+  // Ghost state abbreviations
+  STATES.forEach(function(d){var p=pj(d.lat,d.lng);h+='<text x="'+p[0]+'" y="'+(p[1]+3)+'" text-anchor="middle" fill="'+stAbbrFill+'" font-size="13" font-weight="800" font-family="\'DM Sans\',sans-serif">'+d.a+'</text>';});
+  // City bubbles
+  METROS.forEach(function(d){
+    var p=pj(d.lat,d.lng),r=bR(d.c);
+    var f=d.c>=15?'rgba(214,0,255,.65)':d.c>=10?'rgba(193,18,31,.65)':d.c>=6?'rgba(232,168,56,.55)':d.c>=3?'rgba(65,105,225,.45)':'rgba(120,160,220,.4)';
+    var st=d.c>=15?'#e44fff':d.c>=10?'#ff6b6b':d.c>=6?'#e8a838':d.c>=3?'#6ca6ff':'#8bafd4';
+    var sw=d.c>=8?2.5:d.c>=3?1.5:1;
+    h+='<g onmouseenter="_geoShowTip(\''+esc(d.n)+', '+d.s+'\','+d.c+',\''+(d.sub?esc(d.sub):'')+'\')" onmouseleave="_geoHideTip()" style="cursor:pointer">';
+    if(d.c>=15)h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+(r+16)+'" fill="url(#gm)" opacity=".5"/>';
+    else if(d.c>=10)h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+(r+14)+'" fill="url(#gr)" opacity=".45"/>';
+    else if(d.c>=6)h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+(r+10)+'" fill="url(#gg)" opacity=".35"/>';
+    h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+r+'" fill="'+f+'" stroke="'+st+'" stroke-width="'+sw+'"/>';
+    if(d.c>=3)h+='<text x="'+p[0]+'" y="'+(p[1]+1)+'" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-size="'+(r>16?13:r>10?10:8)+'" font-weight="800" font-family="\'DM Sans\',sans-serif">'+d.c+'</text>';
+    if(d.c>=6)h+='<text x="'+p[0]+'" y="'+(p[1]+r+14)+'" text-anchor="middle" fill="'+labelFill+'" font-size="9" font-weight="600" font-family="\'DM Sans\',sans-serif">'+d.n+'</text>';
+    h+='</g>';
+  });
+  // Legend
+  h+='<g transform="translate('+(W-190)+',16)"><rect x="0" y="0" width="180" height="134" rx="6" fill="'+legendBg+'" stroke="'+legendStroke+'"/>';
+  h+='<circle cx="18" cy="22" r="9" fill="rgba(214,0,255,.65)" stroke="#e44fff" stroke-width="2"/><text x="34" y="26" fill="'+legendText+'" font-size="10" font-family="\'DM Sans\'">15+ victims (magenta)</text>';
+  h+='<circle cx="18" cy="46" r="8" fill="rgba(193,18,31,.65)" stroke="#ff6b6b" stroke-width="2"/><text x="34" y="50" fill="'+legendText+'" font-size="10" font-family="\'DM Sans\'">10+ victims (red)</text>';
+  h+='<circle cx="18" cy="70" r="6" fill="rgba(232,168,56,.55)" stroke="#e8a838" stroke-width="1.5"/><text x="34" y="74" fill="'+legendText+'" font-size="10" font-family="\'DM Sans\'">6\u20139 victims (gold)</text>';
+  h+='<circle cx="18" cy="94" r="5" fill="rgba(65,105,225,.45)" stroke="#6ca6ff" stroke-width="1.5"/><text x="34" y="98" fill="'+legendText+'" font-size="10" font-family="\'DM Sans\'">3\u20135 victims (blue)</text>';
+  h+='<circle cx="18" cy="116" r="4" fill="rgba(120,160,220,.4)" stroke="#8bafd4" stroke-width="1"/><text x="34" y="120" fill="'+legendText+'" font-size="10" font-family="\'DM Sans\'">2 victims (light blue)</text>';
+  h+='</g>';
+  svg.innerHTML=h;
+}
+function renderTable(){
+  var b=document.getElementById('geoTableBody'),rows='';
+  TABLE_DATA.forEach(function(d,i){
+    var pct=Math.round((d.c/mxC)*100);
+    var g=d.c>=15?'linear-gradient(90deg,#9900bb,#D600FF)':d.c>=10?'linear-gradient(90deg,#c1121f,#ff6b6b)':d.c>=6?'linear-gradient(90deg,#b8860b,#e8a838)':d.c>=3?'linear-gradient(90deg,#2a5db0,#6ca6ff)':'linear-gradient(90deg,#7a9ec4,#a8c4de)';
+    var nc=d.c>=15?'#D600FF':d.c>=10?'#c1121f':d.c>=6?'#e8a838':d.c>=3?'#4169E1':'#6a8db5';
+    rows+='<tr style="border-bottom:1px solid #eee;'+(i%2===0?'background:#faf8f5;':'')+'"><td style="padding:8px 12px;font-weight:700;color:#888">'+(i+1)+'</td><td style="padding:8px 12px;font-weight:700;color:#1a1a2e">'+d.n+'</td><td style="padding:8px 12px;text-align:center;font-weight:900;font-size:16px;color:'+nc+'">'+d.c+'</td><td style="padding:8px 12px"><div style="height:18px;border-radius:4px;width:'+Math.max(pct,4)+'%;background:'+g+';min-width:8px"></div></td><td style="padding:8px 12px;font-size:10px;color:#888">'+(d.b||'')+'</td></tr>';
+  });
+  b.innerHTML=rows;
+}
+var vl={bubbles:'41 metro areas with 2+ victims',table:'All 129 locations ranked'};
+window.toggleGeoView=function(view){
+  var mW=document.getElementById('geo-map-wrap'),tW=document.getElementById('geo-table-wrap');
+  if(view==='table'){mW.style.display='none';tW.style.display='block';renderTable();}
+  else{mW.style.display='block';tW.style.display='none';renderMap(view);}
+  document.querySelectorAll('#chart-n-geo .gn-btn').forEach(function(b){b.classList.remove('gn-active');});
+  document.getElementById('btn-geo-'+view).classList.add('gn-active');
+  document.getElementById('geoViewLabel').textContent=vl[view]||'';
+  window._geoHideTip();
+};
+renderMap('bubbles');
+var _geoCurrentView='bubbles';
+var _origToggle=window.toggleGeoView;
+window.toggleGeoView=function(v){_geoCurrentView=v;_origToggle(v);};
+new MutationObserver(function(){if(_geoCurrentView!=='table')renderMap(_geoCurrentView);}).observe(document.body,{attributes:true,attributeFilter:['class']});
+})();
+</script>
 <!-- ========== SECTION 2: YEAR-BY-YEAR REPORTS (RESULTS CONTINUED) ========== -->
 <hr class="divider">
 <div class="acad-section">

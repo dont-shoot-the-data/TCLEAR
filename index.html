@@ -529,14 +529,14 @@ body.dark-mode .five-jur-footnotes{background:#161b22;border-color:#21262d;color
 body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 
 /* ===== HRC MUGSHOT GRID ===== */
-.hrc-cases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 20px;align-items:stretch}
-.hrc-case{display:flex;flex-direction:column;align-items:center;gap:0;height:100%}
+.hrc-cases-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(8,auto);gap:6px 12px;margin:0 0 20px;align-items:stretch}
+.hrc-case{display:grid;grid-row:span 8;grid-template-rows:subgrid;align-items:center;justify-items:center;gap:0}
 .hrc-case-pill{text-align:center;margin:0 0 6px}
-.hrc-case-victim{text-align:center;margin:0 0 2px}
+.hrc-case-victim{text-align:center;margin:0 0 2px;min-height:38px;display:flex;align-items:center;justify-content:center}
 .hrc-case-victim span{display:inline-block;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;padding:4px 14px;border-radius:6px;background:rgba(232,168,56,0.15);color:#e8a838;border:1px solid rgba(232,168,56,0.4);letter-spacing:0.3px}
 .hrc-case-arrow{text-align:center;margin:4px 0}
-.hrc-case .hrc-mugshot{width:100%;margin:0}
-.hrc-case .hrc-detail-item{width:100%;margin-top:auto;flex:1}
+.hrc-case .hrc-mugshot{width:100%;margin:0;justify-self:stretch}
+.hrc-case .hrc-detail-item{width:100%;align-self:stretch;justify-self:stretch}
 .hrc-mugshot{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:1;cursor:pointer;transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s ease}
 .hrc-mugshot:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 8px 24px rgba(0,0,0,0.25)}
 .hrc-mugshot img{width:100%;height:100%;object-fit:cover;display:block}
@@ -551,15 +551,17 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 .hrc-detail-item .hrc-detail-date{font-size:9px;font-weight:700;color:#e8a838;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
 .hrc-detail-item .hrc-detail-outcome{margin-top:8px}
 .hrc-detail-item a{color:#e8a838}
-.hrc-victim-photo{display:none}
+.hrc-victim-photo{display:none !important}
 @media(max-width:700px){
-.hrc-victim-photo{display:block}
-.hrc-cases-grid{grid-template-columns:1fr;gap:24px;max-width:340px;margin:0 auto 20px}
+.hrc-victim-photo{display:block !important}
+.hrc-case-victim{min-height:auto}
+.hrc-cases-grid{grid-template-columns:1fr;grid-template-rows:none;gap:24px;max-width:340px;margin:0 auto 20px}
+.hrc-case{grid-row:auto;grid-template-rows:none;display:flex;flex-direction:column;align-items:center}
 .hrc-sash{font-size:8px;width:120px;top:14px;right:-28px}
 .hrc-mugshot-name{font-size:10px;padding:6px 8px}
 .hrc-stat-grid{grid-template-columns:repeat(2,1fr) !important}
 .hrc-connectors{display:none}
-.hrc-case .hrc-detail-item{flex:initial}
+.hrc-case .hrc-detail-item{width:100%}
 }
 
 /* ===== HRC CONNECTOR ARROWS ===== */

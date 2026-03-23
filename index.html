@@ -529,14 +529,14 @@ body.dark-mode .five-jur-footnotes{background:#161b22;border-color:#21262d;color
 body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 
 /* ===== HRC MUGSHOT GRID ===== */
-.hrc-cases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 20px}
-.hrc-case{display:flex;flex-direction:column;align-items:center;gap:0}
+.hrc-cases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 20px;align-items:stretch}
+.hrc-case{display:flex;flex-direction:column;align-items:center;gap:0;height:100%}
 .hrc-case-pill{text-align:center;margin:0 0 6px}
 .hrc-case-victim{text-align:center;margin:0 0 2px}
 .hrc-case-victim span{display:inline-block;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;padding:4px 14px;border-radius:6px;background:rgba(232,168,56,0.15);color:#e8a838;border:1px solid rgba(232,168,56,0.4);letter-spacing:0.3px}
 .hrc-case-arrow{text-align:center;margin:4px 0}
 .hrc-case .hrc-mugshot{width:100%;margin:0}
-.hrc-case .hrc-detail-item{width:100%;margin-top:auto;min-height:180px}
+.hrc-case .hrc-detail-item{width:100%;margin-top:auto;flex:1}
 .hrc-mugshot{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:1;cursor:pointer;transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s ease}
 .hrc-mugshot:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 8px 24px rgba(0,0,0,0.25)}
 .hrc-mugshot img{width:100%;height:100%;object-fit:cover;display:block}
@@ -545,18 +545,21 @@ body.dark-mode .five-jur-footnotes strong{color:#6e7681}
 .hrc-sash{position:absolute;top:18px;right:-32px;width:140px;text-align:center;padding:5px 0;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;transform:rotate(35deg);z-index:2;pointer-events:none}
 .hrc-sash-black{background:#c1121f;color:#fff;box-shadow:0 2px 8px rgba(193,18,31,0.4)}
 .hrc-sash-unsolved{background:#555;color:#ddd;box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.hrc-sash-victim{background:#2d6a4f;color:#fff;box-shadow:0 2px 8px rgba(45,106,79,0.4)}
 .hrc-detail-item{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border-radius:10px;padding:14px;font-size:11px;color:#c9d1d9;line-height:1.6}
 .hrc-detail-item strong{color:#fff}
 .hrc-detail-item .hrc-detail-date{font-size:9px;font-weight:700;color:#e8a838;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
 .hrc-detail-item .hrc-detail-outcome{margin-top:8px}
 .hrc-detail-item a{color:#e8a838}
+.hrc-victim-photo{display:none}
 @media(max-width:700px){
+.hrc-victim-photo{display:block}
 .hrc-cases-grid{grid-template-columns:1fr;gap:24px;max-width:340px;margin:0 auto 20px}
 .hrc-sash{font-size:8px;width:120px;top:14px;right:-28px}
 .hrc-mugshot-name{font-size:10px;padding:6px 8px}
 .hrc-stat-grid{grid-template-columns:repeat(2,1fr) !important}
 .hrc-connectors{display:none}
-.hrc-case .hrc-detail-item{min-height:auto}
+.hrc-case .hrc-detail-item{flex:initial}
 }
 
 /* ===== HRC CONNECTOR ARROWS ===== */
@@ -1545,6 +1548,11 @@ new MutationObserver(function(){if(_geoCurrentView!=='table')renderMap(_geoCurre
 
       <!-- CASE 1: Tyianna Alexander - UNSOLVED -->
       <div class="hrc-case">
+        <div class="hrc-mugshot hrc-victim-photo" style="border:2px solid #2d6a4f">
+          <img src="victim-tyianna-alexander.png" alt="Tyianna Alexander, 28">
+          <div class="hrc-sash hrc-sash-victim">Victim</div>
+          <div class="hrc-mugshot-name">Tyianna Alexander, 28<span>Chicago, IL</span></div>
+        </div>
         <div class="hrc-case-victim"><span>Victim: Tyianna Alexander, 28</span></div>
         <div class="hrc-case-arrow"><span style="color:#e8a838;font-size:18px">&#8595;</span></div>
         <div class="hrc-mugshot" style="border:2px solid #555;background:#2d333b;display:flex;align-items:center;justify-content:center">
@@ -1569,11 +1577,16 @@ new MutationObserver(function(){if(_geoCurrentView!=='table')renderMap(_geoCurre
 
       <!-- CASE 2: Bianca Bankz - Moses Allen -->
       <div class="hrc-case">
+        <div class="hrc-mugshot hrc-victim-photo" style="border:2px solid #2d6a4f">
+          <img src="victim-bianca-bankz.png" alt="Bianca Bankz, 30">
+          <div class="hrc-sash hrc-sash-victim">Victim</div>
+          <div class="hrc-mugshot-name">Bianca Bankz, 30<span>Atlanta, GA</span></div>
+        </div>
         <div class="hrc-case-victim"><span>Victim: Bianca Bankz, 30</span></div>
         <div class="hrc-case-arrow"><span style="color:#e8a838;font-size:18px">&#8595;</span></div>
         <a href="https://www.muckrock.com/foi/atlanta-325/bianca-muffin-banks-homicide-request-122422/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
           <img src="apd-moses-allen-race.png" alt="Atlanta Police Department incident report identifying Moses Allen as Black or African American">
-          <div class="hrc-sash hrc-sash-black">Black Male</div>
+          <div class="hrc-sash hrc-sash-black">Suspect</div>
           <div class="hrc-mugshot-name">Moses Allen, 36<span>Atlanta, GA</span></div>
         </a>
         <div class="hrc-case-victim"><span>Suspect: Moses Allen, 36</span></div>
@@ -1589,11 +1602,16 @@ new MutationObserver(function(){if(_geoCurrentView!=='table')renderMap(_geoCurre
 
       <!-- CASE 3: Dominique Jackson - Branden McLaurin -->
       <div class="hrc-case">
+        <div class="hrc-mugshot hrc-victim-photo" style="border:2px solid #2d6a4f">
+          <img src="victim-dominique-jackson.png" alt="Dominique Jackson, 30">
+          <div class="hrc-sash hrc-sash-victim">Victim</div>
+          <div class="hrc-mugshot-name">Dominique Jackson, 30<span>Jackson, MS</span></div>
+        </div>
         <div class="hrc-case-victim"><span>Victim: Dominique Jackson, 30</span></div>
         <div class="hrc-case-arrow"><span style="color:#e8a838;font-size:18px">&#8595;</span></div>
         <a href="https://www.wlbt.com/2021/02/12/jpd-arrests-man-killing-trans-woman/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
           <img src="suspect-branden-mclaurin.png" alt="Branden McLaurin, suspect in the murder of Dominique Jackson">
-          <div class="hrc-sash hrc-sash-black">Black Male</div>
+          <div class="hrc-sash hrc-sash-black">Suspect</div>
           <div class="hrc-mugshot-name">Branden McLaurin, 25<span>Jackson, MS</span></div>
         </a>
         <div class="hrc-case-victim"><span>Suspect: Branden McLaurin, 25</span></div>
@@ -1609,11 +1627,16 @@ new MutationObserver(function(){if(_geoCurrentView!=='table')renderMap(_geoCurre
 
       <!-- CASE 4: Fifty Bandz - Michael Joshua Brooks -->
       <div class="hrc-case">
+        <div class="hrc-mugshot hrc-victim-photo" style="border:2px solid #2d6a4f">
+          <img src="victim-fifty-bandz.png" alt="Fifty Bandz, 21">
+          <div class="hrc-sash hrc-sash-victim">Victim</div>
+          <div class="hrc-mugshot-name">Fifty Bandz, 21<span>Baton Rouge, LA</span></div>
+        </div>
         <div class="hrc-case-victim"><span>Victim: Fifty Bandz, 21</span></div>
         <div class="hrc-case-arrow"><span style="color:#e8a838;font-size:18px">&#8595;</span></div>
         <a href="https://www.louisianafirstnews.com/news/20-year-old-local-man-arrested-in-connection-with-recent-deadly-shooting/" target="_blank" class="hrc-mugshot" style="border:2px solid #c1121f">
           <img src="suspect-michael-brooks.png" alt="Michael Joshua Brooks, convicted murderer of Fifty Bandz">
-          <div class="hrc-sash hrc-sash-black">Black Male</div>
+          <div class="hrc-sash hrc-sash-black">Suspect</div>
           <div class="hrc-mugshot-name">Michael J. Brooks, 20<span>Baton Rouge, LA</span></div>
         </a>
         <div class="hrc-case-victim"><span>Suspect: Michael J. Brooks, 20</span></div>
@@ -1706,7 +1729,7 @@ new MutationObserver(function(){if(_geoCurrentView!=='table')renderMap(_geoCurre
 <hr class="divider">
 <div class="acad-section">
   <button class="acad-toggle acad-open" onclick="toggleAcad(this)" style="padding:20px 24px">
-    <span class="acad-toggle-title" style="font-size:20px;font-weight:800">Case Study: How a President Turned a Justified Shooting Into Evidence of Police Racism</span>
+    <span class="acad-toggle-title" style="font-size:20px;font-weight:800">Case Study: How a President Turned a Justified Shooting of a Murderer Into Evidence of Police Racism</span>
     <span class="acad-toggle-sub">Obama Foundation Town Hall, June 3, 2020 | Tony McDade and Malik Jackson</span>
     <span class="acad-toggle-arrow">&#9660;</span>
   </button>

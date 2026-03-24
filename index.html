@@ -1691,12 +1691,6 @@ new MutationObserver(function(){if(_geoCurrentView!=='table')renderMap(_geoCurre
 
     <p>HRC published their report in June 2021. By that date, Brooks and McLaurin had <em>already been arrested</em>. The case facts were public record. HRC&rsquo;s own memorial page for Fifty Bandz <a href="https://www.hrc.org/news/hrc-mourns-fifty-bandz-black-trans-woman-killed-in-louisiana" target="_blank" style="color:#e8a838">acknowledges</a> she &ldquo;was killed by someone she knew.&rdquo; They knew who killed these women. They blamed White supremacy anyway.</p>
 
-    <p>This is not an isolated pattern. As documented in the case study below this one, former President Obama named Tony McDade alongside George Floyd and Breonna Taylor at an Obama Foundation town hall in June 2020 as a victim of police violence against a transgender person of color. McDade had fatally stabbed 21-year-old Malik Jackson minutes earlier and then pointed a gun at responding officers. The institutional reflex to frame transgender individuals as victims of systemic racism operated independently of whether the facts of any individual case supported that framing.</p>
-
-    <div class="acad-highlight" style="border-left-color:#c1121f;background:#fef2f2">
-      <strong>The full dataset confirms the pattern.</strong> Across all ten years (2015-2024), this study identified 186 unique suspects in 304 cases. Of suspects with known race: <strong>65.1% were Black, 16.4% were Hispanic, and 18.0% were White.</strong> White suspects are underrepresented relative to the White population share (59.3%) by a factor of 3.3. Not one of the institutional sources quoted in Section VI ever examined suspect demographics. Not HRC. Not the White House. Not the peer-reviewed literature. Not Congress. The entire framework was built on the assumption that the violence was coming from outside the community. It was not. That is what this dataset shows, case by case, court record by court record, for 304 victims across a decade.
-    </div>
-
 </div>
 
   </div>
@@ -3698,7 +3692,7 @@ new Chart(document.getElementById('chartA'), {
       legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'circle', padding: 16, font: { size: 11 } } },
       tooltip: { mode: 'index', intersect: false },
       datalabels: {
-        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 0; },
+        display: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return false; return ctx.dataset.data[ctx.dataIndex] > 0; },
         anchor: 'end',
         align: 'top',
         offset: 2,
@@ -3791,7 +3785,7 @@ new Chart(document.getElementById('chartB'), {
       legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'circle', padding: 16, font: { size: 11 } } },
       tooltip: { mode: 'index', intersect: false },
       datalabels: {
-        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 0; },
+        display: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return false; return ctx.dataset.data[ctx.dataIndex] > 0; },
         anchor: 'end',
         align: 'top',
         offset: 2,
@@ -4006,7 +4000,7 @@ new Chart(document.getElementById('chartG'), {
     plugins: {
       legend: { position: 'top', labels: { font: { size: 11 }, padding: 14 } },
       datalabels: {
-        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 0; },
+        display: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return false; return ctx.dataset.data[ctx.dataIndex] > 0; },
         anchor: 'center',
         align: 'center',
         font: { size: 10, weight: '700', family: "'DM Sans', sans-serif" },
@@ -4122,7 +4116,7 @@ new Chart(document.getElementById('chartFBI'), {
         }
       },
       datalabels: {
-        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] !== null; },
+        display: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return false; return ctx.dataset.data[ctx.dataIndex] !== null; },
         anchor: 'end',
         align: function(ctx) { return ctx.datasetIndex === 0 ? 'top' : 'bottom'; },
         offset: 4,
@@ -4181,7 +4175,7 @@ new Chart(document.getElementById('chartJ'), {
         }
       },
       datalabels: {
-        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 2; },
+        display: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return false; return ctx.dataset.data[ctx.dataIndex] > 2; },
         anchor: 'end',
         align: 'top',
         offset: 6,
@@ -4333,11 +4327,11 @@ new Chart(document.getElementById('chartL'), {
       },
       datalabels: {
         display: true,
-        color: function(ctx) { return ctx.dataset.data[ctx.dataIndex] < 5 ? '#e8a838' : '#fff'; },
-        anchor: function(ctx) { return ctx.dataset.data[ctx.dataIndex] < 5 ? 'end' : 'center'; },
-        align: function(ctx) { return ctx.dataset.data[ctx.dataIndex] < 5 ? 'end' : 'center'; },
-        offset: function(ctx) { return ctx.dataset.data[ctx.dataIndex] < 5 ? 12 : 0; },
-        font: function(ctx) { return { size: ctx.dataset.data[ctx.dataIndex] < 5 ? 12 : 14, weight: '700', family: "'DM Sans', sans-serif" }; },
+        color: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return '#fff'; return ctx.dataset.data[ctx.dataIndex] < 5 ? '#e8a838' : '#fff'; },
+        anchor: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return 'center'; return ctx.dataset.data[ctx.dataIndex] < 5 ? 'end' : 'center'; },
+        align: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return 'center'; return ctx.dataset.data[ctx.dataIndex] < 5 ? 'end' : 'center'; },
+        offset: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return 0; return ctx.dataset.data[ctx.dataIndex] < 5 ? 12 : 0; },
+        font: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return {size:14,weight:'700',family:"'DM Sans',sans-serif"}; return { size: ctx.dataset.data[ctx.dataIndex] < 5 ? 12 : 14, weight: '700', family: "'DM Sans', sans-serif" }; },
         formatter: function(v) {
           var pct = (v / 213 * 100).toFixed(1);
           return v + '\n' + pct + '%';
@@ -4394,7 +4388,7 @@ new Chart(document.getElementById('chartM'), {
         }
       },
       datalabels: {
-        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 10; },
+        display: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return false; return ctx.dataset.data[ctx.dataIndex] > 10; },
         color: '#fff',
         font: { size: 14, weight: '700', family: "'DM Sans', sans-serif" },
         formatter: function(v) {
@@ -5230,7 +5224,7 @@ new Chart(document.getElementById('chartPolice'), {
       legend: { position: 'top', labels: { usePointStyle: true, pointStyle: 'circle', padding: 16, font: { size: 11 } } },
       tooltip: { mode: 'index', intersect: false },
       datalabels: {
-        display: function(ctx) { return ctx.dataset.data[ctx.dataIndex] > 0; },
+        display: function(ctx) { if(!ctx.dataset||!ctx.dataset.data)return false; return ctx.dataset.data[ctx.dataIndex] > 0; },
         anchor: 'end',
         align: 'top',
         offset: 2,
@@ -5463,7 +5457,7 @@ function toggleDark(){
     try{
     if(!c.data||!c.data.datasets)return;
     if(c.options.scales){
-      ['x','y','y1'].forEach(function(ax){
+      ['x','y','y1','y2'].forEach(function(ax){
         if(c.options.scales[ax]){
           if(c.options.scales[ax].ticks)c.options.scales[ax].ticks.color=dark?'#c9d1d9':'#666';
           if(c.options.scales[ax].grid)c.options.scales[ax].grid.color=dark?'#30363d':'rgba(0,0,0,0.06)';
@@ -5474,10 +5468,6 @@ function toggleDark(){
     }
     if(c.options.plugins&&c.options.plugins.legend&&c.options.plugins.legend.labels){
       c.options.plugins.legend.labels.color=dark?'#e6edf3':'#333';
-    }
-    if(c.options.plugins&&c.options.plugins.datalabels){
-      var dlc=c.options.plugins.datalabels.color;
-      if(dlc&&typeof dlc!=='function'){c.options.plugins.datalabels.color=dark?'#e6edf3':'#333';}
     }
     c.data.datasets.forEach(function(ds){
       /* Re-apply RC colors for race-coded datasets */
@@ -5504,12 +5494,9 @@ function toggleDark(){
         ds.pointBackgroundColor=Array.isArray(ds.pointBackgroundColor)?ds.pointBackgroundColor.map(sw):sw(ds.pointBackgroundColor);
       }
       }
-      if(ds.datalabels&&ds.datalabels.color&&typeof ds.datalabels.color==='string'){
-        ds.datalabels.color=dark?'#e6edf3':'#333';
-      }
       if(ds._labelColor){ds._labelColor=sw(ds._labelColor);}
     });
-    c.update();
+    c.update('none');
     }catch(e){console.log('Chart update error:',e);}
   });
   }catch(e){console.log('Toggle error:',e);}
